@@ -8,8 +8,11 @@ This server is built around public, unauthenticated sources:
 - Official EQL site and news: `https://www.everquestlegends.com`
 - Daybreak help and press pages
 - Official EverQuest community note about the Game Jawn collaboration
-- EQProgression EQL FAQ and multiclass guide
-- Pointer-only community sources such as Reddit and YouTube
+- Official EQL YouTube and Twitch channels
+- EQL-specific guide/interview/preview pages from EQProgression, EverQuest Guides, and selected press outlets
+- Pointer-only EQL community sources such as Reddit
+
+The curated source registry is scoped to EverQuest Legends only. General EQ1/EQ2, P99, EQEmu, Project Quarm, and other emulator/background databases are intentionally excluded.
 
 It does not log into Daybreak, manipulate an account, automate a game client, or send requests to private APIs.
 
@@ -25,6 +28,7 @@ It does not log into Daybreak, manipulate an account, automate a game client, or
 - `eql_official_news`: parse official EQL news index
 - `eql_official_article`: fetch and extract an official news article
 - `eql_press_assets`: list official Daybreak press asset URLs by kind
+- `eql_official_youtube_videos`: list official EQL YouTube video metadata from the channel RSS feed
 - `eql_class_combos`: generate three-class combinations from the public 16-class list
 
 ## Resources

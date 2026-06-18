@@ -5,8 +5,9 @@ import { EQL_CLASSES, EQL_RACES, generateClassCombinations } from "./domain.js";
 import { getOfficialArticle, getOfficialNews } from "./official.js";
 import { listPressAssets, PRESS_ASSET_KINDS } from "./press.js";
 import { fetchSource, searchCuratedSources } from "./sourceSearch.js";
-import { SOURCE_PAGES } from "./sources.js";
+import { SOURCE_PAGES, SOURCE_SCOPE } from "./sources.js";
 import { getCategoryPages, getRecentChanges, getWikiPage, searchWiki } from "./mediawiki.js";
+import { getOfficialYouTubeVideos } from "./youtube.js";
 
 function toolResult(summary: string, structuredContent: Record<string, unknown>): CallToolResult {
   return {
@@ -39,7 +40,7 @@ export function createServer(): McpServer {
         {
           uri: uri.href,
           mimeType: "application/json",
-          text: JSON.stringify({ sources: SOURCE_PAGES }, null, 2)
+          text: JSON.stringify({ scope: SOURCE_SCOPE, sources: SOURCE_PAGES }, null, 2)
         }
       ]
     })
@@ -91,6 +92,7 @@ export function createServer(): McpServer {
     },
     async () =>
       toolResult(`Found ${SOURCE_PAGES.length} configured sources.`, {
+        scope: SOURCE_SCOPE,
         sources: SOURCE_PAGES
       })
   );
@@ -237,6 +239,21 @@ export function createServer(): McpServer {
     async ({ kind }) => {
       const assets = await listPressAssets(kind);
       return toolResult(`Fetched ${assets.length} ${kind} press assets.`, { kind, assets });
+    }
+  );
+
+  server.registerTool(
+    "eql_official_youtube_videos",
+    {
+      title: "List official EQL YouTube videos",
+      description: "Read the official EverQuest Legends YouTube RSS feed and return video metadata. This does not download video or transcripts.",
+      inputSchema: {
+        limit: z.number().int().min(1).max(50).default(20)
+      }
+    },
+    async ({ limit }) => {
+      const videos = await getOfficialYouTubeVideos(limit);
+      return toolResult(`Fetched ${videos.length} official YouTube videos.`, { videos });
     }
   );
 
