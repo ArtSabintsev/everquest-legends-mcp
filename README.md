@@ -6,7 +6,7 @@ Read-only Model Context Protocol server for EverQuest Legends public sources.
 
 ## Status
 
-This project is pre-1.0 and read-only. It does not require secrets, cookies, credentials, a Daybreak account, or private API access.
+Stable (1.0). Read-only. It does not require secrets, cookies, credentials, a Daybreak account, or private API access. The only optional moving part is the `yt-dlp` helper used by `eql_video_transcript` (see Optional Dependencies).
 
 ## Scope
 
@@ -37,6 +37,7 @@ It does not log into Daybreak, manipulate an account, automate a game client, or
 - `eql_official_article`: fetch and extract an official news article
 - `eql_press_assets`: list official Daybreak press asset URLs by kind
 - `eql_official_youtube_videos`: list official EQL YouTube video metadata from the channel RSS feed
+- `eql_video_transcript`: fetch an existing transcript from a YouTube video's published captions (uses `yt-dlp`, auto-downloaded on first use; see Optional Dependencies)
 - `eql_class_combos`: generate three-class combinations from the public 16-class list
 
 ## Resources
@@ -44,6 +45,28 @@ It does not log into Daybreak, manipulate an account, automate a game client, or
 - `eql://sources`: source registry
 - `eql://classes`: class metadata
 - `eql://races`: launch race list
+
+## Optional Dependencies
+
+`eql_video_transcript` uses [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) to read a video's published captions. Every other tool works without it, and nothing is downloaded unless you actually call this tool.
+
+yt-dlp is required because YouTube now gates caption downloads behind a bot-check token that plain HTTP requests cannot satisfy. No video or audio is downloaded — captions only.
+
+**How yt-dlp is resolved**, in order:
+
+1. `YTDLP_PATH` environment variable, if set.
+2. A `yt-dlp` already on your `PATH` (e.g. `brew install yt-dlp` / `pipx install yt-dlp`). A system copy you keep updated is preferred and always wins.
+3. A copy previously downloaded by this server (see below).
+
+If none of those is present, the tool does **not** download anything silently. The first call returns a short message explaining that yt-dlp is needed to pull YouTube captions and asking you to opt in. To proceed, call `eql_video_transcript` again with `installYtDlp: true`. That authorizes a one-time download of the official standalone `yt-dlp` binary from GitHub releases, **verified against the release's published SHA-256 checksum**, then cached. The macOS/Linux standalone builds are self-contained (no Python required).
+
+Download details:
+
+- Cache location: `~/Library/Caches/everquest-legends-mcp` (macOS), `$XDG_CACHE_HOME/everquest-legends-mcp` or `~/.cache/everquest-legends-mcp` (Linux), `%LOCALAPPDATA%\everquest-legends-mcp` (Windows).
+- The cached binary is refreshed (best-effort) after 7 days to keep up with YouTube changes.
+- Set `EQL_YTDLP_AUTODOWNLOAD=1` to grant standing consent so the download happens automatically without the per-call `installYtDlp` flag.
+
+**Twitch is intentionally unsupported**: Twitch VODs do not expose retrievable captions, so the tool returns a clear "not available" result for Twitch URLs.
 
 ## Usage
 

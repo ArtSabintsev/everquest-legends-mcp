@@ -8,6 +8,7 @@ import { fetchSource, searchCuratedSources } from "./sourceSearch.js";
 import { SOURCE_PAGES, SOURCE_SCOPE } from "./sources.js";
 import { getCategoryPages, getRecentChanges, getWikiPage, searchWiki } from "./mediawiki.js";
 import { getOfficialYouTubeVideos } from "./youtube.js";
+import { getVideoTranscript } from "./transcript.js";
 
 function toolResult(summary: string, structuredContent: Record<string, unknown>): CallToolResult {
   return {
@@ -24,7 +25,7 @@ function toolResult(summary: string, structuredContent: Record<string, unknown>)
 export function createServer(): McpServer {
   const server = new McpServer({
     name: "everquest-legends-mcp",
-    version: "0.1.0"
+    version: "1.0.0"
   });
 
   server.registerResource(
@@ -252,6 +253,31 @@ export function createServer(): McpServer {
     async ({ limit }) => {
       const videos = await getOfficialYouTubeVideos(limit);
       return toolResult(`Fetched ${videos.length} official YouTube videos.`, { videos });
+    }
+  );
+
+  server.registerTool(
+    "eql_video_transcript",
+    {
+      title: "Fetch a video transcript (captions)",
+      description:
+        "Fetch an existing transcript for a video from its published captions. Supports YouTube video ids and URLs (watch, youtu.be, shorts, embed, live). Twitch is not supported because Twitch VODs do not expose retrievable captions. This reads existing captions only; it does not transcribe audio. Pulling YouTube captions requires the yt-dlp helper; if it is not installed, call again with installYtDlp set to true to download it.",
+      inputSchema: {
+        urlOrId: z.string().min(1).describe("YouTube video id or URL, for example DsswWPXweW8 or https://www.youtube.com/watch?v=DsswWPXweW8."),
+        language: z.string().min(2).max(10).default("en").describe("Preferred caption language code, for example en or en-US."),
+        maxCharacters: z.number().int().min(500).max(200_000).default(100_000).describe("Maximum transcript text length."),
+        installYtDlp: z
+          .boolean()
+          .default(false)
+          .describe("Authorize a one-time download of the yt-dlp helper (~36 MB, checksum-verified) if it is not already installed. Required to pull YouTube captions when yt-dlp is absent.")
+      }
+    },
+    async ({ urlOrId, language, maxCharacters, installYtDlp }) => {
+      const transcript = await getVideoTranscript(urlOrId, { language, maxCharacters, allowDownload: installYtDlp });
+      const summary = transcript.available
+        ? `Fetched ${transcript.kind} ${transcript.language} transcript (${transcript.segmentCount} segments).`
+        : `No transcript available: ${transcript.reason}`;
+      return toolResult(summary, { transcript });
     }
   );
 
