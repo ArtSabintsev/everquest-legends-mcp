@@ -77,18 +77,20 @@ Prerequisites:
 
 This is a stdio MCP server. Your MCP client starts it as a child process.
 
-After the package is published to npm, MCP clients that accept a JSON config can run it directly with `npx`:
+It is distributed via GitHub (not the npm registry). MCP clients that accept a JSON config can run it directly from the repository with `npx`, which clones, builds, and launches it:
 
 ```json
 {
   "mcpServers": {
     "everquest-legends": {
       "command": "npx",
-      "args": ["-y", "everquest-legends-mcp"]
+      "args": ["-y", "github:ArtSabintsev/everquest-legends-mcp"]
     }
   }
 }
 ```
+
+Pin to a release tag for reproducibility, e.g. `github:ArtSabintsev/everquest-legends-mcp#v1.0.0`. For a fixed local install, see Local Development below and point your client at `dist/index.js`.
 
 ## Local Development
 
