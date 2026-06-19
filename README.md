@@ -6,7 +6,7 @@ Read-only Model Context Protocol server for EverQuest Legends public sources.
 
 ## Status
 
-This project is pre-1.0 and read-only. It does not require secrets, cookies, credentials, a Daybreak account, or private API access.
+Stable (1.0). Read-only. It does not require secrets, cookies, credentials, a Daybreak account, or private API access. The only optional moving part is the `yt-dlp` helper used by `eql_video_transcript` (see Optional Dependencies).
 
 ## Scope
 
