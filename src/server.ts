@@ -10,7 +10,6 @@ import { getCategoryPages, getRecentChanges, getWikiPage, searchWiki } from "./m
 import { detectNonLaunchEra } from "./era.js";
 import { getOfficialYouTubeVideos, getYouTubeVideos, listYouTubeSources } from "./youtube.js";
 import { getVideoTranscript } from "./transcript.js";
-import { getDefaultLocalScanRoots, inspectVmwareFusion, scanLocalFiles } from "./localData.js";
 
 function toolResult(summary: string, structuredContent: Record<string, unknown>): CallToolResult {
   return {
@@ -383,73 +382,6 @@ export function createServer(): McpServer {
         ? `Fetched ${transcript.kind} ${transcript.language} transcript (${transcript.segmentCount} segments).`
         : `No transcript available: ${transcript.reason}`;
       return toolResult(summary, { transcript });
-    }
-  );
-
-  server.registerTool(
-    "eql_local_vmware_inventory",
-    {
-      title: "Inspect local VMware Fusion EQL environment",
-      description:
-        "Read sanitized VMware Fusion metadata for local VMs that may contain an EverQuest Legends install. This is host metadata only: it does not mount, repair, or modify VMDK files, and it intentionally omits raw VMX encryption material.",
-      inputSchema: {
-        roots: z
-          .array(z.string())
-          .default([])
-          .describe("Optional VMware search roots. Empty uses standard Fusion paths such as ~/Virtual Machines.localized."),
-        includeLogSignals: z.boolean().default(true).describe("Include keyword counts and short recent matches from VMware log tails."),
-        includeDiskExtents: z.boolean().default(false).describe("Include per-extent VMDK file metadata. Off by default because split disks can be noisy."),
-        maxLogMatches: z.number().int().min(0).max(100).default(20)
-      }
-    },
-    async ({ roots, includeLogSignals, includeDiskExtents, maxLogMatches }) => {
-      const inventory = await inspectVmwareFusion({
-        roots: roots.length > 0 ? roots : undefined,
-        includeLogSignals,
-        includeDiskExtents,
-        maxLogMatches
-      });
-      return toolResult(`Found ${inventory.vms.length} VMware Fusion VM(s).`, { inventory });
-    }
-  );
-
-  server.registerTool(
-    "eql_local_scan_roots",
-    {
-      title: "List local EQL scan roots",
-      description:
-        "List host directories that eql_local_file_scan may read. Set EQL_LOCAL_DATA_ROOTS to a path-delimited allowlist to scan exported or mounted EverQuest Legends folders outside the defaults."
-    },
-    async () =>
-      toolResult("Fetched local scan root policy.", {
-        allowedRoots: getDefaultLocalScanRoots(),
-        environmentVariable: "EQL_LOCAL_DATA_ROOTS",
-        note: "The file scanner reads only text-like files and requires an explicit rootPath under an allowed root."
-      })
-  );
-
-  server.registerTool(
-    "eql_local_file_scan",
-    {
-      title: "Scan local EQL files",
-      description:
-        "Scan a host-visible EverQuest Legends install, export, or shared folder for text-like metadata files. rootPath must be under an allowed root from eql_local_scan_roots or EQL_LOCAL_DATA_ROOTS.",
-      inputSchema: {
-        rootPath: z.string().min(1).describe("Host-visible folder to scan, for example ~/Downloads/eql-export or a mounted game directory."),
-        query: z
-          .string()
-          .min(2)
-          .max(300)
-          .default("EverQuest Legends EQLegends EQL Daybreak Darkpaw LaunchPad eqgame eqclient")
-          .describe("Search terms used to select relevant files and snippets."),
-        maxFiles: z.number().int().min(1).max(500).default(100),
-        maxDepth: z.number().int().min(0).max(20).default(8),
-        maxFileBytes: z.number().int().min(1_000).max(500_000).default(80_000)
-      }
-    },
-    async ({ rootPath, query, maxFiles, maxDepth, maxFileBytes }) => {
-      const scan = await scanLocalFiles({ rootPath, query, maxFiles, maxDepth, maxFileBytes });
-      return toolResult(`Found ${scan.matches.length} local file match(es) under ${scan.rootPath}.`, { scan });
     }
   );
 

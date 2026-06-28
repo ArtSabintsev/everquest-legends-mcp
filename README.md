@@ -1,7 +1,5 @@
 # EverQuest Legends MCP
 
-[![CI](https://github.com/ArtSabintsev/everquest-legends-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/ArtSabintsev/everquest-legends-mcp/actions/workflows/ci.yml)
-
 Read-only Model Context Protocol server for EverQuest Legends public sources.
 
 ## Status
@@ -41,9 +39,6 @@ It does not log into Daybreak, manipulate an account, automate a game client, or
 - `eql_youtube_videos`: list recent official and creator YouTube videos with source attribution
 - `eql_creator_program`: read structured metadata for the official Creator Legends program
 - `eql_video_transcript`: fetch an existing transcript from a YouTube video's published captions (uses `yt-dlp`, auto-downloaded on first use; see Optional Dependencies)
-- `eql_local_vmware_inventory`: inspect sanitized local VMware Fusion VM metadata for an EQL install environment
-- `eql_local_scan_roots`: list host directories allowed for local text-file scans
-- `eql_local_file_scan`: scan a host-visible EQL install/export/shared folder for text-like metadata files
 - `eql_class_combos`: generate three-class combinations from the public 16-class list
 
 ## Resources
@@ -76,21 +71,6 @@ Download details:
 
 **Twitch is intentionally unsupported**: Twitch VODs do not expose retrievable captions, so the tool returns a clear "not available" result for Twitch URLs.
 
-## Local Data Tools
-
-The local tools are read-only helpers for augmenting public EQL data with files you control.
-
-- `eql_local_vmware_inventory` reads VMware Fusion metadata from standard macOS Fusion locations such as `~/Virtual Machines.localized` and `~/Library/Application Support/VMware Fusion`. It reports VM hardware, attached VMDK descriptors, shared folders, lock/running signals, and short VMware log keyword signals. It does **not** mount, repair, write, or inspect raw guest disk contents.
-- `eql_local_file_scan` scans text-like files under an explicit host-visible folder. By default, scans are allowed only under `~/Downloads`, which is also the shared folder detected in the local VMware Fusion VM. To scan an exported game folder, a mounted disk, or another shared directory, set `EQL_LOCAL_DATA_ROOTS` to a path-delimited allowlist before starting the MCP server.
-
-Example:
-
-```bash
-EQL_LOCAL_DATA_ROOTS="/Volumes/EQL:/Users/me/Downloads/eql-export" node dist/index.js
-```
-
-If EQL is installed inside a running VMware guest, export or copy relevant config/log/manifest files to a shared folder first, or shut down the VM and mount/copy the disk through your normal VMware workflow. The MCP intentionally avoids live VMDK mounting because a running VM keeps the disk locked and write-sensitive.
-
 ## Usage
 
 Prerequisites:
@@ -107,18 +87,18 @@ It is distributed via GitHub (not the npm registry). MCP clients that accept a J
   "mcpServers": {
     "everquest-legends": {
       "command": "npx",
-      "args": ["-y", "github:ArtSabintsev/everquest-legends-mcp"]
+      "args": ["-y", "github:<owner>/everquest-legends-mcp"]
     }
   }
 }
 ```
 
-Pin to a release tag for reproducibility, e.g. `github:ArtSabintsev/everquest-legends-mcp#v1.1.0`. For a fixed local install, see Local Development below and point your client at `dist/index.js`.
+Pin to a release tag for reproducibility, e.g. `github:<owner>/everquest-legends-mcp#v1.1.0`. For a fixed local install, see Local Development below and point your client at `dist/index.js`.
 
 ## Local Development
 
 ```bash
-git clone https://github.com/ArtSabintsev/everquest-legends-mcp.git
+git clone https://github.com/<owner>/everquest-legends-mcp.git
 cd everquest-legends-mcp
 npm install
 npm run build
@@ -160,9 +140,6 @@ npm run build
 | `eql_youtube_sources` | none | List official and selected creator YouTube source feeds. |
 | `eql_youtube_videos` | none | List recent videos from official and selected creator YouTube feeds with source attribution. |
 | `eql_creator_program` | none | Read official Creator Legends application, requirements, category, review-window, and retention metadata. |
-| `eql_local_vmware_inventory` | none | Inspect sanitized local VMware Fusion metadata and identify shared folders or locked game disks. |
-| `eql_local_scan_roots` | none | See which host folders `eql_local_file_scan` may read. |
-| `eql_local_file_scan` | `rootPath` | Scan an exported or mounted EQL folder for text-like metadata files. |
 | `eql_class_combos` | none | Generate EQL three-class combinations from the public 16-class list. |
 
 Example user prompts for an MCP client:
@@ -173,8 +150,6 @@ Example user prompts for an MCP client:
 - "Show the latest official EverQuest Legends YouTube videos."
 - "List recent creator videos about EverQuest Legends classes."
 - "Show the official Creator Legends program requirements."
-- "Inspect my local VMware Fusion EQL environment."
-- "Scan `~/Downloads/eql-export` for EverQuest Legends manifests and logs."
 
 ## Source Policy
 

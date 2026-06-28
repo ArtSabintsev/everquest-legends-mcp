@@ -29,7 +29,7 @@ export async function fetchText(url: string, options: FetchTextOptions = {}): Pr
       signal: controller.signal,
       headers: {
         "accept": "text/html,application/json;q=0.9,*/*;q=0.8",
-        "user-agent": "everquest-legends-mcp/1.1.0 (+https://github.com/ArtSabintsev/everquest-legends-mcp)"
+        "user-agent": "everquest-legends-mcp/1.1.0"
       }
     });
 
