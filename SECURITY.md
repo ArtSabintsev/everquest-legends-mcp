@@ -8,7 +8,7 @@ Security reports should target the latest commit on `main` or the latest publish
 
 ## Reporting
 
-Use GitHub private vulnerability reporting when the repository is public. If that is unavailable, contact the repository owner directly by email at arthur@sabintsev.com.
+Use GitHub private vulnerability reporting when the repository is public. If that is unavailable, open a minimal public issue asking for a private reporting channel.
 
 Include:
 

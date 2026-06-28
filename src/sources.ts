@@ -9,13 +9,127 @@ export type SourcePage = {
   searchable: boolean;
 };
 
+export type YouTubeSourceAuthority = "official" | "creator";
+
+export type YouTubeSource = {
+  id: string;
+  authority: YouTubeSourceAuthority;
+  title: string;
+  channelId: string;
+  handle: string;
+  url: string;
+  feedUrl: string;
+  description: string;
+  eqlSpecific: boolean;
+  lastVerifiedAt: string;
+};
+
+export type CreatorProgramMetadata = {
+  authority: "official";
+  sourceUrl: string;
+  applicationUrl: string;
+  discordUrl: string;
+  announcedAt: string;
+  lastVerifiedAt: string;
+  requirements: string[];
+  eligibleContentCategories: string[];
+  reviewWindow: string;
+  ongoingExpectation: string;
+  notes: string[];
+};
+
 export const EQL_WIKI_API_URL = "https://eqlwiki.com/api.php";
 export const EQL_WIKI_BASE_URL = "https://eqlwiki.com";
 export const OFFICIAL_BASE_URL = "https://www.everquestlegends.com";
-export const OFFICIAL_YOUTUBE_FEED_URL = "https://www.youtube.com/feeds/videos.xml?channel_id=UCOjj8LA6zJR3I5QFIPnyP9g";
+export const OFFICIAL_YOUTUBE_CHANNEL_ID = "UCOjj8LA6zJR3I5QFIPnyP9g";
+export const OFFICIAL_YOUTUBE_FEED_URL = youtubeChannelFeedUrl(OFFICIAL_YOUTUBE_CHANNEL_ID);
 
 export const SOURCE_SCOPE =
   "Curated sources are scoped to EverQuest Legends only. General EQ1/EQ2, P99, EQEmu, Project Quarm, and other emulator/background databases are intentionally excluded unless a page is specifically about EverQuest Legends.";
+
+export function youtubeChannelFeedUrl(channelId: string): string {
+  return `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
+}
+
+export const EQL_YOUTUBE_SOURCES: readonly YouTubeSource[] = [
+  {
+    id: "official-youtube",
+    authority: "official",
+    title: "Official EverQuest Legends YouTube",
+    channelId: OFFICIAL_YOUTUBE_CHANNEL_ID,
+    handle: "@EverQuestLegends",
+    url: "https://www.youtube.com/@EverQuestLegends",
+    feedUrl: OFFICIAL_YOUTUBE_FEED_URL,
+    description: "Official EverQuest Legends videos, livestream VODs, insight-series posts, trailers, and preorder videos.",
+    eqlSpecific: true,
+    lastVerifiedAt: "2026-06-28"
+  },
+  {
+    id: "grimthule-youtube",
+    authority: "creator",
+    title: "Grimthule",
+    channelId: "UCf85KLDMspTHcgF_idsdj-Q",
+    handle: "@Grimthule",
+    url: "https://www.youtube.com/@Grimthule",
+    feedUrl: youtubeChannelFeedUrl("UCf85KLDMspTHcgF_idsdj-Q"),
+    description: "Community creator channel publishing EQL beta streams, beginner tips, UI setup, guides, and short-form updates.",
+    eqlSpecific: false,
+    lastVerifiedAt: "2026-06-28"
+  },
+  {
+    id: "higherthoughtgaming-youtube",
+    authority: "creator",
+    title: "HigherThoughtGaming",
+    channelId: "UCST38DWZEL5YS8qjOl_tzsA",
+    handle: "@MoProduktions",
+    url: "https://www.youtube.com/@MoProduktions",
+    feedUrl: youtubeChannelFeedUrl("UCST38DWZEL5YS8qjOl_tzsA"),
+    description: "Community creator channel with EQL class impressions, farm routes, beta commentary, livestream-answer recaps, and systems discussion.",
+    eqlSpecific: false,
+    lastVerifiedAt: "2026-06-28"
+  },
+  {
+    id: "eqprogression-youtube",
+    authority: "creator",
+    title: "EQProgression",
+    channelId: "UCe9ME7DDqiFxTj2EyWaN8-w",
+    handle: "@eqprogression3040",
+    url: "https://www.youtube.com/@eqprogression3040",
+    feedUrl: youtubeChannelFeedUrl("UCe9ME7DDqiFxTj2EyWaN8-w"),
+    description: "EverQuest-focused community creator channel with EQL beta recaps, leveling impressions, development updates, and preview commentary.",
+    eqlSpecific: false,
+    lastVerifiedAt: "2026-06-28"
+  }
+];
+
+export const EQL_CREATOR_PROGRAM: CreatorProgramMetadata = {
+  authority: "official",
+  sourceUrl: "https://www.everquestlegends.com/news/everquest-legends-creator-program",
+  applicationUrl: "https://sdqk.me/partnership/69b326fd69674c002f86bf01",
+  discordUrl: "https://discord.gg/everquestlegends",
+  announcedAt: "2026-05-29",
+  lastVerifiedAt: "2026-06-28",
+  requirements: [
+    "Applicants must be 18 or older.",
+    "Applicants must be in good standing with the EverQuest Legends and Daybreak communities.",
+    "Applicants must have created at least 15 pieces of content in the past 90 days.",
+    "Applicants must meet at least three eligible content-category requirements."
+  ],
+  eligibleContentCategories: [
+    "Streaming",
+    "Short-form video content",
+    "Long-form video content",
+    "Writing/guides",
+    "Podcasting",
+    "Social media reach"
+  ],
+  reviewWindow: "Applications are reviewed manually; the article says responses can take 30-60 days.",
+  ongoingExpectation: "Accepted creators are expected to produce at least 5 approved pieces per month to stay active.",
+  notes: [
+    "The program is official, but individual creator videos remain unofficial unless published by an official EQL channel.",
+    "Creator rewards are described as launch-dependent and not direct cash payments in the official article."
+  ]
+};
 
 export const SOURCE_PAGES: readonly SourcePage[] = [
   {
@@ -115,11 +229,19 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
     searchable: true
   },
   {
+    id: "official-creator-program-application",
+    kind: "official",
+    title: "Official Creator Legends Application Portal",
+    url: EQL_CREATOR_PROGRAM.applicationUrl,
+    description: "Official Creator Legends Sideqik application portal linked from the official creator-program article. Pointer-only because it is an application form.",
+    searchable: false
+  },
+  {
     id: "official-youtube",
     kind: "official",
     title: "Official EverQuest Legends YouTube Channel",
     url: "https://www.youtube.com/@EverQuestLegends",
-    description: "Official EverQuest Legends video and livestream channel. Use eql_official_youtube_videos for RSS metadata.",
+    description: "Official EverQuest Legends video and livestream channel. Use eql_official_youtube_videos or eql_youtube_videos for RSS metadata.",
     searchable: false
   },
   {
@@ -128,6 +250,30 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
     title: "Official EverQuest Legends YouTube RSS",
     url: OFFICIAL_YOUTUBE_FEED_URL,
     description: "Official YouTube channel RSS feed for video IDs, titles, publish dates, and thumbnails.",
+    searchable: false
+  },
+  {
+    id: "creator-youtube-grimthule",
+    kind: "community",
+    title: "Creator YouTube: Grimthule",
+    url: "https://www.youtube.com/@Grimthule",
+    description: "Unofficial EQL creator channel with beta streams, beginner tips, UI setup, guides, and short-form updates. Use eql_youtube_videos for RSS metadata.",
+    searchable: false
+  },
+  {
+    id: "creator-youtube-higherthoughtgaming",
+    kind: "community",
+    title: "Creator YouTube: HigherThoughtGaming",
+    url: "https://www.youtube.com/@MoProduktions",
+    description: "Unofficial EQL creator channel with class impressions, farm routes, beta commentary, livestream-answer recaps, and systems discussion. Use eql_youtube_videos for RSS metadata.",
+    searchable: false
+  },
+  {
+    id: "creator-youtube-eqprogression",
+    kind: "community",
+    title: "Creator YouTube: EQProgression",
+    url: "https://www.youtube.com/@eqprogression3040",
+    description: "EverQuest-focused unofficial creator channel with EQL beta recaps, leveling impressions, development updates, and preview commentary. Use eql_youtube_videos for RSS metadata.",
     searchable: false
   },
   {

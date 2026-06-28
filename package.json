@@ -49,16 +49,7 @@
     "captions",
     "yt-dlp"
   ],
-  "author": "Arthur Ariel Sabintsev",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ArtSabintsev/everquest-legends-mcp.git"
-  },
-  "bugs": {
-    "url": "https://github.com/ArtSabintsev/everquest-legends-mcp/issues"
-  },
-  "homepage": "https://github.com/ArtSabintsev/everquest-legends-mcp#readme",
   "engines": {
     "node": ">=22"
   },

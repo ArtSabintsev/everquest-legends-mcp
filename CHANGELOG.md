@@ -43,5 +43,3 @@ First stable release.
   binary; every other tool works without it and requires no setup.
 - Concurrent identical transcript requests are de-duplicated, and a single
   yt-dlp download is shared across callers.
-
-[1.0.0]: https://github.com/ArtSabintsev/everquest-legends-mcp/releases/tag/v1.0.0
