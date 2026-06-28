@@ -5,9 +5,11 @@ import { EQL_CLASSES, EQL_CLASS_SOURCE, EQL_RACES, EQL_RACE_SOURCE, generateClas
 import { getOfficialArticle, getOfficialNews } from "./official.js";
 import { listPressAssets, PRESS_ASSET_KINDS } from "./press.js";
 import { fetchSource, searchCuratedSources } from "./sourceSearch.js";
-import { SOURCE_PAGES, SOURCE_SCOPE } from "./sources.js";
+import { EQL_CREATOR_PROGRAM, EQL_YOUTUBE_SOURCES, SOURCE_PAGES, SOURCE_SCOPE } from "./sources.js";
 import { getCategoryPages, getRecentChanges, getWikiPage, searchWiki } from "./mediawiki.js";
-import { getOfficialYouTubeVideos } from "./youtube.js";
+import { detectNonLaunchEra } from "./era.js";
+import { getOfficialYouTubeVideos, getYouTubeVideos, listYouTubeSources } from "./youtube.js";
+import { getVideoTranscript } from "./transcript.js";
 
 function toolResult(summary: string, structuredContent: Record<string, unknown>): CallToolResult {
   return {
@@ -24,7 +26,7 @@ function toolResult(summary: string, structuredContent: Record<string, unknown>)
 export function createServer(): McpServer {
   const server = new McpServer({
     name: "everquest-legends-mcp",
-    version: "0.1.0"
+    version: "1.1.0"
   });
 
   server.registerResource(
@@ -84,6 +86,44 @@ export function createServer(): McpServer {
     })
   );
 
+  server.registerResource(
+    "youtube-sources",
+    "eql://youtube-sources",
+    {
+      title: "EverQuest Legends YouTube source registry",
+      description: "Official and selected creator YouTube channel feeds used by this MCP server.",
+      mimeType: "application/json"
+    },
+    (uri) => ({
+      contents: [
+        {
+          uri: uri.href,
+          mimeType: "application/json",
+          text: JSON.stringify({ sources: EQL_YOUTUBE_SOURCES }, null, 2)
+        }
+      ]
+    })
+  );
+
+  server.registerResource(
+    "creator-program",
+    "eql://creator-program",
+    {
+      title: "EverQuest Legends creator program metadata",
+      description: "Structured summary of the official EQL Creator Legends program article.",
+      mimeType: "application/json"
+    },
+    (uri) => ({
+      contents: [
+        {
+          uri: uri.href,
+          mimeType: "application/json",
+          text: JSON.stringify(EQL_CREATOR_PROGRAM, null, 2)
+        }
+      ]
+    })
+  );
+
   server.registerTool(
     "eql_sources",
     {
@@ -101,7 +141,8 @@ export function createServer(): McpServer {
     "eql_source_fetch",
     {
       title: "Fetch a curated EQL source",
-      description: "Fetch and extract text from a searchable curated public source by id.",
+      description:
+        "Fetch and extract text from a searchable curated public source by id. When the text references content from a later expansion (Kunark, Velious, Luclin) that is not in EQL's pre-Kunark launch, the result includes an eraAdvisory.",
       inputSchema: {
         id: z.string().describe("Source id from eql_sources, for example official-home or eqprogression-faq."),
         maxCharacters: z.number().int().min(500).max(40_000).default(12_000).describe("Maximum extracted text length.")
@@ -135,7 +176,8 @@ export function createServer(): McpServer {
     "eql_wiki_search",
     {
       title: "Search EQL Wiki",
-      description: "Full-text search the public EverQuest Legends MediaWiki.",
+      description:
+        "Full-text search the public EverQuest Legends MediaWiki. The wiki inherits classic EverQuest data; when result snippets reference later-expansion content (Kunark, Velious, Luclin) not in EQL's pre-Kunark launch, the response includes an eraAdvisory.",
       inputSchema: {
         query: z.string().min(2).describe("MediaWiki search query."),
         limit: z.number().int().min(1).max(50).default(10)
@@ -143,7 +185,12 @@ export function createServer(): McpServer {
     },
     async ({ query, limit }) => {
       const results = await searchWiki(query, limit);
-      return toolResult(`Found ${results.length} wiki matches for "${query}".`, { query, results });
+      const eraAdvisory = detectNonLaunchEra(results.map((result) => `${result.title}\n${result.snippet}`).join("\n"));
+      return toolResult(`Found ${results.length} wiki matches for "${query}".`, {
+        query,
+        results,
+        ...(eraAdvisory.flagged ? { eraAdvisory } : {})
+      });
     }
   );
 
@@ -151,7 +198,8 @@ export function createServer(): McpServer {
     "eql_wiki_page",
     {
       title: "Read EQL Wiki page",
-      description: "Fetch a page from EQL Wiki via MediaWiki API and return extracted text, links, categories, and revision metadata.",
+      description:
+        "Fetch a page from EQL Wiki via MediaWiki API and return extracted text, links, categories, and revision metadata. Pages inherit classic EverQuest data; when the text references later-expansion content (Kunark, Velious, Luclin) not in EQL's pre-Kunark launch, the page includes an eraAdvisory.",
       inputSchema: {
         title: z.string().min(1).describe("Wiki page title, for example Character Classes, Nagafen, or Build Guides."),
         maxCharacters: z.number().int().min(500).max(40_000).default(12_000).describe("Maximum extracted body length.")
@@ -252,6 +300,88 @@ export function createServer(): McpServer {
     async ({ limit }) => {
       const videos = await getOfficialYouTubeVideos(limit);
       return toolResult(`Fetched ${videos.length} official YouTube videos.`, { videos });
+    }
+  );
+
+  server.registerTool(
+    "eql_youtube_sources",
+    {
+      title: "List EQL YouTube sources",
+      description:
+        "List official and selected creator/community YouTube channel feeds. Creator channels are unofficial and should not be treated as Daybreak/Game Jawn source-of-truth statements.",
+      inputSchema: {
+        scope: z.enum(["official", "creators", "all"]).default("all")
+      }
+    },
+    async ({ scope }) => {
+      const sources = listYouTubeSources(scope);
+      return toolResult(`Found ${sources.length} YouTube source(s).`, {
+        scope,
+        sources,
+        note: "Creator-channel videos are useful for coverage, guides, and commentary, but official facts should be verified against official EQL sources."
+      });
+    }
+  );
+
+  server.registerTool(
+    "eql_youtube_videos",
+    {
+      title: "List EQL YouTube videos",
+      description:
+        "Read official and selected creator YouTube RSS feeds and return recent video metadata with source attribution. This does not download video or transcripts.",
+      inputSchema: {
+        scope: z.enum(["official", "creators", "all"]).default("all"),
+        sourceIds: z.array(z.string()).default([]).describe("Optional source ids from eql_youtube_sources. Empty uses scope."),
+        query: z.string().min(2).max(120).optional().describe("Optional title/author filter, for example beta, creator, class, or EverQuest Legends."),
+        limitPerSource: z.number().int().min(1).max(50).default(10),
+        maxTotal: z.number().int().min(1).max(200).default(50)
+      }
+    },
+    async ({ scope, sourceIds, query, limitPerSource, maxTotal }) => {
+      const search = await getYouTubeVideos({
+        scope,
+        sourceIds: sourceIds.length > 0 ? sourceIds : undefined,
+        query,
+        limitPerSource,
+        maxTotal
+      });
+      const failureNote = search.failedSources.length > 0 ? ` ${search.failedSources.length} source(s) failed and are listed in failedSources.` : "";
+      return toolResult(`Fetched ${search.videos.length} YouTube video(s).${failureNote}`, search);
+    }
+  );
+
+  server.registerTool(
+    "eql_creator_program",
+    {
+      title: "Read EQL creator program metadata",
+      description:
+        "Return structured metadata for the official EverQuest Legends Creator Legends program, including application URL, requirements, eligible content categories, review timing, and ongoing expectations."
+    },
+    async () => toolResult("Fetched official Creator Legends program metadata.", { creatorProgram: EQL_CREATOR_PROGRAM })
+  );
+
+  server.registerTool(
+    "eql_video_transcript",
+    {
+      title: "Fetch a video transcript (captions)",
+      description:
+        "Fetch an existing transcript for a video from its published captions. Supports YouTube video ids and URLs (watch, youtu.be, shorts, embed, live). Twitch is not supported because Twitch VODs do not expose retrievable captions. This reads existing captions only; it does not transcribe audio. Pulling YouTube captions requires the yt-dlp helper; if it is not installed, call again with installYtDlp set to true to download it.",
+      inputSchema: {
+        urlOrId: z.string().min(1).describe("YouTube video id or URL, for example DsswWPXweW8 or https://www.youtube.com/watch?v=DsswWPXweW8."),
+        language: z.string().min(2).max(10).default("en").describe("Preferred caption language code, for example en or en-US."),
+        maxCharacters: z.number().int().min(500).max(200_000).default(100_000).describe("Maximum transcript text length."),
+        installYtDlp: z
+          .boolean()
+          .default(false)
+          .describe("Authorize a one-time download of the yt-dlp helper (~36 MB, checksum-verified) if it is not already installed. Required to pull YouTube captions when yt-dlp is absent.")
+      }
+    },
+    async ({ urlOrId, language, maxCharacters, installYtDlp }) => {
+      const transcript = await getVideoTranscript(urlOrId, { language, maxCharacters, allowDownload: installYtDlp });
+      const summary = transcript.available
+        ? `Fetched ${transcript.kind} ${transcript.language} transcript (${transcript.segmentCount} segments).`
+        : `No transcript available: ${transcript.reason}`;
+      return toolResult(summary, { transcript });
     }
   );
 

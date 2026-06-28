@@ -2,6 +2,7 @@ import { fetchText } from "./http.js";
 import { getOfficialNews, type OfficialNewsArticle } from "./official.js";
 import { SOURCE_PAGES, sourceById, type SourcePage } from "./sources.js";
 import { htmlToText, scoreText, snippetAround, truncateText } from "./text.js";
+import { detectNonLaunchEra, type EraAdvisory } from "./era.js";
 
 export type SourceSearchResult = {
   id: string;
@@ -28,6 +29,8 @@ export type SourceSearchResponse = {
 
 export type FetchedSource = SourcePage & {
   text: string;
+  /** Present only when the fetched text references non-launch (Kunark/Velious/Luclin) content. */
+  eraAdvisory?: EraAdvisory;
 };
 
 const SOURCE_SEARCH_CONCURRENCY = 4;
@@ -42,9 +45,12 @@ export async function fetchSource(id: string, maxCharacters = 12_000): Promise<F
     throw new Error(`Source is a pointer, not a searchable/fetchable page: ${id}`);
   }
   const html = await fetchText(source.url, { cacheTtlMs: 5 * 60_000 });
+  const text = truncateText(htmlToText(html), maxCharacters);
+  const eraAdvisory = detectNonLaunchEra(text);
   return {
     ...source,
-    text: truncateText(htmlToText(html), maxCharacters)
+    text,
+    ...(eraAdvisory.flagged ? { eraAdvisory } : {})
   };
 }
 
