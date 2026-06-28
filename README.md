@@ -37,7 +37,13 @@ It does not log into Daybreak, manipulate an account, automate a game client, or
 - `eql_official_article`: fetch and extract an official news article
 - `eql_press_assets`: list official Daybreak press asset URLs by kind
 - `eql_official_youtube_videos`: list official EQL YouTube video metadata from the channel RSS feed
+- `eql_youtube_sources`: list official and selected creator YouTube channel feeds
+- `eql_youtube_videos`: list recent official and creator YouTube videos with source attribution
+- `eql_creator_program`: read structured metadata for the official Creator Legends program
 - `eql_video_transcript`: fetch an existing transcript from a YouTube video's published captions (uses `yt-dlp`, auto-downloaded on first use; see Optional Dependencies)
+- `eql_local_vmware_inventory`: inspect sanitized local VMware Fusion VM metadata for an EQL install environment
+- `eql_local_scan_roots`: list host directories allowed for local text-file scans
+- `eql_local_file_scan`: scan a host-visible EQL install/export/shared folder for text-like metadata files
 - `eql_class_combos`: generate three-class combinations from the public 16-class list
 
 ## Resources
@@ -45,6 +51,8 @@ It does not log into Daybreak, manipulate an account, automate a game client, or
 - `eql://sources`: source registry
 - `eql://classes`: class metadata
 - `eql://races`: launch race list
+- `eql://youtube-sources`: official and selected creator YouTube source registry
+- `eql://creator-program`: structured official Creator Legends program metadata
 
 ## Optional Dependencies
 
@@ -67,6 +75,21 @@ Download details:
 - Set `EQL_YTDLP_AUTODOWNLOAD=1` to grant standing consent so the download happens automatically without the per-call `installYtDlp` flag.
 
 **Twitch is intentionally unsupported**: Twitch VODs do not expose retrievable captions, so the tool returns a clear "not available" result for Twitch URLs.
+
+## Local Data Tools
+
+The local tools are read-only helpers for augmenting public EQL data with files you control.
+
+- `eql_local_vmware_inventory` reads VMware Fusion metadata from standard macOS Fusion locations such as `~/Virtual Machines.localized` and `~/Library/Application Support/VMware Fusion`. It reports VM hardware, attached VMDK descriptors, shared folders, lock/running signals, and short VMware log keyword signals. It does **not** mount, repair, write, or inspect raw guest disk contents.
+- `eql_local_file_scan` scans text-like files under an explicit host-visible folder. By default, scans are allowed only under `~/Downloads`, which is also the shared folder detected in the local VMware Fusion VM. To scan an exported game folder, a mounted disk, or another shared directory, set `EQL_LOCAL_DATA_ROOTS` to a path-delimited allowlist before starting the MCP server.
+
+Example:
+
+```bash
+EQL_LOCAL_DATA_ROOTS="/Volumes/EQL:/Users/me/Downloads/eql-export" node dist/index.js
+```
+
+If EQL is installed inside a running VMware guest, export or copy relevant config/log/manifest files to a shared folder first, or shut down the VM and mount/copy the disk through your normal VMware workflow. The MCP intentionally avoids live VMDK mounting because a running VM keeps the disk locked and write-sensitive.
 
 ## Usage
 
@@ -134,6 +157,12 @@ npm run build
 | `eql_official_article` | `pageNameOrUrl` | Read an official EQL news article by slug or `https://www.everquestlegends.com/news/...` URL. |
 | `eql_press_assets` | `kind` | List official Daybreak press asset metadata for `logos`, `artwork`, `screenshots`, `video`, or `fact-sheets`. |
 | `eql_official_youtube_videos` | none | List official EverQuest Legends YouTube video metadata from the channel RSS feed. |
+| `eql_youtube_sources` | none | List official and selected creator YouTube source feeds. |
+| `eql_youtube_videos` | none | List recent videos from official and selected creator YouTube feeds with source attribution. |
+| `eql_creator_program` | none | Read official Creator Legends application, requirements, category, review-window, and retention metadata. |
+| `eql_local_vmware_inventory` | none | Inspect sanitized local VMware Fusion metadata and identify shared folders or locked game disks. |
+| `eql_local_scan_roots` | none | See which host folders `eql_local_file_scan` may read. |
+| `eql_local_file_scan` | `rootPath` | Scan an exported or mounted EQL folder for text-like metadata files. |
 | `eql_class_combos` | none | Generate EQL three-class combinations from the public 16-class list. |
 
 Example user prompts for an MCP client:
@@ -142,12 +171,17 @@ Example user prompts for an MCP client:
 - "Search the EQL Wiki for race unlocks, then read the most relevant page."
 - "List official press screenshots for EverQuest Legends."
 - "Show the latest official EverQuest Legends YouTube videos."
+- "List recent creator videos about EverQuest Legends classes."
+- "Show the official Creator Legends program requirements."
+- "Inspect my local VMware Fusion EQL environment."
+- "Scan `~/Downloads/eql-export` for EverQuest Legends manifests and logs."
 
 ## Source Policy
 
 - Searchable sources should be stable public text pages about EverQuest Legends.
 - Official EQL, Daybreak, Game Jawn, original interviews, hands-on previews, and EQL-specific guide pages are preferred.
 - Social, Discord, forum, Twitch, and YouTube watch pages are pointer-only unless there is a stable public feed or transcript.
+- Creator YouTube channels are unofficial community sources. Use them for coverage discovery, guides, and commentary; verify factual claims against official EQL pages, press pages, or wiki pages.
 - Daybreak Help pages are pointer-only because direct fetches can return Cloudflare challenge HTML.
 - Binary assets are exposed as metadata links; they are not downloaded by default.
 
