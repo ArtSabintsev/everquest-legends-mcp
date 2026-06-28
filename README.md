@@ -82,6 +82,26 @@ This is a stdio MCP server. Your MCP client starts it as a child process.
 
 It is distributed via GitHub (not the npm registry). MCP clients that accept a JSON config can run it directly from the repository with `npx`, which clones, builds, and launches it:
 
+Replace `<owner>` with the GitHub owner or organization that hosts this repository.
+
+### Codex
+
+```bash
+codex mcp add everquest-legends -- npx -y github:<owner>/everquest-legends-mcp
+codex mcp list
+```
+
+### Claude Code
+
+```bash
+claude mcp add --scope user everquest-legends -- npx -y github:<owner>/everquest-legends-mcp
+claude mcp list
+```
+
+### Claude Desktop
+
+Merge this into `~/Library/Application Support/Claude/claude_desktop_config.json`:
+
 ```json
 {
   "mcpServers": {
@@ -92,6 +112,18 @@ It is distributed via GitHub (not the npm registry). MCP clients that accept a J
   }
 }
 ```
+
+Restart Claude Desktop after changing the file.
+
+### Grok
+
+```bash
+grok mcp add --scope user everquest-legends -- npx -y github:<owner>/everquest-legends-mcp
+grok mcp list
+grok mcp doctor
+```
+
+Start a new Codex, Claude, or Grok session after adding the server. Existing sessions may not pick up newly configured MCP servers.
 
 Pin to a release tag for reproducibility, e.g. `github:<owner>/everquest-legends-mcp#v1.1.0`. For a fixed local install, see Local Development below and point your client at `dist/index.js`.
 
