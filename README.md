@@ -1,12 +1,10 @@
 # EverQuest Legends MCP
 
-[![CI](https://github.com/ArtSabintsev/everquest-legends-mcp/actions/workflows/ci.yml/badge.svg)](https://github.com/ArtSabintsev/everquest-legends-mcp/actions/workflows/ci.yml)
-
 Read-only Model Context Protocol server for EverQuest Legends public sources.
 
 ## Status
 
-This project is pre-1.0 and read-only. It does not require secrets, cookies, credentials, a Daybreak account, or private API access.
+Stable (1.0). Read-only. It does not require secrets, cookies, credentials, a Daybreak account, or private API access. The only optional moving part is the `yt-dlp` helper used by `eql_video_transcript` (see Optional Dependencies).
 
 ## Scope
 
@@ -37,6 +35,10 @@ It does not log into Daybreak, manipulate an account, automate a game client, or
 - `eql_official_article`: fetch and extract an official news article
 - `eql_press_assets`: list official Daybreak press asset URLs by kind
 - `eql_official_youtube_videos`: list official EQL YouTube video metadata from the channel RSS feed
+- `eql_youtube_sources`: list official and selected creator YouTube channel feeds
+- `eql_youtube_videos`: list recent official and creator YouTube videos with source attribution
+- `eql_creator_program`: read structured metadata for the official Creator Legends program
+- `eql_video_transcript`: fetch an existing transcript from a YouTube video's published captions (uses `yt-dlp`, auto-downloaded on first use; see Optional Dependencies)
 - `eql_class_combos`: generate three-class combinations from the public 16-class list
 
 ## Resources
@@ -44,6 +46,30 @@ It does not log into Daybreak, manipulate an account, automate a game client, or
 - `eql://sources`: source registry
 - `eql://classes`: class metadata
 - `eql://races`: launch race list
+- `eql://youtube-sources`: official and selected creator YouTube source registry
+- `eql://creator-program`: structured official Creator Legends program metadata
+
+## Optional Dependencies
+
+`eql_video_transcript` uses [`yt-dlp`](https://github.com/yt-dlp/yt-dlp) to read a video's published captions. Every other tool works without it, and nothing is downloaded unless you actually call this tool.
+
+yt-dlp is required because YouTube now gates caption downloads behind a bot-check token that plain HTTP requests cannot satisfy. No video or audio is downloaded — captions only.
+
+**How yt-dlp is resolved**, in order:
+
+1. `YTDLP_PATH` environment variable, if set.
+2. A `yt-dlp` already on your `PATH` (e.g. `brew install yt-dlp` / `pipx install yt-dlp`). A system copy you keep updated is preferred and always wins.
+3. A copy previously downloaded by this server (see below).
+
+If none of those is present, the tool does **not** download anything silently. The first call returns a short message explaining that yt-dlp is needed to pull YouTube captions and asking you to opt in. To proceed, call `eql_video_transcript` again with `installYtDlp: true`. That authorizes a one-time download of the official standalone `yt-dlp` binary from GitHub releases, **verified against the release's published SHA-256 checksum**, then cached. The macOS/Linux standalone builds are self-contained (no Python required).
+
+Download details:
+
+- Cache location: `~/Library/Caches/everquest-legends-mcp` (macOS), `$XDG_CACHE_HOME/everquest-legends-mcp` or `~/.cache/everquest-legends-mcp` (Linux), `%LOCALAPPDATA%\everquest-legends-mcp` (Windows).
+- The cached binary is refreshed (best-effort) after 7 days to keep up with YouTube changes.
+- Set `EQL_YTDLP_AUTODOWNLOAD=1` to grant standing consent so the download happens automatically without the per-call `installYtDlp` flag.
+
+**Twitch is intentionally unsupported**: Twitch VODs do not expose retrievable captions, so the tool returns a clear "not available" result for Twitch URLs.
 
 ## Usage
 
@@ -54,23 +80,25 @@ Prerequisites:
 
 This is a stdio MCP server. Your MCP client starts it as a child process.
 
-After the package is published to npm, MCP clients that accept a JSON config can run it directly with `npx`:
+It is distributed via GitHub (not the npm registry). MCP clients that accept a JSON config can run it directly from the repository with `npx`, which clones, builds, and launches it:
 
 ```json
 {
   "mcpServers": {
     "everquest-legends": {
       "command": "npx",
-      "args": ["-y", "everquest-legends-mcp"]
+      "args": ["-y", "github:<owner>/everquest-legends-mcp"]
     }
   }
 }
 ```
 
+Pin to a release tag for reproducibility, e.g. `github:<owner>/everquest-legends-mcp#v1.1.0`. For a fixed local install, see Local Development below and point your client at `dist/index.js`.
+
 ## Local Development
 
 ```bash
-git clone https://github.com/ArtSabintsev/everquest-legends-mcp.git
+git clone https://github.com/<owner>/everquest-legends-mcp.git
 cd everquest-legends-mcp
 npm install
 npm run build
@@ -109,6 +137,9 @@ npm run build
 | `eql_official_article` | `pageNameOrUrl` | Read an official EQL news article by slug or `https://www.everquestlegends.com/news/...` URL. |
 | `eql_press_assets` | `kind` | List official Daybreak press asset metadata for `logos`, `artwork`, `screenshots`, `video`, or `fact-sheets`. |
 | `eql_official_youtube_videos` | none | List official EverQuest Legends YouTube video metadata from the channel RSS feed. |
+| `eql_youtube_sources` | none | List official and selected creator YouTube source feeds. |
+| `eql_youtube_videos` | none | List recent videos from official and selected creator YouTube feeds with source attribution. |
+| `eql_creator_program` | none | Read official Creator Legends application, requirements, category, review-window, and retention metadata. |
 | `eql_class_combos` | none | Generate EQL three-class combinations from the public 16-class list. |
 
 Example user prompts for an MCP client:
@@ -117,18 +148,23 @@ Example user prompts for an MCP client:
 - "Search the EQL Wiki for race unlocks, then read the most relevant page."
 - "List official press screenshots for EverQuest Legends."
 - "Show the latest official EverQuest Legends YouTube videos."
+- "List recent creator videos about EverQuest Legends classes."
+- "Show the official Creator Legends program requirements."
 
 ## Source Policy
 
 - Searchable sources should be stable public text pages about EverQuest Legends.
 - Official EQL, Daybreak, Game Jawn, original interviews, hands-on previews, and EQL-specific guide pages are preferred.
 - Social, Discord, forum, Twitch, and YouTube watch pages are pointer-only unless there is a stable public feed or transcript.
+- Creator YouTube channels are unofficial community sources. Use them for coverage discovery, guides, and commentary; verify factual claims against official EQL pages, press pages, or wiki pages.
 - Daybreak Help pages are pointer-only because direct fetches can return Cloudflare challenge HTML.
 - Binary assets are exposed as metadata links; they are not downloaded by default.
 
 ## Notes
 
 The wiki and beta coverage change quickly. For current facts, prefer `eql_wiki_page`, `eql_wiki_search`, `eql_official_news`, `eql_official_youtube_videos`, and official source pages over static assumptions.
+
+EQL launches **pre-Kunark** (Antonica, Faydwer, Odus, plus the classic Planes of Sky, Hate, and Fear). The community wiki inherits classic EverQuest data, so pages routinely describe Kunark, Velious, and Luclin zones, cities, factions, items, and quests that are not in the launch game. `eql_wiki_page`, `eql_wiki_search`, and `eql_source_fetch` attach a structured `eraAdvisory` when they detect such references — check for it and do not treat flagged content as launch-live.
 
 ## License
 

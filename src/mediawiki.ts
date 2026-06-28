@@ -1,6 +1,7 @@
 import { EQL_WIKI_API_URL, EQL_WIKI_BASE_URL } from "./sources.js";
 import { fetchText } from "./http.js";
 import { htmlToText, stripHtml, truncateText } from "./text.js";
+import { detectNonLaunchEra, type EraAdvisory } from "./era.js";
 
 export type WikiSearchResult = {
   title: string;
@@ -20,6 +21,8 @@ export type WikiPage = {
   text: string;
   links: string[];
   categories: string[];
+  /** Present only when the page text references non-launch (Kunark/Velious/Luclin) content. */
+  eraAdvisory?: EraAdvisory;
 };
 
 export type WikiRecentChange = {
@@ -140,12 +143,15 @@ export async function getWikiPage(title: string, maxCharacters = 12_000): Promis
   }
 
   const parsed = response.parse;
+  const text = truncateText(htmlToText(parsed.text ?? "", ".mw-parser-output"), maxCharacters);
+  const eraAdvisory = detectNonLaunchEra(text);
   return {
     title: parsed.title,
     pageId: parsed.pageid,
     revisionId: parsed.revid,
     url: wikiPageUrl(parsed.title),
-    text: truncateText(htmlToText(parsed.text ?? "", ".mw-parser-output"), maxCharacters),
+    text,
+    ...(eraAdvisory.flagged ? { eraAdvisory } : {}),
     links: (parsed.links ?? [])
       .filter((link) => link.exists !== false)
       .map((link) => link.title)

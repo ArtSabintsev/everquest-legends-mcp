@@ -1,6 +1,6 @@
 {
   "name": "everquest-legends-mcp",
-  "version": "0.1.0",
+  "version": "1.1.0",
   "description": "Read-only MCP server for EverQuest Legends public sources.",
   "type": "module",
   "main": "dist/server.js",
@@ -20,14 +20,14 @@
     "README.md",
     "LICENSE",
     "SECURITY.md",
-    "CONTRIBUTING.md"
+    "CONTRIBUTING.md",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "clean": "node -e \"require('node:fs').rmSync('dist', { recursive: true, force: true })\"",
     "build": "npm run clean && tsc -p tsconfig.json",
     "dev": "tsx src/index.ts",
-    "prepack": "npm run build",
-    "prepublishOnly": "npm run typecheck && npm test",
+    "prepare": "npm run build",
     "start": "node dist/index.js",
     "test": "vitest run",
     "typecheck": "tsc -p tsconfig.json --noEmit"
@@ -43,18 +43,13 @@
     "game-data",
     "read-only",
     "daybreak-games",
-    "game-jawn"
+    "game-jawn",
+    "youtube",
+    "transcript",
+    "captions",
+    "yt-dlp"
   ],
-  "author": "Arthur Ariel Sabintsev",
   "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/ArtSabintsev/everquest-legends-mcp.git"
-  },
-  "bugs": {
-    "url": "https://github.com/ArtSabintsev/everquest-legends-mcp/issues"
-  },
-  "homepage": "https://github.com/ArtSabintsev/everquest-legends-mcp#readme",
   "engines": {
     "node": ">=22"
   },
@@ -64,7 +59,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
-    "@types/node": "^22",
+    "@types/node": "^26",
     "tsx": "^4.22.4",
     "typescript": "^6.0.3",
     "vitest": "^4.1.9"
