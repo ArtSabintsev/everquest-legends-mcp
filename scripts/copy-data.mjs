@@ -11,10 +11,13 @@ import { fileURLToPath } from "node:url";
 const src = new URL("../src/data/", import.meta.url);
 const dest = new URL("../dist/data/", import.meta.url);
 
+// Log to stderr, not stdout: this runs during the `prepare` lifecycle, and
+// `npm pack --silent` captures lifecycle stdout — anything printed here would
+// corrupt `tarball=$(npm pack --silent)` in the CI smoke step.
 if (!existsSync(src)) {
-  console.log("[copy-data] no src/data directory; nothing to copy.");
+  console.error("[copy-data] no src/data directory; nothing to copy.");
   process.exit(0);
 }
 
 await cp(src, dest, { recursive: true });
-console.log(`[copy-data] copied ${fileURLToPath(src)} -> ${fileURLToPath(dest)}`);
+console.error(`[copy-data] copied ${fileURLToPath(src)} -> ${fileURLToPath(dest)}`);
