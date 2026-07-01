@@ -5,3 +5,7 @@ coverage/
 .DS_Store
 npm-debug.log*
 *.tgz
+.wrangler/
+web/dist/
+web/node_modules/
+web/tsconfig.tsbuildinfo
