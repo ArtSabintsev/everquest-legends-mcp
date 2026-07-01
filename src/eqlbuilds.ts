@@ -303,6 +303,125 @@ export function searchEqlBuildsSpells(
   return { query, results, disclaimer: EQLBUILDS_DISCLAIMER };
 }
 
+// Look up a single spell by numeric id or exact/case-insensitive name and report
+// every class that learns it, at that class's own level. This surfaces per-class
+// level data that searchEqlBuildsSpells collapses away: 235 spells in the current
+// snapshot are learned at different levels by different classes, and the search
+// tool only reports the class names, not the per-class level.
+export function getEqlBuildsSpell(idOrName: string | number):
+  | (Omit<EqlBuildsSpell, "level"> & {
+      usableBy: Array<{ classId: string; name: string; level: number }>;
+      classes: string[];
+    })
+  | undefined {
+  const numericId = typeof idOrName === "number" ? idOrName : Number(idOrName.trim());
+  const nameKey = typeof idOrName === "string" ? idOrName.trim().toLowerCase() : "";
+
+  let base: EqlBuildsSpell | undefined;
+  const usableBy: Array<{ classId: string; name: string; level: number }> = [];
+
+  for (const [classId, cls] of Object.entries(classes())) {
+    for (const spell of cls.spellList) {
+      const matchesId = Number.isFinite(numericId) && spell.id === numericId;
+      const matchesName = nameKey.length > 0 && spell.name.toLowerCase() === nameKey;
+      if (matchesId || matchesName) {
+        base ??= spell;
+        usableBy.push({ classId, name: prettifyId(classId), level: spell.level });
+      }
+    }
+  }
+
+  if (!base) {
+    return undefined;
+  }
+
+  usableBy.sort((a, b) => a.level - b.level || a.classId.localeCompare(b.classId));
+  const { level: _level, ...rest } = base;
+  return { ...rest, usableBy, classes: usableBy.map((entry) => entry.classId) };
+}
+
+// The full alternate-advancement catalog (general + archetype + class + special)
+// lives in general-abilities.json; each class's alternateAbilityList is a subset.
+// Read the master catalog so every ability id resolves in one place.
+function allAbilitiesById(): Map<string, EqlBuildsAbility> {
+  const byId = new Map<string, EqlBuildsAbility>();
+  for (const ability of generalAbilities()) {
+    byId.set(ability.id, ability);
+  }
+  for (const cls of Object.values(classes())) {
+    for (const ability of cls.alternateAbilityList) {
+      if (!byId.has(ability.id)) {
+        byId.set(ability.id, ability);
+      }
+    }
+  }
+  return byId;
+}
+
+export function getEqlBuildsAbility(id: string): EqlBuildsAbility | undefined {
+  const key = id.trim();
+  const byId = allAbilitiesById();
+  const direct = byId.get(key);
+  if (direct) {
+    return direct;
+  }
+  const lower = key.toLowerCase();
+  for (const [abilityId, ability] of byId) {
+    if (abilityId.toLowerCase() === lower || ability.name.toLowerCase() === lower) {
+      return ability;
+    }
+  }
+  return undefined;
+}
+
+// Enumerate the alternate-advancement catalog without a search query, optionally
+// filtered by category, group, class, or activation. Returns a compact shape;
+// use getEqlBuildsAbility or eql_builds_ability_search for full per-rank detail.
+export function listEqlBuildsAbilities(
+  options: { category?: string; group?: string; classId?: string; activatedOnly?: boolean } = {}
+): {
+  categories: string[];
+  count: number;
+  abilities: Array<{
+    id: string;
+    name: string;
+    category: string;
+    group: string;
+    maxRank: number;
+    costLabel: string;
+    isActivated: boolean;
+    isAutoGranted: boolean;
+    classCount: number;
+  }>;
+  disclaimer: string;
+} {
+  const categoryFilter = options.category?.trim().toLowerCase();
+  const groupFilter = options.group?.trim().toLowerCase();
+  const classFilter = options.classId?.trim().toLowerCase();
+  const all = [...allAbilitiesById().values()];
+
+  const abilities = all
+    .filter((ability) => !categoryFilter || ability.category.toLowerCase() === categoryFilter)
+    .filter((ability) => !groupFilter || ability.group.toLowerCase() === groupFilter)
+    .filter((ability) => !classFilter || ability.classes.some((c) => c.toLowerCase() === classFilter))
+    .filter((ability) => !options.activatedOnly || ability.isActivated)
+    .map((ability) => ({
+      id: ability.id,
+      name: ability.name,
+      category: ability.category,
+      group: ability.group,
+      maxRank: ability.maxRank,
+      costLabel: ability.costLabel,
+      isActivated: ability.isActivated,
+      isAutoGranted: ability.isAutoGranted,
+      classCount: ability.classes.length
+    }))
+    .sort((a, b) => a.category.localeCompare(b.category) || a.name.localeCompare(b.name));
+
+  const categories = [...new Set(all.map((ability) => ability.category))].sort();
+  return { categories, count: abilities.length, abilities, disclaimer: EQLBUILDS_DISCLAIMER };
+}
+
 export function searchEqlBuildsAbilities(
   query: string,
   options: { classId?: string; category?: string; limit?: number } = {}

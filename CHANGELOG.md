@@ -8,6 +8,21 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Three `eql_builds_*` tools that surface build data already in the committed
+  snapshot but previously unreachable except through fuzzy search:
+  `eql_builds_spell` (read one spell by id or exact name, with the per-class
+  learn levels that the search tool collapses away — 235 spells are learned at
+  different levels by different classes), `eql_builds_abilities` (enumerate the
+  full 130-entry alternate-advancement catalog without a query, filterable by
+  category/group/class/activation), and `eql_builds_ability` (read one AA by id
+  or exact name with full per-rank detail).
+- `scripts/extract-eql-client.mjs` (`npm run extract:client`): a maintainer-run
+  extractor that reads the authoritative EverQuest Legends *client* text files
+  (`spells_us.txt`, `eqstr_us.txt`, `dbstr_us.txt`, `Resources/skillcaps.txt`)
+  from a local game install. It writes to a git-ignored scratch directory (never
+  the committed snapshot) and cross-checks its parsed per-class spell levels
+  against `src/data/eqlbuilds/` so column-layout drift surfaces loudly. See
+  `docs/local-client-extraction.md`.
 - eqlbuilds.com build-planner integration. Ten `eql_builds_*` tools expose a
   committed structured snapshot of the community build planner: races
   (`eql_builds_races`, `eql_builds_race`), classes (`eql_builds_classes`,

@@ -1,8 +1,11 @@
 import { describe, expect, it } from "vitest";
 import {
+  getEqlBuildsAbility,
   getEqlBuildsClass,
   getEqlBuildsProvenance,
   getEqlBuildsRace,
+  getEqlBuildsSpell,
+  listEqlBuildsAbilities,
   listEqlBuildsClasses,
   listEqlBuildsModes,
   listEqlBuildsRaces,
@@ -84,6 +87,52 @@ describe("eqlbuilds dataset accessors", () => {
 
     const filtered = searchEqlBuildsAbilities("adamant", { classId: "warrior" });
     expect(filtered.results.every((a) => a.classes.includes("warrior"))).toBe(true);
+  });
+
+  it("reads a single spell and reports per-class learn levels", () => {
+    // Cure Poison (id 203) is a shared spell learned at different levels by
+    // several classes; the get tool exposes those per-class levels.
+    const byId = getEqlBuildsSpell(203);
+    expect(byId?.name).toBe("Cure Poison");
+    expect(byId?.usableBy.length).toBeGreaterThan(1);
+    const cleric = byId?.usableBy.find((u) => u.classId === "cleric");
+    const paladin = byId?.usableBy.find((u) => u.classId === "paladin");
+    expect(cleric?.level).toBeDefined();
+    expect(paladin?.level).toBeDefined();
+    expect(cleric?.level).not.toBe(paladin?.level);
+    // usableBy is sorted ascending by level.
+    const levels = byId?.usableBy.map((u) => u.level) ?? [];
+    expect([...levels].sort((a, b) => a - b)).toEqual(levels);
+    // the misleading per-class top-level `level` field is dropped.
+    expect(byId).not.toHaveProperty("level");
+
+    const byName = getEqlBuildsSpell("Cure Poison");
+    expect(byName?.id).toBe(203);
+    expect(getEqlBuildsSpell("no such spell")).toBeUndefined();
+  });
+
+  it("lists and reads alternate advancement without a search query", () => {
+    const all = listEqlBuildsAbilities();
+    expect(all.count).toBe(130);
+    expect(all.categories).toContain("general");
+    expect(all.categories).toContain("class");
+
+    const general = listEqlBuildsAbilities({ category: "general" });
+    expect(general.count).toBeGreaterThan(0);
+    expect(general.abilities.every((a) => a.category === "general")).toBe(true);
+
+    const warriorOnly = listEqlBuildsAbilities({ classId: "warrior" });
+    expect(warriorOnly.count).toBeGreaterThan(0);
+    expect(warriorOnly.count).toBeLessThan(all.count);
+
+    const activated = listEqlBuildsAbilities({ activatedOnly: true });
+    expect(activated.abilities.every((a) => a.isActivated)).toBe(true);
+
+    const ability = getEqlBuildsAbility("general-foraging");
+    expect(ability?.name).toBe("Foraging");
+    expect(Array.isArray(ability?.rankCosts)).toBe(true);
+    expect(getEqlBuildsAbility("Foraging")?.id).toBe("general-foraging");
+    expect(getEqlBuildsAbility("bogus-ability")).toBeUndefined();
   });
 
   it("lists class skills", () => {
