@@ -1,0 +1,75 @@
+name: Refresh eqlbuilds data
+
+# Continuous extraction of the eqlbuilds.com build-planner dataset.
+# eqlbuilds.com ships its data inside a content-hashed JS bundle with no API,
+# so scripts/extract-eqlbuilds.mjs re-discovers the bundle and rewrites the
+# committed snapshot under src/data/eqlbuilds/. This workflow runs that on a
+# schedule, validates the result, and commits it when the upstream data changes.
+
+on:
+  schedule:
+    # Weekly, Mondays 07:00 UTC. Adjust cadence as needed.
+    - cron: "0 7 * * 1"
+  workflow_dispatch:
+    inputs:
+      commit:
+        description: "Commit refreshed data if it changed"
+        type: boolean
+        default: true
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      # Gate on the extractor's own --check, which ignores volatile fields
+      # (extraction timestamp, bundle hash) and only reports real data changes,
+      # so an unchanged upstream never produces a no-op commit.
+      - name: Detect upstream changes
+        id: diff
+        run: |
+          if npm run --silent extract:eqlbuilds:check; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Extract latest eqlbuilds.com data
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          npm run extract:eqlbuilds
+          git --no-pager diff --stat -- src/data/eqlbuilds
+
+      # Validate the freshly-extracted snapshot before it can be committed, so a
+      # bad extraction never lands on main.
+      - name: Typecheck
+        if: steps.diff.outputs.changed == 'true'
+        run: npm run typecheck
+
+      - name: Test
+        if: steps.diff.outputs.changed == 'true'
+        run: npm test
+
+      - name: Commit refreshed data
+        if: steps.diff.outputs.changed == 'true' && github.event.inputs.commit != 'false'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/data/eqlbuilds
+          rev=$(node -e "process.stdout.write(String(require('./src/data/eqlbuilds/manifest.json').wikiRevisionId))")
+          git commit -m "chore: refresh eqlbuilds.com data snapshot (wiki rev ${rev})"
+          git push

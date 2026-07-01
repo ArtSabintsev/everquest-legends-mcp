@@ -4,6 +4,41 @@ All notable changes to this project are documented here. The format is based on
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres
 to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Added
+
+- eqlbuilds.com build-planner integration. Ten `eql_builds_*` tools expose a
+  committed structured snapshot of the community build planner: races
+  (`eql_builds_races`, `eql_builds_race`), classes (`eql_builds_classes`,
+  `eql_builds_class`), spell search (`eql_builds_spell_search`), alternate
+  advancement search (`eql_builds_ability_search`), class skills
+  (`eql_builds_skills`), stances/invocations (`eql_builds_modes`), and snapshot
+  provenance (`eql_builds_provenance`). A new `builds` source kind and the
+  `eqlbuilds` registry entry are added in `src/sources.ts`.
+- Continuous extraction mechanism for the eqlbuilds.com dataset. Because the
+  site is a client-rendered SPA that embeds its data in a content-hashed JS
+  bundle, `scripts/extract-eqlbuilds.mjs` re-discovers the bundle and rewrites
+  the `src/data/eqlbuilds/` snapshot, classifying each JSON block by shape (so
+  upstream reordering does not corrupt the mapping) and failing loudly if a
+  required dataset is missing. Exposed via `npm run extract:eqlbuilds` and
+  `npm run extract:eqlbuilds:check`, and run on a schedule by
+  `.github/workflows/refresh-eqlbuilds.yml`.
+
+### Removed
+
+- Cloudflare Worker chat app and Vite web frontend (`worker/`, `web/`,
+  `wrangler.jsonc`), the related npm scripts (`build:web`, `dev:web`,
+  `dev:worker`, `deploy`), and their dependencies (`ai`, `workers-ai-provider`,
+  `wrangler`, `@cloudflare/workers-types`). This project is now a pure local
+  stdio MCP server: the client performs inference, and the server only makes
+  remote fetches to retrieve source data.
+
+### Fixed
+
+- `package-lock.json` was out of sync with `package.json` (missing `@emnapi/*`
+  transitive dependencies), which broke `npm ci` in CI. Regenerated the lock.
+
 ## [1.1.0] - 2026-06-19
 
 ### Added

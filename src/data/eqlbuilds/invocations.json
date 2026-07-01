@@ -1,0 +1,62 @@
+[
+  {
+    "id": "recover",
+    "name": "Recover",
+    "message": "You begin reciting the recovery invocation.",
+    "description": "You regenerate mana twice as fast and spells have a 5% reduced mana cost. Out of combat regen is not affected."
+  },
+  {
+    "id": "empower",
+    "name": "Empower",
+    "message": "You begin reciting the empowering invocation.",
+    "description": "Adds 40% plus 20% per additional non-hybrid casting class to Damage effects at the cost of 40% more mana. Adds 20% plus 10% per additional non-hybrid casting class to Healing effects at the cost of 20% more mana."
+  },
+  {
+    "id": "inversion",
+    "name": "Inversion",
+    "message": "You begin reciting the inversion invocation.",
+    "description": "Shifts two-thirds of spell cast time into the global recovery time and 20% of the mana cost into half as much in endurance cost."
+  },
+  {
+    "id": "spellBlade",
+    "name": "Spell Blade",
+    "message": "You begin reciting the spellblade invocation.",
+    "description": "Treats the first spell-gem slot as a proc that consumes both mana and endurance on activation. 40% of the spells mana cost is paid as mana and 20% as endurance. The spell must have a reuse time less than or equal to its cast time."
+  },
+  {
+    "id": "overChannel",
+    "name": "Over Channel",
+    "message": "You begin reciting the overchannel invocation.",
+    "description": "Cast spells have a -150 resist adjust plus another -15 for every non-hybrid caster class at a cost of 10% of the mana cost in endurance."
+  },
+  {
+    "id": "inviolable",
+    "name": "Inviolable",
+    "message": "You begin reciting the inviolable invocation.",
+    "description": "Cast spells are uninterruptible at the cost of 100% more mana and the same amount as endurance."
+  },
+  {
+    "id": "divine",
+    "name": "Divine",
+    "message": "You begin reciting the divine invocation.",
+    "description": "Spending mana will heal the group member with the lowest hp percentage by that amount. For every additional wisdom class, this will repeat with a heal for 33% of the mana spent."
+  },
+  {
+    "id": "chained",
+    "name": "Chained",
+    "message": "You begin reciting the chained invocation.",
+    "description": "When a spell is successfully cast then instantly cast the next cheapest spell of the same type that does not have a cooldown at a cost of 66% of the instantly cast spell."
+  },
+  {
+    "id": "arcaneMastery",
+    "name": "Arcane Mastery",
+    "message": "You begin reciting the arcane mastery invocation.",
+    "description": "Spell cast and recovery times are reduced by 25% plus 10% per additional intelligence class. The mana cost of detrimental spells is reduced by 15% plus 5% per additional intelligence class."
+  },
+  {
+    "id": "unyielding",
+    "name": "Unyielding",
+    "message": "You begin reciting the unyielding invocation.",
+    "description": "Health regen excluding out of combat bonus regen is doubled with a 25% resistance increase to loss of control from fear, mez, and charm."
+  }
+]

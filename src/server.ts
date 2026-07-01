@@ -11,6 +11,17 @@ import { detectNonLaunchEra } from "./era.js";
 import { getOfficialYouTubeVideos, getYouTubeVideos, listYouTubeSources } from "./youtube.js";
 import { getVideoTranscript } from "./transcript.js";
 import { getEqArchiveDocument, getFvLorePage, getFvLorePages, searchEqArchives, searchFvLore } from "./archive.js";
+import {
+  getEqlBuildsClass,
+  getEqlBuildsProvenance,
+  getEqlBuildsRace,
+  listEqlBuildsClasses,
+  listEqlBuildsModes,
+  listEqlBuildsRaces,
+  listEqlBuildsSkills,
+  searchEqlBuildsAbilities,
+  searchEqlBuildsSpells
+} from "./eqlbuilds.js";
 
 function toolResult(summary: string, structuredContent: Record<string, unknown>): CallToolResult {
   return {
@@ -370,6 +381,155 @@ export function createServer(): McpServer {
     async ({ kind }) => {
       const assets = await listPressAssets(kind);
       return toolResult(`Fetched ${assets.length} ${kind} press assets.`, { kind, assets });
+    }
+  );
+
+  server.registerTool(
+    "eql_builds_races",
+    {
+      title: "List EQL Builds races",
+      description:
+        "List playable races from the eqlbuilds.com build planner with their starting ability and a short description. Set includeInactive to also list races present in client data but disabled (e.g. Drakkin).",
+      inputSchema: {
+        includeInactive: z.boolean().default(false).describe("Include races that exist in client data but are inactive/visibility-gated.")
+      }
+    },
+    async ({ includeInactive }) => {
+      const data = listEqlBuildsRaces(includeInactive);
+      return toolResult(`Listed ${data.races.length} active EQL Builds race(s).`, data);
+    }
+  );
+
+  server.registerTool(
+    "eql_builds_race",
+    {
+      title: "Read EQL Builds race",
+      description: "Fetch one race from the eqlbuilds.com dataset by id (e.g. human, highElf, iksar), including full description, starting ability, and racial traits.",
+      inputSchema: {
+        id: z.string().min(2).describe("Race id such as human, barbarian, woodElf, darkElf, iksar, froglok, or drakkin.")
+      }
+    },
+    async ({ id }) => {
+      const race = getEqlBuildsRace(id);
+      if (!race) {
+        return toolResult(`No EQL Builds race found for "${id}".`, { id, race: null });
+      }
+      return toolResult(`Fetched EQL Builds race ${race.name}.`, { race });
+    }
+  );
+
+  server.registerTool(
+    "eql_builds_classes",
+    {
+      title: "List EQL Builds classes",
+      description: "List all 16 classes from the eqlbuilds.com build planner with armor types and spell/skill/alternate-advancement counts.",
+      inputSchema: {}
+    },
+    async () => {
+      const data = listEqlBuildsClasses();
+      return toolResult(`Listed ${data.classes.length} EQL Builds class(es).`, data);
+    }
+  );
+
+  server.registerTool(
+    "eql_builds_class",
+    {
+      title: "Read EQL Builds class",
+      description:
+        "Fetch one class from the eqlbuilds.com dataset by id (e.g. warrior, shadowKnight, enchanter). Returns armor, description, and counts by default; spell, skill, and alternate-advancement lists are opt-in because they are large.",
+      inputSchema: {
+        id: z.string().min(3).describe("Class id such as warrior, cleric, paladin, ranger, shadowKnight, druid, monk, bard, rogue, shaman, necromancer, wizard, magician, enchanter, beastlord, or berserker."),
+        includeSpells: z.boolean().default(false).describe("Include the full spell list (can be 200+ entries for casters)."),
+        includeSkills: z.boolean().default(false).describe("Include the full skill list with caps and trained-at levels."),
+        includeAbilities: z.boolean().default(false).describe("Include the full alternate-advancement list.")
+      }
+    },
+    async ({ id, includeSpells, includeSkills, includeAbilities }) => {
+      const cls = getEqlBuildsClass(id, { includeSpells, includeSkills, includeAbilities });
+      if (!cls) {
+        return toolResult(`No EQL Builds class found for "${id}".`, { id, class: null });
+      }
+      return toolResult(`Fetched EQL Builds class ${cls.name}.`, { class: cls });
+    }
+  );
+
+  server.registerTool(
+    "eql_builds_spell_search",
+    {
+      title: "Search EQL Builds spells",
+      description: "Search spells across the eqlbuilds.com dataset by name, description, or skill. Optionally restrict to a single class. Each result lists which classes can use the spell.",
+      inputSchema: {
+        query: z.string().min(2).max(120).describe("Spell search terms matched against name, resolved description, and skill line."),
+        classId: z.string().optional().describe("Optional class id to restrict the search to that class's spell list."),
+        limit: z.number().int().min(1).max(50).default(15)
+      }
+    },
+    async ({ query, classId, limit }) => {
+      const data = searchEqlBuildsSpells(query, { classId, limit });
+      return toolResult(`Found ${data.results.length} EQL Builds spell(s) for "${query}".`, data);
+    }
+  );
+
+  server.registerTool(
+    "eql_builds_ability_search",
+    {
+      title: "Search EQL Builds alternate advancement",
+      description:
+        "Search alternate advancement (AA) abilities across the eqlbuilds.com dataset by name, description, or group, with rank costs and eligible classes. Optionally filter by class or category. AA costs derive from a vendored EQL Wiki snapshot and may be partial.",
+      inputSchema: {
+        query: z.string().min(2).max(120).describe("AA search terms matched against name, description, and group."),
+        classId: z.string().optional().describe("Optional class id to restrict to AAs available to that class."),
+        category: z.string().optional().describe("Optional AA category filter (e.g. general, archetype, class)."),
+        limit: z.number().int().min(1).max(50).default(15)
+      }
+    },
+    async ({ query, classId, category, limit }) => {
+      const data = searchEqlBuildsAbilities(query, { classId, category, limit });
+      return toolResult(`Found ${data.results.length} EQL Builds AA(s) for "${query}".`, data);
+    }
+  );
+
+  server.registerTool(
+    "eql_builds_skills",
+    {
+      title: "List EQL Builds class skills",
+      description: "List the skill lines for one class from the eqlbuilds.com dataset, including caps and trained-at levels.",
+      inputSchema: {
+        classId: z.string().min(3).describe("Class id such as warrior, monk, rogue, or wizard.")
+      }
+    },
+    async ({ classId }) => {
+      const data = listEqlBuildsSkills(classId);
+      if (!data) {
+        return toolResult(`No EQL Builds class found for "${classId}".`, { classId, skills: null });
+      }
+      return toolResult(`Listed ${data.skills.length} skill(s) for ${data.name}.`, data);
+    }
+  );
+
+  server.registerTool(
+    "eql_builds_modes",
+    {
+      title: "List EQL Builds stances and invocations",
+      description: "List the switchable combat stances and invocations (modes) from the eqlbuilds.com dataset, with their in-game messages and descriptions.",
+      inputSchema: {}
+    },
+    async () => {
+      const data = listEqlBuildsModes();
+      return toolResult(`Listed ${data.stances.length} stance(s) and ${data.invocations.length} invocation(s).`, data);
+    }
+  );
+
+  server.registerTool(
+    "eql_builds_provenance",
+    {
+      title: "EQL Builds data provenance",
+      description: "Report when and how the eqlbuilds.com dataset was extracted: snapshot manifest (extraction time, bundle hash, counts), the underlying EQL Wiki AA revision, and the extractor's own notes on data sources.",
+      inputSchema: {}
+    },
+    async () => {
+      const data = getEqlBuildsProvenance();
+      return toolResult(`EQL Builds snapshot extracted ${data.manifest.extractedAt} (wiki rev ${data.manifest.wikiRevisionId}).`, data);
     }
   );
 

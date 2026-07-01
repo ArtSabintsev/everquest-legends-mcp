@@ -1,0 +1,20 @@
+#!/usr/bin/env node
+// tsc does not emit non-TS assets, so copy the committed data snapshots from
+// src/data into dist/data after compilation. Runtime modules resolve these via
+// import.meta.url (e.g. src/eqlbuilds.ts -> ./data/eqlbuilds/*.json), so the
+// files must exist alongside the compiled output that ships in the package.
+
+import { cp } from "node:fs/promises";
+import { existsSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+
+const src = new URL("../src/data/", import.meta.url);
+const dest = new URL("../dist/data/", import.meta.url);
+
+if (!existsSync(src)) {
+  console.log("[copy-data] no src/data directory; nothing to copy.");
+  process.exit(0);
+}
+
+await cp(src, dest, { recursive: true });
+console.log(`[copy-data] copied ${fileURLToPath(src)} -> ${fileURLToPath(dest)}`);

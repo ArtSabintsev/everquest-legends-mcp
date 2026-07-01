@@ -1,0 +1,9 @@
+[
+  "Races and classes use active Loadouts unlocks from Resources/Achievements/AchievementsClient.txt; Drakkin exists in the raw files but is inactive and visibility-gated.",
+  "The Legends level cap is 50, extracted from the highest Meet or Exceed the Level Cap component in Resources/Achievements/AchievementComponentsClient.txt.",
+  "Race descriptions and summary abilities are extracted from eqstr_us.txt. Structured racial traits prefer local client descriptions and executable strings, with EQL Wiki Character_Races used as fallback where the local files do not expose explicit mechanics.",
+  "Stances and invocations are switchable modes from eqstr_us.txt client strings, with descriptions extracted from eqgame.exe printable strings. No finer class-specific mode availability table was found in the text data.",
+  "Spell availability is extracted from class level columns 36-51 in spells_us.txt, descriptions from dbstr_us.txt type 6, messages from spells_us_str.txt, and effects from spells_us.txt column 172.",
+  "Skill availability and caps are extracted from Resources/skillcaps.txt and capped at the Legends level cap. Known activated skill descriptions are extracted from eqgame.exe printable strings; Smite and Reave are derived Legends abilities paired to Lay Hands and Harm Touch because the client strings expose ability text without separate skillcap rows.",
+  "Alternate Advancement availability and costs are extracted from the vendored EQL Wiki Alternate Advancement snapshot revision 151303. Descriptions and rank spell metadata are enriched from local Legends dbstr_us.txt and spells_us.txt files."
+]

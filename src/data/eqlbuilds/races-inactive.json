@@ -1,0 +1,10 @@
+[
+  {
+    "id": "drakkin",
+    "name": "Drakkin",
+    "description": "The proud and majestic Drakkins are humans touched by dragon's blood. They were created by six dragons of the Nest to protect Veeshan's bloodline on Norrath.",
+    "initialAbility": "Dragon-touched human lineage; no explicit starting ability stated.",
+    "racialTraits": [],
+    "status": "Inactive and visibility-gated in Loadouts achievement data."
+  }
+]

@@ -1,4 +1,4 @@
-export type SourceKind = "mediawiki" | "official" | "support" | "guide" | "community" | "press" | "archive" | "lore";
+export type SourceKind = "mediawiki" | "official" | "support" | "guide" | "community" | "press" | "archive" | "lore" | "builds";
 
 export type SourcePage = {
   id: string;
@@ -47,6 +47,7 @@ export const FVPROJECT_BASE_URL = "https://fvproject.com";
 export const FVPROJECT_API_URL = `${FVPROJECT_BASE_URL}/api.php`;
 export const EQ_ARCHIVES_SEARCH_URL = "https://search.eqarchives.org/";
 export const EQ_ARCHIVES_REPOSITORY_URL = "https://github.com/dbsanfte/eq-archives/tree/master";
+export const EQLBUILDS_BASE_URL = "https://eqlbuilds.com";
 
 export const SOURCE_SCOPE =
   "Curated sources are scoped to EverQuest Legends only. General EQ1/EQ2, P99, EQEmu, Project Quarm, and other emulator/background databases are intentionally excluded unless a page is specifically about EverQuest Legends.";
@@ -702,6 +703,15 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
     title: "Gematsu: EQL Launches July 28",
     url: "https://www.gematsu.com/2026/06/everquest-legends-launches-july-28",
     description: "Concise EQL launch/preorder summary and trailer embed. Pointer-only because it mostly rewrites announcement copy.",
+    searchable: false
+  },
+  {
+    id: "eqlbuilds",
+    kind: "builds",
+    title: "EQL Builds (eqlbuilds.com)",
+    url: "https://eqlbuilds.com/",
+    description:
+      "Unofficial EQL Legends build planner covering race/class combinations, class synergies, progression, spells, skills, alternate advancement, stances, and invocations. Client-rendered SPA with no readable HTML: query its extracted dataset via the eql_builds_* tools instead of fetching the page.",
     searchable: false
   },
   {

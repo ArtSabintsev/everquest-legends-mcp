@@ -1,0 +1,56 @@
+[
+  {
+    "id": "offense",
+    "name": "Offense Stance",
+    "message": "You assume an offensive stance.",
+    "description": "Outgoing melee damage is increased by 100% and your chance to hit is increased by 25%. Every point of bonus damage dealt consumes an equal amount of endurance, with a reduction based on your strategy skill. When below 25% endurance, the chance to hit bonus is reduced based on remaining percent of endurance. Bonus damage from critical hits and similar effects do not cost endurance."
+  },
+  {
+    "id": "defense",
+    "name": "Defense Stance",
+    "message": "You assume a defensive stance.",
+    "description": "All incoming physical damage is reduced by 50% and incoming magical damage is reduced by 20%. Every point of damage reduced consumes an equal amount of endurance, with a reduction based on your strategy skill."
+  },
+  {
+    "id": "evasive",
+    "name": "Evasive Stance",
+    "message": "You assume an evasive stance.",
+    "description": "You have a 95% chance to evade all incoming attacks. Every point of damage evaded consumes 2 endurance, with a reduction based on your strategy skill. Evasion will fail if you have insufficient endurance or while playing dead."
+  },
+  {
+    "id": "mageHunter",
+    "name": "Mage Hunter",
+    "message": "You assume a mage hunter stance.",
+    "description": "All incoming magical damage is reduced by 50% and incoming physical damage is reduced by 20%. Every point of damage reduced consumes an equal amount of endurance, with a reduction based on your strategy skill."
+  },
+  {
+    "id": "balanced",
+    "name": "Balanced Stance",
+    "message": "You assume a balanced stance.",
+    "description": "All incoming damage is reduced by 10% and your chance to hit is increased by 10%. Endurance regen excluding out of combat bonus regen is doubled. There is no endurance cost to upkeep this stance."
+  },
+  {
+    "id": "striker",
+    "name": "Striker Stance",
+    "message": "You assume a striker stance.",
+    "description": "Outgoing weapon skill abilities deal 3x damage and non-weapon skill abilities deal 5x damage, and your chance to hit is increased by 25%. Every point of damage dealt consumes an equal amount of endurance, with a reduction based on your strategy skill. When below 25% endurance, the chance to hit bonus is reduced based on remaining percent of endurance. Bonus damage from critical hits and similar effects do not cost endurance."
+  },
+  {
+    "id": "berserker",
+    "name": "Berserker Stance",
+    "message": "You assume a berserker stance.",
+    "description": "Your attack speed and combat skill recharge rate is doubled and your chance to hit and combat skill damage is increased by 25%. Every point of damage dealt consumes half that amount in endurance, with a reduction based on your strategy skill. You also take 8.3% of outgoing damage as damage to yourself. Bonus damage from critical hits and similar effects do not cost endurance."
+  },
+  {
+    "id": "ranged",
+    "name": "Ranged Stance",
+    "message": "You assume a ranged stance.",
+    "description": "Your range attack has no minimum distance, gains a 25% accuracy bonus, and can double and triple attack. Every point of damage consumes endurance, with a reduction based on your strategy skill."
+  },
+  {
+    "id": "channeler",
+    "name": "Channeler Stance",
+    "message": "You assume a channeler stance.",
+    "description": "All incoming damage is reduced by 40% and your chance to successfully channel is increased. Half of the mitigated damage is charged to both mana and endurance, with a reduction based on your strategy skill."
+  }
+]
