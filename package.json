@@ -29,6 +29,7 @@
     "copy:data": "node scripts/copy-data.mjs",
     "extract:eqlbuilds": "node scripts/extract-eqlbuilds.mjs",
     "extract:eqlbuilds:check": "node scripts/extract-eqlbuilds.mjs --check",
+    "extract:client": "node scripts/extract-eql-client.mjs",
     "dev": "tsx src/index.ts",
     "prepare": "npm run build",
     "start": "node dist/index.js",

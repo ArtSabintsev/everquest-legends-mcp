@@ -46,7 +46,10 @@ It does not log into Daybreak, manipulate an account, automate a game client, or
 - `eql_builds_classes`: list all 16 classes with armor and spell/skill/AA counts
 - `eql_builds_class`: read one class; spell/skill/AA lists are opt-in
 - `eql_builds_spell_search`: search spells by name/description/skill, with usable-by classes
+- `eql_builds_spell`: read one spell by id or exact name, with per-class learn levels (the same spell is often learned at different levels by different classes)
 - `eql_builds_ability_search`: search alternate advancement (AA) with rank costs and eligible classes
+- `eql_builds_abilities`: enumerate the AA catalog (no query needed), filterable by category/group/class/activation
+- `eql_builds_ability`: read one AA by id or exact name, with full per-rank costs, rank spells, and requirements
 - `eql_builds_skills`: list a class's skill lines with caps and trained-at levels
 - `eql_builds_modes`: list combat stances and invocations
 - `eql_builds_provenance`: report the eqlbuilds.com snapshot manifest, source wiki revision, and extraction notes

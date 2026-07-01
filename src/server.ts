@@ -12,9 +12,12 @@ import { getOfficialYouTubeVideos, getYouTubeVideos, listYouTubeSources } from "
 import { getVideoTranscript } from "./transcript.js";
 import { getEqArchiveDocument, getFvLorePage, getFvLorePages, searchEqArchives, searchFvLore } from "./archive.js";
 import {
+  getEqlBuildsAbility,
   getEqlBuildsClass,
   getEqlBuildsProvenance,
   getEqlBuildsRace,
+  getEqlBuildsSpell,
+  listEqlBuildsAbilities,
   listEqlBuildsClasses,
   listEqlBuildsModes,
   listEqlBuildsRaces,
@@ -467,6 +470,70 @@ export function createServer(): McpServer {
     async ({ query, classId, limit }) => {
       const data = searchEqlBuildsSpells(query, { classId, limit });
       return toolResult(`Found ${data.results.length} EQL Builds spell(s) for "${query}".`, data);
+    }
+  );
+
+  server.registerTool(
+    "eql_builds_spell",
+    {
+      title: "Read one EQL Builds spell",
+      description:
+        "Fetch a single spell from the eqlbuilds.com dataset by numeric id or exact name, including effects, mana/cast/recast, and a usableBy list of every class that learns it with that class's own level (the same spell is often learned at different levels by different classes).",
+      inputSchema: {
+        idOrName: z
+          .string()
+          .min(1)
+          .describe("Spell numeric id (e.g. 202) or exact spell name (e.g. Cure Poison).")
+      }
+    },
+    async ({ idOrName }) => {
+      const numeric = Number(idOrName.trim());
+      const spell = getEqlBuildsSpell(Number.isInteger(numeric) && idOrName.trim() !== "" ? numeric : idOrName);
+      if (!spell) {
+        return toolResult(`No EQL Builds spell found for "${idOrName}".`, { idOrName, spell: null });
+      }
+      return toolResult(
+        `Fetched EQL Builds spell ${spell.name} (usable by ${spell.usableBy.length} class(es)).`,
+        { spell }
+      );
+    }
+  );
+
+  server.registerTool(
+    "eql_builds_abilities",
+    {
+      title: "List EQL Builds alternate advancement",
+      description:
+        "Enumerate the alternate-advancement (AA) catalog from the eqlbuilds.com dataset without a search query. Returns a compact list (id, name, category, group, max rank, cost, activation). Filter by category (general, archetype, class, special), group, class, or activated-only. Use eql_builds_ability for full per-rank detail.",
+      inputSchema: {
+        category: z.string().optional().describe("Category filter: general, archetype, class, or special."),
+        group: z.string().optional().describe("Group filter, e.g. General, Base Caster, Warrior, or Tank Archetype."),
+        classId: z.string().optional().describe("Class id to restrict to AAs available to that class."),
+        activatedOnly: z.boolean().default(false).describe("Only include activated (clickable) abilities.")
+      }
+    },
+    async ({ category, group, classId, activatedOnly }) => {
+      const data = listEqlBuildsAbilities({ category, group, classId, activatedOnly });
+      return toolResult(`Listed ${data.count} EQL Builds AA(s) across ${data.categories.length} categories.`, data);
+    }
+  );
+
+  server.registerTool(
+    "eql_builds_ability",
+    {
+      title: "Read one EQL Builds alternate advancement",
+      description:
+        "Fetch a single alternate-advancement (AA) ability from the eqlbuilds.com dataset by id or exact name, including full per-rank costs, rank spells, requirements, and eligible classes.",
+      inputSchema: {
+        id: z.string().min(2).describe("Ability id (e.g. general-foraging) or exact name (e.g. Foraging).")
+      }
+    },
+    async ({ id }) => {
+      const ability = getEqlBuildsAbility(id);
+      if (!ability) {
+        return toolResult(`No EQL Builds AA found for "${id}".`, { id, ability: null });
+      }
+      return toolResult(`Fetched EQL Builds AA ${ability.name}.`, { ability });
     }
   );
 

@@ -5,3 +5,6 @@ coverage/
 .DS_Store
 npm-debug.log*
 *.tgz
+
+# Scratch output from scripts/extract-eql-client.mjs (local game-client dumps).
+eql-client-dump/
