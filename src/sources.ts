@@ -1,4 +1,4 @@
-export type SourceKind = "mediawiki" | "official" | "support" | "guide" | "community" | "press";
+export type SourceKind = "mediawiki" | "official" | "support" | "guide" | "community" | "press" | "archive" | "lore";
 
 export type SourcePage = {
   id: string;
@@ -43,6 +43,10 @@ export const EQL_WIKI_BASE_URL = "https://eqlwiki.com";
 export const OFFICIAL_BASE_URL = "https://www.everquestlegends.com";
 export const OFFICIAL_YOUTUBE_CHANNEL_ID = "UCOjj8LA6zJR3I5QFIPnyP9g";
 export const OFFICIAL_YOUTUBE_FEED_URL = youtubeChannelFeedUrl(OFFICIAL_YOUTUBE_CHANNEL_ID);
+export const FVPROJECT_BASE_URL = "https://fvproject.com";
+export const FVPROJECT_API_URL = `${FVPROJECT_BASE_URL}/api.php`;
+export const EQ_ARCHIVES_SEARCH_URL = "https://search.eqarchives.org/";
+export const EQ_ARCHIVES_REPOSITORY_URL = "https://github.com/dbsanfte/eq-archives/tree/master";
 
 export const SOURCE_SCOPE =
   "Curated sources are scoped to EverQuest Legends only. General EQ1/EQ2, P99, EQEmu, Project Quarm, and other emulator/background databases are intentionally excluded unless a page is specifically about EverQuest Legends.";
@@ -355,6 +359,38 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
     url: "https://www.everquest.com/news/eq-note-to-the-community",
     description: "Official EverQuest/Darkpaw community note about the Daybreak collaboration with Game Jawn on EverQuest Legends.",
     searchable: true
+  },
+  {
+    id: "official-eq-history-1999",
+    kind: "lore",
+    title: "Official 1999 EverQuest History of Norrath",
+    url: "https://web.archive.org/web/19990910004532/http://everquest.station.sony.com/e_history.html",
+    description: "Wayback capture of the original official Sony Online Entertainment EverQuest history/lore page, including Norrath's ages and the Miragul/Erudite necromancy lore.",
+    searchable: true
+  },
+  {
+    id: "fvproject-lore-category",
+    kind: "lore",
+    title: "The Firiona Vie Project: Lore Category",
+    url: "https://fvproject.com/index.php/Category:Lore",
+    description: "Community MediaWiki category for official EverQuest lore articles preserved by The Firiona Vie Project. Use the FV lore tools for category and page reads.",
+    searchable: false
+  },
+  {
+    id: "eqarchives-search",
+    kind: "archive",
+    title: "EQArchives Search Portal",
+    url: EQ_ARCHIVES_SEARCH_URL,
+    description: "Hosted full-text search portal over EQ Archives material, including preserved websites, mailing lists, patch notes, logs, screenshots, and related historical EverQuest records. Use eql_eqarchives_search for bounded search results.",
+    searchable: false
+  },
+  {
+    id: "eqarchives-repository",
+    kind: "archive",
+    title: "EQ Archives Repository",
+    url: EQ_ARCHIVES_REPOSITORY_URL,
+    description: "GitHub repository for the massive EQ Archives corpus. Included as provenance for the archive search portal; prefer eql_eqarchives_search for information retrieval.",
+    searchable: false
   },
   {
     id: "eg7-announcement",

@@ -45,13 +45,21 @@ export async function fetchSource(id: string, maxCharacters = 12_000): Promise<F
     throw new Error(`Source is a pointer, not a searchable/fetchable page: ${id}`);
   }
   const html = await fetchText(source.url, { cacheTtlMs: 5 * 60_000 });
-  const text = truncateText(htmlToText(html), maxCharacters);
+  const text = truncateText(sourceHtmlToText(source, html), maxCharacters);
   const eraAdvisory = detectNonLaunchEra(text);
   return {
     ...source,
     text,
     ...(eraAdvisory.flagged ? { eraAdvisory } : {})
   };
+}
+
+function sourceHtmlToText(source: SourcePage, html: string): string {
+  if (source.id === "official-eq-history-1999") {
+    const contentMatch = html.match(/<!-- CONTENT SECTION STARTS HERE -->([\s\S]*?)<!-- CONTENT SECTION ENDS HERE -->/i);
+    return htmlToText(contentMatch?.[1] ?? html);
+  }
+  return htmlToText(html);
 }
 
 export async function searchCuratedSources(query: string, options: { limit?: number; sourceIds?: string[] } = {}): Promise<SourceSearchResponse> {

@@ -10,12 +10,17 @@ Stable (1.0). Read-only. It does not require secrets, cookies, credentials, a Da
 
 This MCP is for **EverQuest Legends**. It intentionally excludes general EQ1/EQ2, P99, EQEmu, Project Quarm, and other emulator/background databases unless a specific page is about EverQuest Legends.
 
+Classic EverQuest lore and archive sources are included as historical context for Norrath, not as EverQuest Legends launch-source authority. When a source describes Kunark, Velious, Luclin, or later content, treat that as background unless an EQL-specific source confirms it for Legends.
+
 This server is built around public, unauthenticated sources:
 
 - EQL Wiki: `https://eqlwiki.com/Main_Page` via MediaWiki API
 - Official EQL site and news: `https://www.everquestlegends.com`
 - Daybreak help and press pages
 - Official EverQuest community note about the Game Jawn collaboration
+- Original official 1999 Sony EverQuest history/lore page via Wayback
+- The Firiona Vie Project lore category via MediaWiki API
+- EQArchives search portal and corpus provenance
 - Official EQL YouTube and Twitch channels
 - EQL-specific guide/interview/preview pages from EQProgression, EverQuest Guides, and selected press outlets
 - Pointer-only EQL community sources such as Reddit
@@ -31,6 +36,11 @@ It does not log into Daybreak, manipulate an account, automate a game client, or
 - `eql_wiki_page`: fetch an EQL Wiki page with extracted text, links, categories, and revision metadata
 - `eql_wiki_recent_changes`: read recent wiki edits
 - `eql_wiki_category_pages`: list MediaWiki category members
+- `eql_fv_lore_category_pages`: list The Firiona Vie Project lore category pages
+- `eql_fv_lore_search`: search FVProject lore page titles
+- `eql_fv_lore_page`: fetch an FVProject lore page
+- `eql_eqarchives_search`: search the hosted EQArchives historical corpus
+- `eql_eqarchives_document`: fetch an EQArchives indexed document by id
 - `eql_official_news`: parse official EQL news index
 - `eql_official_article`: fetch and extract an official news article
 - `eql_press_assets`: list official Daybreak press asset URLs by kind
@@ -165,6 +175,11 @@ npm run build
 | `eql_wiki_search` | `query` | Search the EQL Wiki through MediaWiki full-text search. |
 | `eql_wiki_page` | `title` | Read an EQL Wiki page after finding it with `eql_wiki_search`. |
 | `eql_wiki_category_pages` | `category` | List pages in an EQL Wiki category. |
+| `eql_fv_lore_category_pages` | none | List classic EQ lore pages from The Firiona Vie Project. |
+| `eql_fv_lore_search` | `query` | Search FVProject lore titles, then read with `eql_fv_lore_page`. |
+| `eql_fv_lore_page` | `title` | Read a classic EQ lore page from FVProject. |
+| `eql_eqarchives_search` | `query` | Search EQArchives preserved EQ websites, mailing lists, patches, logs, and historical records. |
+| `eql_eqarchives_document` | `id` | Read a bounded EQArchives document from a search result id. |
 | `eql_official_news` | none | List official EverQuest Legends news articles. |
 | `eql_official_article` | `pageNameOrUrl` | Read an official EQL news article by slug or `https://www.everquestlegends.com/news/...` URL. |
 | `eql_press_assets` | `kind` | List official Daybreak press asset metadata for `logos`, `artwork`, `screenshots`, `video`, or `fact-sheets`. |
@@ -191,6 +206,7 @@ Example user prompts for an MCP client:
 - Creator YouTube channels are unofficial community sources. Use them for coverage discovery, guides, and commentary; verify factual claims against official EQL pages, press pages, or wiki pages.
 - Daybreak Help pages are pointer-only because direct fetches can return Cloudflare challenge HTML.
 - Binary assets are exposed as metadata links; they are not downloaded by default.
+- FVProject and EQArchives are historical/classic EverQuest context sources. They are useful for Norrath lore and archival research, but they should not override current EQL official, press, or EQL Wiki facts.
 
 ## Notes
 

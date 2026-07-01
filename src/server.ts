@@ -10,6 +10,7 @@ import { getCategoryPages, getRecentChanges, getWikiPage, searchWiki } from "./m
 import { detectNonLaunchEra } from "./era.js";
 import { getOfficialYouTubeVideos, getYouTubeVideos, listYouTubeSources } from "./youtube.js";
 import { getVideoTranscript } from "./transcript.js";
+import { getEqArchiveDocument, getFvLorePage, getFvLorePages, searchEqArchives, searchFvLore } from "./archive.js";
 
 function toolResult(summary: string, structuredContent: Record<string, unknown>): CallToolResult {
   return {
@@ -239,6 +240,90 @@ export function createServer(): McpServer {
     async ({ category, limit }) => {
       const pages = await getCategoryPages(category, limit);
       return toolResult(`Fetched ${pages.length} pages from category ${category}.`, { category, pages });
+    }
+  );
+
+  server.registerTool(
+    "eql_fv_lore_category_pages",
+    {
+      title: "List FVProject lore pages",
+      description:
+        "List pages in The Firiona Vie Project's public Category:Lore. This is classic EverQuest lore context, not EverQuest Legends launch-source authority.",
+      inputSchema: {
+        limit: z.number().int().min(1).max(500).default(50)
+      }
+    },
+    async ({ limit }) => {
+      const pages = await getFvLorePages(limit);
+      return toolResult(`Fetched ${pages.length} FVProject lore page(s).`, { pages });
+    }
+  );
+
+  server.registerTool(
+    "eql_fv_lore_search",
+    {
+      title: "Search FVProject lore titles",
+      description:
+        "Search The Firiona Vie Project's Category:Lore page titles. Use eql_fv_lore_page to read a result. This is classic EQ lore context, not EQL launch-source authority.",
+      inputSchema: {
+        query: z.string().min(2).max(120).describe("Lore title terms, for example Grozmok, Innoruuk, or Combine."),
+        limit: z.number().int().min(1).max(50).default(10)
+      }
+    },
+    async ({ query, limit }) => {
+      const results = await searchFvLore(query, limit);
+      return toolResult(`Found ${results.length} FVProject lore title match(es) for "${query}".`, { query, results });
+    }
+  );
+
+  server.registerTool(
+    "eql_fv_lore_page",
+    {
+      title: "Read FVProject lore page",
+      description:
+        "Fetch and extract a public lore page from The Firiona Vie Project MediaWiki. Pages are classic EverQuest lore context and may reference post-launch EQL eras.",
+      inputSchema: {
+        title: z.string().min(1).describe("FVProject page title, for example 1- Prophecy of Grozmok or Innoruuk (Lore)."),
+        maxCharacters: z.number().int().min(500).max(40_000).default(12_000)
+      }
+    },
+    async ({ title, maxCharacters }) => {
+      const page = await getFvLorePage(title, maxCharacters);
+      return toolResult(`Fetched FVProject lore page ${page.title}.`, { page });
+    }
+  );
+
+  server.registerTool(
+    "eql_eqarchives_search",
+    {
+      title: "Search EQArchives",
+      description:
+        "Search the hosted EQArchives index of preserved EverQuest websites, mailing lists, patch records, logs, and other historical material. Results are historical context, not EQL launch-source authority.",
+      inputSchema: {
+        query: z.string().min(2).max(200).describe("Archive search terms matched against indexed title, URL, description, content, and metadata fields."),
+        limit: z.number().int().min(1).max(25).default(10)
+      }
+    },
+    async ({ query, limit }) => {
+      const search = await searchEqArchives(query, { limit });
+      return toolResult(`Found ${search.results.length} EQArchives hit(s) for "${search.query}".`, search);
+    }
+  );
+
+  server.registerTool(
+    "eql_eqarchives_document",
+    {
+      title: "Read EQArchives document",
+      description:
+        "Fetch one EQArchives indexed document by id returned from eql_eqarchives_search. Text is truncated and may represent historical, player-created, or archived web material.",
+      inputSchema: {
+        id: z.string().min(1).describe("Document id returned by eql_eqarchives_search."),
+        maxCharacters: z.number().int().min(500).max(40_000).default(12_000)
+      }
+    },
+    async ({ id, maxCharacters }) => {
+      const document = await getEqArchiveDocument(id, maxCharacters);
+      return toolResult(`Fetched EQArchives document ${document.title}.`, { document });
     }
   );
 
