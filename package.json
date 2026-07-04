@@ -30,6 +30,8 @@
     "extract:eqlbuilds": "node scripts/extract-eqlbuilds.mjs",
     "extract:eqlbuilds:check": "node scripts/extract-eqlbuilds.mjs --check",
     "extract:client": "node scripts/extract-eql-client.mjs",
+    "extract:reference": "node scripts/extract-eql-reference.mjs",
+    "extract:reference:dry": "node scripts/extract-eql-reference.mjs --dry-run",
     "dev": "tsx src/index.ts",
     "prepare": "npm run build",
     "start": "node dist/index.js",

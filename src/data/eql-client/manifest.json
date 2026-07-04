@@ -1,0 +1,38 @@
+{
+  "source": "EverQuest Legends client (local install)",
+  "sourceNote": "Reference text extracted directly from the EverQuest Legends client install (via scripts/extract-eql-reference.mjs). No third-party intermediary; the client is the source.",
+  "extractorVersion": 1,
+  "extractedAt": "2026-07-04T03:09:28.332Z",
+  "gameDirName": "EverQuest Legends",
+  "sources": [
+    {
+      "name": "everquest_manual.txt",
+      "bytes": 37540,
+      "modifiedAt": "2026-05-11T19:21:27.000Z",
+      "sha256": "d106f7f7d97093b1ae343ef24f8741ce64c3631981bf17995ca059927caf9290"
+    },
+    {
+      "name": "eqmanual_supplement.txt",
+      "bytes": 171473,
+      "modifiedAt": "2026-05-11T19:21:26.000Z",
+      "sha256": "789cf9c54fdf523be8a865ac020cb97efaf51844b8ad33e3fe0fde2549f74ca0"
+    },
+    {
+      "name": "racedata.txt",
+      "bytes": 158066,
+      "modifiedAt": "2026-05-26T15:44:32.000Z",
+      "sha256": "4382d326f4a705f6f6d2e5545c155249459d8f174a33941b377127d9ee63e55d"
+    },
+    {
+      "name": "dbstr_us.txt",
+      "bytes": 9829294,
+      "modifiedAt": "2026-06-29T17:42:33.000Z",
+      "sha256": "2c0863bc4dd233c55b2c891b4c8d22e190780b3b9b04798cb9eac55d359e8640"
+    }
+  ],
+  "counts": {
+    "commands": 122,
+    "races": 982,
+    "manualSections": 91
+  }
+}

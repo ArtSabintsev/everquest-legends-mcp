@@ -1,0 +1,744 @@
+[
+  {
+    "command": "/<1..10>",
+    "aliases": [],
+    "syntax": "/<1..10> <message>",
+    "description": "Sends the message to the chat channel number listed. You can discover the number of the channels you are joined to by using /list. If no channel number is specified the message will be sent to you first chat channel (whichever is your channel number 1)."
+  },
+  {
+    "command": "/afk",
+    "aliases": [],
+    "syntax": "/afk [ON/OFF] <text>",
+    "description": "When activated, all private tells sent to the user will auto-respond with the following text, \"You told <players name>, 'Sorry, I am A.F.K. (Away from keyboard) right now.'\". If you add <text> then that text will replace the default AFK message."
+  },
+  {
+    "command": "/announce",
+    "aliases": [],
+    "syntax": "/announce [on | off]",
+    "description": "Toggles on and off the announcements heard when people join or leave channels. This is set OFF by default."
+  },
+  {
+    "command": "/anon",
+    "aliases": [
+      "/a"
+    ],
+    "syntax": "/anon or /a [ON/OFF]",
+    "description": "Makes you Anonymous in /who and /who all, preventing other players from seeing your class, level and current location."
+  },
+  {
+    "command": "/assist",
+    "aliases": [],
+    "syntax": "/assist [ON/OFF]",
+    "description": "Toggles the autoattack function associated with the /assist function. The default of ON turns on your autoattack when you use /assist. If you type /assist off then autoattack will not start when you use /assist. This is one case where you must use the parameters on and off for this to work."
+  },
+  {
+    "command": "/assist",
+    "aliases": [],
+    "syntax": "/assist [target] or <character name>",
+    "description": "if you target a character that is within 200', the /assist command will automatically target for you whoever that character has targeted at the moment- this can be very useful in heavy combat. To be most effective, it is best to set this as a Social."
+  },
+  {
+    "command": "/attack",
+    "aliases": [],
+    "syntax": "/attack [ON/OFF]",
+    "description": "Toggles in and out of attack mode. This will put you in attack mode even if nothing is targeted. Be careful not to use this when near NPC's that you have targeted. By default, this is set to the \"a\" key. Care should also be taken when you are near an NPC that you have targeted not to hit the \"a\" key, as this may cause you to attack the NPC."
+  },
+  {
+    "command": "/auction",
+    "aliases": [],
+    "syntax": "/auction <text>",
+    "description": "Allows users to send auction messages throughout the current zone. Please use this channel only for auctions."
+  },
+  {
+    "command": "/autojoin",
+    "aliases": [],
+    "syntax": "/autojoin <channel-list>",
+    "description": "Saves the channels listed and automatically ;sets you to those channels when you log in. This information is saved in your eqclient.ini file in the [Defaults] section as ChannelAutoJoin=<channel-list>. See the section in this manual about Chat Channels for more information."
+  },
+  {
+    "command": "/autojoin",
+    "aliases": [],
+    "syntax": "/autojoin <channel-list>",
+    "description": "Saves the channels listed and automatically ;sets you to those channels when you log in. This information is saved in your eqclient.ini file in the [Defaults] section as ChannelAutoJoin=<channel-list>. You can edit that setting in the file while out of game if you wish."
+  },
+  {
+    "command": "/autosplit",
+    "aliases": [],
+    "syntax": "/autosplit [ON/OFF]",
+    "description": "automatically splits any loot you get with the rest of your party. Each member must do this to split all loot."
+  },
+  {
+    "command": "/book",
+    "aliases": [],
+    "syntax": "/book [1-50]",
+    "description": "Opens your spell book to the specified page."
+  },
+  {
+    "command": "/bug",
+    "aliases": [
+      "/b"
+    ],
+    "syntax": "/bug or /b",
+    "description": "takes you to a bug-reporting screen"
+  },
+  {
+    "command": "/camp",
+    "aliases": [],
+    "syntax": "/camp [desktop/server]",
+    "description": "Allows the player to exit to the server select screen or desktop depending on what is specified. You can use just /camp by itself as well. You must be sitting in order for this command to work. If attacked while camping out, the /camp command will be cancelled, thus preventing exit from the game."
+  },
+  {
+    "command": "/cast",
+    "aliases": [],
+    "syntax": "/cast [1-8]",
+    "description": "causes your character to cast the spell in the specified memorization slot."
+  },
+  {
+    "command": "/channel",
+    "aliases": [],
+    "syntax": "/channel [gsay/ooc/shout/guild/auction]",
+    "description": "toggles the chat channels on or off."
+  },
+  {
+    "command": "/chat",
+    "aliases": [],
+    "syntax": "/chat #<channel-name> <message>",
+    "description": "Sends the message to the channel named. You must have the # symbol, that is not a hint to use a number."
+  },
+  {
+    "command": "/chat",
+    "aliases": [],
+    "syntax": "/chat grant <character-name> [channel]",
+    "description": "Grants moderator privileges in the channel specified to the character named. If no channel is specified the character will be given moderator privileges to your first channel (whichever channel is your channel number 1)."
+  },
+  {
+    "command": "/chat",
+    "aliases": [],
+    "syntax": "/chat help",
+    "description": "Displays a list of chat channel commands"
+  },
+  {
+    "command": "/chat",
+    "aliases": [],
+    "syntax": "/chat invite <character-name> [channel]",
+    "description": "Sends an invitation to the specified character to join a the chat channel. If no channel is specified the character will be invited to join your first channel (whichever channel is your channel number 1). The invitation arrives as a text message. If the channel is password protected, the invited person can enter the channel only once without a password."
+  },
+  {
+    "command": "/chat",
+    "aliases": [],
+    "syntax": "/chat kick <character-name> [channel]",
+    "description": "Kicks the character named off of the chat channel listed. If no channel is specified the character will be kicked our of your first channel (whichever channel is your channel number 1)"
+  },
+  {
+    "command": "/chat",
+    "aliases": [],
+    "syntax": "/chat moderate [channel]",
+    "description": "Sets the specified channel to 'moderated' mode. This means that only those given 'voice' in the channel will be able to speak in that channel. If no channel is specified your first channel (whichever channel is your channel number 1) will be set into moderated mode. This is a toggle command, so if you execute this command a second time the channel will return to unmoderated status."
+  },
+  {
+    "command": "/chat",
+    "aliases": [],
+    "syntax": "/chat password <password> [channel]",
+    "description": "Sets the password for the channel specified. If no channel is specified the password will be applied to your first channel (whichever channel is your channel number 1). Note: A password protected channel is the only type of channel that is semi-permanent. Such a channel will disappear after it has been empty for 24 hours. All other channels cease to exist once they are empty."
+  },
+  {
+    "command": "/chat",
+    "aliases": [],
+    "syntax": "/chat set <channel-list>",
+    "description": "Makes you a member of all of the channels listed. You will be joined to those channels in the order listed (see /join below for details on what 'joining' a channel means). This will remove you from all previously joined channels. If you just want to join a new channel, use the /join command"
+  },
+  {
+    "command": "/chat",
+    "aliases": [],
+    "syntax": "/chat voice <character-name> [channel]",
+    "description": "Give the named character the ability to speak in a moderated channel. If no channel is specified the character will be allowed voice in your first channel (whichever channel is your channel number 1)."
+  },
+  {
+    "command": "/chatfontsize",
+    "aliases": [],
+    "syntax": "/chatfontsize [0-5]",
+    "description": "This is for Velious subscribers only. It is used in full screen mode only to change the chat font size."
+  },
+  {
+    "command": "/consent",
+    "aliases": [],
+    "syntax": "/consent <character name>",
+    "description": "gives the character permission to drag your corpse"
+  },
+  {
+    "command": "/consider",
+    "aliases": [
+      "/con"
+    ],
+    "syntax": "/consider or /con",
+    "description": "gives vital statistics of a targeted PC or NPC"
+  },
+  {
+    "command": "/corpse",
+    "aliases": [],
+    "syntax": "/corpse [target]",
+    "description": "will summon the target's corpse if it is within a 50' radius of the character. You can either target the character or the character's corpse. This will only work if the targeted character has used the /consent command on the character trying to use the /corpse command. If no target is selected when the /corpse command is used, it will summon your own character's corpse if it is within 50' of the character."
+  },
+  {
+    "command": "/decline",
+    "aliases": [],
+    "syntax": "/decline",
+    "description": "Declines a duel."
+  },
+  {
+    "command": "/disband",
+    "aliases": [],
+    "syntax": "/disband [target]",
+    "description": "Allows a character to disband from a group if he/she has themselves targeted. This command also allows the group leader to disband a targeted member of the group if they are in the same zone."
+  },
+  {
+    "command": "/dismount",
+    "aliases": [],
+    "syntax": "/dismount (Luclin Only)",
+    "description": "This command allows your character to dismount from a horse if for some reason he has lost the ability to do so using the bridle. There is no /mount command, only the bridle will allow you to mount a horse."
+  },
+  {
+    "command": "/doability",
+    "aliases": [],
+    "syntax": "/doability [1-6|7-10]",
+    "description": "1-6 performs the associated ability from the \"abilities\" page, 7-10 perform the associated combat skill."
+  },
+  {
+    "command": "/duel",
+    "aliases": [
+      "/d"
+    ],
+    "syntax": "/duel or /d",
+    "description": "challenges targeted PC to a duel - to accept, they have to type /d with you targeted as well. Duel is in effect until one combatant \"dies\" (is knocked unconscious) or flees the zone. Until the duel is resolved, the two combatants can't be affected by spells from PCs not in the duel, nor can they cast spells on those outside the duel."
+  },
+  {
+    "command": "/dynamiclights",
+    "aliases": [],
+    "syntax": "/dynamiclights [ON/OFF]",
+    "description": "When on, this command enables players to see specially rendered lighting. This command is most useful when the player is holding, or has a light source with them, such as a torch. Turn this command to off if you notice low frame rate."
+  },
+  {
+    "command": "/em",
+    "aliases": [],
+    "syntax": "/em <text> or : <text>",
+    "description": "emotes the text. Most emotes have animations associated with them, though some do not. Predefined emotes are listed in the table at the end of this help section."
+  },
+  {
+    "command": "/exit",
+    "aliases": [],
+    "syntax": "/exit",
+    "description": "This command is the same as /quit and should not be used by players unless to escape from a death bind loop."
+  },
+  {
+    "command": "/facepick",
+    "aliases": [],
+    "syntax": "/facepick (Luclin Only)",
+    "description": "this command brings up an interface that allows you to choose a new face for your character using the new models for Shadows of Luclin. You must have the Luclin character model enabled for the race of the characters whose face you are trying to change. Currently this command can be used more than once on the same character. In the future it will be a once per character command."
+  },
+  {
+    "command": "/fastdrop",
+    "aliases": [],
+    "syntax": "/fastdrop [ON/OFF/NEVER]",
+    "description": "Disables or enables the ability to drop items on the ground without a confirmation box. The recommended setting for this option is the same as the default setting, which is /fastdrop off. If set to never, you will never be able to drop any items on the ground. If set to on, no confirmation box will come up before dropping the item on the ground. Caution is advised as many NPC's (Non player characters such as merchants) do pick up items dropped on the ground by players."
+  },
+  {
+    "command": "/feedback",
+    "aliases": [],
+    "syntax": "/feedback",
+    "description": "takes you to the feedback/comments screen."
+  },
+  {
+    "command": "/follow",
+    "aliases": [],
+    "syntax": "/follow [target]",
+    "description": "When this command is used while targeting another player, the user will automatically follow the targeted character."
+  },
+  {
+    "command": "/friend",
+    "aliases": [],
+    "syntax": "/friend <character name>",
+    "description": "adds or removes a 'friend' from your friends list. /friend <character name> will add the player to your list, and /friend <character name> again, for the same character, will remove him/her. /friend by itself will list the players in your friends list. A /who friend will let you know if anyone on your friends list is in the zone you are in, and a /who all friend will let you know if anyone on your friends list is on the server you are on. Your friends list can only contain 30 names per character. And be aware that in order to remove someone from the list, you must type their name precisely."
+  },
+  {
+    "command": "/gems",
+    "aliases": [],
+    "syntax": "/gems",
+    "description": "This command allows a player to play the game Gems."
+  },
+  {
+    "command": "/gsay",
+    "aliases": [],
+    "syntax": "/gsay <text> or /g <text>",
+    "description": "text is seen by all in your group"
+  },
+  {
+    "command": "/guilddelete",
+    "aliases": [],
+    "syntax": "/guilddelete",
+    "description": "Guild Leaders may use this command to disband a their guild."
+  },
+  {
+    "command": "/guildinvite",
+    "aliases": [],
+    "syntax": "/guildinvite [target]",
+    "description": "Guild Leaders and Officers may use this command to invite new guild members. In order to make an officer, the guild leader must use the following command: /guildinvite o <playername>. You can also just have the player targeted and type /guildinvite o. You must be in the same zone as the player you want to invite into the guild. The letter o must be lower cased. If the player you want to make an officer is currently in the guild, they will have to /guildremove themselves (with themselves targeted) , in order to be made an officer through this command."
+  },
+  {
+    "command": "/guildleader",
+    "aliases": [],
+    "syntax": "/guildleader [target]",
+    "description": "Transfers guild leadership status to the targeted guild officer.."
+  },
+  {
+    "command": "/guildmotd",
+    "aliases": [],
+    "syntax": "/guildmotd <text>",
+    "description": "Officers of a guilds can specify the text to show up after the regular server MOTD (Message of the Day) for each of their guild members when they log in. The guild message of the day will always be preceded by the name of the guild officer that set it up. There is a maximum of around 200 characters for this guild motd. Any new guild message of the day overwrites the last guild message of the day. When a server goes down, all guild messages of the day will be deleted and will need to be reset. There is no other way to delete a guild message of the day."
+  },
+  {
+    "command": "/guildpeace",
+    "aliases": [],
+    "syntax": "/guildpeace <guild leader name>- Allows the guild leader to end a guild war. Both guild leaders must execute this command",
+    "description": "to end the war. Guild war will end in any case after the time limit has passed."
+  },
+  {
+    "command": "/guildremove",
+    "aliases": [],
+    "syntax": "/guildremove [target]",
+    "description": "Guild Leaders and Officers may use this command to remove guild members. Keep in mind that if you target yourself when executing this command, you will remove yourself from the guild."
+  },
+  {
+    "command": "/guildsay",
+    "aliases": [],
+    "syntax": "/guildsay <text> or /gu <text>",
+    "description": "Sends a text message to all fellow guild members currently on-line."
+  },
+  {
+    "command": "/guildstatus",
+    "aliases": [],
+    "syntax": "/guildstatus [target] or <character name>",
+    "description": "Will return the guild status of the targeted or named character (their rank within their guild, if any). This command will only work on characters within the same zone."
+  },
+  {
+    "command": "/guildwar",
+    "aliases": [],
+    "syntax": "/guildwar <guild leader name> <number>",
+    "description": "Allows the guild leader to challenge or accept another guild in guild war. Both parameters are necessary, and both guild leaders must execute the command. The number is the number of days that the guild war will last, from 1 to 14. All members of a guild at war with another guild are PvP with each other for the duration of the guild war."
+  },
+  {
+    "command": "/help",
+    "aliases": [],
+    "syntax": "/help [emote/guild/normal]",
+    "description": "Shows the player all of the commands available in area specified."
+  },
+  {
+    "command": "/hidecorpses",
+    "aliases": [],
+    "syntax": "/hidecorpses [all/none/allbutgroup]",
+    "description": "This command allows the player to choose to not see other player's corpses in-game. This allows for less lag in situations where there are many corpses around. Keep in mind that the all and the allbutgroup options will hide NPC corpses. Your own corpse is never hidden. The default is none."
+  },
+  {
+    "command": "/hitsmode",
+    "aliases": [],
+    "syntax": "/hitsmode allows you to create separate windows for your combat text. This is a rather advanced feature, so it might",
+    "description": "take a little practice to get the results that you want."
+  },
+  {
+    "command": "/ignore",
+    "aliases": [],
+    "syntax": "/ignore <player name>",
+    "description": "Will block all text from that character."
+  },
+  {
+    "command": "/inspect",
+    "aliases": [],
+    "syntax": "/inspect [ON/OFF]",
+    "description": "Toggles on and off your ability to inspect others with a right-click of the mouse. Use this toggle if you use the mouse for movement and find yourself accidentally inspecting others."
+  },
+  {
+    "command": "/invite",
+    "aliases": [],
+    "syntax": "/invite [target]",
+    "description": "Invites targeted player into a group. This command can only be executed by the group leader."
+  },
+  {
+    "command": "/invwinlabels",
+    "aliases": [],
+    "syntax": "/invwinlabels",
+    "description": "For Velious subscribers only. This command toggles on and off the descriptions for the full screen mode inventory."
+  },
+  {
+    "command": "/join",
+    "aliases": [],
+    "syntax": "/join <channel-list>",
+    "description": "Allows you to join the channel or channels listed. If the channel does not yet exist it will create the channel and you will be added as a moderator for the channel (see below for moderator commands). Note: You may use spaces when creating a channel. But when the channel is created those spaces will be removed. So if you \"/join fluffy bunny\" the channel created will be \"fluffybunny\""
+  },
+  {
+    "command": "/language",
+    "aliases": [],
+    "syntax": "/language",
+    "description": "Returns the number of the language that you are currently speaking. /language [help] returns a list of languages and their identification number. /language [#] sets the current language."
+  },
+  {
+    "command": "/leave",
+    "aliases": [],
+    "syntax": "/leave <channel>",
+    "description": "This will remove you from the channel. Note: You must specify a channel, either by name or by number, or the command will fail"
+  },
+  {
+    "command": "/leaveall",
+    "aliases": [],
+    "syntax": "/leaveall",
+    "description": "Removes you from all channels"
+  },
+  {
+    "command": "/lfg",
+    "aliases": [],
+    "syntax": "/lfg [ON/OFF]",
+    "description": "Indicates that you are \"Looking for a Group\" in the /who and \"/who all\" lists."
+  },
+  {
+    "command": "/list",
+    "aliases": [],
+    "syntax": "/list [channel]",
+    "description": "Using this command without the [channel] parameter will list all of the channels that you are joined to, the channel number, and will give a numeric value for the number of people in that channel. The channel number is specific to individual users, so two people in the same channel may not have the same channel number for that channel. Using the command with a [channel] parameter will list the members of the channel by name."
+  },
+  {
+    "command": "/location",
+    "aliases": [
+      "/loc"
+    ],
+    "syntax": "/location or /loc",
+    "description": "Displays the character's current location coordinates within the zone. The location will show as x, y, z."
+  },
+  {
+    "command": "/log",
+    "aliases": [],
+    "syntax": "/log [ON/OFF]- Logs all text locally to the user's machine. The file that is generated can be found in your EverQuest",
+    "description": "directory. The format of the filename is eqlog_(server #)_(character name).txt."
+  },
+  {
+    "command": "/loot",
+    "aliases": [],
+    "syntax": "/loot",
+    "description": "Allows the character to loot a corpse from a short distance. The corpse must be targeted when performing this command. You can achieve the same result by right clicking on a corpse."
+  },
+  {
+    "command": "/lootnodrop",
+    "aliases": [],
+    "syntax": "/lootnodrop [ALWAYS/SOMETIMES/NEVER]",
+    "description": "This command is used to specify how you loot no drop items on corpses. Always is default and will cause a prompt box to always be shown when looting no drop items. Set to sometimes so only items not usable by your character will show a prompt box. When you have this set to never, you will never get a confirmation box to see if you want to loot or not."
+  },
+  {
+    "command": "/me",
+    "aliases": [],
+    "syntax": "/me",
+    "description": "Same as /em"
+  },
+  {
+    "command": "/mousespeed",
+    "aliases": [],
+    "syntax": "/mousespeed [0-3]",
+    "description": "Changes the mouse travel speed across the monitor. 3 is the maximum setting (the higher the number the faster the mouse moves). Don't set this above 3. Your mouse will move too quickly and you will probably not be able to play."
+  },
+  {
+    "command": "/msg",
+    "aliases": [],
+    "syntax": "/msg",
+    "description": "This is the same as using /Tell."
+  },
+  {
+    "command": "/note",
+    "aliases": [],
+    "syntax": "/note <text>",
+    "description": "Allows the player to write notes when in-game to be referenced later out of game. This creates a notes.txt file of the text. Each line of text sent using /note is appended to the end of this file. There is a maximum number of 455 characters when creating a note."
+  },
+  {
+    "command": "/ooc",
+    "aliases": [],
+    "syntax": "/ooc <text>",
+    "description": "allows you to say something as yourself, not as your character, heard throughout the zone. Please only use this channel for out of character speech, and please try to limit your out of character speech to this channel."
+  },
+  {
+    "command": "/pet",
+    "aliases": [],
+    "syntax": "/pet [command]",
+    "description": "gives orders to a charmed or summoned pet. Sample pet commands:"
+  },
+  {
+    "command": "/pet",
+    "aliases": [],
+    "syntax": "/pet as you were",
+    "description": "returns the pet to neutral, belaying all prior orders."
+  },
+  {
+    "command": "/pet",
+    "aliases": [],
+    "syntax": "/pet attack [target]",
+    "description": "tells the pet to attack the designated target."
+  },
+  {
+    "command": "/pet",
+    "aliases": [],
+    "syntax": "/pet back off",
+    "description": "tells the pet to stop its attack."
+  },
+  {
+    "command": "/pet",
+    "aliases": [],
+    "syntax": "/pet follow me",
+    "description": "tells the pet to follow you, but ends when you cross a zone line."
+  },
+  {
+    "command": "/pet",
+    "aliases": [],
+    "syntax": "/pet get lost",
+    "description": "will send the pet back to where it came from."
+  },
+  {
+    "command": "/pet",
+    "aliases": [],
+    "syntax": "/pet guard here",
+    "description": "tells the pet to guard its current location."
+  },
+  {
+    "command": "/pet",
+    "aliases": [],
+    "syntax": "/pet guard me",
+    "description": "tells the pet to attack anyone that attacks it's master, or that it's master attacks."
+  },
+  {
+    "command": "/pet",
+    "aliases": [],
+    "syntax": "/pet report health",
+    "description": "Reports the health of your pet in percentages."
+  },
+  {
+    "command": "/petition",
+    "aliases": [],
+    "syntax": "/petition <text>",
+    "description": "Used to request assistance from a GM. The more detailed <text> is, the quicker the assistance can be rendered. To prevent 'spamming' of the petition queue, each character can only send in one petition (for as long as that petition is in the queue)."
+  },
+  {
+    "command": "/played",
+    "aliases": [],
+    "syntax": "/played",
+    "description": "Returns the birth date and hours played for the current character."
+  },
+  {
+    "command": "/quit",
+    "aliases": [],
+    "syntax": "/quit",
+    "description": "Immediately exits the game. However, when you exit in this manner, your character has not 'camped out' in the proper fashion, and he or she will remain in the game world for a short period after you have quit. Your character will be under the control of the server, and may very well die while you are not there to tell it what to do. So only use this command when you are in a rush to leave the game or are in an in-game situation that you can't get out of with the standard sit and camp method. The risk you take when using this shortcut to exit the game is all yours."
+  },
+  {
+    "command": "/random",
+    "aliases": [],
+    "syntax": "/random [x, x y]",
+    "description": "/random x generates a random number between 0 and x. /random x y will generate a random number between x and y. This can be used to decide things randomly, for instance, who gets a recently acquired treasure."
+  },
+  {
+    "command": "/reply",
+    "aliases": [],
+    "syntax": "/reply <text>",
+    "description": "If a \"/tell\" is received, the user may respond by using this command. /reply will reply to the very last person to send you a /tell."
+  },
+  {
+    "command": "/report",
+    "aliases": [],
+    "syntax": "/report <character name>",
+    "description": "Allows a player to report the text that is currently being displayed in the chat window. If you are reporting harassment, bad language, threats, or other actions by another player, use their character name for the <character name> in the report. If you are reporting falling for 10,000 points damage, or other irregularities that affect your character, then use your character's name. You should then use /petition and let a GM know that you have used /report so that they will know to look for your reported text. To prevent 'spamming', you can only send one report at a time. You can do another /report only after zoning. Please make sure to have the text you want to report in the chat window when you use this command, /report will only send the bottom ten lines of text that are actually shown in your chat window. Use Shift-Page Up and Shift-Page Down to move through your chat text until you see the text you want to report."
+  },
+  {
+    "command": "/resetwindows",
+    "aliases": [],
+    "syntax": "/resetwindows",
+    "description": "Used to reset to default the locations on-screen for the different Graphical User Interface (GUI) boxes."
+  },
+  {
+    "command": "/reverb",
+    "aliases": [],
+    "syntax": "/reverb [ON/OFF]",
+    "description": "Toggles the reverb (echo) sounds on or off."
+  },
+  {
+    "command": "/reversesound",
+    "aliases": [],
+    "syntax": "/reversesound",
+    "description": "This command will reverse the left and right channel for your sound."
+  },
+  {
+    "command": "/roleplay",
+    "aliases": [],
+    "syntax": "/roleplay [ON/OFF]",
+    "description": "Hides your race, class, and location while still displaying your guild tag, and turns your name purple to indicate that you prefer to remain \"in-character\"."
+  },
+  {
+    "command": "/serverfilter",
+    "aliases": [],
+    "syntax": "/serverfilter [ON/OFF]",
+    "description": "Allows player to turn off or on packet messages from other players, allowing for less lag in raid situations."
+  },
+  {
+    "command": "/shout",
+    "aliases": [],
+    "syntax": "/shout <text>",
+    "description": "Shouted text is seen across entire zone. Shout is an 'in-character' channel, so please keep your speech in this channel in character."
+  },
+  {
+    "command": "/shownames",
+    "aliases": [],
+    "syntax": "/shownames [ON/OFF]",
+    "description": "turns on or off visible names above PC's and NPC's heads."
+  },
+  {
+    "command": "/showspelleffects",
+    "aliases": [],
+    "syntax": "/showspelleffects [ON/OFF]",
+    "description": "Toggles spell effects (visuals) on or off."
+  },
+  {
+    "command": "/sit",
+    "aliases": [],
+    "syntax": "/sit [ON/OFF]",
+    "description": "Causes your character to sit or stand."
+  },
+  {
+    "command": "/split",
+    "aliases": [],
+    "syntax": "/split # # # #",
+    "description": "splits a defined amount of money with your group members in the same zone: platinum, gold, silver, & copper respectively...i.e. /split 4 4 2 0 splits 4 plat, 4 gold, 2 silver, and 0 copper with the rest of the group. For example, /split 4 will only split 4 platinum with your group members. /split 0 0 0 200 will split 200 copper pieces with your group."
+  },
+  {
+    "command": "/stopsong",
+    "aliases": [],
+    "syntax": "/stopsong",
+    "description": "Bards can use this command in hotkeys to stop singing their songs."
+  },
+  {
+    "command": "/surname",
+    "aliases": [],
+    "syntax": "/surname <last name>",
+    "description": "Players with a character level 20 or over may use this command to assign a last name to their character. Once you have chosen a last name, you will not be able to change it. So make certain that you choose a name that you like, and make certain that the name meets the requirements for our naming policy (see www.everquest.com for more details)."
+  },
+  {
+    "command": "/targetgroupbuff",
+    "aliases": [],
+    "syntax": "/targetgroupbuff",
+    "description": "This command toggles on and off when issued. When on, all group buff spells you cast will require a target but will affect everyone grouped (and in range) with that target, even if it is not your own group. When it is off your group buff spells will act normally. This will only work with group buffs that have a duration, and will not affect heals, portals, change form spells or spells cast from items."
+  },
+  {
+    "command": "/tell",
+    "aliases": [],
+    "syntax": "/tell <character name>",
+    "description": "The text is seen by the named character anywhere in the game."
+  },
+  {
+    "command": "/time",
+    "aliases": [],
+    "syntax": "/time",
+    "description": "gives you the time of day in Norrath and your local time (based on the clock on your computer)."
+  },
+  {
+    "command": "/trackfilter",
+    "aliases": [],
+    "syntax": "/trackfilter (Ranger only) [Red/Yellow/White/Blue/Green])",
+    "description": "Specify here what NPC /con colors you do not want to see in your tracking display. For example, /trackfilter Red will remove all 'red' (dangerous) NPCs from your tracking display."
+  },
+  {
+    "command": "/trackplayers",
+    "aliases": [],
+    "syntax": "/trackplayers [ON/OFF]",
+    "description": "Allows those with the tracking skill to indicate whether or not they want player characters to show up in their tracking list."
+  },
+  {
+    "command": "/tracksort",
+    "aliases": [],
+    "syntax": "/tracksort",
+    "description": "(Ranger Only) [Normal/Distance/Consider/Rdistance/Rconsider] - This is used by Rangers to control how their tracking display sorts targets. Normal is by how long they have been in the zone (oldest NPCs first), Distance will put the closest NPC on top of the tracking list, Consider will put the highest level NPCs on top, Rdistance will have the closest NPC listed last, Rconsider has the tracking list from low level on top to high level below."
+  },
+  {
+    "command": "/usercolor",
+    "aliases": [],
+    "syntax": "/usercolor",
+    "description": "See the section in this manual for a description of the use of this command. The following /usercolor numbers have been added to allow greater customization of your chat channels:"
+  },
+  {
+    "command": "/usercolor",
+    "aliases": [],
+    "syntax": "/usercolor [Chat Type] Rvalue Gvalue Bvalue.",
+    "description": "For example, For Guild chat to be yellow, you would type /usercolor 4 0 255 255. This is the same as editing the TextColor portion of your Eqclient.ini file, and the list of Chat Type numbers can be found in that section of this manual."
+  },
+  {
+    "command": "/vrdelay",
+    "aliases": [],
+    "syntax": "/vrdelay [1- 5 ]",
+    "description": "This command is used to specify the delay time for responses when using voice recognition software."
+  },
+  {
+    "command": "/who",
+    "aliases": [],
+    "syntax": "/who",
+    "description": "lists all player characters in your zone."
+  },
+  {
+    "command": "/who",
+    "aliases": [],
+    "syntax": "/who 1 5 all",
+    "description": "generates a list of all characters online who are between levels 1 and 5."
+  },
+  {
+    "command": "/who",
+    "aliases": [],
+    "syntax": "/who all",
+    "description": "lists all player characters in the world."
+  },
+  {
+    "command": "/who",
+    "aliases": [],
+    "syntax": "/who all friend",
+    "description": "generates a list of the players in your friends list who are online (see the /friend command)."
+  },
+  {
+    "command": "/who",
+    "aliases": [],
+    "syntax": "/who corpse",
+    "description": "lists all the corpses your character has in the current zone."
+  },
+  {
+    "command": "/who",
+    "aliases": [],
+    "syntax": "/who fip all",
+    "description": "generates a list of all characters whose names begin with Fip."
+  },
+  {
+    "command": "/who",
+    "aliases": [],
+    "syntax": "/who gm all",
+    "description": "generates a list of all the GM's that are online and not hidden."
+  },
+  {
+    "command": "/who",
+    "aliases": [],
+    "syntax": "/who wiz all",
+    "description": "generates a list of all Wizards online in all zones."
+  },
+  {
+    "command": "/whotarget",
+    "aliases": [],
+    "syntax": "/whotarget",
+    "description": "Does a \"/who\" on the player character targeted."
+  },
+  {
+    "command": "/wincolor",
+    "aliases": [],
+    "syntax": "/wincolor",
+    "description": "This command allows players with the Velious expansion or later, to change the color and transparency of the background for all of the window boxes for the updated user interface. Format: /wincolor <window name> <red> <green> <blue> <trans>"
+  },
+  {
+    "command": "/yell",
+    "aliases": [],
+    "syntax": "/yell",
+    "description": "will issue a \"cry for help\" to all players within a 100 foot radius. Characters hearing the yell will be told what general direction the yelling is coming from."
+  }
+]

@@ -8,6 +8,23 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Seven `eql_client_*` tools backed by a new committed snapshot
+  (`src/data/eql-client/`) extracted directly from a local EverQuest Legends
+  client install — reference data the eqlbuilds snapshot does not cover:
+  `eql_client_command_search` / `eql_client_command` (the in-game slash-command
+  list, ~122 commands with aliases, syntax, and every documented form),
+  `eql_client_races` / `eql_client_race` (the authoritative RaceID/model table,
+  ~982 rows including NPC-model races, with per-gender model tags and sizes),
+  `eql_client_manual_search` / `eql_client_manual_section` (~91 sections of the
+  client manual supplement), and `eql_client_provenance`.
+- `scripts/extract-eql-reference.mjs` (`npm run extract:reference`,
+  `extract:reference:dry`): a maintainer-run, local-only extractor that reads
+  `everquest_manual.txt`, `eqmanual_supplement.txt`, `racedata.txt`, and
+  `dbstr_us.txt` from a game install and writes the committed `eql-client`
+  snapshot with a source manifest (per-file size, mtime, SHA-256). There is no
+  public mirror of this text, so it cannot run in CI. See
+  `docs/local-client-extraction.md`.
+
 - Three `eql_builds_*` tools that surface build data already in the committed
   snapshot but previously unreachable except through fuzzy search:
   `eql_builds_spell` (read one spell by id or exact name, with the per-class

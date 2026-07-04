@@ -25,6 +25,17 @@ import {
   searchEqlBuildsAbilities,
   searchEqlBuildsSpells
 } from "./eqlbuilds.js";
+import {
+  getEqlClientCommand,
+  getEqlClientManualSection,
+  getEqlClientProvenance,
+  getEqlClientRace,
+  listEqlClientManualSections,
+  listEqlClientRaces,
+  searchEqlClientCommands,
+  searchEqlClientManual,
+  searchEqlClientRaces
+} from "./eqlClient.js";
 
 function toolResult(summary: string, structuredContent: Record<string, unknown>): CallToolResult {
   return {
@@ -597,6 +608,136 @@ export function createServer(): McpServer {
     async () => {
       const data = getEqlBuildsProvenance();
       return toolResult(`EQL Builds snapshot extracted ${data.manifest.extractedAt} (wiki rev ${data.manifest.wikiRevisionId}).`, data);
+    }
+  );
+
+  server.registerTool(
+    "eql_client_command_search",
+    {
+      title: "Search EQL client slash commands",
+      description:
+        "Search the in-game slash-command reference extracted from the EverQuest Legends client manual (everquest_manual.txt). Matches command name, aliases, syntax, and description. Returns the command, its aliases, its syntax, and what it does.",
+      inputSchema: {
+        query: z.string().min(2).max(120).describe("Search terms matched against slash-command name, aliases, syntax, and description (e.g. 'anonymous', 'pet attack', 'chat channel')."),
+        limit: z.number().int().min(1).max(50).default(15)
+      }
+    },
+    async ({ query, limit }) => {
+      const data = searchEqlClientCommands(query, { limit });
+      return toolResult(`Found ${data.results.length} client command(s) for "${query}".`, data);
+    }
+  );
+
+  server.registerTool(
+    "eql_client_command",
+    {
+      title: "Read EQL client slash command",
+      description:
+        "Look up a single in-game slash command by name or alias (e.g. /who, /anon, /a). The manual documents many commands in several forms, so this returns every documented form of the command.",
+      inputSchema: {
+        name: z.string().min(1).describe("Slash command name or alias, with or without the leading slash (e.g. 'who', '/anon', 'a').")
+      }
+    },
+    async ({ name }) => {
+      const data = getEqlClientCommand(name);
+      if (!data) {
+        return toolResult(`No client command found for "${name}".`, { name, command: null });
+      }
+      return toolResult(`Found ${data.entries.length} form(s) of ${data.command}.`, data);
+    }
+  );
+
+  server.registerTool(
+    "eql_client_races",
+    {
+      title: "List or search EQL client races",
+      description:
+        "List or search the race/model table extracted from the EverQuest Legends client (racedata.txt joined to dbstr_us.txt names). This is the authoritative RaceID table and includes hundreds of NPC-model races in addition to playable ones, with per-gender model tags and sizes. For playable-race descriptions and starting abilities, use eql_builds_races instead.",
+      inputSchema: {
+        query: z.string().optional().describe("Optional search terms matched against race name, plural, and model tags. Omit to list races (use limit to bound the output)."),
+        limit: z.number().int().min(1).max(1000).default(30).describe("Maximum races to return.")
+      }
+    },
+    async ({ query, limit }) => {
+      if (query && query.trim().length > 0) {
+        const data = searchEqlClientRaces(query, { limit });
+        return toolResult(`Found ${data.results.length} client race(s) for "${query}".`, data);
+      }
+      const data = listEqlClientRaces({ limit });
+      return toolResult(`Listed ${data.races.length} of ${data.count} client race(s).`, data);
+    }
+  );
+
+  server.registerTool(
+    "eql_client_race",
+    {
+      title: "Read EQL client race",
+      description:
+        "Fetch a race from the client race/model table by numeric RaceID (e.g. 1, 128) or by name (e.g. Human, Iksar). A name can map to several RaceIDs (a playable race plus its NPC-model variants), so a name lookup returns every match with its per-gender model tags and sizes.",
+      inputSchema: {
+        idOrName: z.string().min(1).describe("RaceID number (e.g. 128) or race name (e.g. Iksar).")
+      }
+    },
+    async ({ idOrName }) => {
+      const numeric = Number(idOrName.trim());
+      const data = getEqlClientRace(Number.isInteger(numeric) && idOrName.trim() !== "" ? numeric : idOrName);
+      if (!data) {
+        return toolResult(`No client race found for "${idOrName}".`, { idOrName, matches: [] });
+      }
+      return toolResult(`Found ${data.matches.length} client race row(s) for "${idOrName}".`, data);
+    }
+  );
+
+  server.registerTool(
+    "eql_client_manual_search",
+    {
+      title: "Search EQL client manual supplement",
+      description:
+        "Search the client manual supplement (eqmanual_supplement.txt) and return matching section titles with a snippet around the match. Note: this is legacy EverQuest manual text bundled with the Legends client; some content predates Legends. Use eql_client_manual_section to read a full section.",
+      inputSchema: {
+        query: z.string().min(2).max(120).describe("Search terms matched against manual section titles and body text (e.g. 'voice recognition', 'emote', 'eqclient.ini')."),
+        limit: z.number().int().min(1).max(25).default(8)
+      }
+    },
+    async ({ query, limit }) => {
+      const data = searchEqlClientManual(query, { limit });
+      return toolResult(`Found ${data.results.length} manual section(s) for "${query}".`, data);
+    }
+  );
+
+  server.registerTool(
+    "eql_client_manual_section",
+    {
+      title: "Read EQL client manual section",
+      description:
+        "Read one section of the client manual supplement by title (exact or partial match). Call with no useful match first via eql_client_manual_search to discover section titles.",
+      inputSchema: {
+        title: z.string().min(2).optional().describe("Section title to read (exact or partial). Omit to list all available section titles with a short preview.")
+      }
+    },
+    async ({ title }) => {
+      if (!title || title.trim().length === 0) {
+        const data = listEqlClientManualSections();
+        return toolResult(`Listed ${data.count} manual section(s).`, data);
+      }
+      const data = getEqlClientManualSection(title);
+      if (!data) {
+        return toolResult(`No manual section found for "${title}".`, { title, section: null });
+      }
+      return toolResult(`Read manual section "${data.section.title}".`, data);
+    }
+  );
+
+  server.registerTool(
+    "eql_client_provenance",
+    {
+      title: "EQL client reference data provenance",
+      description: "Report how the local-client reference dataset (slash commands, race/model table, manual supplement) was extracted: source client files with sizes/hashes/modification times, extraction time, and counts.",
+      inputSchema: {}
+    },
+    async () => {
+      const data = getEqlClientProvenance();
+      return toolResult(`EQL client reference extracted ${data.manifest.extractedAt} from ${data.manifest.sources.length} client file(s).`, data);
     }
   );
 

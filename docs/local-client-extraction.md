@@ -85,3 +85,50 @@ that need sample files to pin down precisely:
 
 Add these as new parse functions and cross-checks, keeping the "write to scratch,
 never clobber the snapshot, sanity-check against committed data" discipline.
+
+## Reference extraction (`scripts/extract-eql-reference.mjs`)
+
+A second local-only extractor pulls the human-facing **reference** text that the
+eqlbuilds snapshot does not cover, into a separate committed snapshot under
+`src/data/eql-client/` (read by the `eql_client_*` tools). It has no public
+mirror — the client is the only source — so it is maintainer-run and local-only,
+like `extract-eql-client.mjs`. Unlike that script it writes the committed
+snapshot directly, because its output is small, deterministic, and easy to review
+in a diff.
+
+```bash
+npm run extract:reference     -- --game-dir "/path/to/EverQuest Legends"
+npm run extract:reference:dry -- --game-dir "/path/to/EverQuest Legends"  # summarize only
+EQL_GAME_DIR="/path/to/EverQuest Legends" npm run extract:reference
+```
+
+It emits `commands.json`, `races.json`, `manual-sections.json`, and a
+`manifest.json` (source files with size/mtime/SHA-256, plus counts).
+
+### Source file formats
+
+- **`everquest_manual.txt`** — the in-game slash-command reference. An entry
+  begins at column 0 with `/`; wrapped continuation lines are indented; the first
+  line is `"<syntax> - <description>"` (or tab-separated in the chat section).
+  Command names are taken from the portion before the first `[`/`<` parameter
+  marker, so the `/` inside params like `[ON/OFF]` is not mistaken for an alias.
+  ALLCAPS banners (GUILD/PET/CHAT COMMANDS) are skipped, not treated as commands.
+  A command is intentionally **not** tagged with a section: general commands
+  resume after those banner blocks without a reset header, so any section label
+  would bleed onto unrelated commands.
+- **`racedata.txt`** — caret-delimited model table, one row per (RaceID, gender).
+  Columns used: `0` RaceID, `1` gender (0 male / 1 female / 2 neutral), `47` model
+  size, `50` model tag (e.g. `HUM`/`HUF`). Rows are grouped by RaceID into a race
+  with per-gender models. **No `playable` flag is emitted**: a playable race name
+  collides with many NPC-model RaceIDs (e.g. several `Froglok`/`Kerran` rows), so
+  a name-based playable flag would be unreliable. For player races use
+  `eql_builds_races`.
+- **`dbstr_us.txt`** — caret-delimited `<id>^<type>^<text>^`. Type `11` is the
+  singular race name and type `12` the plural, both keyed by RaceID; these join
+  onto `racedata.txt` to name each race.
+- **`eqmanual_supplement.txt`** — opens with a `Title<TAB><page>` table of
+  contents, then a body where each title reappears as a bare heading. The parser
+  learns the title whitelist from the TOC, then splits the body on blank-set-off
+  lines that match a whitelisted title **without** a trailing page number (so the
+  TOC's own listing is skipped). Note this is legacy EverQuest manual text bundled
+  with the Legends client; some content predates Legends.

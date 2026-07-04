@@ -53,6 +53,13 @@ It does not log into Daybreak, manipulate an account, automate a game client, or
 - `eql_builds_skills`: list a class's skill lines with caps and trained-at levels
 - `eql_builds_modes`: list combat stances and invocations
 - `eql_builds_provenance`: report the eqlbuilds.com snapshot manifest, source wiki revision, and extraction notes
+- `eql_client_command_search`: search the in-game slash-command reference (name, aliases, syntax, description) from the client manual
+- `eql_client_command`: read one slash command by name or alias, returning every documented form (e.g. `/who`, `/who all`, `/who <mask>`)
+- `eql_client_races`: list or search the authoritative RaceID/model table (playable plus hundreds of NPC-model races) with per-gender model tags and sizes
+- `eql_client_race`: read a race by RaceID or name; a name returns every RaceID that shares it (playable plus NPC-model variants)
+- `eql_client_manual_search`: search the client manual supplement and return matching section titles with a snippet
+- `eql_client_manual_section`: read one manual-supplement section by title, or list all section titles
+- `eql_client_provenance`: report the local-client reference snapshot manifest (source files with sizes/hashes/mtimes, counts)
 - `eql_official_news`: parse official EQL news index
 - `eql_official_article`: fetch and extract an official news article
 - `eql_press_assets`: list official Daybreak press asset URLs by kind
@@ -194,6 +201,28 @@ npm run extract:eqlbuilds:check  # verify the snapshot is up to date (non-zero i
 schedule (and on demand), validates it with typecheck + tests, and commits the
 refreshed snapshot only when the upstream data actually changes. The build copies
 `src/data` to `dist/data` so the snapshot ships with the package.
+
+### Refreshing the local-client reference dataset
+
+The `eql_client_*` tools read a committed snapshot under `src/data/eql-client/`
+(slash commands, the RaceID/model table, and manual-supplement sections). Unlike
+eqlbuilds, there is no public mirror of this text — the EverQuest Legends client
+install is the source — so it is a maintainer-run, local-only extractor and
+cannot run in CI. On a machine with the game installed:
+
+```bash
+# --game-dir points at the install root (the folder with eqgame.exe and *_us.txt).
+npm run extract:reference -- --game-dir "/path/to/EverQuest Legends"
+npm run extract:reference:dry -- --game-dir "/path/to/EverQuest Legends"  # parse + summarize, write nothing
+
+# Or set EQL_GAME_DIR once:
+EQL_GAME_DIR="/path/to/EverQuest Legends" npm run extract:reference
+```
+
+It reads `everquest_manual.txt`, `eqmanual_supplement.txt`, `racedata.txt`, and
+`dbstr_us.txt`, writes the JSON to `src/data/eql-client/`, and records a manifest
+with each source file's size, mtime, and SHA-256. Review the diff, run the tests,
+then commit. See `docs/local-client-extraction.md` for the client file formats.
 
 ## Tool Examples
 
