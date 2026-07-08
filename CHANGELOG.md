@@ -6,6 +6,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.2.1] - 2026-07-08
+
+### Fixed
+
+- track spells_us.txt column shift from the 2026-07-06 client update (322e95f)
+
 ## [1.2.0] - 2026-07-08
 
 ### Added
