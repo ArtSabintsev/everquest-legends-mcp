@@ -1,6 +1,7 @@
-import { fetchText } from "./http.js";
+import { fetchText, postJson, primeTextCache, USER_AGENT } from "./http.js";
 import { get as httpsGet } from "node:https";
 import { detectNonLaunchEra, type EraAdvisory } from "./era.js";
+import { assertNoWikiApiError, notWikiApiErrorPayload } from "./mediawiki.js";
 import { EQ_ARCHIVES_REPOSITORY_URL, EQ_ARCHIVES_SEARCH_URL, FVPROJECT_API_URL, FVPROJECT_BASE_URL } from "./sources.js";
 import { cleanText, htmlToText, stripHtml, truncateText } from "./text.js";
 
@@ -9,7 +10,6 @@ const EQ_ARCHIVES_INDEX = "eq-archive";
 const EQ_ARCHIVES_ELASTIC_URL = `${EQ_ARCHIVES_SEARCH_URL}elasticsearch/${EQ_ARCHIVES_INDEX}`;
 // Public readonly credential embedded by https://search.eqarchives.org/ for browser search.
 const EQ_ARCHIVES_AUTHORIZATION = "Basic cmVhZG9ubHk6ZTNjYzVjNTAtZWM2YS0xMWVmLWFmNzQtMDAxNTVkNGI2MDk5";
-const ARCHIVE_TIMEOUT_MS = 15_000;
 
 export type FvLorePage = {
   title: string;
@@ -129,17 +129,23 @@ async function fvApi<T>(params: Record<string, string | number | boolean>): Prom
   }
   url.searchParams.set("format", "json");
   url.searchParams.set("formatversion", "2");
-  return JSON.parse(await fetchFvText(url.href)) as T;
+  const response = JSON.parse(await fetchFvText(url.href)) as T;
+  assertNoWikiApiError(response, "FVProject", params.action);
+  return response;
 }
 
 async function fetchFvText(url: string): Promise<string> {
   try {
-    return await fetchText(url, { cacheTtlMs: 5 * 60_000 });
+    return await fetchText(url, { cacheTtlMs: 5 * 60_000, cacheable: notWikiApiErrorPayload });
   } catch (error) {
     if (!isCertificateError(error)) {
       throw error;
     }
-    return fetchNodeHttps(url, 3);
+    const body = await fetchNodeHttps(url, 3);
+    // The TLS-workaround path bypasses fetchText, so record its result under
+    // the same cache key — otherwise every FVProject call refetches.
+    primeTextCache(url, body);
+    return body;
   }
 }
 
@@ -157,7 +163,7 @@ async function fetchNodeHttps(url: string, redirectsRemaining: number): Promise<
         rejectUnauthorized: false,
         headers: {
           "accept": "application/json,text/html;q=0.9,*/*;q=0.8",
-          "user-agent": "everquest-legends-mcp/1.1.0"
+          "user-agent": USER_AGENT
         }
       },
       (response) => {
@@ -271,30 +277,11 @@ export async function getFvLorePage(title: string, maxCharacters = 12_000): Prom
   };
 }
 
-async function postEqArchives(body: Record<string, unknown>): Promise<EqArchiveSearchApiResponse> {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), ARCHIVE_TIMEOUT_MS);
-  try {
-    const response = await fetch(`${EQ_ARCHIVES_ELASTIC_URL}/_search`, {
-      method: "POST",
-      signal: controller.signal,
-      headers: {
-        "accept": "application/json",
-        "authorization": EQ_ARCHIVES_AUTHORIZATION,
-        "content-type": "application/json",
-        "user-agent": "everquest-legends-mcp/1.1.0"
-      },
-      body: JSON.stringify(body)
-    });
-
-    if (!response.ok) {
-      throw new Error(`EQArchives search failed with HTTP ${response.status}`);
-    }
-
-    return (await response.json()) as EqArchiveSearchApiResponse;
-  } finally {
-    clearTimeout(timeout);
-  }
+async function postEqArchives(body: Record<string, unknown>, cacheTtlMs: number): Promise<EqArchiveSearchApiResponse> {
+  return postJson<EqArchiveSearchApiResponse>(`${EQ_ARCHIVES_ELASTIC_URL}/_search`, body, {
+    cacheTtlMs,
+    headers: { authorization: EQ_ARCHIVES_AUTHORIZATION }
+  });
 }
 
 function asTags(value: string[] | string | null | undefined): string[] | undefined {
@@ -339,6 +326,7 @@ export async function searchEqArchives(query: string, options: { limit?: number 
   }
 
   const size = Math.max(1, Math.min(options.limit ?? 10, 25));
+  // Search results can shift as the archive is indexed; keep them fresh.
   const response = await postEqArchives({
     size,
     query: {
@@ -369,7 +357,7 @@ export async function searchEqArchives(query: string, options: { limit?: number 
         "llm_tags"
       ]
     }
-  });
+  }, 60_000);
 
   const total = response.hits?.total?.value ?? 0;
   return {
@@ -409,7 +397,8 @@ export async function getEqArchiveDocument(id: string, maxCharacters = 12_000): 
         "llm_tags"
       ]
     }
-  });
+    // Documents are immutable archive captures; the default 5-minute TTL is safe.
+  }, 5 * 60_000);
 
   const hit = response.hits?.hits?.[0];
   if (!hit) {

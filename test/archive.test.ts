@@ -1,16 +1,21 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { getFvLorePage, getFvLorePages, searchEqArchives } from "../src/archive.js";
-import { fetchText } from "../src/http.js";
+import { fetchText, postJson } from "../src/http.js";
 
 vi.mock("../src/http.js", () => ({
-  fetchText: vi.fn()
+  fetchText: vi.fn(),
+  postJson: vi.fn(),
+  primeTextCache: vi.fn(),
+  USER_AGENT: "everquest-legends-mcp/test (+https://github.com/ArtSabintsev/everquest-legends-mcp)"
 }));
 
 const mockedFetchText = vi.mocked(fetchText);
+const mockedPostJson = vi.mocked(postJson);
 
 describe("historical lore and archive helpers", () => {
   beforeEach(() => {
     mockedFetchText.mockReset();
+    mockedPostJson.mockReset();
     vi.unstubAllGlobals();
   });
 
@@ -58,32 +63,26 @@ describe("historical lore and archive helpers", () => {
   });
 
   it("searches EQArchives and strips highlight markup", async () => {
-    const fetchMock = vi.fn(async () =>
-      new Response(
-        JSON.stringify({
-          hits: {
-            total: { value: 1, relation: "eq" },
-            hits: [
-              {
-                _id: "websites/example/miragul.htm",
-                _score: 9,
-                _source: {
-                  title: "Miragul",
-                  url: "https://web.archive.org/web/example",
-                  domain_name: "example.test",
-                  capture_date: "2002-01-01T00:00:00"
-                },
-                highlight: {
-                  text_full: ["The lich <em>Miragul</em> appears in Everfrost."]
-                }
-              }
-            ]
+    mockedPostJson.mockResolvedValue({
+      hits: {
+        total: { value: 1, relation: "eq" },
+        hits: [
+          {
+            _id: "websites/example/miragul.htm",
+            _score: 9,
+            _source: {
+              title: "Miragul",
+              url: "https://web.archive.org/web/example",
+              domain_name: "example.test",
+              capture_date: "2002-01-01T00:00:00"
+            },
+            highlight: {
+              text_full: ["The lich <em>Miragul</em> appears in Everfrost."]
+            }
           }
-        }),
-        { status: 200, headers: { "content-type": "application/json" } }
-      )
-    );
-    vi.stubGlobal("fetch", fetchMock);
+        ]
+      }
+    });
 
     const search = await searchEqArchives("Miragul", { limit: 1 });
 
@@ -93,8 +92,10 @@ describe("historical lore and archive helpers", () => {
       title: "Miragul",
       snippet: "The lich Miragul appears in Everfrost."
     });
-    expect(fetchMock.mock.calls[0]?.[1]?.headers).toMatchObject({
-      authorization: expect.stringMatching(/^Basic /)
-    });
+
+    const [url, , options] = mockedPostJson.mock.calls[0];
+    expect(url).toContain("/_search");
+    expect(options?.headers?.authorization).toMatch(/^Basic /);
+    expect(options?.cacheTtlMs).toBe(60_000);
   });
 });

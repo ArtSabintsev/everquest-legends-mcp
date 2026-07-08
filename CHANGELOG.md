@@ -56,6 +56,19 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
   required dataset is missing. Exposed via `npm run extract:eqlbuilds` and
   `npm run extract:eqlbuilds:check`, and run on a schedule by
   `.github/workflows/refresh-eqlbuilds.yml`.
+- Automatic semver releases: every substantive push to `main` (including
+  scheduled data refreshes) is now versioned from conventional commits by
+  `.github/workflows/release.yml` + `scripts/prepare-release.mjs`, which update
+  this changelog, tag the release, and publish GitHub Release notes.
+- Shared HTTP layer hardening (`src/http.ts`): one conservative retry on
+  transient failures (network errors and HTTP 408/5xx; rate limits and client
+  timeouts are deliberately not retried), in-flight
+  coalescing of concurrent identical requests, a bounded response cache, and a
+  `postJson` helper that caches POST responses keyed by URL + body.
+- EQArchives searches (`eql_eqarchives_search`, `eql_eqarchives_document`) now
+  go through the shared HTTP layer: cached (60 s for searches, 5 min for
+  immutable documents), shared User-Agent, and retry behavior — previously every
+  identical query re-hit the Elasticsearch endpoint with a one-off fetch.
 
 ### Removed
 
@@ -68,6 +81,21 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Fixed
 
+- Cache freshness is now judged against each caller's TTL instead of the TTL of
+  whichever caller fetched first, so a 60-second read (official news, wiki API)
+  can no longer be served 5-minute-old data cached by a slower surface.
+- EQL Wiki and FVProject API errors (rate limits, bad params) are surfaced as
+  tool failures instead of silently reading as empty result lists.
+- `eql_official_news` now fails loudly when the news page's inline
+  `window.EQL.News.articles` payload disappears (structure change) instead of
+  reporting zero articles.
+- `eql_source_search` reports mistyped `sourceIds` entries in `failedSources`
+  instead of silently searching fewer sources.
+- The FVProject TLS-fallback path now populates the shared cache, so a
+  certificate workaround no longer refetches on every call.
+- The User-Agent version is derived from `package.json` (was hardcoded to
+  1.1.0 in two places) and now includes a contact URL per the MediaWiki
+  User-Agent policy.
 - `package-lock.json` was out of sync with `package.json` (missing `@emnapi/*`
   transitive dependencies), which broke `npm ci` in CI. Regenerated the lock.
 

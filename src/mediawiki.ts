@@ -107,7 +107,31 @@ async function wikiApi<T>(params: Record<string, string | number | boolean>): Pr
   url.searchParams.set("format", "json");
   url.searchParams.set("formatversion", "2");
 
-  return JSON.parse(await fetchText(url.href, { cacheTtlMs: 60_000 })) as T;
+  const response = JSON.parse(
+    await fetchText(url.href, { cacheTtlMs: 60_000, cacheable: notWikiApiErrorPayload })
+  ) as T;
+  assertNoWikiApiError(response, "EQL Wiki", params.action);
+  return response;
+}
+
+// MediaWiki reports failures (rate limits, bad params) inside a 200 response;
+// without this check they would surface as empty result lists. A missing page
+// on action=parse is the one in-band error callers handle themselves.
+export function assertNoWikiApiError(response: unknown, sourceLabel: string, action: unknown): void {
+  const apiError = (response as { error?: { code?: string; info?: string } }).error;
+  if (!apiError) return;
+  if (action === "parse" && apiError.code === "missingtitle") return;
+  throw new Error(`${sourceLabel} API error (${apiError.code ?? "unknown"}): ${apiError.info ?? "no details provided"}`);
+}
+
+// Keeps transient in-band API errors (delivered with HTTP 200) out of the
+// shared cache, so a momentary rate limit is not replayed for a full TTL.
+export function notWikiApiErrorPayload(body: string): boolean {
+  try {
+    return !(JSON.parse(body) as { error?: unknown }).error;
+  } catch {
+    return true;
+  }
 }
 
 export async function searchWiki(query: string, limit = 10): Promise<WikiSearchResult[]> {

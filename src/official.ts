@@ -34,10 +34,11 @@ const OFFICIAL_NEWS_PATH_PREFIX = "/news/";
 const OFFICIAL_HOSTNAME = new URL(OFFICIAL_BASE_URL).hostname;
 const OFFICIAL_ARTICLE_PAGE_NAME_PATTERN = /^[a-z0-9][a-z0-9-]*$/i;
 
-export function parseOfficialNewsArticles(html: string): OfficialNewsArticle[] {
+/** Returns null when the inline articles payload is missing entirely (page structure changed). */
+export function parseOfficialNewsArticles(html: string): OfficialNewsArticle[] | null {
   const match = html.match(/window\.EQL\.News\.articles\s*=\s*(\[[^\n]*\])/);
   if (!match) {
-    return [];
+    return null;
   }
 
   const rawArticles = JSON.parse(match[1]) as RawOfficialNewsArticle[];
@@ -54,7 +55,13 @@ export function parseOfficialNewsArticles(html: string): OfficialNewsArticle[] {
 
 export async function getOfficialNews(limit = 10): Promise<OfficialNewsArticle[]> {
   const html = await fetchText(`${OFFICIAL_BASE_URL}/news`, { cacheTtlMs: 60_000 });
-  return parseOfficialNewsArticles(html).slice(0, Math.max(1, Math.min(limit, 50)));
+  const articles = parseOfficialNewsArticles(html);
+  if (articles === null) {
+    // A silent empty list would read as "no news"; a missing payload means the
+    // scrape target moved and this parser needs updating.
+    throw new Error("Official news page structure changed: window.EQL.News.articles payload not found.");
+  }
+  return articles.slice(0, Math.max(1, Math.min(limit, 50)));
 }
 
 export function resolveOfficialArticleUrl(pageNameOrUrl: string): string {

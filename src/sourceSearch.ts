@@ -75,6 +75,19 @@ export async function searchCuratedSources(query: string, options: { limit?: num
   const allowed = new Set(options.sourceIds ?? SOURCE_PAGES.map((source) => source.id));
   const searchableSources = SOURCE_PAGES.filter((source) => source.searchable && allowed.has(source.id));
 
+  // A mistyped or unsearchable source id must show up as a failure, not
+  // silently shrink the search.
+  const unknownSourceFailures: SourceSearchFailure[] = (options.sourceIds ?? []).flatMap((id) => {
+    const source = sourceById(id);
+    if (!source) {
+      return [{ id, title: id, url: "", reason: "Unknown source id" }];
+    }
+    if (!source.searchable) {
+      return [{ id, title: source.title, url: source.url, reason: "Source is a pointer, not a searchable page" }];
+    }
+    return [];
+  });
+
   const sourceResults = await mapWithConcurrency(
     searchableSources,
     SOURCE_SEARCH_CONCURRENCY,
@@ -117,6 +130,7 @@ export async function searchCuratedSources(query: string, options: { limit?: num
   if (officialNews.failedSource) {
     failedSources.push(officialNews.failedSource);
   }
+  failedSources.push(...unknownSourceFailures);
 
   const results = [...curatedResults, ...officialNews.results]
     .sort((left, right) => right.score - left.score || left.title.localeCompare(right.title))

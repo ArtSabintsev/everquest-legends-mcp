@@ -1,0 +1,103 @@
+name: Release
+
+# Automatic semver releases: every substantive change to main is versioned.
+# scripts/prepare-release.mjs picks the bump from conventional commits since
+# the last tag (breaking -> major, feat -> minor, otherwise patch), converts
+# the CHANGELOG's [Unreleased] section (or a generated commit summary) into
+# the new version's notes, and the workflow commits, tags, and publishes a
+# GitHub Release. NOTE: mirrored in guildwars1-mcp — keep in sync.
+#
+# Loop safety: pushes made here use GITHUB_TOKEN, which never retriggers push
+# workflows, and the script ignores chore(release) commits. Data-refresh
+# workflows also push with GITHUB_TOKEN, so they can't trigger `push` either —
+# the workflow_run trigger below picks those up instead.
+
+on:
+  push:
+    branches: [main]
+  workflow_run:
+    # Must match the `name:` of the data-refresh workflow exactly.
+    workflows: ["Refresh eqlbuilds data"]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    # Only release for refresh runs that succeeded on main; a manual refresh
+    # run from a feature branch must not publish whatever is pending on main.
+    if: >-
+      github.event_name != 'workflow_run' ||
+      (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
+      # Needs only git + npm itself, so it runs before the (much slower)
+      # dependency install and lets no-op runs exit cheaply.
+      - name: Prepare release
+        id: prep
+        run: |
+          version=$(node scripts/prepare-release.mjs)
+          echo "version=${version}" >> "$GITHUB_OUTPUT"
+
+      - name: Install
+        if: steps.prep.outputs.version != 'none'
+        run: npm ci
+
+      - name: Validate
+        if: steps.prep.outputs.version != 'none'
+        run: |
+          npm run typecheck
+          npm test
+
+      - name: Commit, tag, and push
+        if: steps.prep.outputs.version != 'none'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add package.json package-lock.json CHANGELOG.md
+          git commit -m "chore(release): ${{ steps.prep.outputs.version }}"
+          # Annotated tag pushed explicitly: --follow-tags ignores lightweight
+          # tags, which would let GitHub mint the tag at a racing HEAD instead.
+          git tag -a "v${{ steps.prep.outputs.version }}" -m "v${{ steps.prep.outputs.version }}"
+          git push origin main "refs/tags/v${{ steps.prep.outputs.version }}"
+
+      # Runs even when there is nothing new to release, so a previous run that
+      # pushed a tag but failed at this step self-heals on the next trigger.
+      - name: Ensure GitHub Release exists
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          version="${{ steps.prep.outputs.version }}"
+          if [ "$version" != "none" ]; then
+            tag="v${version}"
+          else
+            tag=$(git describe --tags --abbrev=0 2>/dev/null || true)
+          fi
+          if [ -z "$tag" ]; then
+            echo "no tag to release"; exit 0
+          fi
+          if gh release view "$tag" > /dev/null 2>&1; then
+            echo "release $tag already exists"; exit 0
+          fi
+          if [ ! -s .release-notes.md ]; then
+            node scripts/changelog-notes.mjs "${tag#v}" > .release-notes.md
+          fi
+          gh release create "$tag" --title "$tag" --notes-file .release-notes.md

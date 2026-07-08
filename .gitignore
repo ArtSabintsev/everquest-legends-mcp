@@ -8,3 +8,4 @@ npm-debug.log*
 
 # Scratch output from scripts/extract-eql-client.mjs (local game-client dumps).
 eql-client-dump/
+.release-notes.md

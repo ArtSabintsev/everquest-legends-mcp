@@ -1,3 +1,4 @@
+# The `name:` below is referenced by release.yml's workflow_run trigger — keep in sync.
 name: Refresh eqlbuilds data
 
 # Continuous extraction of the eqlbuilds.com build-planner dataset.
@@ -38,14 +39,23 @@ jobs:
 
       # Gate on the extractor's own --check, which ignores volatile fields
       # (extraction timestamp, bundle hash) and only reports real data changes,
-      # so an unchanged upstream never produces a no-op commit.
+      # so an unchanged upstream never produces a no-op commit. Exit 10 means
+      # "data changed"; any other nonzero exit is a crashed extraction and
+      # fails the job instead of being mistaken for a change.
       - name: Detect upstream changes
         id: diff
         run: |
-          if npm run --silent extract:eqlbuilds:check; then
+          set +e
+          npm run --silent extract:eqlbuilds:check
+          code=$?
+          set -e
+          if [ "$code" -eq 0 ]; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
-          else
+          elif [ "$code" -eq 10 ]; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "extract:eqlbuilds:check failed with exit $code" >&2
+            exit "$code"
           fi
 
       - name: Extract latest eqlbuilds.com data

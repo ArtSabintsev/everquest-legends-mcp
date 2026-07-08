@@ -123,7 +123,10 @@ async function main() {
     if (changed > 0) {
       console.error(`[extract-eqlbuilds] STALE: ${changed} file(s) differ from upstream.`);
       console.error(summary);
-      process.exit(1);
+      // Exit 10 distinguishes "data changed" from a crashed extraction (any
+      // other nonzero), so the refresh workflow never mistakes an outage for
+      // a change.
+      process.exit(10);
     }
     console.log(`[extract-eqlbuilds] up to date. ${summary}`);
     return;

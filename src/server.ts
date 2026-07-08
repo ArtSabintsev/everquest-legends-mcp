@@ -10,6 +10,7 @@ import { getCategoryPages, getRecentChanges, getWikiPage, searchWiki } from "./m
 import { detectNonLaunchEra } from "./era.js";
 import { getOfficialYouTubeVideos, getYouTubeVideos, listYouTubeSources } from "./youtube.js";
 import { getVideoTranscript } from "./transcript.js";
+import { PACKAGE_VERSION } from "./http.js";
 import { getEqArchiveDocument, getFvLorePage, getFvLorePages, searchEqArchives, searchFvLore } from "./archive.js";
 import {
   getEqlBuildsAbility,
@@ -52,7 +53,7 @@ function toolResult(summary: string, structuredContent: Record<string, unknown>)
 export function createServer(): McpServer {
   const server = new McpServer({
     name: "everquest-legends-mcp",
-    version: "1.1.0"
+    version: PACKAGE_VERSION
   });
 
   server.registerResource(
