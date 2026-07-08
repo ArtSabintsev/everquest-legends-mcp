@@ -60,10 +60,12 @@ const CLASS_ORDER = [
   "magician", "enchanter", "beastlord", "berserker"
 ];
 
-// spells_us.txt: 0-indexed caret columns. "class level columns 36-51" (1-indexed,
-// per notes.json) => 0-indexed 35..50 inclusive, one column per class in
-// CLASS_ORDER. A level of 254 or 255 marks the spell unusable by that class.
-const CLASS_LEVEL_COLUMNS = { start: 35, end: 50 };
+// spells_us.txt: 0-indexed caret columns. The 2026-07-06 client update inserted
+// one field ahead of the class-level block, moving it from 0-indexed 35..50 to
+// 36..51 (one column per class in CLASS_ORDER). The report-only sanity check
+// against the committed snapshot verified 100% agreement at this window. A
+// level of 254 or 255 marks the spell unusable by that class.
+const CLASS_LEVEL_COLUMNS = { start: 36, end: 51 };
 const SPELL_ID_COL = 0;
 const SPELL_NAME_COL = 1;
 const UNUSABLE_LEVELS = new Set([254, 255, 0]);

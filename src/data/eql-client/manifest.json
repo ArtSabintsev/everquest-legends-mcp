@@ -2,7 +2,7 @@
   "source": "EverQuest Legends client (local install)",
   "sourceNote": "Reference text extracted directly from the EverQuest Legends client install (via scripts/extract-eql-reference.mjs). No third-party intermediary; the client is the source.",
   "extractorVersion": 1,
-  "extractedAt": "2026-07-04T03:09:28.332Z",
+  "extractedAt": "2026-07-08T00:12:44.968Z",
   "gameDirName": "EverQuest Legends",
   "sources": [
     {
@@ -25,9 +25,9 @@
     },
     {
       "name": "dbstr_us.txt",
-      "bytes": 9829294,
-      "modifiedAt": "2026-06-29T17:42:33.000Z",
-      "sha256": "2c0863bc4dd233c55b2c891b4c8d22e190780b3b9b04798cb9eac55d359e8640"
+      "bytes": 9831850,
+      "modifiedAt": "2026-07-06T03:36:12.000Z",
+      "sha256": "196952959aabe0c904499412ef3caf2c0315ba0d7dc0a5c443f86d22e9b9cb5a"
     }
   ],
   "counts": {
