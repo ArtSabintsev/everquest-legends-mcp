@@ -6,6 +6,32 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- Four client-data tools backed by new extracted datasets:
+  `eql_client_zones` / `eql_client_zone` (the raw 118-zone map inventory the
+  client ships, with 2,400+ labeled points of interest; zones whose shortnames
+  match classic-EverQuest expansion codes carry a `classicExpansionHint` and
+  rank after likely-EQL zones in search) and `eql_client_storyline_search` /
+  `eql_client_storyline` (the 50 storyline narratives shipped in the client,
+  with per-story `eraAdvisory` flags because much of the folder is inherited
+  classic-EQ storyline text). Extracted by `scripts/extract-eql-reference.mjs`
+  v2 from `maps/` and `Storyline/`. The client's `eqnews.txt` was evaluated and
+  deliberately excluded: it ships legacy live-EverQuest patch notes (Laurion's
+  Song, level 125), not EverQuest Legends change history.
+- Era detection now also covers Planes of Power and later classic-EverQuest
+  expansions (Plane of Knowledge, Abysmal Sea, Darkhollow, The Buried Sea,
+  Serpent's Spine, and more), so inherited late-era content is flagged across
+  wiki, source, and client-storyline tools.
+
+### Changed
+
+- EQL-authoritative sources are now explicitly prioritized over classic-EQ
+  material: source registry entries carry an `authority` tier (`eql` vs
+  `classic-eq`), `eql_sources` lists EQL-authoritative sources first, and the
+  scope note tells consumers to prefer EQL sources whenever classic-EverQuest
+  context (FVProject, EQArchives, 1999 history page) disagrees.
+
 ## [1.2.3] - 2026-07-08
 
 ### Fixed

@@ -31,12 +31,25 @@ import {
   getEqlClientManualSection,
   getEqlClientProvenance,
   getEqlClientRace,
+  getEqlClientStoryline,
+  getEqlClientZone,
   listEqlClientManualSections,
   listEqlClientRaces,
+  listEqlClientStorylines,
+  listEqlClientZones,
   searchEqlClientCommands,
   searchEqlClientManual,
-  searchEqlClientRaces
+  searchEqlClientRaces,
+  searchEqlClientStorylines
 } from "./eqlClient.js";
+
+// EQL-authoritative sources first; classic-EQ context material last, with the
+// default authority tier materialized so consumers never see it missing.
+function sortedSourcePages() {
+  return [...SOURCE_PAGES]
+    .map((source) => ({ ...source, authority: source.authority ?? "eql" }))
+    .sort((a, b) => (a.authority === b.authority ? 0 : a.authority === "eql" ? -1 : 1));
+}
 
 function toolResult(summary: string, structuredContent: Record<string, unknown>): CallToolResult {
   return {
@@ -69,7 +82,7 @@ export function createServer(): McpServer {
         {
           uri: uri.href,
           mimeType: "application/json",
-          text: JSON.stringify({ scope: SOURCE_SCOPE, sources: SOURCE_PAGES }, null, 2)
+          text: JSON.stringify({ scope: SOURCE_SCOPE, sources: sortedSourcePages() }, null, 2)
         }
       ]
     })
@@ -157,11 +170,13 @@ export function createServer(): McpServer {
       title: "List EQL sources",
       description: "List curated EverQuest Legends public sources known to this server."
     },
-    async () =>
-      toolResult(`Found ${SOURCE_PAGES.length} configured sources.`, {
+    async () => {
+      const sources = sortedSourcePages();
+      return toolResult(`Found ${sources.length} configured sources.`, {
         scope: SOURCE_SCOPE,
-        sources: SOURCE_PAGES
-      })
+        sources
+      });
+    }
   );
 
   server.registerTool(
@@ -733,12 +748,92 @@ export function createServer(): McpServer {
     "eql_client_provenance",
     {
       title: "EQL client reference data provenance",
-      description: "Report how the local-client reference dataset (slash commands, race/model table, manual supplement) was extracted: source client files with sizes/hashes/modification times, extraction time, and counts.",
+      description: "Report how the local-client reference dataset (slash commands, race/model table, manual supplement, zones, storylines) was extracted: source client files with sizes/hashes/modification times, extraction time, and counts.",
       inputSchema: {}
     },
     async () => {
       const data = getEqlClientProvenance();
       return toolResult(`EQL client reference extracted ${data.manifest.extractedAt} from ${data.manifest.sources.length} client file(s).`, data);
+    }
+  );
+
+  server.registerTool(
+    "eql_client_zones",
+    {
+      title: "List/search EQL zones",
+      description:
+        "List the raw zone map inventory shipped in the EverQuest Legends client, or search zone names and point-of-interest labels (landmarks, city districts, vendor areas). The client inherits map files from classic EverQuest — zones flagged with classicExpansionHint match classic expansion zone codes and are almost certainly NOT in EQL; unhinted zones (including EQL's custom freeportacademy, innothuleb, tutorialb) are likelier EQL content but should be confirmed against EQL-specific sources. Search ranks unhinted zones first. Use eql_client_zone to read one zone's full POI list.",
+      inputSchema: {
+        query: z.string().min(2).max(80).optional().describe("Optional terms matched against zone keys and POI labels, e.g. Freeport, Pottery, or Sewers."),
+        limit: z.number().int().min(1).max(200).default(50)
+      }
+    },
+    async ({ query, limit }) => {
+      const data = listEqlClientZones({ query, limit });
+      const scope = query ? `zone(s) matching "${query}"` : "zones shipped in the client";
+      return toolResult(`${data.total} ${scope}; returning ${data.returned}.`, data);
+    }
+  );
+
+  server.registerTool(
+    "eql_client_zone",
+    {
+      title: "Read one EQL zone's POIs",
+      description:
+        "Read one zone's labeled points of interest (with map coordinates) from the EverQuest Legends client's map files. Check classicExpansionHint: hinted zones match classic-EverQuest expansion zone codes and are almost certainly not part of EQL; confirm zone existence against EQL-specific sources.",
+      inputSchema: {
+        zone: z.string().min(2).max(60).describe("Zone key from eql_client_zones, e.g. freeportwest, innothuleb, or tutorialb.")
+      }
+    },
+    async ({ zone }) => {
+      const data = getEqlClientZone(zone);
+      if (!data.found) {
+        const hint = data.suggestions.length > 0 ? ` Close matches: ${data.suggestions.join(", ")}.` : " Use eql_client_zones to list valid zone keys.";
+        return toolResult(`No client map found for zone key "${zone}".${hint}`, { zone, ...data });
+      }
+      return toolResult(`Zone ${data.zone.zone}: ${data.zone.poiCount} POIs across ${data.zone.layers} map layer(s).`, data);
+    }
+  );
+
+
+  server.registerTool(
+    "eql_client_storyline_search",
+    {
+      title: "Search EQL storylines",
+      description:
+        "Search the narrative storyline texts shipped in the EverQuest Legends client. Much of this folder is inherited from classic EverQuest's storyline system (results carry an eraAdvisory when they reference classic expansion content) — treat it as lore background, not confirmed EQL canon; prefer EQL-specific sources. Use eql_client_storyline to read a full story.",
+      inputSchema: {
+        query: z.string().min(2).max(120).describe("Story terms, e.g. Firiona Vie, Freeport, or Innoruuk."),
+        limit: z.number().int().min(1).max(25).default(8)
+      }
+    },
+    async ({ query, limit }) => {
+      const data = searchEqlClientStorylines(query, { limit });
+      return toolResult(`Found ${data.results.length} storyline match(es) for "${query}".`, data);
+    }
+  );
+
+  server.registerTool(
+    "eql_client_storyline",
+    {
+      title: "Read one EQL storyline",
+      description:
+        "Read one full storyline narrative shipped in the EverQuest Legends client, by id or title. Inherited classic-EverQuest storyline text ships alongside any EQL-specific stories, so check the eraAdvisory and treat this as lore background, not confirmed EQL canon.",
+      inputSchema: {
+        idOrTitle: z.string().min(2).max(120).describe("Storyline id (e.g. chosen, amulet) or title (e.g. The Search for the Chosen).")
+      }
+    },
+    async ({ idOrTitle }) => {
+      const data = getEqlClientStoryline(idOrTitle);
+      if (!data) {
+        const list = listEqlClientStorylines();
+        return toolResult(`No storyline matched "${idOrTitle}". ${list.count} storylines are available.`, {
+          idOrTitle,
+          found: false,
+          available: list.storylines.map((story) => ({ id: story.id, title: story.title }))
+        });
+      }
+      return toolResult(`Storyline "${data.storyline.title}" (${data.storyline.body.length} chars).`, data);
     }
   );
 

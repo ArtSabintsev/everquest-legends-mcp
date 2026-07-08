@@ -5,7 +5,7 @@
 // factions, items, and quests from them. This module detects that content so
 // callers can be warned rather than treating it as part of EverQuest Legends.
 
-export type EraName = "Kunark" | "Velious" | "Luclin";
+export type EraName = "Kunark" | "Velious" | "Luclin" | "Planes of Power" | "Later expansions";
 
 export type EraAdvisory = {
   flagged: boolean;
@@ -18,7 +18,7 @@ export const EQL_LAUNCH_SCOPE = {
   era: "pre-Kunark",
   continents: ["Antonica", "Faydwer", "Odus"],
   includedRaidContent: ["Plane of Sky", "Plane of Hate", "Plane of Fear"],
-  classicExpansionsNotInGame: ["Kunark", "Velious", "Luclin"],
+  classicExpansionsNotInGame: ["Kunark", "Velious", "Luclin", "Planes of Power", "and all later classic-EverQuest expansions"],
   note:
     "EverQuest Legends is a custom reimagining of classic EverQuest scoped to the continents Antonica, Faydwer, and Odus plus the classic Planes (Sky, Hate, Fear). The classic expansions (Kunark, Velious, Luclin) do not exist in this game. Community wikis and archives inherit classic EverQuest data and may describe zones, cities, factions, items, and quests from those expansions — and because the game is custom, even in-scope zones, mobs, and items can differ from their classic EverQuest counterparts."
 } as const;
@@ -52,7 +52,23 @@ const ERA_MARKERS: ReadonlyArray<{ era: EraName; term: string }> = [
   { era: "Luclin", term: "Vah Shir" },
   { era: "Luclin", term: "Sanctus Seru" },
   { era: "Luclin", term: "Shadow Haven" },
-  { era: "Luclin", term: "Akheva" }
+  { era: "Luclin", term: "Akheva" },
+  { era: "Planes of Power", term: "Plane of Knowledge" },
+  { era: "Planes of Power", term: "Plane of Time" },
+  { era: "Planes of Power", term: "Plane of Tranquility" },
+  { era: "Planes of Power", term: "Bastion of Thunder" },
+  { era: "Later expansions", term: "Abysmal Sea" },
+  { era: "Later expansions", term: "Taelosia" },
+  { era: "Later expansions", term: "Gates of Discord" },
+  { era: "Later expansions", term: "Omens of War" },
+  { era: "Later expansions", term: "Wall of Slaughter" },
+  { era: "Later expansions", term: "Darkhollow" },
+  { era: "Later expansions", term: "Prophecy of Ro" },
+  { era: "Later expansions", term: "Buried Sea" },
+  { era: "Later expansions", term: "Katta Castrum" },
+  { era: "Later expansions", term: "Serpent's Spine" },
+  { era: "Later expansions", term: "Crescent Reach" },
+  { era: "Later expansions", term: "Ashengate" }
 ];
 
 const MAX_MARKERS = 12;

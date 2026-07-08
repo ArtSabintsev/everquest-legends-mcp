@@ -59,6 +59,10 @@ It does not log into Daybreak, manipulate an account, automate a game client, or
 - `eql_client_race`: read a race by RaceID or name; a name returns every RaceID that shares it (playable plus NPC-model variants)
 - `eql_client_manual_search`: search the client manual supplement and return matching section titles with a snippet
 - `eql_client_manual_section`: read one manual-supplement section by title, or list all section titles
+- `eql_client_zones`: list/search the raw zone map inventory shipped in the client (zone keys + POI labels); zones matching classic-EverQuest expansion codes are flagged via `classicExpansionHint` and ranked last
+- `eql_client_zone`: read one zone's labeled points of interest with map coordinates
+- `eql_client_storyline_search`: search the storyline narratives shipped in the client (largely inherited classic-EQ storyline text; results carry an `eraAdvisory` when they reference classic expansion content)
+- `eql_client_storyline`: read one full storyline by id or title
 - `eql_client_provenance`: report the local-client reference snapshot manifest (source files with sizes/hashes/mtimes, counts)
 - `eql_official_news`: parse official EQL news index
 - `eql_official_article`: fetch and extract an official news article

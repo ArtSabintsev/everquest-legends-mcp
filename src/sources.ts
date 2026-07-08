@@ -7,6 +7,13 @@ export type SourcePage = {
   url: string;
   description: string;
   searchable: boolean;
+  /**
+   * "eql" (default): describes EverQuest Legends itself.
+   * "classic-eq": preserved classic-EverQuest material kept for historical/lore
+   * context only — EQL is a custom game, so this content is not authoritative
+   * for it (zones, mobs, items, and lore can all differ).
+   */
+  authority?: "eql" | "classic-eq";
 };
 
 export type YouTubeSourceAuthority = "official" | "creator";
@@ -50,7 +57,7 @@ export const EQ_ARCHIVES_REPOSITORY_URL = "https://github.com/dbsanfte/eq-archiv
 export const EQLBUILDS_BASE_URL = "https://eqlbuilds.com";
 
 export const SOURCE_SCOPE =
-  "Curated sources are scoped to EverQuest Legends only. General EQ1/EQ2, P99, EQEmu, Project Quarm, and other emulator/background databases are intentionally excluded unless a page is specifically about EverQuest Legends.";
+  "Curated sources are scoped to EverQuest Legends only. General EQ1/EQ2, P99, EQEmu, Project Quarm, and other emulator/background databases are intentionally excluded unless a page is specifically about EverQuest Legends. Sources tagged authority: classic-eq are preserved classic-EverQuest material kept for historical/lore context — EverQuest Legends is a custom game, so prefer EQL-authoritative sources (client data, eqlbuilds, EQL wiki, official pages) whenever they disagree.";
 
 export function youtubeChannelFeedUrl(channelId: string): string {
   return `https://www.youtube.com/feeds/videos.xml?channel_id=${channelId}`;
@@ -363,6 +370,7 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
   },
   {
     id: "official-eq-history-1999",
+    authority: "classic-eq",
     kind: "lore",
     title: "Official 1999 EverQuest History of Norrath",
     url: "https://web.archive.org/web/19990910004532/http://everquest.station.sony.com/e_history.html",
@@ -371,6 +379,7 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
   },
   {
     id: "fvproject-lore-category",
+    authority: "classic-eq",
     kind: "lore",
     title: "The Firiona Vie Project: Lore Category",
     url: "https://fvproject.com/index.php/Category:Lore",
@@ -379,6 +388,7 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
   },
   {
     id: "eqarchives-search",
+    authority: "classic-eq",
     kind: "archive",
     title: "EQArchives Search Portal",
     url: EQ_ARCHIVES_SEARCH_URL,
@@ -387,6 +397,7 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
   },
   {
     id: "eqarchives-repository",
+    authority: "classic-eq",
     kind: "archive",
     title: "EQ Archives Repository",
     url: EQ_ARCHIVES_REPOSITORY_URL,
