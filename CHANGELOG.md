@@ -6,6 +6,13 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.2.2] - 2026-07-08
+
+### Changed
+
+- Bump tsx from 4.22.4 to 4.23.0 (#9) (9695518)
+- Bump @types/node from 26.0.1 to 26.1.0 (#8) (067bb51)
+
 ## [1.2.1] - 2026-07-08
 
 ### Fixed
