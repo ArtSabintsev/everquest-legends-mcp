@@ -10,7 +10,7 @@ Stable (1.0). Read-only. It does not require secrets, cookies, credentials, a Da
 
 This MCP is for **EverQuest Legends**. It intentionally excludes general EQ1/EQ2, P99, EQEmu, Project Quarm, and other emulator/background databases unless a specific page is about EverQuest Legends.
 
-Classic EverQuest lore and archive sources are included as historical context for Norrath, not as EverQuest Legends launch-source authority. When a source describes Kunark, Velious, Luclin, or later content, treat that as background unless an EQL-specific source confirms it for Legends.
+Classic EverQuest lore and archive sources are included as historical context for Norrath, not as EverQuest Legends authority. EverQuest Legends is a custom reimagining of classic EverQuest: the classic expansions (Kunark, Velious, Luclin) do not exist in the game, and even in-scope zones, mobs, and items can differ from their classic counterparts. When a source describes expansion content — or any classic-EQ specifics — treat it as background unless an EQL-specific source (wiki, official pages, eqlbuilds/client snapshots) confirms it for Legends.
 
 This server is built around public, unauthenticated sources:
 

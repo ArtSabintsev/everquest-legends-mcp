@@ -9,6 +9,10 @@ describe("era advisory", () => {
     expect(advisory.markers).toContain("Velious");
     expect(advisory.markers).toContain("Thurgadin");
     expect(advisory.note).toMatch(/not in EverQuest Legends/i);
+    // The game is a custom reimagining: the note must say the content is absent,
+    // not imply Kunark/Velious/Luclin are coming later.
+    expect(advisory.note).toMatch(/custom/i);
+    expect(advisory.note).not.toMatch(/come later|not yet available|first expansion/i);
   });
 
   it("flags Kunark cities even without the word Kunark", () => {

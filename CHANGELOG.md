@@ -6,6 +6,14 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+
+- Era advisories, tool descriptions, and docs no longer imply Kunark, Velious,
+  and Luclin are upcoming EverQuest Legends expansions. EQL is a custom
+  reimagining of classic EverQuest: that content does not exist in the game,
+  and the advisories now also warn that in-scope zones, mobs, and items can
+  differ from their classic counterparts.
+
 ## [1.2.2] - 2026-07-08
 
 ### Changed

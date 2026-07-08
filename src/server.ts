@@ -169,7 +169,7 @@ export function createServer(): McpServer {
     {
       title: "Fetch a curated EQL source",
       description:
-        "Fetch and extract text from a searchable curated public source by id. When the text references content from a later expansion (Kunark, Velious, Luclin) that is not in EQL's pre-Kunark launch, the result includes an eraAdvisory.",
+        "Fetch and extract text from a searchable curated public source by id. When the text references classic EverQuest content (Kunark, Velious, Luclin) that does not exist in EverQuest Legends, the result includes an eraAdvisory.",
       inputSchema: {
         id: z.string().describe("Source id from eql_sources, for example official-home or eqprogression-faq."),
         maxCharacters: z.number().int().min(500).max(40_000).default(12_000).describe("Maximum extracted text length.")
@@ -204,7 +204,7 @@ export function createServer(): McpServer {
     {
       title: "Search EQL Wiki",
       description:
-        "Full-text search the public EverQuest Legends MediaWiki. The wiki inherits classic EverQuest data; when result snippets reference later-expansion content (Kunark, Velious, Luclin) not in EQL's pre-Kunark launch, the response includes an eraAdvisory.",
+        "Full-text search the public EverQuest Legends MediaWiki. The wiki inherits classic EverQuest data; when result snippets reference classic expansion content (Kunark, Velious, Luclin) that does not exist in EverQuest Legends, the response includes an eraAdvisory. EQL is a custom game, so even in-scope zones and mobs can differ from classic EverQuest.",
       inputSchema: {
         query: z.string().min(2).describe("MediaWiki search query."),
         limit: z.number().int().min(1).max(50).default(10)
@@ -226,7 +226,7 @@ export function createServer(): McpServer {
     {
       title: "Read EQL Wiki page",
       description:
-        "Fetch a page from EQL Wiki via MediaWiki API and return extracted text, links, categories, and revision metadata. Pages inherit classic EverQuest data; when the text references later-expansion content (Kunark, Velious, Luclin) not in EQL's pre-Kunark launch, the page includes an eraAdvisory.",
+        "Fetch a page from EQL Wiki via MediaWiki API and return extracted text, links, categories, and revision metadata. Pages inherit classic EverQuest data; when the text references classic expansion content (Kunark, Velious, Luclin) that does not exist in EverQuest Legends, the page includes an eraAdvisory. EQL is a custom game, so even in-scope zones and mobs can differ from classic EverQuest.",
       inputSchema: {
         title: z.string().min(1).describe("Wiki page title, for example Character Classes, Nagafen, or Build Guides."),
         maxCharacters: z.number().int().min(500).max(40_000).default(12_000).describe("Maximum extracted body length.")

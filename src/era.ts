@@ -1,8 +1,9 @@
-// EverQuest Legends launches pre-Kunark. The community wiki this server reads
-// inherits classic EverQuest data and frequently describes zones, cities,
-// factions, items, and quests from later expansions (Kunark, Velious, Luclin)
-// that are not in the launch game. This module detects that content so callers
-// can be warned rather than treating it as launch-live.
+// EverQuest Legends is a custom reimagining of classic EverQuest, scoped to the
+// original continents. The classic expansions (Kunark, Velious, Luclin) do not
+// exist in this game, but the community wiki and archive sources this server
+// reads inherit classic EverQuest data and frequently describe zones, cities,
+// factions, items, and quests from them. This module detects that content so
+// callers can be warned rather than treating it as part of EverQuest Legends.
 
 export type EraName = "Kunark" | "Velious" | "Luclin";
 
@@ -17,16 +18,15 @@ export const EQL_LAUNCH_SCOPE = {
   era: "pre-Kunark",
   continents: ["Antonica", "Faydwer", "Odus"],
   includedRaidContent: ["Plane of Sky", "Plane of Hate", "Plane of Fear"],
-  firstExpansion: "Kunark",
-  laterExpansions: ["Velious", "Luclin"],
+  classicExpansionsNotInGame: ["Kunark", "Velious", "Luclin"],
   note:
-    "EverQuest Legends launches pre-Kunark: continents Antonica, Faydwer, and Odus plus the classic Planes (Sky, Hate, Fear). Kunark is the first expansion; Velious and Luclin come later. The community wiki inherits classic EverQuest data and may describe zones, cities, factions, items, and quests from those later eras that are not in the launch game."
+    "EverQuest Legends is a custom reimagining of classic EverQuest scoped to the continents Antonica, Faydwer, and Odus plus the classic Planes (Sky, Hate, Fear). The classic expansions (Kunark, Velious, Luclin) do not exist in this game. Community wikis and archives inherit classic EverQuest data and may describe zones, cities, factions, items, and quests from those expansions — and because the game is custom, even in-scope zones, mobs, and items can differ from their classic EverQuest counterparts."
 } as const;
 
-// High-precision landmark terms that each indicate a specific post-launch
-// expansion. Terms are chosen to avoid colliding with launch content (for
-// example "Sebilis" is excluded because EQL's Iksar start is the launch-only
-// "New Sebilis Expedition").
+// High-precision landmark terms that each indicate a specific classic-EverQuest
+// expansion absent from EverQuest Legends. Terms are chosen to avoid colliding
+// with in-game content (for example "Sebilis" is excluded because EQL's Iksar
+// start is the game's own "New Sebilis Expedition").
 const ERA_MARKERS: ReadonlyArray<{ era: EraName; term: string }> = [
   { era: "Kunark", term: "Kunark" },
   { era: "Kunark", term: "Cabilis" },
@@ -74,16 +74,17 @@ function emptyAdvisory(): EraAdvisory {
 function buildNote(eras: EraName[]): string {
   const list = eras.join(", ");
   return (
-    `This text references ${list} content, which is NOT in EverQuest Legends' pre-Kunark launch ` +
-    "(continents Antonica, Faydwer, and Odus plus the classic Planes of Sky, Hate, and Fear). " +
-    "Kunark is the first expansion; Velious and Luclin come later. " +
-    `Treat any zones, cities, factions, items, deity quests, or gear tied to ${list} as not yet available at launch.`
+    `This text references ${list} content from classic EverQuest, which is NOT in EverQuest Legends ` +
+    "(a custom game scoped to Antonica, Faydwer, and Odus plus the classic Planes of Sky, Hate, and Fear). " +
+    `Treat any zones, cities, factions, items, deity quests, or gear tied to ${list} as absent from the game — ` +
+    "and note that even in-scope content can differ from classic EverQuest, because the game is a custom reimagining."
   );
 }
 
 /**
- * Scan text for references to post-launch EverQuest expansions and return a
- * structured advisory. Returns an unflagged advisory when nothing is found.
+ * Scan text for references to classic EverQuest expansion content that does
+ * not exist in EverQuest Legends and return a structured advisory. Returns an
+ * unflagged advisory when nothing is found.
  */
 export function detectNonLaunchEra(text: string): EraAdvisory {
   if (!text) {
