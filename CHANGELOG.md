@@ -6,6 +6,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.2.3] - 2026-07-08
+
 ### Fixed
 
 - Era advisories, tool descriptions, and docs no longer imply Kunark, Velious,
