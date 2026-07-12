@@ -1,6 +1,6 @@
 {
   "name": "everquest-legends-mcp",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "description": "Read-only MCP server for EverQuest Legends public sources.",
   "type": "module",
   "main": "dist/server.js",

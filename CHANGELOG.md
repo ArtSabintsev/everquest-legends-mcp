@@ -6,6 +6,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.3.2] - 2026-07-12
+
+### Fixed
+
+- serialize refresh with release, harden rebase-push, add fetch retry (7303372)
+
 ## [1.3.1] - 2026-07-12
 
 ### Fixed
