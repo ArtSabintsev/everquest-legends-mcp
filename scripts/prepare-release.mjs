@@ -7,7 +7,6 @@
 //
 // Prints the new version to stdout, or "none" when there is nothing to
 // release. Run by .github/workflows/release.yml on every push to main.
-// NOTE: mirrored in guildwars1-mcp — keep in sync.
 //
 // Usage: node scripts/prepare-release.mjs
 import { execSync } from "node:child_process";

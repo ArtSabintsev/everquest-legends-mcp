@@ -21,6 +21,12 @@ on:
 permissions:
   contents: write
 
+# Shares release.yml's group so a refresh never runs concurrently with a
+# release (whose push has no rebase) or with another refresh.
+concurrency:
+  group: release
+  cancel-in-progress: false
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
@@ -82,8 +88,10 @@ jobs:
           git add src/data/eqlbuilds
           rev=$(node -e "process.stdout.write(String(require('./src/data/eqlbuilds/manifest.json').wikiRevisionId))")
           git commit -m "chore: refresh eqlbuilds.com data snapshot (wiki rev ${rev})"
-          # main may have moved during extraction (e.g. the Release workflow
-          # pushing a version bump); rebase our snapshot commit onto the
-          # current tip instead of failing the push.
-          git pull --rebase origin main
+          # The branch may have moved during extraction (e.g. a human push;
+          # workflow pushes are serialized by the concurrency group); rebase
+          # our snapshot commit onto the current tip and re-validate the
+          # combined tree before pushing it.
+          git pull --rebase origin "$GITHUB_REF_NAME"
+          npm run typecheck && npm test
           git push

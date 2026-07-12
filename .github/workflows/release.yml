@@ -5,7 +5,7 @@ name: Release
 # the last tag (breaking -> major, feat -> minor, otherwise patch), converts
 # the CHANGELOG's [Unreleased] section (or a generated commit summary) into
 # the new version's notes, and the workflow commits, tags, and publishes a
-# GitHub Release. NOTE: mirrored in guildwars1-mcp — keep in sync.
+# GitHub Release.
 #
 # Loop safety: pushes made here use GITHUB_TOKEN, which never retriggers push
 # workflows, and the script ignores chore(release) commits. Data-refresh

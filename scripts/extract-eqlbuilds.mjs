@@ -259,19 +259,32 @@ function isRecord(value) {
   return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
+const FETCH_ATTEMPTS = 3;
+const FETCH_TIMEOUT_MS = 30_000;
+
 async function get(url) {
-  const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 30_000);
-  try {
-    const res = await fetch(url, {
-      signal: controller.signal,
-      headers: { "user-agent": USER_AGENT }
-    });
-    if (!res.ok) fail(`GET ${url} failed with HTTP ${res.status}`);
-    return await res.text();
-  } finally {
-    clearTimeout(timeout);
+  let lastError;
+  for (let attempt = 1; attempt <= FETCH_ATTEMPTS; attempt += 1) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+    try {
+      const res = await fetch(url, {
+        signal: controller.signal,
+        headers: { "user-agent": USER_AGENT }
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return await res.text();
+    } catch (error) {
+      lastError = error;
+      if (attempt < FETCH_ATTEMPTS) {
+        console.error(`[extract-eqlbuilds] GET ${url} attempt ${attempt} failed: ${error.message}; retrying`);
+        await new Promise((resolve) => setTimeout(resolve, 1000 * attempt));
+      }
+    } finally {
+      clearTimeout(timeout);
+    }
   }
+  fail(`GET ${url} failed after ${FETCH_ATTEMPTS} attempts: ${lastError?.message ?? lastError}`);
 }
 
 function fail(message) {

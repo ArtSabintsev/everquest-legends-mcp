@@ -1,6 +1,5 @@
 // Shared HTTP layer: cached, coalesced, retrying fetch with a policy-compliant
-// User-Agent. NOTE: mirrored in guildwars1-mcp/src/http.ts (same core; that
-// repo omits postJson/primeTextCache and adds fetchJson) — port fixes to both.
+// User-Agent.
 import { readFileSync } from "node:fs";
 
 const DEFAULT_TIMEOUT_MS = 15_000;
@@ -22,6 +21,8 @@ export const PACKAGE_VERSION = packageJson.version;
 // Descriptive User-Agent in the MediaWiki/Wikimedia policy shape
 // ("<client>/<version> (<contact>)") so wiki-family sources can identify and
 // contact us instead of blocking a bare tool name.
+// Duplicated in scripts/extract-eqlbuilds.mjs, which must run pre-build and
+// so can't import this module — keep the two in sync.
 export const USER_AGENT = `everquest-legends-mcp/${PACKAGE_VERSION} (+https://github.com/ArtSabintsev/everquest-legends-mcp)`;
 
 type CacheEntry = {
