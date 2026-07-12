@@ -6,6 +6,13 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.3.1] - 2026-07-12
+
+### Fixed
+
+- rebase before pushing refreshed eqlbuilds snapshot (328e75a)
+- use versioned policy-compliant User-Agent in eqlbuilds extractor (6fc8de9)
+
 ## [1.3.0] - 2026-07-08
 
 ### Added
