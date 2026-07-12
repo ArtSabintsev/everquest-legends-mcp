@@ -82,4 +82,8 @@ jobs:
           git add src/data/eqlbuilds
           rev=$(node -e "process.stdout.write(String(require('./src/data/eqlbuilds/manifest.json').wikiRevisionId))")
           git commit -m "chore: refresh eqlbuilds.com data snapshot (wiki rev ${rev})"
+          # main may have moved during extraction (e.g. the Release workflow
+          # pushing a version bump); rebase our snapshot commit onto the
+          # current tip instead of failing the push.
+          git pull --rebase origin main
           git push
