@@ -27,6 +27,12 @@ import { fileURLToPath } from "node:url";
 
 const SITE_URL = "https://eqlbuilds.com/";
 const EXTRACTOR_VERSION = 1;
+// Same "<client>/<version> (<contact>)" User-Agent as src/http.ts — identifies
+// the client and gives upstream maintainers a contact URL.
+const PACKAGE_VERSION = JSON.parse(
+  await readFile(new URL("../package.json", import.meta.url), "utf8")
+).version;
+const USER_AGENT = `everquest-legends-mcp/${PACKAGE_VERSION} (+https://github.com/ArtSabintsev/everquest-legends-mcp)`;
 const DATA_DIR = new URL("../src/data/eqlbuilds/", import.meta.url);
 const REQUIRED = ["races", "classes", "generalAbilities", "stances", "invocations", "notes", "meta"];
 
@@ -259,7 +265,7 @@ async function get(url) {
   try {
     const res = await fetch(url, {
       signal: controller.signal,
-      headers: { "user-agent": "everquest-legends-mcp extractor (+https://github.com/)" }
+      headers: { "user-agent": USER_AGENT }
     });
     if (!res.ok) fail(`GET ${url} failed with HTTP ${res.status}`);
     return await res.text();
