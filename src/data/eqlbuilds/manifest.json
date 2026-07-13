@@ -2,11 +2,11 @@
   "source": "eqlbuilds.com",
   "sourceUrl": "https://eqlbuilds.com/",
   "bundleUrls": [
-    "https://eqlbuilds.com/assets/index-gfoCiIGr.js"
+    "https://eqlbuilds.com/assets/index-IMBIcwuK.js"
   ],
-  "bundleSha256": "32dcbbfa0ccbfb73f91cef605242d8e5d3c5368474b685674ef846997aaeb947",
+  "bundleSha256": "e022a4ebe9b799c9f30eaae386481d38c4b3d5e664865178a8bf1685f60deae6",
   "extractorVersion": 1,
-  "extractedAt": "2026-07-06T08:34:31.526Z",
+  "extractedAt": "2026-07-13T16:37:21.241Z",
   "wikiRevisionId": 151303,
   "wikiRevisionTimestamp": "2026-06-27T14:06:46Z",
   "counts": {
@@ -16,6 +16,6 @@
     "generalAbilities": 130,
     "stances": 9,
     "invocations": 10,
-    "notes": 7
+    "notes": 8
   }
 }
