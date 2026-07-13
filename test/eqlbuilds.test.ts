@@ -32,9 +32,15 @@ describe("eqlbuilds dataset accessors", () => {
     expect(warrior).toBeDefined();
     expect(warrior?.name).toBe("Warrior");
     expect(warrior?.armor).toContain("plate");
-    expect(warrior?.spellCount).toBeGreaterThan(0);
+    // Warrior is a pure-melee class: it has no spellbook upstream (0 spells),
+    // so its content lives in skills/disciplines and alternate abilities.
+    expect(warrior?.spellCount).toBe(0);
     expect(warrior?.skillCount).toBeGreaterThan(0);
     expect(warrior?.alternateAbilityCount).toBeGreaterThan(0);
+    // Guard spell extraction itself: casters must still carry spells, so the
+    // whole dataset's spell count is substantial even though warrior has none.
+    const totalSpells = classes.reduce((sum, c) => sum + c.spellCount, 0);
+    expect(totalSpells).toBeGreaterThan(1000);
   });
 
   it("returns class detail with heavy lists gated behind flags", () => {
