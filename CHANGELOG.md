@@ -6,6 +6,16 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.3.3] - 2026-07-13
+
+### Fixed
+
+- warrior has no spells after upstream schema change (06a675f)
+
+### Changed
+
+- refresh eqlbuilds.com data snapshot (wiki rev 151303) (b5f02e7)
+
 ## [1.3.2] - 2026-07-12
 
 ### Fixed
