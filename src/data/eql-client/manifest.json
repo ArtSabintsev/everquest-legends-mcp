@@ -2,7 +2,7 @@
   "source": "EverQuest Legends client (local install)",
   "sourceNote": "Reference text extracted directly from the EverQuest Legends client install (via scripts/extract-eql-reference.mjs). No third-party intermediary; the client is the source.",
   "extractorVersion": 2,
-  "extractedAt": "2026-07-08T01:00:13.015Z",
+  "extractedAt": "2026-07-17T04:30:25.045Z",
   "gameDirName": "EverQuest Legends",
   "sources": [
     {
@@ -19,15 +19,15 @@
     },
     {
       "name": "racedata.txt",
-      "bytes": 158066,
-      "modifiedAt": "2026-05-26T15:44:32.000Z",
-      "sha256": "4382d326f4a705f6f6d2e5545c155249459d8f174a33941b377127d9ee63e55d"
+      "bytes": 158062,
+      "modifiedAt": "2026-07-14T02:39:04.000Z",
+      "sha256": "1aec91492813afcec32503ca3cbe40bb3ffa728aa626f6dc4d86d48cc175dbeb"
     },
     {
       "name": "dbstr_us.txt",
-      "bytes": 9831850,
-      "modifiedAt": "2026-07-06T03:36:12.000Z",
-      "sha256": "196952959aabe0c904499412ef3caf2c0315ba0d7dc0a5c443f86d22e9b9cb5a"
+      "bytes": 9831990,
+      "modifiedAt": "2026-07-14T02:39:04.000Z",
+      "sha256": "870e976d7cfbe629471a15b2008d5462571c648b66aa025ae1ac02a9d20a1541"
     },
     {
       "name": "maps/ (123 files)",
