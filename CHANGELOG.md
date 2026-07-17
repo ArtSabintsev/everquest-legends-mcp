@@ -6,6 +6,13 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.3.4] - 2026-07-17
+
+### Changed
+
+- refresh eql-client manifest provenance for 2026-07-13 patch (09e0b78)
+- refresh eqlbuilds twice weekly, Tue/Thu 8pm ET (259e229)
+
 ## [1.3.3] - 2026-07-13
 
 ### Fixed
