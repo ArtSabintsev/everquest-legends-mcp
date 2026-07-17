@@ -9,8 +9,13 @@ name: Refresh eqlbuilds data
 
 on:
   schedule:
-    # Weekly, Mondays 07:00 UTC. Adjust cadence as needed.
-    - cron: "0 7 * * 1"
+    # Twice weekly, Tuesdays and Thursdays 8pm ET: game patches land Tuesday
+    # mornings, so the Tuesday run catches same-day data and the Thursday run
+    # picks up anything eqlbuilds.com published late. GitHub cron is UTC-only,
+    # so these are Wednesday/Friday 00:00 UTC — exactly 8pm EDT; during
+    # standard time they fire at 7pm ET.
+    - cron: "0 0 * * 3"
+    - cron: "0 0 * * 5"
   workflow_dispatch:
     inputs:
       commit:
