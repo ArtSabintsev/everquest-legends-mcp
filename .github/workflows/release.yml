@@ -77,7 +77,11 @@ jobs:
           # Annotated tag pushed explicitly: --follow-tags ignores lightweight
           # tags, which would let GitHub mint the tag at a racing HEAD instead.
           git tag -a "v${{ steps.prep.outputs.version }}" -m "v${{ steps.prep.outputs.version }}"
-          git push origin main "refs/tags/v${{ steps.prep.outputs.version }}"
+          # --atomic: main and the tag land together or not at all. Without it,
+          # a rejected non-fast-forward branch push (a non-release push landing
+          # on main mid-run) still lets the tag push succeed, orphaning a tag
+          # that then blocks every future release with "tag already exists".
+          git push --atomic origin main "refs/tags/v${{ steps.prep.outputs.version }}"
 
       # Runs even when there is nothing new to release, so a previous run that
       # pushed a tag but failed at this step self-heals on the next trigger.
