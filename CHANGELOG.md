@@ -6,6 +6,18 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.3.5] - 2026-07-22
+
+### Fixed
+
+- make release push atomic to prevent orphaned tags (74c749e)
+
+### Changed
+
+- Bump typescript from 6.0.3 to 7.0.2 (#11) (1c9690a)
+- Bump vitest from 4.1.9 to 4.1.10 (#12) (da9498a)
+- Bump @types/node from 26.1.0 to 26.1.1 (#10) (8987b33)
+
 ## [1.3.4] - 2026-07-17
 
 ### Changed
