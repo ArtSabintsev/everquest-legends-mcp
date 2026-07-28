@@ -1829,17 +1829,17 @@
     "id": 130,
     "name": "Kerran",
     "plural": "Kerran",
-    "size": 7,
+    "size": 5.5,
     "models": [
       {
         "gender": "female",
         "tag": "KEF",
-        "size": 7
+        "size": 5.5
       },
       {
         "gender": "male",
         "tag": "KEM",
-        "size": 7
+        "size": 5.5
       }
     ]
   },

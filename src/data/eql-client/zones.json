@@ -532,526 +532,210 @@
     ]
   },
   {
-    "zone": "akanon",
-    "layers": 1,
-    "poiCount": 86,
+    "zone": "airplane",
+    "layers": 2,
+    "poiCount": 31,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "Clockwork (Spells)",
-        "x": 444,
-        "y": -2112,
-        "z": -183.9
+        "label": "Portal to Quest Room (Efreeti's Key)",
+        "x": -533,
+        "y": -1612,
+        "z": -695
       },
       {
-        "label": "Clockwork (Spells)",
-        "x": 425,
-        "y": -2111,
-        "z": -183.9
+        "label": "Portal to Island 1.5 Noble Dojorn (Key of Swords)",
+        "x": -839,
+        "y": -1419,
+        "z": -671
       },
       {
-        "label": "Clockwork (Spells)",
-        "x": 1040,
-        "y": -1120,
-        "z": 29
+        "label": "Portal to Island 2 Azarack (Key of the Misplaced)",
+        "x": -370,
+        "y": -1360,
+        "z": -712
       },
       {
-        "label": "Clockwork (Spells)",
-        "x": 396,
-        "y": -2081,
-        "z": -183.9
-      },
-      {
-        "label": "Clockwork (Spells)",
-        "x": 367,
-        "y": -2156,
-        "z": -183.9
-      },
-      {
-        "label": "Clockwork (Spells)",
-        "x": 374,
-        "y": -2149,
-        "z": -183.9
-      },
-      {
-        "label": "Clockwork (Spells)",
-        "x": 356,
-        "y": -2149,
-        "z": -183.9
-      },
-      {
-        "label": "Clockwork (Merchant)",
-        "x": 444,
-        "y": -2148,
-        "z": -183.9
-      },
-      {
-        "label": "Clockwork (Merchant)",
-        "x": 371,
-        "y": -2083,
-        "z": -183.9
-      },
-      {
-        "label": "Clockwork (Spells)",
-        "x": 410,
-        "y": -2098,
-        "z": -181.3
-      },
-      {
-        "label": "Clockwork (Merchant)",
-        "x": 775,
-        "y": -1242,
-        "z": -28
-      },
-      {
-        "label": "Clockwork (Merchant)",
-        "x": 777,
-        "y": -1265,
-        "z": -28
-      },
-      {
-        "label": "Clockwork (Merchant)",
-        "x": 115,
-        "y": -484,
-        "z": -28
-      },
-      {
-        "label": "Clockwork (Armor)",
-        "x": 52,
-        "y": -976,
-        "z": -24
-      },
-      {
-        "label": "Clockwork (Armor)",
-        "x": 63,
-        "y": -952,
-        "z": -24
-      },
-      {
-        "label": "Clockwork (Tailor)",
-        "x": 37,
-        "y": -943,
-        "z": -40
-      },
-      {
-        "label": "Clockwork (Armor)",
-        "x": 37,
-        "y": -966,
-        "z": -40
-      },
-      {
-        "label": "Clockwork (Baker)",
-        "x": 299,
-        "y": -886,
-        "z": -22
-      },
-      {
-        "label": "Clockwork (Bar)",
-        "x": 945,
-        "y": -1245,
-        "z": -32
-      },
-      {
-        "label": "Clockwork (Bar)",
-        "x": 946,
-        "y": -1252,
-        "z": -32
-      },
-      {
-        "label": "Clockwork (Merchant)",
-        "x": 284,
-        "y": -904,
-        "z": -22
-      },
-      {
-        "label": "Clockwork (Potion)",
-        "x": 301,
-        "y": -891,
-        "z": -32
-      },
-      {
-        "label": "Clockwork (Jewelry)",
-        "x": 952,
-        "y": -1347,
-        "z": -32
-      },
-      {
-        "label": "Clockwork (Jewelry)",
-        "x": 917,
-        "y": -1332,
-        "z": -32
-      },
-      {
-        "label": "Clockwork (Fletcher)",
-        "x": 879,
-        "y": -1250,
-        "z": -32
-      },
-      {
-        "label": "Clockwork (Weapons)",
-        "x": 884,
-        "y": -1315,
-        "z": -32
-      },
-      {
-        "label": "Clockwork (Armor)",
-        "x": 749,
-        "y": -1313,
-        "z": -28
-      },
-      {
-        "label": "Clockwork (Armor)",
-        "x": 707,
-        "y": -1320,
-        "z": -28
-      },
-      {
-        "label": "Clockwork (Armor Merchants)",
-        "x": 716.7,
-        "y": -1236.3,
-        "z": -28
-      },
-      {
-        "label": "Clockwork (Smith)",
-        "x": 740,
-        "y": -1325,
-        "z": -28
-      },
-      {
-        "label": "Clockwork (Smith)",
-        "x": 705,
-        "y": -1221,
-        "z": -28
-      },
-      {
-        "label": "Clockwork (Pottery)",
-        "x": 173,
-        "y": -750,
-        "z": -32
-      },
-      {
-        "label": "Clockwork (Brewer)",
-        "x": 924,
-        "y": -1265,
-        "z": -32
-      },
-      {
-        "label": "Clockwork (Gems)",
-        "x": 884,
-        "y": -1348,
-        "z": -32
-      },
-      {
-        "label": "Clockwork (Banker)",
-        "x": 852,
-        "y": -1348,
-        "z": -32
-      },
-      {
-        "label": "Clockwork (Banker)",
-        "x": 862,
-        "y": -1348,
-        "z": -32
-      },
-      {
-        "label": "Clockwork (Armor)",
-        "x": 759,
-        "y": -1174,
-        "z": -28
-      },
-      {
-        "label": "Clockwork (Tailor)",
-        "x": -146,
-        "y": -761,
-        "z": -28
-      },
-      {
-        "label": "Clockwork (Tailor)",
-        "x": -172,
-        "y": -771,
-        "z": -28
-      },
-      {
-        "label": "Clockwork (Merchant)",
-        "x": -153,
-        "y": -733,
-        "z": -28
-      },
-      {
-        "label": "Wuggan (GM Magician)",
-        "x": 1026,
-        "y": -1108,
-        "z": 28
-      },
-      {
-        "label": "Jarah (GM Warrior)",
-        "x": 469,
-        "y": -836,
-        "z": -32
-      },
-      {
-        "label": "Juline (GM Enchanter)",
-        "x": 979,
-        "y": -1096,
-        "z": 28
-      },
-      {
-        "label": "Nonnie (GM Enchanter)",
-        "x": 1010,
-        "y": -1076,
-        "z": 28
-      },
-      {
-        "label": "Tobon (GM Wizard)",
-        "x": 990,
-        "y": -1049,
-        "z": 28
-      },
-      {
-        "label": "Useah (GM Wizard)",
-        "x": 1008,
-        "y": -1046,
-        "z": 28
-      },
-      {
-        "label": "Welno (GM Rogue)",
-        "x": 598,
-        "y": -1240,
-        "z": -56
-      },
-      {
-        "label": "Lobal (GM Rogue)",
-        "x": 615,
-        "y": -1168,
-        "z": -56
-      },
-      {
-        "label": "Eonis (GM Necromancer)",
-        "x": 407,
-        "y": -2101,
-        "z": -183.9
-      },
-      {
-        "label": "Dewis (GM Necromancer)",
-        "x": 388,
-        "y": -2082,
-        "z": -183.9
-      },
-      {
-        "label": "Evah (GM Cleric)",
-        "x": 388,
-        "y": -2100,
-        "z": -183.9
-      },
-      {
-        "label": "Vaenor (GM Magician)",
-        "x": 590,
-        "y": -2022,
-        "z": -183.9
-      },
-      {
-        "label": "Kaxon (GM Rogue)",
-        "x": 509,
-        "y": -2069,
-        "z": -183.9
-      },
-      {
-        "label": "Rilgor (GM Enchanter)",
-        "x": 579,
-        "y": -2024,
-        "z": -183.9
-      },
-      {
-        "label": "Naygog (GM Warrior)",
-        "x": 503,
-        "y": -2108,
-        "z": -183.9
-      },
-      {
-        "label": "Velena (GM Wizard)",
-        "x": 595,
-        "y": -2031,
-        "z": -183.9
-      },
-      {
-        "label": "Manik (GM Warrior)",
-        "x": 470,
-        "y": -902,
-        "z": -32
-      },
-      {
-        "label": "Narron (GM Warrior)",
-        "x": 441,
-        "y": -847,
-        "z": -32
-      },
-      {
-        "label": "Larkon (GM Magician)",
-        "x": 978,
-        "y": -1029,
-        "z": 29
-      },
-      {
-        "label": "Derthix (GM Cleric)",
-        "x": 454,
-        "y": -2061,
-        "z": -183.9
-      },
-      {
-        "label": "Xalirilan (GM Wizard)",
-        "x": 1039,
-        "y": -1081,
-        "z": 28
-      },
-      {
-        "label": "Digetha (GM Cleric)",
-        "x": 538,
-        "y": -1183,
-        "z": -42
-      },
-      {
-        "label": "Lewis (GM Paladin)",
-        "x": 526,
-        "y": -1231,
-        "z": -38
-      },
-      {
-        "label": "Iony (GM Cleric)",
-        "x": 577,
-        "y": -1191,
-        "z": -35
-      },
-      {
-        "label": "Garret (GM Shadowknight)",
-        "x": 428,
-        "y": -2147,
-        "z": -183.9
-      },
-      {
-        "label": "Toglonoit Soulbinder",
-        "x": -38,
-        "y": -500,
-        "z": -28
-      },
-      {
-        "label": "Loom",
-        "x": -156.5,
-        "y": -773.5,
-        "z": -28
-      },
-      {
-        "label": "Ottonoggin (Merchant)",
-        "x": 711,
-        "y": -1313,
-        "z": -28
-      },
-      {
-        "label": "Pottery Wheel",
-        "x": 142,
-        "y": -711,
-        "z": -56
-      },
-      {
-        "label": "Kiln",
-        "x": 148,
-        "y": -713,
-        "z": -56
-      },
-      {
-        "label": "Baxok GM Warrior",
-        "x": 431,
-        "y": -848,
-        "z": -32
-      },
-      {
-        "label": "Clockwork (Spells)",
-        "x": 413,
-        "y": -2081,
-        "z": -183.9
-      },
-      {
-        "label": "Clockwork (Spells)",
-        "x": 412,
-        "y": -2044,
-        "z": -183.9
-      },
-      {
-        "label": "Clockwork (Smith)",
-        "x": 540,
-        "y": -2163,
-        "z": -183.9
-      },
-      {
-        "label": "Clockwork (Merchant)",
-        "x": 778,
-        "y": -1328,
-        "z": -28
-      },
-      {
-        "label": "Clockwork (Armor)",
-        "x": 886,
-        "y": -1285,
-        "z": -32
-      },
-      {
-        "label": "Clockwork (Merchant)",
-        "x": 915,
-        "y": -1284,
-        "z": -32
-      },
-      {
-        "label": "Ak`Anon Zoo",
-        "x": 829,
-        "y": -1279,
-        "z": -39.1
-      },
-      {
-        "label": "to Steamfont Mountains",
-        "x": 35,
-        "y": -47,
+        "label": "Portal to Island 2 Azarack (Key of the Misplaced)",
+        "x": -1171,
+        "y": -454,
         "z": 0
       },
       {
-        "label": "Drekon (Merchant)",
-        "x": 475,
-        "y": -866,
-        "z": -32
+        "label": "Portal to Island 3 Gorgalisk (Key of Misfortune)",
+        "x": 580,
+        "y": 460,
+        "z": -364
       },
       {
-        "label": "Tesil (Merchant)",
-        "x": 720,
-        "y": -1195,
-        "z": -28
+        "label": "Portal to Island 4 Pegasus (Key of Beasts)",
+        "x": -231,
+        "y": -189,
+        "z": -120
       },
       {
-        "label": "Clockwork (Smith)",
-        "x": 745,
-        "y": -1170,
-        "z": -28
+        "label": "Portal to Island 5 Spiroc (Avian Key)",
+        "x": 344,
+        "y": -493,
+        "z": 117
       },
       {
-        "label": "Forge",
-        "x": 705.9,
-        "y": -1248.2,
-        "z": -28
+        "label": "Portal to Island 6 Bees (Key of the Swarm)",
+        "x": -724.9,
+        "y": 189.2,
+        "z": 409.8
       },
       {
-        "label": "Brew Barrel",
-        "x": 913.4,
-        "y": -1250.1,
-        "z": -31.8
+        "label": "Portal to Island 7 Drakes(Key of Scale)",
+        "x": -429,
+        "y": 1208,
+        "z": 765
       },
       {
-        "label": "Rylin (Merchant)",
-        "x": 190,
-        "y": -1469,
-        "z": -112
+        "label": "Portal to Island 8 Veeshan (Veeshan's Key)",
+        "x": 1340,
+        "y": 716.9,
+        "z": 1007.3
       },
       {
-        "label": "Priest of Discord",
-        "x": -55,
-        "y": -359,
-        "z": -19.5
+        "label": "Island 1 (Thunder Spirits)",
+        "x": -696.8,
+        "y": -1205.9,
+        "z": -678.9
+      },
+      {
+        "label": "Zone In",
+        "x": -547,
+        "y": -1415,
+        "z": -695
+      },
+      {
+        "label": "Island 1.5 (Noble Dojorn)",
+        "x": -1115,
+        "y": -265.4,
+        "z": -16.7
+      },
+      {
+        "label": "From 1",
+        "x": -1108,
+        "y": -516,
+        "z": 0
+      },
+      {
+        "label": "Island 2 (Azarack)",
+        "x": 663.4,
+        "y": 299,
+        "z": -338.7
+      },
+      {
+        "label": "From 1 and 1.5",
+        "x": 434,
+        "y": 103,
+        "z": -343
+      },
+      {
+        "label": "Island 3 (Gorgalisk)",
+        "x": -273.7,
+        "y": -827.8,
+        "z": -73
+      },
+      {
+        "label": "From 2",
+        "x": -320,
+        "y": -563,
+        "z": -117
+      },
+      {
+        "label": "Island 4 (Pegasus)",
+        "x": 1064.2,
+        "y": -857.3,
+        "z": 173
+      },
+      {
+        "label": "From 3",
+        "x": 787,
+        "y": -1196,
+        "z": 120
+      },
+      {
+        "label": "Island 5 (Spiroc)",
+        "x": -931.7,
+        "y": 610.4,
+        "z": 450.6
+      },
+      {
+        "label": "From 4",
+        "x": -1111,
+        "y": 855,
+        "z": 395
+      },
+      {
+        "label": "Island 6 (Bees)",
+        "x": -155.1,
+        "y": 930.9,
+        "z": 788.2
+      },
+      {
+        "label": "From 5",
+        "x": -408,
+        "y": 775,
+        "z": 765
+      },
+      {
+        "label": "Island 7 (Drakes)",
+        "x": 786.2,
+        "y": 1476.1,
+        "z": 1009.1
+      },
+      {
+        "label": "From 6",
+        "x": 388,
+        "y": 906,
+        "z": -1086
+      },
+      {
+        "label": "Island 8 (Veeshan)",
+        "x": 1600.9,
+        "y": 90.2,
+        "z": 1221.8
+      },
+      {
+        "label": "From 7",
+        "x": 1294,
+        "y": 262,
+        "z": -1220
+      },
+      {
+        "label": "Quest Room",
+        "x": -617.6,
+        "y": -1312.3,
+        "z": -770.8
+      },
+      {
+        "label": "Portal to Island 1 (above)",
+        "x": -646.1,
+        "y": -1471,
+        "z": -770.8
+      },
+      {
+        "label": "Portal to Island 1 (Thunder Spirits)",
+        "x": 1727.3,
+        "y": 348.6,
+        "z": 1217
+      }
+    ]
+  },
+  {
+    "zone": "akanon",
+    "layers": 2,
+    "poiCount": 1,
+    "classicExpansionHint": null,
+    "pois": [
+      {
+        "label": "to The Steamfont Mountains",
+        "x": 78.5,
+        "y": -61.4,
+        "z": -0.8
       }
     ]
   },
@@ -1582,19 +1266,33 @@
     ]
   },
   {
+    "zone": "befallen",
+    "layers": 2,
+    "poiCount": 1,
+    "classicExpansionHint": null,
+    "pois": [
+      {
+        "label": "to West Commonlands",
+        "x": -31.9,
+        "y": 75.5,
+        "z": -0.8
+      }
+    ]
+  },
+  {
     "zone": "beholder",
-    "layers": 1,
+    "layers": 2,
     "poiCount": 2,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "to East Karana",
-        "x": 420.9,
-        "y": 1177.1,
-        "z": 28.3
+        "label": "to The Eastern Plains of Karana",
+        "x": 475,
+        "y": 1210,
+        "z": 31.3
       },
       {
-        "label": "to Runnyeye Citadel",
+        "label": "to The Liberated Citadel of Runnyeye",
         "x": 1837.1,
         "y": -902.7,
         "z": 1.6
@@ -1630,6 +1328,38 @@
         "x": 814.7,
         "y": 4937.2,
         "z": 196.6
+      }
+    ]
+  },
+  {
+    "zone": "butcher",
+    "layers": 2,
+    "poiCount": 4,
+    "classicExpansionHint": null,
+    "pois": [
+      {
+        "label": "to The Greater Faydark",
+        "x": 3061,
+        "y": 1316,
+        "z": 0
+      },
+      {
+        "label": "to Dagnor's Cauldron",
+        "x": 313.5,
+        "y": 2966.8,
+        "z": -0.8
+      },
+      {
+        "label": "to South Kaladim",
+        "x": 181,
+        "y": -3117,
+        "z": 0
+      },
+      {
+        "label": "to The Ocean of Tears (boat or translocator)",
+        "x": -3256,
+        "y": -1354,
+        "z": 9
       }
     ]
   },
@@ -2203,33 +1933,41 @@
   },
   {
     "zone": "cauldron",
-    "layers": 1,
-    "poiCount": 4,
+    "layers": 2,
+    "poiCount": 3,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "Conium (Merchant)",
-        "x": 826,
-        "y": 236,
-        "z": 244
-      },
-      {
-        "label": "to Butcherblock Mountains",
+        "label": "to The Butcherblock Mountains",
         "x": -267,
         "y": -2862,
         "z": 470
       },
       {
         "label": "to Kedge Keep",
-        "x": 1012.7,
-        "y": 1179.4,
-        "z": -333.7
+        "x": 1010.8,
+        "y": 1200,
+        "z": -335.2
       },
       {
         "label": "to The Estate of Unrest",
-        "x": 624.7,
-        "y": 2031.1,
-        "z": 90.6
+        "x": 627,
+        "y": 2046,
+        "z": 89.4
+      }
+    ]
+  },
+  {
+    "zone": "cazicthule",
+    "layers": 2,
+    "poiCount": 1,
+    "classicExpansionHint": null,
+    "pois": [
+      {
+        "label": "to The Feerrott",
+        "x": 66,
+        "y": -27,
+        "z": 0
       }
     ]
   },
@@ -2280,33 +2018,15 @@
   },
   {
     "zone": "commons",
-    "layers": 1,
-    "poiCount": 19,
+    "layers": 2,
+    "poiCount": 3,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "Druid Circle",
-        "x": -1362.2,
-        "y": -441.3,
-        "z": -54.4
-      },
-      {
-        "label": "Toll Booth",
-        "x": -51.3,
-        "y": -22.7,
-        "z": -54
-      },
-      {
-        "label": "Minor Spires",
-        "x": -1778.6,
-        "y": 6.7,
-        "z": -54.4
-      },
-      {
-        "label": "to East Commons",
-        "x": 1300.3,
-        "y": -4.3,
-        "z": -41
+        "label": "to East Commonlands",
+        "x": 1604.3,
+        "y": 24.5,
+        "z": -74.3
       },
       {
         "label": "to Befallen",
@@ -2319,84 +2039,6 @@
         "x": -4210.7,
         "y": -906.2,
         "z": -51.5
-      },
-      {
-        "label": "Slea (Druid Spells)",
-        "x": -1384,
-        "y": -450,
-        "z": -51.3
-      },
-      {
-        "label": "Ruby (Merchant)",
-        "x": -592,
-        "y": 212,
-        "z": -48.7
-      },
-      {
-        "label": "Rooster (Merchant)",
-        "x": -452,
-        "y": 149,
-        "z": -48.2
-      },
-      {
-        "label": "Seke (Bar)",
-        "x": -466,
-        "y": 104.2,
-        "z": -48.2
-      },
-      {
-        "label": "Sorsha (Armor)",
-        "x": -468,
-        "y": 196,
-        "z": -48.2
-      },
-      {
-        "label": "Parus (Weapons)",
-        "x": -534,
-        "y": 279,
-        "z": -48.2
-      },
-      {
-        "label": "Noresa (Jewelry)",
-        "x": -267,
-        "y": 701,
-        "z": -50.7
-      },
-      {
-        "label": "Maula (Merchant)",
-        "x": -2409,
-        "y": -405,
-        "z": -48
-      },
-      {
-        "label": "Ranon (Armor)",
-        "x": -2827,
-        "y": 463,
-        "z": -48.2
-      },
-      {
-        "label": "Opal (Weapons)",
-        "x": -2576,
-        "y": 515,
-        "z": -49
-      },
-      {
-        "label": "Olissa (Merchant)",
-        "x": -2714,
-        "y": 384,
-        "z": -51.4
-      },
-      {
-        "label": "Peron (Armor)",
-        "x": -2666,
-        "y": 400,
-        "z": -51.4
-      },
-      {
-        "label": "Redthorn (Bar)",
-        "x": -2763,
-        "y": 401,
-        "z": -51.4
       }
     ]
   },
@@ -2489,6 +2131,20 @@
         "x": 1136.6,
         "y": 449.5,
         "z": -140.5
+      }
+    ]
+  },
+  {
+    "zone": "crushbone",
+    "layers": 2,
+    "poiCount": 1,
+    "classicExpansionHint": null,
+    "pois": [
+      {
+        "label": "to The Greater Faydark",
+        "x": -163.2,
+        "y": 700.4,
+        "z": -0.8
       }
     ]
   },
@@ -2735,6 +2391,32 @@
     ]
   },
   {
+    "zone": "eastkarana",
+    "layers": 2,
+    "poiCount": 3,
+    "classicExpansionHint": null,
+    "pois": [
+      {
+        "label": "to The Northern Plains of Karana",
+        "x": -1222.7,
+        "y": -8.9,
+        "z": -38.1
+      },
+      {
+        "label": "to The Gorge of King Xorbb",
+        "x": 1988.6,
+        "y": -3646.9,
+        "z": -0.4
+      },
+      {
+        "label": "to Highpass Hold",
+        "x": 8333.6,
+        "y": 3079.2,
+        "z": 691.4
+      }
+    ]
+  },
+  {
     "zone": "echo",
     "layers": 1,
     "poiCount": 25,
@@ -2894,99 +2576,33 @@
   },
   {
     "zone": "ecommons",
-    "layers": 1,
-    "poiCount": 15,
+    "layers": 2,
+    "poiCount": 4,
     "classicExpansionHint": null,
     "pois": [
       {
         "label": "to West Freeport",
-        "x": 1558.6,
-        "y": -13.6,
-        "z": -50.7
+        "x": 1567,
+        "y": -50.1,
+        "z": -55.3
       },
       {
-        "label": "to Nektulos",
-        "x": -615.7,
-        "y": -1483.7,
-        "z": -17.8
+        "label": "to Nektulos Forest",
+        "x": -619.6,
+        "y": -1482,
+        "z": -22.3
       },
       {
-        "label": "to North Ro",
-        "x": 20.3,
-        "y": 2427.1,
-        "z": 3.8
+        "label": "to The Northern Desert of Ro",
+        "x": 156.3,
+        "y": 2464.5,
+        "z": -0.8
       },
       {
         "label": "to West Commonlands",
-        "x": -4952.3,
-        "y": -9.1,
-        "z": -70.7
-      },
-      {
-        "label": "Rushka (Spells)",
-        "x": 6.1,
-        "y": 1662.7,
-        "z": 3.8
-      },
-      {
-        "label": "Shady (Merchant)",
-        "x": 132.4,
-        "y": 1681.3,
-        "z": 3.8
-      },
-      {
-        "label": "Joryd (Fletcher)",
-        "x": -3755.6,
-        "y": -980,
-        "z": -49.5
-      },
-      {
-        "label": "Romya (Merchant)",
-        "x": -4056.7,
-        "y": -340.5,
-        "z": -49.3
-      },
-      {
-        "label": "Katha (Gems)",
-        "x": -4740.2,
-        "y": -234.2,
-        "z": -49.1
-      },
-      {
-        "label": "Loric (Tailor)",
-        "x": -3064.7,
-        "y": 315.4,
-        "z": -51.6
-      },
-      {
-        "label": "Parthar (Brewer)",
-        "x": -237.5,
-        "y": 118.1,
-        "z": -48.9
-      },
-      {
-        "label": "Merra (Pottery)",
-        "x": -27.5,
-        "y": 134.7,
-        "z": -50.7
-      },
-      {
-        "label": "Ponila (Weapons)",
-        "x": 853.2,
-        "y": -185.1,
-        "z": -49.5
-      },
-      {
-        "label": "Pardor (Merchant)",
-        "x": 789.3,
-        "y": 121,
-        "z": -49.6
-      },
-      {
-        "label": "Rinna (GM Cleric)",
-        "x": 846.7,
-        "y": 184,
-        "z": -49.9
+        "x": -4977.2,
+        "y": -8.9,
+        "z": 5.5
       }
     ]
   },
@@ -3030,177 +2646,27 @@
   },
   {
     "zone": "erudnext",
-    "layers": 1,
-    "poiCount": 38,
+    "layers": 2,
+    "poiCount": 6,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "Dleria (GM Cleric)",
-        "x": 422,
-        "y": 1064,
-        "z": 67.7
-      },
-      {
-        "label": "Issibla (Spells)",
-        "x": 374,
-        "y": 1031,
-        "z": 67.7
-      },
-      {
-        "label": "Mikeana (GM Cleric)",
-        "x": 369,
-        "y": 1115,
-        "z": 67.7
-      },
-      {
-        "label": "Kathar (Spells)",
-        "x": 417,
-        "y": 1066,
-        "z": 51.7
-      },
-      {
-        "label": "Ghemna (Weapons)",
-        "x": 398,
-        "y": 1070,
-        "z": 51.7
-      },
-      {
-        "label": "Laoni (GM Paladin)",
-        "x": 399,
-        "y": 1109,
-        "z": 51.7
-      },
-      {
         "label": "to Toxxulia Forest",
-        "x": 182,
-        "y": 1554.3,
-        "z": -47.3
+        "x": 183.9,
+        "y": 1549.1,
+        "z": -48.8
       },
       {
-        "label": "Luren (Merchant)",
-        "x": 61,
-        "y": 1156,
-        "z": 67.7
+        "label": "to Erudin Docks (in zone)",
+        "x": 277.6,
+        "y": 644.6,
+        "z": 64.6
       },
       {
-        "label": "Brew Barrel",
-        "x": 85.1,
-        "y": 1001.4,
-        "z": 67.7
-      },
-      {
-        "label": "Reihan (Merchant)",
-        "x": 88,
-        "y": 906,
-        "z": 51.7
-      },
-      {
-        "label": "Kiln",
-        "x": 134,
-        "y": 921.4,
-        "z": 51.7
-      },
-      {
-        "label": "Borge (Merchant)",
-        "x": 78,
-        "y": 994,
-        "z": 51.7
-      },
-      {
-        "label": "Oven",
-        "x": 122.4,
-        "y": 893.4,
-        "z": 51.7
-      },
-      {
-        "label": "Monita (Tailor)",
-        "x": 159,
-        "y": 899,
-        "z": 51.7
-      },
-      {
-        "label": "Erud Forge",
-        "x": 263.2,
-        "y": 738,
-        "z": 52.7
-      },
-      {
-        "label": "Jagen (Armor)",
-        "x": 286,
-        "y": 709,
-        "z": 51.7
-      },
-      {
-        "label": "Shinan (Smith)",
-        "x": 246,
-        "y": 683,
-        "z": 52.7
-      },
-      {
-        "label": "Demicla (Tailor)",
-        "x": 101,
-        "y": 689,
-        "z": 52.7
-      },
-      {
-        "label": "Galbasi (Tailor)",
-        "x": 106,
-        "y": 754,
-        "z": 52.7
-      },
-      {
-        "label": "Soulbinder",
-        "x": 55,
-        "y": 115,
-        "z": 39.8
-      },
-      {
-        "label": "Beth (Baking)",
-        "x": -109,
-        "y": -136,
-        "z": 19.8
-      },
-      {
-        "label": "Nerth (Merchant)",
-        "x": -96,
-        "y": -232,
-        "z": 19.8
-      },
-      {
-        "label": "Kisrin (Merchant)",
-        "x": 5,
-        "y": -230,
-        "z": 20.4
-      },
-      {
-        "label": "Spell Merchants",
-        "x": 241.5,
-        "y": 1071,
-        "z": 52.3
-      },
-      {
-        "label": "Oven",
-        "x": 298.5,
-        "y": 1160.3,
-        "z": 51.7
-      },
-      {
-        "label": "Geoard (Bar)",
-        "x": 330,
-        "y": 1176,
-        "z": 51.7
-      },
-      {
-        "label": "Helia (Baking)",
-        "x": 333,
-        "y": 1186,
-        "z": 51.7
-      },
-      {
-        "label": "Brew Barrel",
-        "x": 308.9,
-        "y": 1214.4,
-        "z": 51.7
+        "label": "to Erudin City (in zone)",
+        "x": 7.1,
+        "y": 328.6,
+        "z": 27.1
       },
       {
         "label": "to Erudin Palace",
@@ -3209,65 +2675,23 @@
         "z": 69.3
       },
       {
-        "label": "Lereana (GM Cleric)",
-        "x": 91,
-        "y": 649,
-        "z": 67.7
+        "label": "to Erud's Crossing (ferry to ship)",
+        "x": 335.7,
+        "y": -50.1,
+        "z": 19.6
       },
       {
-        "label": "Stella (Weapons)",
-        "x": 77,
-        "y": 621,
-        "z": 67.7
-      },
-      {
-        "label": "Spell Merchants",
-        "x": 55.9,
-        "y": 715.8,
-        "z": 67.7
-      },
-      {
-        "label": "Depnar (GM Paladin)",
-        "x": 41,
-        "y": 643,
-        "z": 67.7
-      },
-      {
-        "label": "Cipse (GM Cleric)",
-        "x": 71,
-        "y": 682,
-        "z": 67.7
-      },
-      {
-        "label": "Reklon (GM Paladin)",
-        "x": 89,
-        "y": 724,
-        "z": 67.7
-      },
-      {
-        "label": "to Erudin Docks",
-        "x": 277.6,
-        "y": 644.6,
-        "z": 64.6
-      },
-      {
-        "label": "to Erudin City",
-        "x": 7.1,
-        "y": 328.6,
-        "z": 27.1
-      },
-      {
-        "label": "Priest of Discord",
-        "x": -82.8,
-        "y": 23.8,
-        "z": 16
+        "label": "to Erud's Crossing (translocator)",
+        "x": 354,
+        "y": -106.5,
+        "z": 21.5
       }
     ]
   },
   {
     "zone": "erudnint",
-    "layers": 1,
-    "poiCount": 30,
+    "layers": 2,
+    "poiCount": 1,
     "classicExpansionHint": null,
     "pois": [
       {
@@ -3275,622 +2699,174 @@
         "x": -806.9,
         "y": -712.1,
         "z": 0.6
-      },
-      {
-        "label": "Enchanter Guild",
-        "x": -746.8,
-        "y": -529.2,
-        "z": 35.8
-      },
-      {
-        "label": "Lanken (GM Enchanter)",
-        "x": -776,
-        "y": -537,
-        "z": 84.7
-      },
-      {
-        "label": "Nikina (GM Enchanter)",
-        "x": -744,
-        "y": -509,
-        "z": 51.7
-      },
-      {
-        "label": "Wizard Guild",
-        "x": -735.5,
-        "y": -888,
-        "z": 35.8
-      },
-      {
-        "label": "Ghanlin (GM Wizard)",
-        "x": -712,
-        "y": -887,
-        "z": 84.7
-      },
-      {
-        "label": "Josper (GM Wizard)",
-        "x": -744,
-        "y": -917,
-        "z": 51.7
-      },
-      {
-        "label": "Magician Guild",
-        "x": -917.2,
-        "y": -717.5,
-        "z": 35.8
-      },
-      {
-        "label": "Markus (GM Magician)",
-        "x": -919,
-        "y": -744,
-        "z": 84.7
-      },
-      {
-        "label": "Reba (GM Magician)",
-        "x": -912,
-        "y": -742,
-        "z": 84.7
-      },
-      {
-        "label": "Vasile (GM Magician)",
-        "x": -904,
-        "y": -713,
-        "z": 67.7
-      },
-      {
-        "label": "Dalles (GM Magician)",
-        "x": -921,
-        "y": -711,
-        "z": 51.7
-      },
-      {
-        "label": "Telor (Spells)",
-        "x": -804,
-        "y": -703,
-        "z": 35.8
-      },
-      {
-        "label": "Raskena (GM Wizard)",
-        "x": -804,
-        "y": -718,
-        "z": 35.8
-      },
-      {
-        "label": "Toresian (GM Enchanter)",
-        "x": -805,
-        "y": -727,
-        "z": 35.8
-      },
-      {
-        "label": "Whes (GM Wizard)",
-        "x": -777,
-        "y": -810,
-        "z": 35.8
-      },
-      {
-        "label": "Sharin (Alchemy)",
-        "x": -539,
-        "y": -661,
-        "z": -12.2
-      },
-      {
-        "label": "Myrcin (Gems)",
-        "x": -597,
-        "y": -697,
-        "z": -12.2
-      },
-      {
-        "label": "Elsbin (Gems)",
-        "x": -574,
-        "y": -667,
-        "z": -12.2
-      },
-      {
-        "label": "Glysin (Gems)",
-        "x": -574,
-        "y": -631,
-        "z": -12.2
-      },
-      {
-        "label": "Sothure (Jewelry)",
-        "x": -552,
-        "y": -731,
-        "z": -12.2
-      },
-      {
-        "label": "Anite (Gems)",
-        "x": -598,
-        "y": -784,
-        "z": -12.2
-      },
-      {
-        "label": "Tyrena (Bank)",
-        "x": -856,
-        "y": -726,
-        "z": -12.2
-      },
-      {
-        "label": "Wick (Bank)",
-        "x": -834,
-        "y": -783,
-        "z": -12.2
-      },
-      {
-        "label": "Sahana (Bank)",
-        "x": -834,
-        "y": -764,
-        "z": -12.2
-      },
-      {
-        "label": "Sparlus (Merchant)",
-        "x": -780,
-        "y": -745,
-        "z": -12.2
-      },
-      {
-        "label": "Tan (Merchant)",
-        "x": -829,
-        "y": -667,
-        "z": -12.2
-      },
-      {
-        "label": "Vall (Merchant)",
-        "x": -832,
-        "y": -590,
-        "z": -12.2
-      },
-      {
-        "label": "Judge (Merchant)",
-        "x": -829,
-        "y": -689,
-        "z": -12.2
-      },
-      {
-        "label": "Nolusia (GM Enchanter)",
-        "x": -647,
-        "y": -703,
-        "z": 3.8
       }
     ]
   },
   {
     "zone": "erudsxing",
-    "layers": 1,
+    "layers": 2,
     "poiCount": 1,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "Renna (Merchant)",
-        "x": -857,
-        "y": 1479,
-        "z": 13.5
+        "label": "to Erudin or South Qeynos (boat or translocator)",
+        "x": -666.4,
+        "y": 1773.3,
+        "z": -0.8
       }
     ]
   },
   {
     "zone": "everfrost",
-    "layers": 1,
-    "poiCount": 7,
+    "layers": 2,
+    "poiCount": 3,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "to Permafrost Caverns",
-        "x": 7076.6,
-        "y": -2018.1,
-        "z": -63.8
-      },
-      {
-        "label": "to Blackburrow",
-        "x": 524.9,
-        "y": 3054.1,
-        "z": -113.2
-      },
-      {
-        "label": "Dansie (Merchant)",
-        "x": -697,
-        "y": -3638,
-        "z": 0.1
-      },
-      {
-        "label": "Seria (Merchant)",
-        "x": -701,
-        "y": -3608,
-        "z": 0.1
+        "label": "to Permafrost Keep",
+        "x": 7039,
+        "y": -2018.2,
+        "z": -64.6
       },
       {
         "label": "to Halas",
-        "x": -383.3,
-        "y": -3681.3,
-        "z": 0
+        "x": -371.8,
+        "y": -3723.7,
+        "z": -0.8
       },
       {
-        "label": "Starn (Spells)",
-        "x": 3431,
-        "y": -2871,
-        "z": -40.2
+        "label": "to Blackburrow",
+        "x": 507.3,
+        "y": 3009.4,
+        "z": -113.6
+      }
+    ]
+  },
+  {
+    "zone": "fearplane",
+    "layers": 2,
+    "poiCount": 2,
+    "classicExpansionHint": null,
+    "pois": [
+      {
+        "label": "Zone In from Feerrott",
+        "x": -1030.4,
+        "y": 781.4,
+        "z": 102.8
       },
       {
-        "label": "Knowledge Portal",
-        "x": 77.9,
-        "y": -2886.9,
-        "z": -53.9
+        "label": "portal to The Feerrott",
+        "x": -481.6,
+        "y": -856.9,
+        "z": 140.7
       }
     ]
   },
   {
     "zone": "feerrott",
-    "layers": 1,
-    "poiCount": 15,
+    "layers": 2,
+    "poiCount": 5,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "Fugla (Fletcher)",
-        "x": -1267,
-        "y": -975,
-        "z": -18.5
-      },
-      {
-        "label": "Smith Merchants",
-        "x": -1234,
-        "y": -1005,
-        "z": -18.5
-      },
-      {
-        "label": "Bup (Baking)",
-        "x": -117,
-        "y": -1182,
-        "z": -4.6
-      },
-      {
-        "label": "Gub (Merchant)",
-        "x": -1444,
-        "y": -1144,
-        "z": -18.2
-      },
-      {
-        "label": "Morpa (Merchant)",
-        "x": 145,
-        "y": -1144,
-        "z": 0.4
-      },
-      {
-        "label": "Murga (Tailor)",
-        "x": 138,
-        "y": -1129,
-        "z": -0.1
-      },
-      {
-        "label": "Klob (Merchant)",
-        "x": -840,
-        "y": -1000,
-        "z": 21.9
-      },
-      {
-        "label": "Kogg (Fishing)",
-        "x": -1451,
-        "y": -1054,
-        "z": -21.2
-      },
-      {
-        "label": "Druid Circle",
-        "x": 1836.1,
-        "y": -393.3,
-        "z": 12.3
-      },
-      {
-        "label": "Knowledge Portal",
-        "x": 160,
-        "y": -870,
-        "z": -7.6
-      },
-      {
         "label": "to Oggok",
-        "x": -905.3,
-        "y": -1450.9,
-        "z": 68.8
+        "x": -808.4,
+        "y": -1655.5,
+        "z": 56.5
       },
       {
-        "label": "to Rathe Mountains",
-        "x": -3439,
-        "y": -359,
-        "z": 0
+        "label": "to The Rathe Mountains",
+        "x": -3427.5,
+        "y": -359.1,
+        "z": -0.8
       },
       {
-        "label": "to Plane of Fear",
-        "x": -2602.1,
-        "y": 2385.9,
-        "z": 23.1
+        "label": "portal to The Plane of Fear",
+        "x": -2607.1,
+        "y": 2335.6,
+        "z": 5.2
       },
       {
-        "label": "to Temple of Cazic Thule",
-        "x": 106.1,
-        "y": 1462,
-        "z": 47.9
+        "label": "to Temple of Cazic-Thule",
+        "x": 108.5,
+        "y": 1451.4,
+        "z": 47.1
       },
       {
         "label": "to Innothule Swamp",
-        "x": 3122.1,
-        "y": 1134.4,
-        "z": -12.3
+        "x": 3113.9,
+        "y": 1119.2,
+        "z": -13.1
       }
     ]
   },
   {
     "zone": "felwithea",
-    "layers": 1,
-    "poiCount": 32,
+    "layers": 2,
+    "poiCount": 2,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "Shop of all Holos",
-        "x": 405.1,
-        "y": -105.5,
-        "z": 3.8
-      },
-      {
-        "label": "Felwithe Cleric Guild",
-        "x": 474.4,
-        "y": -12.3,
-        "z": -0.2
-      },
-      {
-        "label": "to Greater Faydark",
-        "x": -183.7,
-        "y": -39.7,
-        "z": 3.1
-      },
-      {
-        "label": "Silverkal (Armor)",
-        "x": 436,
-        "y": 90,
-        "z": 0.6
-      },
-      {
-        "label": "Tintal (Banker)",
-        "x": 453,
-        "y": 50,
-        "z": 0.6
-      },
-      {
-        "label": "Yeolarn (GM Cleric)",
-        "x": 435,
-        "y": -13,
-        "z": -3.4
-      },
-      {
-        "label": "Elytan (Merchant)",
-        "x": 673,
-        "y": -41,
-        "z": -13.4
-      },
-      {
-        "label": "Jassa (Merchant)",
-        "x": 588,
-        "y": -162,
-        "z": -13.4
-      },
-      {
-        "label": "Oven",
-        "x": 597.4,
-        "y": -240,
-        "z": -13.4
-      },
-      {
-        "label": "Silspin (Jewelery)",
-        "x": 606,
-        "y": -242,
-        "z": -13.4
-      },
-      {
-        "label": "Issa (Merchant)",
-        "x": 626,
-        "y": -258,
-        "z": -10.9
-      },
-      {
-        "label": "Tam (Merchant)",
-        "x": 703,
-        "y": -245,
-        "z": -23.2
-      },
-      {
-        "label": "Laemian (Merchant)",
-        "x": 6,
-        "y": -38,
-        "z": 0.6
-      },
-      {
-        "label": "Elendalira (Soulbinder)",
-        "x": 225,
-        "y": 0,
-        "z": 0.6
-      },
-      {
-        "label": "Priest of Discord",
-        "x": -103,
-        "y": 39,
-        "z": 0
-      },
-      {
-        "label": "Tynkale (GM Paladin)",
-        "x": 328,
-        "y": -11,
-        "z": 8.6
-      },
-      {
-        "label": "Wela (Brewing)",
-        "x": 343,
-        "y": -102,
-        "z": 0.6
-      },
-      {
-        "label": "Tyle (Brewing)",
-        "x": 368,
-        "y": -76,
-        "z": 0.6
-      },
-      {
-        "label": "Brew Barrel",
-        "x": 373.1,
-        "y": -62.9,
-        "z": -13.4
-      },
-      {
-        "label": "Freegraz (Merchant)",
-        "x": 374,
-        "y": -147,
-        "z": 0.6
-      },
-      {
-        "label": "Alladria (Pottery)",
-        "x": 414,
-        "y": -129,
-        "z": 0.6
-      },
-      {
-        "label": "Serenica (Baking)",
-        "x": 455,
-        "y": -147,
-        "z": 0.6
-      },
-      {
-        "label": "Silvenspin (Tailor)",
-        "x": 454,
-        "y": -106,
-        "z": 0.6
-      },
-      {
-        "label": "Issynal (Merchant)",
-        "x": 412,
-        "y": -147,
-        "z": 14.6
-      },
-      {
-        "label": "Tyslin (Jewelry)",
-        "x": 439,
-        "y": -107,
-        "z": 14.6
-      },
-      {
-        "label": "Potter's Wheel",
-        "x": 373.6,
-        "y": 78.5,
-        "z": 1.6
-      },
-      {
-        "label": "Kiln",
-        "x": 370.7,
-        "y": 92.4,
-        "z": 1.6
-      },
-      {
-        "label": "Rolyn (Merchant)",
-        "x": 384,
-        "y": -4,
-        "z": 0.6
-      },
-      {
-        "label": "Tissan (Armor)",
-        "x": 359,
-        "y": 122,
-        "z": 0.6
-      },
-      {
-        "label": "Longarrow (Fletcher)",
-        "x": 342,
-        "y": 70,
-        "z": 0.6
-      },
-      {
-        "label": "Jyleel (GM Paladin)",
-        "x": 198,
-        "y": -17,
-        "z": -21.4
+        "label": "to The Greater Faydark",
+        "x": -197.3,
+        "y": -40.9,
+        "z": -0.8
       },
       {
         "label": "to Southern Felwithe",
-        "x": 720,
-        "y": -344,
-        "z": -10.9
+        "x": 720.5,
+        "y": -343.6,
+        "z": -14.8
       }
     ]
   },
   {
     "zone": "felwitheb",
-    "layers": 1,
-    "poiCount": 12,
+    "layers": 2,
+    "poiCount": 7,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "Tarker (GM Wizard)",
-        "x": 409,
-        "y": -507,
-        "z": -3.4
-      },
-      {
-        "label": "Niola (GM Magician)",
-        "x": 599,
-        "y": -795,
-        "z": 0.6
-      },
-      {
-        "label": "Yuin (GM Enchanter)",
-        "x": 601,
-        "y": -462,
-        "z": 16.6
-      },
-      {
-        "label": "Moonthread (Tailor)",
-        "x": 872,
-        "y": -436,
-        "z": -7.4
-      },
-      {
-        "label": "Loom",
-        "x": 788.5,
-        "y": -443.8,
-        "z": -7.4
-      },
-      {
-        "label": "Kinool (GM Enchanter)",
-        "x": 839,
-        "y": -556,
-        "z": 0.6
-      },
-      {
-        "label": "Yisasan (Potions)",
-        "x": 802.7,
-        "y": -447.3,
-        "z": -7.4
-      },
-      {
-        "label": "Tyslin (Jewelry)",
-        "x": 774.7,
-        "y": -450,
-        "z": -7.4
-      },
-      {
         "label": "to Northern Felwithe",
-        "x": 834,
-        "y": -244,
-        "z": -10.9
+        "x": 833.8,
+        "y": -233.1,
+        "z": -14.8
       },
       {
-        "label": "Enchanter Guild",
-        "x": 777.2,
-        "y": -554.2,
-        "z": 3.8
+        "label": "to Enchanter Guild",
+        "x": 619.2,
+        "y": -435.8,
+        "z": 30.2
       },
       {
-        "label": "Wizard Guild",
-        "x": 471.6,
-        "y": -502.2,
-        "z": 3.8
+        "label": "to Magician Guild",
+        "x": 601.5,
+        "y": -458,
+        "z": 30.2
       },
       {
-        "label": "Magician Guild",
-        "x": 579.6,
-        "y": -630.6,
-        "z": 3.8
+        "label": "to Wizard Guild",
+        "x": 584.8,
+        "y": -435.3,
+        "z": 30.2
+      },
+      {
+        "label": "back to entrance",
+        "x": 338.8,
+        "y": -504.3,
+        "z": 3.2
+      },
+      {
+        "label": "back to entrance",
+        "x": 920.4,
+        "y": -553.4,
+        "z": 3.2
+      },
+      {
+        "label": "back to entrance",
+        "x": 532.4,
+        "y": -745.6,
+        "z": 3.2
       }
     ]
   },
@@ -4456,559 +3432,103 @@
   },
   {
     "zone": "freporte",
-    "layers": 1,
-    "poiCount": 56,
+    "layers": 2,
+    "poiCount": 6,
     "classicExpansionHint": null,
     "pois": [
       {
         "label": "to West Freeport",
-        "x": 351.7,
-        "y": -447.2,
-        "z": -28
-      },
-      {
-        "label": "Lynda (Brewer)",
-        "x": 212.3,
-        "y": 295.3,
-        "z": -70
-      },
-      {
-        "label": "Nesin (Bar)",
-        "x": 204.5,
-        "y": 279.4,
-        "z": -84
-      },
-      {
-        "label": "Oven",
-        "x": 186.7,
-        "y": 298,
-        "z": -84
-      },
-      {
-        "label": "Jenna (Smith)",
-        "x": 170.1,
-        "y": 165.3,
-        "z": -70
-      },
-      {
-        "label": "Gord (Weapons)",
-        "x": 137.4,
-        "y": 183.7,
-        "z": -84
-      },
-      {
-        "label": "Forge",
-        "x": 174.9,
-        "y": 151.2,
-        "z": -84
-      },
-      {
-        "label": "Kiln",
-        "x": 206.1,
-        "y": 107.1,
-        "z": -84
-      },
-      {
-        "label": "Konious (GM Enchanter)",
-        "x": 260.2,
-        "y": 25.1,
-        "z": -98
-      },
-      {
-        "label": "Heneva (GM Magician)",
-        "x": 262.9,
-        "y": 41.1,
-        "z": -98
-      },
-      {
-        "label": "Nexvok (GM Wizard)",
-        "x": 247.2,
-        "y": 50.1,
-        "z": -98
-      },
-      {
-        "label": "Brutol (GM Warrior)",
-        "x": 229.5,
-        "y": 20.7,
-        "z": -98
-      },
-      {
-        "label": "Opal (GM Necromancer)",
-        "x": 184.4,
-        "y": 59.9,
-        "z": -98
-      },
-      {
-        "label": "Brek (GM Cleric)",
-        "x": 177.8,
-        "y": 68.7,
-        "z": -98
-      },
-      {
-        "label": "Rolfic (Weapons)",
-        "x": 276.5,
-        "y": 188.3,
-        "z": -84
-      },
-      {
-        "label": "Tohsan (Weapons)",
-        "x": 456.2,
-        "y": 84.6,
-        "z": -56
-      },
-      {
-        "label": "Harg (Weapons)",
-        "x": 492.3,
-        "y": 39.8,
-        "z": -56
-      },
-      {
-        "label": "Slan (Bar)",
-        "x": 333.7,
-        "y": -76.2,
-        "z": -56
-      },
-      {
-        "label": "Forge",
-        "x": 161.2,
-        "y": -25.8,
-        "z": -56
+        "x": 354.5,
+        "y": -445.8,
+        "z": -28.8
       },
       {
         "label": "to West Freeport",
-        "x": 62.7,
-        "y": -95.8,
-        "z": -28
+        "x": 63.5,
+        "y": -91.1,
+        "z": -28.8
       },
       {
         "label": "to West Freeport",
-        "x": -342.1,
-        "y": 153.7,
-        "z": -98
+        "x": -341.7,
+        "y": 142.2,
+        "z": -98.8
       },
       {
-        "label": "Harkin (GM Rogue)",
-        "x": 836.8,
-        "y": 330.7,
-        "z": -113
+        "label": "to The Northern Desert of Ro",
+        "x": 713.2,
+        "y": 1235.6,
+        "z": -56.8
       },
       {
-        "label": "Nestral (GM Rogue)",
-        "x": 835.8,
-        "y": 192.9,
-        "z": -98
+        "label": "to Butcherblock/Ocean of Tears/Qeynos",
+        "x": 1036.3,
+        "y": 15.5,
+        "z": -56.8
       },
       {
-        "label": "Tenni (Weapons)",
-        "x": 885.2,
-        "y": 222.1,
-        "z": -14
-      },
-      {
-        "label": "Brew Barrel",
-        "x": 854.7,
-        "y": 208.7,
-        "z": -56
-      },
-      {
-        "label": "Gregor (Bar)",
-        "x": 833.5,
-        "y": 236.7,
-        "z": -56
-      },
-      {
-        "label": "Henna (Bar)",
-        "x": 844.1,
-        "y": 241.1,
-        "z": -56
-      },
-      {
-        "label": "Marv (GM Necromancer)",
-        "x": 247.9,
-        "y": 245.6,
-        "z": -112
-      },
-      {
-        "label": "Banor (Merchant)",
-        "x": 231.9,
-        "y": 225,
-        "z": -112
-      },
-      {
-        "label": "Pietro (GM Shadow Knight)",
-        "x": 302,
-        "y": 206.8,
-        "z": -112
-      },
-      {
-        "label": "Celanie (Weapons)",
-        "x": 311.1,
-        "y": 204.5,
-        "z": -112
-      },
-      {
-        "label": "Vesagar (GM Cleric)",
-        "x": 228.6,
-        "y": 174.8,
-        "z": -112
-      },
-      {
-        "label": "Spell Merchants",
-        "x": 253.1,
-        "y": 183,
-        "z": -112
-      },
-      {
-        "label": "Netuk (GM Shadow Knight)",
-        "x": 285.6,
-        "y": 72,
-        "z": -98
-      },
-      {
-        "label": "Merchants",
-        "x": 271.5,
-        "y": 83.5,
-        "z": -98
-      },
-      {
-        "label": "Tanlok (Merchant)",
-        "x": 849.2,
-        "y": -87.3,
-        "z": -42
-      },
-      {
-        "label": "Merchants",
-        "x": 885.8,
-        "y": -61.6,
-        "z": -56
-      },
-      {
-        "label": "Jaleel (Bar)",
-        "x": 745.4,
-        "y": -43.8,
-        "z": -55
-      },
-      {
-        "label": "Winda (Merchant)",
-        "x": 727.3,
-        "y": -43.8,
-        "z": -55
-      },
-      {
-        "label": "Oven",
-        "x": 750.5,
-        "y": -69.7,
-        "z": -56
-      },
-      {
-        "label": "Brew Barrel",
-        "x": 720.3,
-        "y": -12,
-        "z": -56
-      },
-      {
-        "label": "Gruns (Soulbinder)",
-        "x": 649.3,
-        "y": 34,
-        "z": -55
-      },
-      {
-        "label": "Hunter (Merchant)",
-        "x": 697.9,
-        "y": 76.9,
-        "z": -56
-      },
-      {
-        "label": "Nasumi (Merchant)",
-        "x": 719,
-        "y": 75.7,
-        "z": -56
-      },
-      {
-        "label": "Sissin (Tailor)",
-        "x": 549,
-        "y": -43.8,
-        "z": -42
-      },
-      {
-        "label": "Sanhan (Tailor)",
-        "x": 567.2,
-        "y": -72.1,
-        "z": -56
-      },
-      {
-        "label": "Myrissa (Bar)",
-        "x": 434.1,
-        "y": -82.8,
-        "z": -56
-      },
-      {
-        "label": "Monita (Bar)",
-        "x": 377,
-        "y": -105.9,
-        "z": -56
-      },
-      {
-        "label": "Jillian (Pottery)",
-        "x": 370,
-        "y": -158,
-        "z": -56
-      },
-      {
-        "label": "Brew Barrel",
-        "x": 331.2,
-        "y": -143,
-        "z": -56
-      },
-      {
-        "label": "Tislan (Baking)",
-        "x": 296.9,
-        "y": -134,
-        "z": -56
-      },
-      {
-        "label": "Sun (Brewer)",
-        "x": 252.5,
-        "y": -127,
-        "z": -56
-      },
-      {
-        "label": "Oven",
-        "x": 242.4,
-        "y": -100.2,
-        "z": -56
-      },
-      {
-        "label": "Ikthar (Armor)",
-        "x": 200.3,
-        "y": -42.1,
-        "z": -56
-      },
-      {
-        "label": "Valentin (Smith)",
-        "x": 166.3,
-        "y": -54.2,
-        "z": -42
-      },
-      {
-        "label": "to Northern Desert of Ro",
-        "x": 689.5,
-        "y": 1236.5,
-        "z": -56
+        "label": "portal to The Plane of Sky (click)",
+        "x": 1204.7,
+        "y": 419.1,
+        "z": -52
       }
     ]
   },
   {
     "zone": "freportn",
-    "layers": 1,
-    "poiCount": 12,
+    "layers": 2,
+    "poiCount": 3,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "Forge",
-        "x": -476.3,
-        "y": 27.5,
-        "z": 3.1
-      },
-      {
-        "label": "Nashia (GM Bard)",
-        "x": -576.8,
-        "y": 89.7,
-        "z": 5.1
-      },
-      {
-        "label": "Winoyn (Pottery)",
-        "x": 177.7,
-        "y": 103,
-        "z": 3.1
-      },
-      {
-        "label": "Jallen (Tailor)",
-        "x": 196,
-        "y": 94.9,
-        "z": 3.1
-      },
-      {
-        "label": "Amber (Jewelry)",
-        "x": -208.2,
-        "y": 175.5,
-        "z": 17.1
-      },
-      {
-        "label": "Shania (Bar)",
-        "x": 45.2,
-        "y": -79.9,
-        "z": 3.1
-      },
-      {
-        "label": "Peran (Bank)",
-        "x": 224.2,
-        "y": 28.3,
-        "z": 0.6
+        "label": "to West Freeport",
+        "x": 81.2,
+        "y": 354.1,
+        "z": -28.8
       },
       {
         "label": "to West Freeport",
-        "x": -9.1,
-        "y": 349.6,
-        "z": -27.4
+        "x": -490.1,
+        "y": 404.1,
+        "z": -14.8
       },
       {
         "label": "to West Freeport",
-        "x": -556.1,
-        "y": 393.2,
-        "z": -13.4
-      },
-      {
-        "label": "to West Freeport",
-        "x": -725.5,
-        "y": -364.2,
-        "z": -13.4
-      },
-      {
-        "label": "Merko (GM Paladin)",
-        "x": 182.3,
-        "y": -206.5,
-        "z": -10.9
-      },
-      {
-        "label": "Tholius (GM Cleric)",
-        "x": -345.5,
-        "y": -140.1,
-        "z": 73.1
+        "x": -740.6,
+        "y": -373.3,
+        "z": -14.8
       }
     ]
   },
   {
     "zone": "freportw",
-    "layers": 1,
-    "poiCount": 23,
+    "layers": 2,
+    "poiCount": 10,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "Romiak (GM Enchanter)",
-        "x": 793.7,
-        "y": -73.2,
-        "z": -53.1
-      },
-      {
-        "label": "Priest of Discord",
-        "x": 637.6,
-        "y": 79.9,
-        "z": -22
-      },
-      {
-        "label": "Dulia (Gems)",
-        "x": 813.2,
-        "y": -17.7,
-        "z": -52.2
-      },
-      {
-        "label": "Tharma (Spells)",
-        "x": 761,
-        "y": -118.6,
-        "z": 3.8
-      },
-      {
-        "label": "Monat (Spells)",
-        "x": 767.6,
-        "y": -118.7,
-        "z": -23.2
-      },
-      {
-        "label": "Xinari (Spells)",
-        "x": 753,
-        "y": -138.3,
-        "z": -10.2
-      },
-      {
-        "label": "Lysin (Gems)",
-        "x": 737.4,
-        "y": -140.9,
-        "z": -10.2
-      },
-      {
-        "label": "Respin (GM Magician)",
-        "x": 718,
-        "y": -137,
-        "z": 30.5
-      },
-      {
-        "label": "Palon (GM Wizard)",
-        "x": 769.2,
-        "y": -114.6,
-        "z": 2.5
-      },
-      {
-        "label": "Besklor (GM Enchanter)",
-        "x": 718.4,
-        "y": -152.3,
-        "z": -24.5
-      },
-      {
-        "label": "Krystin (Baking)",
-        "x": -5.8,
-        "y": -103.2,
-        "z": -13.4
-      },
-      {
-        "label": "Boomba (Merchant)",
-        "x": 30.8,
-        "y": 21.4,
-        "z": -27.4
-      },
-      {
-        "label": "Cain (GM Warrior)",
-        "x": 42.9,
-        "y": 315.3,
-        "z": -11.5
+        "label": "to East Commonlands",
+        "x": -760.9,
+        "y": 23.2,
+        "z": -28.8
       },
       {
         "label": "to North Freeport",
-        "x": 289.7,
-        "y": -1581.2,
-        "z": 0.6
-      },
-      {
-        "label": "Militia House",
-        "x": 109.5,
-        "y": 73.9,
-        "z": -27.4
-      },
-      {
-        "label": "to North Freeport",
-        "x": 639.7,
-        "y": -235.5,
-        "z": -27.4
-      },
-      {
-        "label": "Arena",
-        "x": 207.7,
-        "y": 316.4,
-        "z": -38.2
-      },
-      {
-        "label": "to East Commons",
-        "x": -785.8,
-        "y": 27.9,
-        "z": -27.4
-      },
-      {
-        "label": "to North Freeport",
-        "x": 115.2,
-        "y": -243.1,
-        "z": -13.4
+        "x": 127,
+        "y": -214.7,
+        "z": -14.8
       },
       {
         "label": "to East Freeport",
-        "x": 634.2,
-        "y": 385.6,
-        "z": -27.4
+        "x": 623,
+        "y": 389.9,
+        "z": -28.8
       },
       {
         "label": "to East Freeport",
-        "x": 943.7,
-        "y": 82.7,
-        "z": -27.4
+        "x": 943.8,
+        "y": 83.8,
+        "z": -28.8
       },
       {
         "label": "to East Freeport",
@@ -5017,474 +3537,66 @@
         "z": -97.3
       },
       {
-        "label": "Knowledge Portal",
-        "x": -79,
-        "y": 684.2,
-        "z": -31.9
+        "label": "to North Freeport",
+        "x": 697,
+        "y": -239.9,
+        "z": -28.8
+      },
+      {
+        "label": "to North Freeport",
+        "x": 292.9,
+        "y": -1579.1,
+        "z": -0.8
+      },
+      {
+        "label": "portal to Tower",
+        "x": 655.9,
+        "y": -97.3,
+        "z": -41.8
+      },
+      {
+        "label": "portal back to yard",
+        "x": 715.9,
+        "y": -158.2,
+        "z": -12.8
+      },
+      {
+        "label": "to North Freeport",
+        "x": 579.7,
+        "y": -758.4,
+        "z": -23.8
       }
     ]
   },
   {
     "zone": "gfaydark",
-    "layers": 1,
-    "poiCount": 76,
+    "layers": 2,
+    "poiCount": 4,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "to Butcherblock",
-        "x": -2657.4,
-        "y": 1641.4,
-        "z": 0
+        "label": "to Butcherblock Mountains",
+        "x": -2642.1,
+        "y": 1627.7,
+        "z": -0.8
       },
       {
-        "label": "to Lesser Faydark",
-        "x": 1111.3,
-        "y": 2620.9,
-        "z": 0
+        "label": "to Clan Crushbone",
+        "x": 51,
+        "y": -2585.2,
+        "z": 15
       },
       {
-        "label": "Priest of Discord",
-        "x": -320,
-        "y": -271,
-        "z": -3.8
+        "label": "to The Lesser Faydark",
+        "x": 1077.2,
+        "y": 2588.6,
+        "z": -0.8
       },
       {
-        "label": "Hendricks (Spells)",
-        "x": 550,
-        "y": 537,
-        "z": 157.9
-      },
-      {
-        "label": "Lift",
-        "x": -219.6,
-        "y": -962.1,
-        "z": -24.7
-      },
-      {
-        "label": "Lift",
-        "x": -257.4,
-        "y": -137.7,
-        "z": 5.2
-      },
-      {
-        "label": "Lift",
-        "x": 129.1,
-        "y": -1.8,
-        "z": 5.4
-      },
-      {
-        "label": "Spell Merchants",
-        "x": -210.9,
-        "y": 619.5,
-        "z": 73.9
-      },
-      {
-        "label": "Druid Guild",
-        "x": -223.7,
-        "y": 700.4,
-        "z": 73.9
-      },
-      {
-        "label": "Bard Guild",
-        "x": -296.5,
-        "y": 283.6,
-        "z": 74
-      },
-      {
-        "label": "Spell Merchants",
-        "x": -259.7,
-        "y": 224.2,
-        "z": 74
-      },
-      {
-        "label": "Oakstout (Soulbinder)",
-        "x": 382,
-        "y": 348,
-        "z": 114.4
-      },
-      {
-        "label": "Nexus Scion",
-        "x": 451,
-        "y": 2018,
-        "z": -3.7
-      },
-      {
-        "label": "Muvien (Merchant)",
-        "x": -241,
-        "y": -311,
-        "z": 74
-      },
-      {
-        "label": "Tuluvdar (Merchant)",
-        "x": -466,
-        "y": 427,
-        "z": 114.4
-      },
-      {
-        "label": "Gililya (Merchant)",
-        "x": 211,
-        "y": 481,
-        "z": 158
-      },
-      {
-        "label": "Willaen (Bank)",
-        "x": -718,
-        "y": 195,
-        "z": 114.4
-      },
-      {
-        "label": "Gaeadin (Tailor)",
-        "x": 131,
-        "y": 114,
-        "z": 74
-      },
-      {
-        "label": "Linadian (Tailor)",
-        "x": 545,
-        "y": 142,
-        "z": 158
-      },
-      {
-        "label": "Nluolian (Smith)",
-        "x": 565,
-        "y": 107,
-        "z": 158
-      },
-      {
-        "label": "Linolyen (Smith)",
-        "x": -345,
-        "y": -110,
-        "z": 74
-      },
-      {
-        "label": "Aluwenae (Tailor)",
-        "x": 116,
-        "y": 336,
-        "z": 74
-      },
-      {
-        "label": "Nildar (Potter)",
-        "x": -205,
-        "y": -867,
-        "z": 74
-      },
-      {
-        "label": "Ainaiana (Merchant)",
-        "x": -51,
-        "y": 480,
-        "z": 158
-      },
-      {
-        "label": "Tegdian (Merchant)",
-        "x": -56,
-        "y": -743,
-        "z": 74
-      },
-      {
-        "label": "Tananie (Merchant)",
-        "x": -627,
-        "y": -389,
-        "z": 114.4
-      },
-      {
-        "label": "Uaylain (Smith)",
-        "x": -118,
-        "y": 22,
-        "z": 74
-      },
-      {
-        "label": "Tinolwenya (Merchant)",
-        "x": -23,
-        "y": 504,
-        "z": 158
-      },
-      {
-        "label": "Kwein (Merchant)",
-        "x": -334,
-        "y": -155,
-        "z": 74
-      },
-      {
-        "label": "Iludarae (Merchant)",
-        "x": 149,
-        "y": 29,
-        "z": 74
-      },
-      {
-        "label": "Aianya (Merchant)",
-        "x": -614,
-        "y": -251,
-        "z": 74
-      },
-      {
-        "label": "Manlawen (Bar)",
-        "x": -542,
-        "y": -322,
-        "z": 73.9
-      },
-      {
-        "label": "Uulianu (Bar)",
-        "x": -520,
-        "y": -286,
-        "z": 73.9
-      },
-      {
-        "label": "Syntan (Bar)",
-        "x": -93,
-        "y": -881,
-        "z": 74
-      },
-      {
-        "label": "Tuviena (Bar)",
-        "x": -822,
-        "y": -132,
-        "z": 74
-      },
-      {
-        "label": "Lysslan (Bar)",
-        "x": -805,
-        "y": -123,
-        "z": 74
-      },
-      {
-        "label": "Myrisa (Bar)",
-        "x": -677,
-        "y": -394,
-        "z": 114.4
-      },
-      {
-        "label": "Aanlawen (Bar)",
-        "x": -690,
-        "y": -601,
-        "z": 158
-      },
-      {
-        "label": "Sissya (Bar)",
-        "x": 558,
-        "y": 564,
-        "z": 157.9
-      },
-      {
-        "label": "Tvanla (Bar)",
-        "x": 550,
-        "y": 515,
-        "z": 157.9
-      },
-      {
-        "label": "Linen (Merchant)",
-        "x": -459,
-        "y": -726,
-        "z": 72.9
-      },
-      {
-        "label": "Rogue Guild",
-        "x": 157,
-        "y": 553,
-        "z": 158
-      },
-      {
-        "label": "Tiladinya (Fletcher)",
-        "x": 611,
-        "y": 360,
-        "z": 158
-      },
-      {
-        "label": "Larya (Merchant)",
-        "x": -306,
-        "y": -940,
-        "z": 74
-      },
-      {
-        "label": "Wuleran (Merchant)",
-        "x": -141,
-        "y": 337,
-        "z": 114.4
-      },
-      {
-        "label": "Anisyla (Merchant)",
-        "x": 435,
-        "y": 247,
-        "z": 114.4
-      },
-      {
-        "label": "Legweien (Potter)",
-        "x": -373,
-        "y": -420,
-        "z": 74
-      },
-      {
-        "label": "Gerienae (Merchant)",
-        "x": -364,
-        "y": 643,
-        "z": 74
-      },
-      {
-        "label": "Minamas (Merchant)",
-        "x": -387,
-        "y": 676,
-        "z": 74
-      },
-      {
-        "label": "Winerasea (Merchant)",
-        "x": -89,
-        "y": 270,
-        "z": 114.4
-      },
-      {
-        "label": "Neaien (Fletcher)",
-        "x": -464,
-        "y": -414,
-        "z": 74
-      },
-      {
-        "label": "Kanoldar (Merchant)",
-        "x": -357,
-        "y": -750,
-        "z": 74
-      },
-      {
-        "label": "Weaolanae (Merchant)",
-        "x": -338,
-        "y": -428,
-        "z": 158
-      },
-      {
-        "label": "Sylnis (Fletcher)",
-        "x": 519,
-        "y": 409,
-        "z": 158
-      },
-      {
-        "label": "Tilluen (Merchant)",
-        "x": -271,
-        "y": 85,
-        "z": 74
-      },
-      {
-        "label": "Aluuvila (Merchant)",
-        "x": -224,
-        "y": 94,
-        "z": 74
-      },
-      {
-        "label": "Aildien (Merchant)",
-        "x": 133,
-        "y": 496,
-        "z": 73.9
-      },
-      {
-        "label": "Laedar (Jeweller)",
-        "x": -542,
-        "y": -617,
-        "z": 158
-      },
-      {
-        "label": "Kweili (Jeweller)",
-        "x": -245,
-        "y": -411,
-        "z": 158
-      },
-      {
-        "label": "Ueaas (Merchant)",
-        "x": -601,
-        "y": 85,
-        "z": 114.4
-      },
-      {
-        "label": "Kaeluase (Merchant)",
-        "x": -51,
-        "y": 272,
-        "z": 114.4
-      },
-      {
-        "label": "Lanin (Fletcher)",
-        "x": -329,
-        "y": -414,
-        "z": 74
-      },
-      {
-        "label": "Warrior Guild",
-        "x": -264,
-        "y": -318,
-        "z": 74
-      },
-      {
-        "label": "Ranger Guild",
-        "x": -522,
-        "y": 459,
-        "z": 114.4
-      },
-      {
-        "label": "Spell Merchants",
-        "x": -488.4,
-        "y": 408.9,
-        "z": 114.4
-      },
-      {
-        "label": "Niwiny (Smith)",
-        "x": -136,
-        "y": 188,
-        "z": 114.5
-      },
-      {
-        "label": "Brew Barrel",
-        "x": -211.2,
-        "y": 520,
-        "z": 74
-      },
-      {
-        "label": "Oven",
-        "x": -343.6,
-        "y": -399.7,
-        "z": 158
-      },
-      {
-        "label": "Forge",
-        "x": -64,
-        "y": 251.3,
-        "z": 114.4
-      },
-      {
-        "label": "Forge",
-        "x": -81.6,
-        "y": 478.7,
-        "z": 158
-      },
-      {
-        "label": "Pottery Wheel",
-        "x": 548.4,
-        "y": 197.9,
-        "z": 158
-      },
-      {
-        "label": "Kiln",
-        "x": 553.2,
-        "y": 176.7,
-        "z": 160.1
-      },
-      {
-        "label": "to Crushbone",
-        "x": 52.4,
-        "y": -2596.7,
-        "z": 15.8
-      },
-      {
-        "label": "to Felwithe",
-        "x": 2589.1,
-        "y": 1976.1,
-        "z": 20.4
-      },
-      {
-        "label": "Knowledge Portal",
-        "x": 1820.5,
-        "y": 2258.8,
-        "z": 5.8
-      },
-      {
-        "label": "Knowledge Portal",
-        "x": 758.4,
-        "y": 169.8,
-        "z": -3.8
+        "label": "to Northern Felwithe",
+        "x": 2595.6,
+        "y": 1938.8,
+        "z": 19.6
       }
     ]
   },
@@ -5535,374 +3647,14 @@
   {
     "zone": "grobb",
     "layers": 2,
-    "poiCount": 61,
+    "poiCount": 1,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "Weapon and Armor Merchants",
-        "x": 219.4,
-        "y": -387.7,
-        "z": -6.9
-      },
-      {
-        "label": "Okun (Blacksmith)",
-        "x": 414.5,
-        "y": -682.9,
-        "z": -10
-      },
-      {
-        "label": "Rohga (GM Shadow Knight)",
-        "x": 633.9,
-        "y": -615.9,
-        "z": 10
-      },
-      {
-        "label": "Kramf (Spells)",
-        "x": 631.3,
-        "y": -490.1,
-        "z": 10
-      },
-      {
-        "label": "Crilt (Spells)",
-        "x": 621.4,
-        "y": -522.5,
-        "z": 10
-      },
-      {
-        "label": "Trusk (Spells)",
-        "x": 634,
-        "y": -516.4,
-        "z": 10.1
-      },
-      {
-        "label": "Treskar (GM Shadow Knight)",
-        "x": 906.3,
-        "y": -484.5,
-        "z": 10
-      },
-      {
-        "label": "Hukulk (GM Shadow Knight)",
-        "x": 957.2,
-        "y": -509.9,
-        "z": 10
-      },
-      {
-        "label": "Vergad (SK Shadow Knight)",
-        "x": 1026.2,
-        "y": -444,
-        "z": 10
-      },
-      {
-        "label": "Gluku (Weapons)",
-        "x": 1009.2,
-        "y": -440.9,
-        "z": 10
-      },
-      {
-        "label": "Garklog (Baker)",
-        "x": 206.8,
-        "y": -502.8,
-        "z": -10
-      },
-      {
-        "label": "Iksopa (Cobbler)",
-        "x": 237.6,
-        "y": -511.2,
-        "z": -10
-      },
-      {
-        "label": "Bimuk (Merchant)",
-        "x": 220.3,
-        "y": -515.2,
-        "z": -10
-      },
-      {
-        "label": "Tracab (Spells)",
-        "x": 392.9,
-        "y": -368.6,
-        "z": 0
-      },
-      {
-        "label": "Tokun (Spells)",
-        "x": 399.6,
-        "y": -348.3,
-        "z": 0
-      },
-      {
-        "label": "Hoart (Spells)",
-        "x": 406,
-        "y": -325.5,
-        "z": 0
-      },
-      {
-        "label": "Barsk (Spells)",
-        "x": 414.7,
-        "y": -302.1,
-        "z": 0
-      },
-      {
-        "label": "Cralk (Spells)",
-        "x": 420.3,
-        "y": -283.7,
-        "z": 0
-      },
-      {
-        "label": "Korff (Spells)",
-        "x": 439.2,
-        "y": -299.7,
-        "z": 0
-      },
-      {
-        "label": "Zumzal (Merchant)",
-        "x": 494.7,
-        "y": -332.6,
-        "z": 0
-      },
-      {
-        "label": "Jocka (GM Shaman)",
-        "x": 458.2,
-        "y": -346.8,
-        "z": 0
-      },
-      {
-        "label": "Grabah (Alchemist)",
-        "x": 419,
-        "y": -409.2,
-        "z": 0
-      },
-      {
-        "label": "Blergagg (Alchemist)",
-        "x": 429.6,
-        "y": -412.5,
-        "z": 0
-      },
-      {
-        "label": "Glubtak (Spells)",
-        "x": 447.6,
-        "y": -422.2,
-        "z": 0
-      },
-      {
-        "label": "Spinkit (Banker)",
-        "x": 557.5,
-        "y": -455,
-        "z": 10.1
-      },
-      {
-        "label": "Loom",
-        "x": 405.5,
-        "y": -467,
-        "z": -10
-      },
-      {
-        "label": "Raztara (Alchemist)",
-        "x": 392.5,
-        "y": -441.5,
-        "z": -10
-      },
-      {
-        "label": "Uzak (Jewel Crafter)",
-        "x": 318.4,
-        "y": -561.9,
-        "z": -10
-      },
-      {
-        "label": "Oven",
-        "x": 399.3,
-        "y": -534.9,
-        "z": -10
-      },
-      {
-        "label": "Kaglari (GM Shaman)",
-        "x": 489.2,
-        "y": -17.3,
-        "z": 50
-      },
-      {
-        "label": "Chamt (Spells)",
-        "x": 430.3,
-        "y": -17.4,
-        "z": 50
-      },
-      {
-        "label": "Bregna (GM Shaman)",
-        "x": 463.4,
-        "y": 67.2,
-        "z": 70
-      },
-      {
-        "label": "Gardunk (GM Beastlord)",
-        "x": 420.4,
-        "y": 3.2,
-        "z": 70
-      },
-      {
-        "label": "Urako (GM Shaman)",
-        "x": 495.5,
-        "y": 4.3,
-        "z": 70
-      },
-      {
-        "label": "Zazhar (Fletcher)",
-        "x": 272.6,
-        "y": -442.3,
-        "z": -10
-      },
-      {
-        "label": "Rezslog (Armor)",
-        "x": 180,
-        "y": -456.1,
-        "z": -10
-      },
-      {
-        "label": "Vynugga (Pottery)",
-        "x": 172.3,
-        "y": -439.6,
-        "z": -10
-      },
-      {
-        "label": "Forge",
-        "x": 192.9,
-        "y": -411.8,
-        "z": -10
-      },
-      {
-        "label": "Forge",
-        "x": 218.4,
-        "y": -532.4,
-        "z": -26
-      },
-      {
-        "label": "Kiln",
-        "x": 159.3,
-        "y": -491.5,
-        "z": -10
-      },
-      {
-        "label": "Pottery Wheel",
-        "x": 142.6,
-        "y": -440.9,
-        "z": -10
-      },
-      {
-        "label": "Grallvek (Town Crier)",
-        "x": 90.7,
-        "y": -389,
-        "z": -1.4
-      },
-      {
-        "label": "Hergor (GM Warrior)",
-        "x": 119.5,
-        "y": -309.2,
-        "z": 0
-      },
-      {
-        "label": "Kraiga (GM Warrior)",
-        "x": 121.2,
-        "y": -260.7,
-        "z": 2.3
-      },
-      {
-        "label": "Gralok (GM Warrior)",
-        "x": 223.7,
-        "y": -223.1,
-        "z": 0
-      },
-      {
-        "label": "Kagbkek (Merchant)",
-        "x": 214.2,
-        "y": -211.2,
-        "z": 0
-      },
-      {
-        "label": "Brenga (Baker)",
-        "x": 274.6,
-        "y": -239.6,
-        "z": 0
-      },
-      {
-        "label": "Brew Barrel",
-        "x": 335.7,
-        "y": -88.8,
-        "z": 4
-      },
-      {
-        "label": "Gartonka (Brewer)",
-        "x": 306.2,
-        "y": -140.7,
-        "z": 4
-      },
-      {
-        "label": "Zatok (Bar)",
-        "x": 280.4,
-        "y": -155.6,
-        "z": 4
-      },
-      {
-        "label": "Wista (Bar)",
-        "x": 374.6,
-        "y": -131,
-        "z": 4
-      },
-      {
-        "label": "Graktak (Satchels)",
-        "x": 395.4,
-        "y": -51.9,
-        "z": 4
-      },
-      {
-        "label": "Ranjor (GM Warrior)",
-        "x": 169.3,
-        "y": -304.2,
-        "z": 22
-      },
-      {
-        "label": "Ootok (Merchant)",
-        "x": 33,
-        "y": -232.1,
-        "z": 0
-      },
-      {
-        "label": "Luruk (Berserker Tomes)",
-        "x": -135.8,
-        "y": -201.5,
-        "z": -10
-      },
-      {
-        "label": "Oven",
-        "x": -182.2,
-        "y": -219.7,
-        "z": 2
-      },
-      {
-        "label": "Daboo (GM Berserker)",
-        "x": -138.1,
-        "y": -238.6,
-        "z": -10
-      },
-      {
-        "label": "Zignal (Tribute Master)",
-        "x": 81.8,
-        "y": -166.3,
-        "z": 0
-      },
-      {
-        "label": "Snog (Soulbinder)",
-        "x": -78.3,
-        "y": -68.5,
-        "z": 1.4
-      },
-      {
-        "label": "Priest of Discord",
-        "x": 10.5,
-        "y": -33.3,
-        "z": 0
-      },
-      {
-        "label": "Succor",
-        "x": 0,
-        "y": 100,
-        "z": 0
+        "label": "to Innothule Swamp",
+        "x": -49.6,
+        "y": 109.8,
+        "z": -0.8
       }
     ]
   },
@@ -6067,244 +3819,92 @@
     ]
   },
   {
+    "zone": "gukbottom",
+    "layers": 2,
+    "poiCount": 5,
+    "classicExpansionHint": null,
+    "pois": [
+      {
+        "label": "to The City of Guk",
+        "x": 32.9,
+        "y": -1510.5,
+        "z": -99.8
+      },
+      {
+        "label": "to The City of Guk",
+        "x": 52.2,
+        "y": -1659.6,
+        "z": -91.1
+      },
+      {
+        "label": "to The City of Guk",
+        "x": -635,
+        "y": -1110,
+        "z": -90
+      },
+      {
+        "label": "portal to Innothule Swamp",
+        "x": -77.3,
+        "y": 124.7,
+        "z": -238.7
+      },
+      {
+        "label": "to The City of Guk",
+        "x": 216.1,
+        "y": -1194.1,
+        "z": -84.8
+      }
+    ]
+  },
+  {
+    "zone": "guktop",
+    "layers": 2,
+    "poiCount": 5,
+    "classicExpansionHint": null,
+    "pois": [
+      {
+        "label": "to The Ruins of Old Guk",
+        "x": 190.7,
+        "y": -1195.7,
+        "z": -84.8
+      },
+      {
+        "label": "to The Ruins of Old Guk",
+        "x": 78.4,
+        "y": -1538.6,
+        "z": -98.8
+      },
+      {
+        "label": "to The Ruins of Old Guk",
+        "x": -357.3,
+        "y": -1641.5,
+        "z": -92.1
+      },
+      {
+        "label": "to The Ruins of Old Guk",
+        "x": -621.2,
+        "y": -1111.3,
+        "z": -89.6
+      },
+      {
+        "label": "to Innothule Swamp",
+        "x": -35.7,
+        "y": 61.1,
+        "z": -0.8
+      }
+    ]
+  },
+  {
     "zone": "halas",
-    "layers": 1,
-    "poiCount": 39,
+    "layers": 2,
+    "poiCount": 1,
     "classicExpansionHint": null,
     "pois": [
       {
         "label": "to Everfrost Peaks",
-        "x": 56.9,
-        "y": 677.6,
-        "z": 4.4
-      },
-      {
-        "label": "Sissia (Baking)",
-        "x": 329,
-        "y": -368,
-        "z": 25.4
-      },
-      {
-        "label": "Ambril (Smith)",
-        "x": 307,
-        "y": -316,
-        "z": 25.4
-      },
-      {
-        "label": "Scon (Bar)",
-        "x": 347,
-        "y": -345,
-        "z": 4.4
-      },
-      {
-        "label": "Cindi (Tailor)",
-        "x": 171,
-        "y": -270,
-        "z": 4.4
-      },
-      {
-        "label": "Kar (Weapons)",
-        "x": 505,
-        "y": -510,
-        "z": 4.4
-      },
-      {
-        "label": "Warrior Guild",
-        "x": 493,
-        "y": -561,
-        "z": -17.6
-      },
-      {
-        "label": "Shenigan (Spells)",
-        "x": -232,
-        "y": -654,
-        "z": 4.4
-      },
-      {
-        "label": "Keven (GM Beastlord)",
-        "x": -184,
-        "y": -596,
-        "z": 4.4
-      },
-      {
-        "label": "Rose (Merchant)",
-        "x": -165,
-        "y": -397,
-        "z": 4.4
-      },
-      {
-        "label": "Shaman Guild",
-        "x": -407.3,
-        "y": -331.9,
-        "z": -19.6
-      },
-      {
-        "label": "Spell Merchants",
-        "x": -431.5,
-        "y": -332.2,
-        "z": -20.2
-      },
-      {
-        "label": "Dargon (Alchemy)",
-        "x": -356,
-        "y": -354,
-        "z": 4.4
-      },
-      {
-        "label": "Jenkis (Spells)",
-        "x": -329.8,
-        "y": -333.2,
-        "z": 4.4
-      },
-      {
-        "label": "Jarle (Soulbinder)",
-        "x": -340,
-        "y": -295,
-        "z": 4.4
-      },
-      {
-        "label": "Dok (Merchant)",
-        "x": -275,
-        "y": -212,
-        "z": 4.4
-      },
-      {
-        "label": "Merin (Pottery)",
-        "x": -273,
-        "y": -260,
-        "z": 4.4
-      },
-      {
-        "label": "Rosin (Merchant)",
-        "x": -406,
-        "y": -164,
-        "z": 4.4
-      },
-      {
-        "label": "Jac (Merchant)",
-        "x": -407,
-        "y": -198,
-        "z": 4.4
-      },
-      {
-        "label": "Kiln",
-        "x": -425.3,
-        "y": -177.4,
-        "z": 4.4
-      },
-      {
-        "label": "Elona (Weaponer)",
-        "x": -184,
-        "y": -212,
-        "z": 30.4
-      },
-      {
-        "label": "Rogue Guild",
-        "x": -119,
-        "y": -234.9,
-        "z": 9.4
-      },
-      {
-        "label": "Leopok (Merchant)",
-        "x": -151,
-        "y": -205,
-        "z": 6.4
-      },
-      {
-        "label": "Kevon (Bank)",
-        "x": -112,
-        "y": -199,
-        "z": 2.6
-      },
-      {
-        "label": "Priest of Discord",
-        "x": -75,
-        "y": -114.7,
-        "z": 0
-      },
-      {
-        "label": "Quillion (Merchant)",
-        "x": -66,
-        "y": 15,
-        "z": 0.6
-      },
-      {
-        "label": "Teria (Merchant)",
-        "x": 33,
-        "y": 6,
-        "z": 4.4
-      },
-      {
-        "label": "Hetie (Merchant)",
-        "x": 154,
-        "y": -240,
-        "z": 4.4
-      },
-      {
-        "label": "Brandyn (Bar)",
-        "x": 157,
-        "y": -182,
-        "z": 4.4
-      },
-      {
-        "label": "Rain (Fletcher)",
-        "x": 296,
-        "y": -175,
-        "z": 4.4
-      },
-      {
-        "label": "Guthan (Armor)",
-        "x": 324,
-        "y": -196,
-        "z": 4.4
-      },
-      {
-        "label": "Kevan (Weapons)",
-        "x": 324,
-        "y": -210,
-        "z": 4.4
-      },
-      {
-        "label": "Forge",
-        "x": 255.8,
-        "y": -179.6,
-        "z": 4.4
-      },
-      {
-        "label": "Murtog (Alchemy)",
-        "x": 364,
-        "y": -124,
-        "z": 4.4
-      },
-      {
-        "label": "Holana (Weapons)",
-        "x": 337,
-        "y": -137,
-        "z": 4.4
-      },
-      {
-        "label": "Brew Barrel",
-        "x": 263.7,
-        "y": -120.4,
-        "z": 4.4
-      },
-      {
-        "label": "Brin (Brewer)",
-        "x": 216,
-        "y": -93,
-        "z": 4.4
-      },
-      {
-        "label": "Boster (Berserker Tomes)",
-        "x": -308.6,
-        "y": -539.4,
-        "z": 0
-      },
-      {
-        "label": "Shanis (GM Berserker)",
-        "x": -330.5,
-        "y": -567.4,
-        "z": 0
+        "x": 75.3,
+        "y": 682.3,
+        "z": -0.8
       }
     ]
   },
@@ -6414,227 +4014,47 @@
   },
   {
     "zone": "highkeep",
-    "layers": 1,
-    "poiCount": 14,
+    "layers": 2,
+    "poiCount": 2,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "Oven",
-        "x": 236.7,
-        "y": -28.8,
-        "z": 30
-      },
-      {
-        "label": "Brew Barrel",
-        "x": 223.4,
-        "y": -56.2,
-        "z": 26
-      },
-      {
-        "label": "Shonta (Merchant)",
-        "x": 324,
-        "y": 54,
-        "z": 26
-      },
-      {
-        "label": "Jena (Baking)",
-        "x": 260,
-        "y": -46,
-        "z": 26
-      },
-      {
-        "label": "Justin (Spells)",
-        "x": 221,
-        "y": -62,
-        "z": 0
-      },
-      {
-        "label": "Tarn (Spells)",
-        "x": 223,
-        "y": -65,
-        "z": 0
-      },
-      {
-        "label": "Clerk (Brewer)",
-        "x": 187,
-        "y": 77,
-        "z": 0
-      },
-      {
-        "label": "Maryl (Merchant)",
-        "x": 364,
-        "y": -3,
-        "z": -14
-      },
-      {
-        "label": "Lynn (Merchant)",
-        "x": 375,
-        "y": 70,
-        "z": -14
-      },
-      {
-        "label": "Jaylin (Bank)",
-        "x": 338,
-        "y": 29,
-        "z": -14
-      },
-      {
-        "label": "Ran (GM Wizard)",
-        "x": 357,
-        "y": 42,
-        "z": 0
-      },
-      {
-        "label": "Edina (Gems)",
-        "x": 294,
-        "y": 97,
-        "z": 0
+        "label": "to Highpass Hold",
+        "x": -93.4,
+        "y": -60.4,
+        "z": -0.8
       },
       {
         "label": "to Highpass Hold",
-        "x": -103.2,
-        "y": -62.5,
-        "z": 0
-      },
-      {
-        "label": "to Highpass Hold",
-        "x": -99.1,
-        "y": 90.9,
-        "z": 0
+        "x": -92.8,
+        "y": 90.7,
+        "z": -0.8
       }
     ]
   },
   {
     "zone": "highpass",
-    "layers": 1,
-    "poiCount": 21,
+    "layers": 2,
+    "poiCount": 3,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "Bartender (Bar)",
-        "x": -466,
-        "y": 113.1,
-        "z": 6
-      },
-      {
-        "label": "Bartender (Bar)",
-        "x": 187,
-        "y": -391.3,
-        "z": 0.1
-      },
-      {
-        "label": "Lyn (Baking)",
-        "x": -493,
-        "y": 148.5,
-        "z": 0
-      },
-      {
-        "label": "Sernn (Merchant)",
-        "x": -154.3,
-        "y": 220.5,
-        "z": 0
-      },
-      {
-        "label": "Dyona (Tailor)",
-        "x": -135.2,
-        "y": 250,
-        "z": 0
-      },
-      {
-        "label": "Tami (Merchant)",
-        "x": 183.8,
-        "y": -392.4,
-        "z": 14
-      },
-      {
-        "label": "Lyla (Merchant)",
-        "x": 168.7,
-        "y": -385.3,
-        "z": 14
-      },
-      {
-        "label": "a Dealer (Baking)",
-        "x": 243.8,
-        "y": -337.8,
-        "z": 0
-      },
-      {
-        "label": "Dovik (Weapons)",
-        "x": 112.9,
-        "y": 319.5,
-        "z": 0
-      },
-      {
-        "label": "Mardon (Weapons)",
-        "x": 111.8,
-        "y": 380.6,
-        "z": 0
-      },
-      {
-        "label": "Winn (Pottery)",
-        "x": 123.7,
-        "y": 366.6,
-        "z": 14
-      },
-      {
-        "label": "Maigin (Merchant)",
-        "x": -483.2,
-        "y": -176.7,
-        "z": 28
-      },
-      {
-        "label": "Min (Pottery)",
-        "x": -461.2,
-        "y": -194.5,
-        "z": 28
-      },
-      {
         "label": "to High Keep",
-        "x": 104.2,
-        "y": 12.8,
-        "z": 0
+        "x": 103.9,
+        "y": 15.5,
+        "z": -0.8
       },
       {
-        "label": "to Kithicor Woods",
-        "x": -91.8,
-        "y": 972.9,
-        "z": 0
+        "label": "to Kithicor Forest",
+        "x": -92.4,
+        "y": 975,
+        "z": -0.8
       },
       {
         "label": "to East Karana",
-        "x": -104.7,
-        "y": -841.4,
-        "z": 0
-      },
-      {
-        "label": "Brew Barrel",
-        "x": -303.8,
-        "y": -61.1,
-        "z": 42
-      },
-      {
-        "label": "Oven",
-        "x": -328.4,
-        "y": -52.8,
-        "z": 42
-      },
-      {
-        "label": "Oven",
-        "x": -152.5,
-        "y": -35.5,
-        "z": 32
-      },
-      {
-        "label": "Pottery Wheel",
-        "x": -132.3,
-        "y": -66.6,
-        "z": 32
-      },
-      {
-        "label": "Kiln",
-        "x": -126,
-        "y": -57.8,
-        "z": 32
+        "x": -105.8,
+        "y": -833.5,
+        "z": -0.8
       }
     ]
   },
@@ -6844,57 +4264,33 @@
   },
   {
     "zone": "innothule",
-    "layers": 1,
-    "poiCount": 8,
+    "layers": 2,
+    "poiCount": 4,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "to Feerott",
-        "x": -1873.3,
-        "y": 1124.6,
-        "z": -6.8
+        "label": "to The Feerott",
+        "x": -1859.8,
+        "y": 1113.4,
+        "z": -13.1
       },
       {
-        "label": "ro South Ro",
-        "x": -1177.9,
-        "y": -2540.1,
-        "z": -9.4
+        "label": "to The Southern Desert of Ro",
+        "x": -1165.5,
+        "y": -2536.3,
+        "z": -30.3
       },
       {
-        "label": "to Upper Guk",
-        "x": 811.8,
-        "y": -143.7,
-        "z": -10.9
+        "label": "to The City of Guk",
+        "x": 816.4,
+        "y": -146.4,
+        "z": -12.3
       },
       {
-        "label": "to Gukta",
-        "x": 616,
-        "y": 2763.5,
-        "z": -33.9
-      },
-      {
-        "label": "Ruala (Merchant)",
-        "x": 317.8,
-        "y": 2561,
-        "z": -18.8
-      },
-      {
-        "label": "Knowledge Portal",
-        "x": 30.9,
-        "y": 723.1,
-        "z": -29.3
-      },
-      {
-        "label": "Galdok (GM Cleric)",
-        "x": -786.6,
-        "y": 1613.9,
-        "z": -24.4
-      },
-      {
-        "label": "Kintok (GM Shaman)",
-        "x": -930,
-        "y": 1322.8,
-        "z": -24.9
+        "label": "to Grobb",
+        "x": 617.4,
+        "y": 2783.1,
+        "z": -35.4
       }
     ]
   },
@@ -6987,453 +4383,191 @@
   },
   {
     "zone": "kaladima",
-    "layers": 1,
-    "poiCount": 11,
+    "layers": 2,
+    "poiCount": 3,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "Tumpy (Bar)",
-        "x": -316.9,
-        "y": -184,
-        "z": 1.9
-      },
-      {
-        "label": "Kalameky (Tailor)",
-        "x": -389.2,
-        "y": -168.6,
-        "z": 1.9
-      },
-      {
-        "label": "Canloe (GM Warrior)",
-        "x": -534.7,
-        "y": 20.9,
-        "z": 1.9
-      },
-      {
-        "label": "Didek (Weapons)",
-        "x": -224.1,
-        "y": -143.5,
-        "z": 4.9
-      },
-      {
-        "label": "Baldoleky (Potions)",
-        "x": 192,
-        "y": -250.4,
-        "z": 1.9
-      },
-      {
-        "label": "King Stormhammer",
-        "x": 358,
-        "y": 102.8,
-        "z": 9.9
-      },
-      {
-        "label": "The Arena",
-        "x": -302.9,
-        "y": -109.5,
-        "z": -10.1
-      },
-      {
-        "label": "to Butcher Block",
-        "x": -30.7,
-        "y": 54.1,
-        "z": 1.9
+        "label": "to Butcherblock Mountains",
+        "x": -39.8,
+        "y": 57.3,
+        "z": -0.8
       },
       {
         "label": "to North Kaladim",
-        "x": -323.4,
-        "y": -411.2,
-        "z": -18
+        "x": -330.2,
+        "y": -411.6,
+        "z": -22
       },
       {
         "label": "to North Kaladim",
-        "x": 253.9,
-        "y": -379.1,
-        "z": 1.9
-      },
-      {
-        "label": "Priest of Discord",
-        "x": 9,
-        "y": 47,
-        "z": 0
+        "x": 257.3,
+        "y": -379.6,
+        "z": -0.8
       }
     ]
   },
   {
     "zone": "kaladimb",
-    "layers": 1,
-    "poiCount": 14,
+    "layers": 2,
+    "poiCount": 2,
     "classicExpansionHint": null,
     "pois": [
       {
         "label": "to South Kaladim",
-        "x": 270.3,
-        "y": -405.7,
-        "z": 3.8
+        "x": 229.9,
+        "y": -360.1,
+        "z": -0.8
       },
       {
         "label": "to South Kaladim",
-        "x": -338.8,
-        "y": -417.9,
-        "z": -21.4
-      },
+        "x": -341.5,
+        "y": -404.6,
+        "z": -24.8
+      }
+    ]
+  },
+  {
+    "zone": "kedge",
+    "layers": 2,
+    "poiCount": 1,
+    "classicExpansionHint": null,
+    "pois": [
       {
-        "label": "Ghalea (GM Cleric)",
-        "x": -133.3,
-        "y": -780.5,
-        "z": 2.5
-      },
-      {
-        "label": "Spell Vendors",
-        "x": -131.5,
-        "y": -741.3,
-        "z": 2.5
-      },
-      {
-        "label": "Brenthalion (GM Paladin)",
-        "x": -132.5,
-        "y": -1325.2,
-        "z": 36.5
-      },
-      {
-        "label": "Busey (Spells)",
-        "x": -73.9,
-        "y": -1289.9,
-        "z": 38.5
-      },
-      {
-        "label": "Banaf (Gems)",
-        "x": -421.4,
-        "y": -695.9,
-        "z": -65.5
-      },
-      {
-        "label": "Harnoff (Smith)",
-        "x": -192.9,
-        "y": -728.9,
-        "z": -65.5
-      },
-      {
-        "label": "Crovsar (GM Rogue)",
-        "x": -259.1,
-        "y": -531.6,
-        "z": -33.5
-      },
-      {
-        "label": "Donnel (Bank)",
-        "x": -193.8,
-        "y": -610.9,
-        "z": -33.5
-      },
-      {
-        "label": "Forge",
-        "x": 164.1,
-        "y": -393.4,
-        "z": 17.4
-      },
-      {
-        "label": "Tempia (Spells)",
-        "x": -116.4,
-        "y": -1317.1,
-        "z": 37.5
-      },
-      {
-        "label": "Tabber (Berserker Tomes)",
-        "x": -263.9,
-        "y": -483.1,
-        "z": -36
-      },
-      {
-        "label": "Dravel (GM Berserker)",
-        "x": -303.4,
-        "y": -489.1,
-        "z": -36
+        "label": "to Dagnor's Cauldron",
+        "x": -30.1,
+        "y": -128.6,
+        "z": 299.1
       }
     ]
   },
   {
     "zone": "kerraridge",
-    "layers": 1,
-    "poiCount": 4,
+    "layers": 2,
+    "poiCount": 1,
     "classicExpansionHint": null,
     "pois": [
       {
         "label": "to Toxxulia Forest",
-        "x": 931.1,
-        "y": -415.4,
-        "z": 20
-      },
-      {
-        "label": "Raarrk (Merchant)",
-        "x": -129,
-        "y": -107.6,
-        "z": 0
-      },
-      {
-        "label": "Roary (Merchant)",
-        "x": 682.4,
-        "y": -631.7,
-        "z": 13.3
-      },
-      {
-        "label": "Melixis (Alchemy)",
-        "x": -177.4,
-        "y": -518.7,
-        "z": 14
+        "x": 928.4,
+        "y": -412.7,
+        "z": 19.2
       }
     ]
   },
   {
     "zone": "kithicor",
-    "layers": 1,
-    "poiCount": 12,
+    "layers": 2,
+    "poiCount": 3,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "Darvon (Merchant)",
-        "x": 673,
-        "y": -1132.8,
-        "z": -44
-      },
-      {
-        "label": "Mune (Merchant)",
-        "x": -2263,
-        "y": -1456.1,
-        "z": 295.4
-      },
-      {
-        "label": "Jurn (Merchant)",
-        "x": -3821,
-        "y": 282.6,
-        "z": 492.3
-      },
-      {
-        "label": "Lena (Tailor)",
-        "x": -4001,
-        "y": 266.6,
-        "z": 495.2
-      },
-      {
-        "label": "Krile (Fletcher)",
-        "x": -3882,
-        "y": 333.7,
-        "z": 493.6
-      },
-      {
-        "label": "Jeena (Merchant)",
-        "x": -3813,
-        "y": 218.2,
-        "z": 492.6
-      },
-      {
-        "label": "Grace (Merchant)",
-        "x": 684,
-        "y": -1092.8,
-        "z": -44.1
-      },
-      {
-        "label": "Morin (GM Ranger)",
-        "x": -2315,
-        "y": -1518.9,
-        "z": 296
-      },
-      {
-        "label": "Kithicor (GM Ranger)",
-        "x": -1962,
-        "y": 574,
-        "z": 224.1
-      },
-      {
         "label": "to Rivervale",
-        "x": -3825.6,
-        "y": -2021.2,
-        "z": 462.3
+        "x": -3825.4,
+        "y": -2013.8,
+        "z": 461.4
       },
       {
         "label": "to Highpass Hold",
-        "x": -4890.6,
-        "y": -557.1,
-        "z": 692
+        "x": -4894.9,
+        "y": -542.3,
+        "z": 689.1
       },
       {
-        "label": "to Commonlands",
-        "x": 1087.2,
-        "y": -1450.3,
-        "z": -52.1
+        "label": "to West Commonlands",
+        "x": 1099.9,
+        "y": -1429,
+        "z": -52.9
       }
     ]
   },
   {
     "zone": "lakerathe",
-    "layers": 1,
-    "poiCount": 8,
+    "layers": 2,
+    "poiCount": 3,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "to Southern Plains of Karana",
-        "x": -1151,
-        "y": -4374,
-        "z": 0
-      },
-      {
         "label": "to The Arena",
-        "x": -2708.1,
-        "y": -2344.7,
-        "z": 92.5
+        "x": -2679.6,
+        "y": -2351.2,
+        "z": 91.1
       },
       {
-        "label": "Guard Tower",
-        "x": -2081.2,
-        "y": -3769.6,
-        "z": -16.7
+        "label": "to The Southern Plains of Karana",
+        "x": -1160,
+        "y": -4339,
+        "z": -0.8
       },
       {
-        "label": "Dreana (Merchant)",
-        "x": -450,
-        "y": 424,
-        "z": 49.9
-      },
-      {
-        "label": "Srynda (Merchant)",
-        "x": -637,
-        "y": 507,
-        "z": 50.6
-      },
-      {
-        "label": "Abrod (Bar)",
-        "x": -657,
-        "y": 433,
-        "z": 49.9
-      },
-      {
-        "label": "Turga (Merchant)",
-        "x": 1815,
-        "y": -3126,
-        "z": 50.4
-      },
-      {
-        "label": "to Rathe Mountains",
-        "x": 2282,
-        "y": -2518,
-        "z": 1.8
+        "label": "to The Rathe Mountains",
+        "x": 2254.5,
+        "y": -2555.2,
+        "z": 0.9
       }
     ]
   },
   {
     "zone": "lavastorm",
-    "layers": 1,
-    "poiCount": 10,
+    "layers": 2,
+    "poiCount": 5,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "to Nektulos",
-        "x": 197,
-        "y": 2069,
-        "z": -19.6
+        "label": "to Nektulos Forest",
+        "x": 158.9,
+        "y": 2058.1,
+        "z": -20.4
       },
       {
         "label": "to Najena",
-        "x": 1033,
-        "y": 935,
-        "z": 12.6
+        "x": 1037.9,
+        "y": 940.8,
+        "z": 11.8
       },
       {
-        "label": "to Solusek's Eye",
-        "x": -225,
-        "y": -796,
-        "z": 127.1
+        "label": "to Solusek's Eye (SolA)",
+        "x": -226.6,
+        "y": -795.9,
+        "z": 126.3
       },
       {
-        "label": "to Nagafen's Lair",
-        "x": -488,
-        "y": -915,
-        "z": 51.7
+        "label": "to Nagafen's Lair (SolB)",
+        "x": -484.9,
+        "y": -915.4,
+        "z": 50.9
       },
       {
-        "label": "to Temple of Solusek Ro",
-        "x": -332,
-        "y": -1339,
-        "z": 145.7
-      },
-      {
-        "label": "Druid Circle",
-        "x": -1340,
-        "y": -959,
-        "z": 119.7
-      },
-      {
-        "label": "Tisiana (Spells)",
-        "x": -1366,
-        "y": -979,
-        "z": 122.6
-      },
-      {
-        "label": "Jengo (Weapons)",
-        "x": -950,
-        "y": 362,
-        "z": 0
-      },
-      {
-        "label": "Cyspeth (Weapons)",
-        "x": -928,
-        "y": 410,
-        "z": -0.4
-      },
-      {
-        "label": "Jenah (Merchant)",
-        "x": -922,
-        "y": 375,
-        "z": -3
+        "label": "to The Temple of Solusek Ro",
+        "x": -327.9,
+        "y": -1339.1,
+        "z": 144.9
       }
     ]
   },
   {
     "zone": "lfaydark",
-    "layers": 1,
-    "poiCount": 7,
+    "layers": 2,
+    "poiCount": 3,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "to Castle Mistmoore",
-        "x": -3359,
-        "y": 1115,
-        "z": 0
+        "label": "to The Castle of Mistmoore",
+        "x": -3361,
+        "y": 1140.2,
+        "z": -0.8
       },
       {
-        "label": "to Greater Faydark",
-        "x": 1145.3,
-        "y": -1982.6,
-        "z": -3.8
+        "label": "to The Steamfont Mountains",
+        "x": 2154.6,
+        "y": -967.1,
+        "z": -5.6
       },
       {
-        "label": "Anelia (Merchant)",
-        "x": -1249,
-        "y": 313,
-        "z": -5
-      },
-      {
-        "label": "Brownie (Merchant)",
-        "x": -3109,
-        "y": -1768,
-        "z": -4.4
-      },
-      {
-        "label": "Brownie (Merchant)",
-        "x": -3088,
-        "y": -1790,
-        "z": -1.4
-      },
-      {
-        "label": "Brownie (Merchant)",
-        "x": -3119,
-        "y": -1814,
-        "z": -4.4
-      },
-      {
-        "label": "to Steamfont Mountains",
-        "x": 1914.5,
-        "y": -1151.1,
-        "z": 15.5
+        "label": "to The Greater Faydark",
+        "x": 1180.2,
+        "y": -2144.5,
+        "z": -0.8
       }
     ]
   },
@@ -7710,64 +4844,36 @@
     ]
   },
   {
-    "zone": "misty",
-    "layers": 1,
-    "poiCount": 9,
+    "zone": "mistmoore",
+    "layers": 2,
+    "poiCount": 1,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "Knowledge Portal",
-        "x": 1263.9,
-        "y": 557.6,
-        "z": 9.9
-      },
+        "label": "to The Lesser Faydark",
+        "x": -126.5,
+        "y": 330.9,
+        "z": -182.7
+      }
+    ]
+  },
+  {
+    "zone": "misty",
+    "layers": 2,
+    "poiCount": 2,
+    "classicExpansionHint": null,
+    "pois": [
       {
-        "label": "Bim (Baker)",
-        "x": 2344.9,
-        "y": -896.8,
-        "z": -6.2
-      },
-      {
-        "label": "Hanga (Smith)",
-        "x": 2272.7,
-        "y": -338.9,
-        "z": -6.2
-      },
-      {
-        "label": "Sonsa (Tailor)",
-        "x": 2212.5,
-        "y": -663.3,
-        "z": -4.3
-      },
-      {
-        "label": "Tipa (Tailor)",
-        "x": 2207.5,
-        "y": -580.7,
-        "z": -6.2
-      },
-      {
-        "label": "Topper (Pottery)",
-        "x": 2347.9,
-        "y": -586,
-        "z": -6.2
-      },
-      {
-        "label": "to Runnyeye Citadel",
-        "x": -1390,
-        "y": 803.8,
-        "z": -8.4
+        "label": "to The Liberated Citadel of Runnyeye",
+        "x": -1402.8,
+        "y": 807.6,
+        "z": -11.6
       },
       {
         "label": "to Rivervale",
-        "x": 2550.6,
-        "y": -408.3,
-        "z": -8.2
-      },
-      {
-        "label": "Druid Circle",
-        "x": 1834.7,
-        "y": 531.2,
-        "z": 120.4
+        "x": 2562.5,
+        "y": -410.9,
+        "z": -11.6
       }
     ]
   },
@@ -7777,6 +4883,20 @@
     "poiCount": 0,
     "classicExpansionHint": null,
     "pois": []
+  },
+  {
+    "zone": "najena",
+    "layers": 2,
+    "poiCount": 1,
+    "classicExpansionHint": null,
+    "pois": [
+      {
+        "label": "to The Lavastorm Mountains",
+        "x": -856.2,
+        "y": 17.6,
+        "z": -0.8
+      }
+    ]
   },
   {
     "zone": "neighborhood",
@@ -8580,645 +5700,107 @@
   },
   {
     "zone": "nektulos",
-    "layers": 1,
-    "poiCount": 6,
+    "layers": 2,
+    "poiCount": 3,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "Blugurg (Merchant)",
-        "x": 174,
-        "y": 1169.6,
-        "z": -5
+        "label": "to East Commonlands",
+        "x": 560,
+        "y": 2690.4,
+        "z": -22.3
       },
       {
-        "label": "to Neriak",
-        "x": 1108.1,
-        "y": -2271.7,
-        "z": 0.6
+        "label": "to The Lavastorm Mountains",
+        "x": -311.7,
+        "y": -3057.7,
+        "z": -20.3
       },
       {
-        "label": "Knowledge Portal",
-        "x": 341.7,
-        "y": -741.7,
-        "z": -7.2
-      },
-      {
-        "label": "Minor Spires",
-        "x": 770.8,
-        "y": -429.7,
-        "z": 29.7
-      },
-      {
-        "label": "to Lavastorm",
-        "x": -315.3,
-        "y": -3057.6,
-        "z": -18.9
-      },
-      {
-        "label": "to East Commons",
-        "x": 562.9,
-        "y": 2683.4,
-        "z": -20.9
+        "label": "to Neriak - Foreign Quarter",
+        "x": 1108.6,
+        "y": -2276.3,
+        "z": -0.8
       }
     ]
   },
   {
     "zone": "neriaka",
-    "layers": 1,
-    "poiCount": 34,
+    "layers": 2,
+    "poiCount": 3,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "Gambel's Greens",
-        "x": 60.2,
-        "y": -249.2,
-        "z": 17.1
-      },
-      {
-        "label": "Slug's Tavern",
-        "x": 216.2,
-        "y": -185.2,
-        "z": 17.1
-      },
-      {
         "label": "to Nektulos Forest",
-        "x": -155.2,
-        "y": -20.7,
-        "z": 28.6
+        "x": -153.5,
+        "y": -29,
+        "z": 27.2
+      },
+      {
+        "label": "to Neriak - Commons",
+        "x": 342.5,
+        "y": -84,
+        "z": -14.8
       },
       {
         "label": "to Neriak Commons",
-        "x": 305.8,
-        "y": -62.8,
-        "z": -13.4
-      },
-      {
-        "label": "Drana's Bread and Butcher",
-        "x": 238.2,
-        "y": -131.1,
-        "z": -0.4
-      },
-      {
-        "label": "Silk Underground",
-        "x": 161.4,
-        "y": -132.4,
-        "z": 0.6
-      },
-      {
-        "label": "The Smuggler's Inn",
-        "x": 101.1,
-        "y": -151.8,
-        "z": -0.4
-      },
-      {
-        "label": "Pig Sticker",
-        "x": 440.5,
-        "y": 298.4,
-        "z": 15.6
-      },
-      {
-        "label": "Bulls Pit",
-        "x": 271,
-        "y": 345.6,
-        "z": -3.4
-      },
-      {
-        "label": "Bites N Pieces",
-        "x": 124.1,
-        "y": 343.6,
-        "z": 0.6
-      },
-      {
-        "label": "Shinie Tings",
-        "x": 169.3,
-        "y": 290.6,
-        "z": 0.6
-      },
-      {
-        "label": "Hukulk (Shadowknight",
-        "x": 472,
-        "y": 598,
-        "z": 19.6
-      },
-      {
-        "label": "Ranjor (Warrior GM)",
-        "x": 488,
-        "y": 578,
-        "z": 19.6
-      },
-      {
-        "label": "Gardunk (Beastlord GM)",
-        "x": 350,
-        "y": 578,
-        "z": 19.6
-      },
-      {
-        "label": "Kaglari (Shaman GM)",
-        "x": 367,
-        "y": 598,
-        "z": 19.6
-      },
-      {
-        "label": "Jarvah (Tailor)",
-        "x": 366,
-        "y": 222,
-        "z": 3.6
-      },
-      {
-        "label": "Putad (Smith)",
-        "x": 296,
-        "y": 212.6,
-        "z": 14.6
-      },
-      {
-        "label": "Wista (Merchant)",
-        "x": 499,
-        "y": 412,
-        "z": 12.6
-      },
-      {
-        "label": "Ungia (Smith)",
-        "x": 279,
-        "y": 204,
-        "z": 14.8
-      },
-      {
-        "label": "Bronk (Armor)",
-        "x": 386,
-        "y": 240,
-        "z": 3.6
-      },
-      {
-        "label": "Spell Vendors",
-        "x": 418,
-        "y": 603.8,
-        "z": 23.8
-      },
-      {
-        "label": "Zumzal (Merchant)",
-        "x": 437,
-        "y": 562,
-        "z": 1
-      },
-      {
-        "label": "Spell Vendors",
-        "x": 417.7,
-        "y": 533.7,
-        "z": 1
-      },
-      {
-        "label": "Forge",
-        "x": 404.2,
-        "y": 273,
-        "z": 14
-      },
-      {
-        "label": "Forge",
-        "x": 393.4,
-        "y": 292.7,
-        "z": 0
-      },
-      {
-        "label": "Oven",
-        "x": 275.3,
-        "y": -143.3,
-        "z": 0
-      },
-      {
-        "label": "Sewing Kit",
-        "x": 189.7,
-        "y": -131.2,
-        "z": 0
-      },
-      {
-        "label": "Oven",
-        "x": 160.6,
-        "y": 362.2,
-        "z": 0
-      },
-      {
-        "label": "Pottery Wheel",
-        "x": 67.3,
-        "y": -200.4,
-        "z": 0
-      },
-      {
-        "label": "Kiln",
-        "x": 80.1,
-        "y": -206.2,
-        "z": 0
-      },
-      {
-        "label": "Nola (Soulbinder)",
-        "x": 95,
-        "y": -205,
-        "z": 0
-      },
-      {
-        "label": "Luruk (Berserker Tomes)",
-        "x": 407.2,
-        "y": 471.7,
-        "z": 1.6
-      },
-      {
-        "label": "Daboo (GM Berserker)",
-        "x": 418.1,
-        "y": 453.7,
-        "z": 1
-      },
-      {
-        "label": "Priest of Discord",
-        "x": 78,
-        "y": 191,
-        "z": 39
+        "x": 454.5,
+        "y": 252.4,
+        "z": 13.2
       }
     ]
   },
   {
     "zone": "neriakb",
-    "layers": 1,
-    "poiCount": 50,
+    "layers": 2,
+    "poiCount": 3,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "To Neriak 3rd Gate",
-        "x": 853.1,
-        "y": -195.8,
-        "z": -42
+        "label": "to Neriak - Third Gate",
+        "x": 854.2,
+        "y": -194.7,
+        "z": -42.8
       },
       {
-        "label": "Jayna (GM Magician)",
-        "x": 969,
-        "y": -149,
-        "z": -42
+        "label": "to Neriak - Foreign Quarter",
+        "x": 389.3,
+        "y": -85.4,
+        "z": -14.8
       },
       {
-        "label": "Magician, Wizard and Enchanter Guild",
-        "x": 993.7,
-        "y": -146.3,
-        "z": -28
-      },
-      {
-        "label": "Wizard Spells",
-        "x": 886,
-        "y": -152.5,
-        "z": -42
-      },
-      {
-        "label": "Enchanter Spells",
-        "x": 918.7,
-        "y": -152.4,
-        "z": -42
-      },
-      {
-        "label": "Magician Spells",
-        "x": 919.4,
-        "y": -145.7,
-        "z": -42
-      },
-      {
-        "label": "Gath (GM Wizard)",
-        "x": 963,
-        "y": -142,
-        "z": -42
-      },
-      {
-        "label": "Camia (GM Enchanter)",
-        "x": 963,
-        "y": -156,
-        "z": -42
-      },
-      {
-        "label": "Forge House",
-        "x": 929.8,
-        "y": -52.3,
-        "z": -42
-      },
-      {
-        "label": "Neriak Underground",
-        "x": 951.5,
-        "y": -46,
-        "z": -42
-      },
-      {
-        "label": "Garren (Tailor)",
-        "x": 996,
-        "y": 4,
-        "z": -42
-      },
-      {
-        "label": "Mikaela (Tailor)",
-        "x": 1002,
-        "y": 5,
-        "z": -42
-      },
-      {
-        "label": "Seloxia (GM Warrior)",
-        "x": 1128,
-        "y": -24,
-        "z": -52
-      },
-      {
-        "label": "Issva (Weapons)",
-        "x": 1123,
-        "y": 74,
-        "z": -56
-      },
-      {
-        "label": "Narex (GM Warrior)",
-        "x": 1144,
-        "y": 36,
-        "z": -56
-      },
-      {
-        "label": "Jarrex (GM Warrior)",
-        "x": 1151,
-        "y": 28,
-        "z": -56
-      },
-      {
-        "label": "Trizam (GM Warrior)",
-        "x": 1143,
-        "y": 21,
-        "z": -56
-      },
-      {
-        "label": "Arena",
-        "x": 1216.6,
-        "y": 28.2,
-        "z": -29
-      },
-      {
-        "label": "Yegek (GM Warrior)",
-        "x": 1217,
-        "y": 51,
-        "z": -28
-      },
-      {
-        "label": "Volkoon (Merchant)",
-        "x": 1030,
-        "y": 43,
-        "z": -42
-      },
-      {
-        "label": "Tenso (Bar)",
-        "x": 1042,
-        "y": 153,
-        "z": -42
-      },
-      {
-        "label": "Rista (Bar)",
-        "x": 1011,
-        "y": 152,
-        "z": -28
-      },
-      {
-        "label": "Halvn (Smith)",
-        "x": 985.9,
-        "y": 131.4,
-        "z": -28
-      },
-      {
-        "label": "Dianax (Fletcher)",
-        "x": 1064,
-        "y": 147,
-        "z": -41
-      },
-      {
-        "label": "Andara (Fletcher)",
-        "x": 1062,
-        "y": 135,
-        "z": -41
-      },
-      {
-        "label": "Mariz (Merchant)",
-        "x": 938,
-        "y": 163,
-        "z": -42
-      },
-      {
-        "label": "Forge",
-        "x": 879,
-        "y": -18.3,
-        "z": -42
-      },
-      {
-        "label": "Treven (Smith)",
-        "x": 904,
-        "y": -52,
-        "z": -42
-      },
-      {
-        "label": "Felok (Armor)",
-        "x": 915,
-        "y": -34,
-        "z": -42
-      },
-      {
-        "label": "Trista (Smith)",
-        "x": 857,
-        "y": -70,
-        "z": -42
-      },
-      {
-        "label": "Zanotix (Weapons)",
-        "x": 868,
-        "y": -81,
-        "z": -42
-      },
-      {
-        "label": "Opal (Weapons)",
-        "x": 866,
-        "y": -60,
-        "z": -42
-      },
-      {
-        "label": "Krivn (Armor)",
-        "x": 886,
-        "y": -63,
-        "z": -42
-      },
-      {
-        "label": "Marenkor (Bar)",
-        "x": 837,
-        "y": -9,
-        "z": -56
-      },
-      {
-        "label": "The Blind Fish",
-        "x": 851.2,
-        "y": -45.4,
-        "z": -56
-      },
-      {
-        "label": "Glazn (Smith)",
-        "x": 796,
-        "y": -46,
-        "z": -69
-      },
-      {
-        "label": "Sivy (Smith)",
-        "x": 799,
-        "y": -61,
-        "z": -69
-      },
-      {
-        "label": "Rysva (Bar)",
-        "x": 848,
-        "y": -11,
-        "z": -70
-      },
-      {
-        "label": "Bounty of the Earth",
-        "x": 879.4,
-        "y": -44.5,
-        "z": -56
-      },
-      {
-        "label": "Marza (Potions)",
-        "x": 875,
-        "y": -20,
-        "z": -56
-      },
-      {
-        "label": "The Refined Palate",
-        "x": 880.6,
-        "y": -53.1,
-        "z": -56
-      },
-      {
-        "label": "Niz (Baking)",
-        "x": 884,
-        "y": -82,
-        "z": -56
-      },
-      {
-        "label": "Dunred (Merchant)",
-        "x": 866,
-        "y": -71,
-        "z": -56
-      },
-      {
-        "label": "The Burnished Coin (Bank)",
-        "x": 904.5,
-        "y": -29.1,
-        "z": -56
-      },
-      {
-        "label": "Antian (Bank)",
-        "x": 918,
-        "y": -46,
-        "z": -56
-      },
-      {
-        "label": "Zartox (Jewelry)",
-        "x": 901,
-        "y": -82,
-        "z": -28
-      },
-      {
-        "label": "Nekola (Gems)",
-        "x": 931,
-        "y": -81,
-        "z": -28
-      },
-      {
-        "label": "Lynsalai (Merchant)",
-        "x": 971,
-        "y": -93,
-        "z": -42
-      },
-      {
-        "label": "to Neriak Foreign Quarter",
-        "x": 402.5,
-        "y": -82.2,
-        "z": -14
-      },
-      {
-        "label": "to Neriak Foreign Quarter",
-        "x": 455,
-        "y": 233.6,
-        "z": 14
+        "label": "to Neriak - Foreign Quarter",
+        "x": 465,
+        "y": 229.9,
+        "z": 13.2
       }
     ]
   },
   {
     "zone": "neriakc",
-    "layers": 1,
-    "poiCount": 12,
+    "layers": 2,
+    "poiCount": 1,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "The Rack",
-        "x": 1516.3,
-        "y": -774.7,
-        "z": -84
-      },
+        "label": "to Neriak - Commons",
+        "x": 851.6,
+        "y": -215.9,
+        "z": -42.8
+      }
+    ]
+  },
+  {
+    "zone": "newsebexp",
+    "layers": 2,
+    "poiCount": 1,
+    "classicExpansionHint": null,
+    "pois": [
       {
-        "label": "Cuisine Excelsior",
-        "x": 1445.6,
-        "y": -749,
-        "z": -84
-      },
-      {
-        "label": "The Maiden's Fancy",
-        "x": 1448.2,
-        "y": -880,
-        "z": -84
-      },
-      {
-        "label": "The Bauble",
-        "x": 1423.2,
-        "y": -822.9,
-        "z": -84
-      },
-      {
-        "label": "Furrier Royale",
-        "x": 1320.8,
-        "y": -765.1,
-        "z": -84
-      },
-      {
-        "label": "Library",
-        "x": 1316.1,
-        "y": -859,
-        "z": -70
-      },
-      {
-        "label": "Nezzka (GM Shadowknight)",
-        "x": 1237,
-        "y": -1280,
-        "z": -83
-      },
-      {
-        "label": "Xon (GM Necromancer)",
-        "x": 1253,
-        "y": -1282,
-        "z": -82
-      },
-      {
-        "label": "Eolorn (GM Rogue)",
-        "x": 1318,
-        "y": -628,
-        "z": -84
-      },
-      {
-        "label": "Perrir (GM Cleric)",
-        "x": 789,
-        "y": -408,
-        "z": -56
-      },
-      {
-        "label": "to Neriak Commons",
-        "x": 852.9,
-        "y": -211.3,
-        "z": -42
-      },
-      {
-        "label": "to Neriak Fourth Gate",
-        "x": 1782.7,
-        "y": -911,
-        "z": -69.9
+        "label": "to The Northern Desert of Ro (click)",
+        "x": 144,
+        "y": -646.3,
+        "z": -23.9
       }
     ]
   },
@@ -9286,69 +5868,27 @@
   },
   {
     "zone": "northkarana",
-    "layers": 1,
-    "poiCount": 10,
+    "layers": 2,
+    "poiCount": 3,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "to West Karana",
-        "x": -3030.1,
-        "y": 1535.1,
-        "z": -0.2
+        "label": "to The Western Plains of Karana",
+        "x": -3157.7,
+        "y": 1416.7,
+        "z": -4.7
       },
       {
-        "label": "to East Karana",
-        "x": 3071.1,
-        "y": -11.8,
-        "z": -36.7
+        "label": "to The Eastern Plains of Karana",
+        "x": 3060.4,
+        "y": -1.5,
+        "z": -38.1
       },
       {
-        "label": "to South Karana",
-        "x": -1211.2,
-        "y": 4355.6,
-        "z": -33.8
-      },
-      {
-        "label": "Great Spires",
-        "x": -1299.4,
-        "y": 3704.1,
-        "z": -11
-      },
-      {
-        "label": "Druid Circle",
-        "x": 1449.4,
-        "y": 2730.7,
-        "z": -10.6
-      },
-      {
-        "label": "Romi (Bar)",
-        "x": 189.4,
-        "y": 627,
-        "z": -8.7
-      },
-      {
-        "label": "Mrysila (Merchant)",
-        "x": 156.4,
-        "y": 678.2,
-        "z": -8.7
-      },
-      {
-        "label": "Romella (Merchant)",
-        "x": 191.8,
-        "y": 675.8,
-        "z": -8.7
-      },
-      {
-        "label": "Roule (Weapons)",
-        "x": 212.8,
-        "y": 640.8,
-        "z": -8.7
-      },
-      {
-        "label": "Tak (Spells)",
-        "x": 1464.6,
-        "y": 2730.4,
-        "z": -8.7
+        "label": "to The Southern Plains of Karana",
+        "x": -1205.3,
+        "y": 4464.4,
+        "z": -35.2
       }
     ]
   },
@@ -9410,481 +5950,73 @@
   },
   {
     "zone": "nro",
-    "layers": 1,
-    "poiCount": 11,
+    "layers": 2,
+    "poiCount": 4,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "to Iceclad",
-        "x": 926,
-        "y": -791,
-        "z": 34.5
+        "label": "to New Sebilis Expedition (click)",
+        "x": 796,
+        "y": -2419.9,
+        "z": 2.2
       },
       {
-        "label": "to Oasis",
-        "x": -377,
-        "y": 1705,
-        "z": 43.8
+        "label": "to Oasis of Marr",
+        "x": -276.7,
+        "y": 1747.5,
+        "z": 30.8
       },
       {
         "label": "to East Freeport",
-        "x": -395,
-        "y": -4037,
-        "z": -24.3
+        "x": -344.5,
+        "y": -4046.8,
+        "z": -28.8
       },
       {
-        "label": "to East Commons",
-        "x": -2892,
-        "y": -2603,
-        "z": 3.8
-      },
-      {
-        "label": "Murissa (Merchant)",
-        "x": -126,
-        "y": -3711,
-        "z": -24.3
-      },
-      {
-        "label": "Tozie (Bar)",
-        "x": -488,
-        "y": -3465,
-        "z": -23.3
-      },
-      {
-        "label": "Valon (Merchant)",
-        "x": -502,
-        "y": -3414,
-        "z": -23.3
-      },
-      {
-        "label": "Spoolie (Tailor)",
-        "x": -488,
-        "y": -3371,
-        "z": -23.3
-      },
-      {
-        "label": "Tira (Fishing)",
-        "x": 789,
-        "y": -2293,
-        "z": 3.3
-      },
-      {
-        "label": "Juni (Fishing)",
-        "x": 753,
-        "y": -2184,
-        "z": 7.9
-      },
-      {
-        "label": "Minor Spire",
-        "x": -824,
-        "y": -1376,
-        "z": 6.6
+        "label": "to East Commonlands",
+        "x": -2812,
+        "y": -2607.6,
+        "z": -0.8
       }
     ]
   },
   {
     "zone": "oasis",
-    "layers": 1,
-    "poiCount": 9,
+    "layers": 2,
+    "poiCount": 3,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "to Northern Ro",
-        "x": 729.6,
-        "y": -2528.1,
-        "z": 6
+        "label": "to The Northern Desert of Ro",
+        "x": 58.7,
+        "y": -2413.3,
+        "z": 34.3
       },
       {
-        "label": "to Southern Ro",
-        "x": -165.2,
-        "y": 1931.2,
-        "z": 6.2
+        "label": "to The Southern Desert of Ro",
+        "x": -169,
+        "y": 1859.5,
+        "z": 1.6
       },
       {
-        "label": "Marnan (Merchant)",
-        "x": 261,
-        "y": 1321,
-        "z": 4.8
-      },
-      {
-        "label": "Tizzy (Brewer)",
-        "x": 306,
-        "y": 1307,
-        "z": 7.3
-      },
-      {
-        "label": "Sythan (Merchant)",
-        "x": 6,
-        "y": -597,
-        "z": 3
-      },
-      {
-        "label": "Transan (Weapons)",
-        "x": -51,
-        "y": -613,
-        "z": 3
-      },
-      {
-        "label": "Isslana (Merchant)",
-        "x": -71,
-        "y": -512,
-        "z": 3
-      },
-      {
-        "label": "Tran (Brewer)",
-        "x": 43,
-        "y": -542,
-        "z": 3
-      },
-      {
-        "label": "Gadallion (Spells)",
-        "x": 0,
-        "y": -493,
-        "z": 3
+        "label": "to The Plane of Hate (click)",
+        "x": -411.4,
+        "y": 379.2,
+        "z": 130.7
       }
     ]
   },
   {
     "zone": "oggok",
-    "layers": 1,
-    "poiCount": 56,
+    "layers": 2,
+    "poiCount": 1,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "Sheerie (Berserker Tomes)",
-        "x": 277.1,
-        "y": -314.8,
-        "z": 0
-      },
-      {
-        "label": "Baddi (GM Berserker)",
-        "x": 255.1,
-        "y": -287.3,
-        "z": 0
-      },
-      {
-        "label": "Priest of Discord",
-        "x": -214,
-        "y": 283,
-        "z": 30.8
-      },
-      {
-        "label": "Greenblood Guild",
-        "x": -52,
-        "y": -332.1,
-        "z": 4.7
-      },
-      {
-        "label": "Oggok's Keep",
-        "x": 219.4,
-        "y": 11.1,
-        "z": -6.3
-      },
-      {
-        "label": "Meet and Drink Tew Bie",
-        "x": 308.9,
-        "y": -193.3,
-        "z": 4.7
-      },
-      {
-        "label": "Lether Armer",
-        "x": 162.7,
-        "y": -328.5,
-        "z": 4.7
-      },
-      {
-        "label": "Metil Armer",
-        "x": 166.5,
-        "y": -284.2,
-        "z": 4.7
-      },
-      {
-        "label": "Gralbug (Smithing)",
-        "x": -786.3,
-        "y": -331.1,
-        "z": 39.4
-      },
-      {
-        "label": "Blergerda (Smithing)",
-        "x": -913.4,
-        "y": -186.9,
-        "z": 39.4
-      },
-      {
-        "label": "Brana (Weaponer)",
-        "x": -877.4,
-        "y": -75.1,
-        "z": 39.4
-      },
-      {
-        "label": "Puglala (Smithing)",
-        "x": -847.7,
-        "y": -98.1,
-        "z": 39.4
-      },
-      {
-        "label": "Bordag (GM Beastlord)",
-        "x": -1160.3,
-        "y": -251.3,
-        "z": 80.4
-      },
-      {
-        "label": "Brogdog (Spells)",
-        "x": -1059.1,
-        "y": -266.4,
-        "z": 80.3
-      },
-      {
-        "label": "Rognok (Spells)",
-        "x": -1070.8,
-        "y": -320.1,
-        "z": 80.3
-      },
-      {
-        "label": "Merchants (Spells)",
-        "x": -1075.7,
-        "y": -633.9,
-        "z": 80.4
-      },
-      {
-        "label": "Marda (GM Shaman)",
-        "x": -1094.5,
-        "y": -650.1,
-        "z": 80.3
-      },
-      {
-        "label": "Cralk (Spells)",
-        "x": -1000,
-        "y": -625.4,
-        "z": 80.3
-      },
-      {
-        "label": "Squeea (Weaponer)",
-        "x": -977.5,
-        "y": -654.8,
-        "z": 80.3
-      },
-      {
-        "label": "Zulort (GM Shaman)",
-        "x": -985.8,
-        "y": -631.6,
-        "z": 80.3
-      },
-      {
-        "label": "Fuga (GM Shaman)",
-        "x": -809,
-        "y": -730.9,
-        "z": 39.4
-      },
-      {
-        "label": "Jargo (GM Shaman)",
-        "x": -874.6,
-        "y": -752.9,
-        "z": 39.4
-      },
-      {
-        "label": "Hrak (Merchant)",
-        "x": -848.9,
-        "y": -817.4,
-        "z": 39.5
-      },
-      {
-        "label": "Uoola (Merchant)",
-        "x": -684.5,
-        "y": -655.4,
-        "z": 4.5
-      },
-      {
-        "label": "Gretamog (Tailoring)",
-        "x": -697.2,
-        "y": -624.6,
-        "z": 4.4
-      },
-      {
-        "label": "Merchants (Pottery)",
-        "x": -748.8,
-        "y": -231.9,
-        "z": 4.4
-      },
-      {
-        "label": "Sinsaal (Merchant)",
-        "x": -679.9,
-        "y": -269.1,
-        "z": 4.5
-      },
-      {
-        "label": "Iksob (Merchant)",
-        "x": -13.5,
-        "y": -266.1,
-        "z": 4.4
-      },
-      {
-        "label": "Crilt (Spells)",
-        "x": 4.1,
-        "y": -276.1,
-        "z": 4.4
-      },
-      {
-        "label": "Merchants (Spells)",
-        "x": -12.5,
-        "y": -386.7,
-        "z": 4.4
-      },
-      {
-        "label": "Bonlarg (GM Shadowknight)",
-        "x": 41.3,
-        "y": -357.9,
-        "z": 16.4
-      },
-      {
-        "label": "Ruksa (GM Shadowknight)",
-        "x": 43.1,
-        "y": -311.5,
-        "z": 16.4
-      },
-      {
-        "label": "Soonog (GM Shadowknight)",
-        "x": 36.7,
-        "y": -335.6,
-        "z": 16.4
-      },
-      {
-        "label": "Ungral (Banker)",
-        "x": 262.8,
-        "y": 4.1,
-        "z": -6.6
-      },
-      {
-        "label": "Guntrik (GM Warrior)",
-        "x": -70.8,
-        "y": -27.4,
-        "z": -26.6
-      },
-      {
-        "label": "Snarg (Weaponer)",
-        "x": 2,
-        "y": -81,
-        "z": -26.6
-      },
-      {
-        "label": "Lork (GM Warrior)",
-        "x": 68.1,
-        "y": -37.1,
-        "z": -26.6
-      },
-      {
-        "label": "Kogna (GM Warrior)",
-        "x": 27.6,
-        "y": 73,
-        "z": -26.6
-      },
-      {
-        "label": "Horgus (GM Warrior)",
-        "x": -38.8,
-        "y": 63.9,
-        "z": -26.6
-      },
-      {
-        "label": "Merchants (General)",
-        "x": 175.7,
-        "y": -530.1,
-        "z": 4.4
-      },
-      {
-        "label": "Merchants (Brewing, Alcohol, and Rations)",
-        "x": 238,
-        "y": -187.8,
-        "z": 4.4
-      },
-      {
-        "label": "Merchants (Alchemy)",
-        "x": 369.8,
-        "y": -294.8,
-        "z": 4.7
-      },
-      {
-        "label": "Rora (Weaponer)",
-        "x": 369.5,
-        "y": -216.4,
-        "z": 4.8
-      },
-      {
-        "label": "Duuga (Armorer)",
-        "x": 136.7,
-        "y": -363.1,
-        "z": 4.8
-      },
-      {
-        "label": "Juk (Armorer)",
-        "x": 197.8,
-        "y": -364.6,
-        "z": 4.8
-      },
-      {
-        "label": "Zarg (Armorer)",
-        "x": 195.3,
-        "y": -246.4,
-        "z": 4.7
-      },
-      {
-        "label": "Lopuka (Armorer)",
-        "x": 141.2,
-        "y": -251.9,
-        "z": 4.7
-      },
-      {
-        "label": "to Feerrott",
+        "label": "to The Feerrott",
         "x": 96.2,
         "y": 379.5,
         "z": 0.6
-      },
-      {
-        "label": "Angrog (Merchant)",
-        "x": 0.8,
-        "y": 244.9,
-        "z": 2.6
-      },
-      {
-        "label": "Praak (Fletcher)",
-        "x": -492.9,
-        "y": 331.3,
-        "z": 46.3
-      },
-      {
-        "label": "Brokk (Merchant)",
-        "x": -384.2,
-        "y": -223.5,
-        "z": 60.3
-      },
-      {
-        "label": "Cikoona (Weaponer)",
-        "x": -479.7,
-        "y": -448.6,
-        "z": 4.5
-      },
-      {
-        "label": "Grop (Merchant)",
-        "x": -494.2,
-        "y": -510.3,
-        "z": 4.5
-      },
-      {
-        "label": "Trurg (Soulbinder)",
-        "x": -652.5,
-        "y": -496.6,
-        "z": 4.4
-      },
-      {
-        "label": "Bubbgrib (Smith)",
-        "x": 205.8,
-        "y": -286.2,
-        "z": 4.4
-      },
-      {
-        "label": "Varrok (Weaponer)",
-        "x": 210.2,
-        "y": -319.5,
-        "z": 4.4
       }
     ]
   },
@@ -9905,58 +6037,9 @@
   {
     "zone": "oot",
     "layers": 1,
-    "poiCount": 8,
+    "poiCount": 0,
     "classicExpansionHint": null,
-    "pois": [
-      {
-        "label": "Zachariah Reigh",
-        "x": -7528,
-        "y": 2095,
-        "z": 0.7
-      },
-      {
-        "label": "Elesseryl (Spells)",
-        "x": 7875,
-        "y": -1309,
-        "z": 129.2
-      },
-      {
-        "label": "Doran (Armor)",
-        "x": 9241.1,
-        "y": -1283.7,
-        "z": 40.2
-      },
-      {
-        "label": "Cleonae (Brewing)",
-        "x": 9252,
-        "y": -503,
-        "z": 9.1
-      },
-      {
-        "label": "Tegea Prengyn",
-        "x": 9191.8,
-        "y": -260.9,
-        "z": 0.7
-      },
-      {
-        "label": "Dock",
-        "x": 9193.1,
-        "y": -271.7,
-        "z": 0.7
-      },
-      {
-        "label": "Endan (Merchant)",
-        "x": -7721,
-        "y": 2211,
-        "z": 6.5
-      },
-      {
-        "label": "Sanian (Fishing)",
-        "x": -7798,
-        "y": 2102,
-        "z": 6.9
-      }
-    ]
+    "pois": []
   },
   {
     "zone": "overthere",
@@ -10082,249 +6165,69 @@
   },
   {
     "zone": "paineel",
-    "layers": 1,
-    "poiCount": 40,
+    "layers": 2,
+    "poiCount": 10,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "Kiln",
-        "x": -811.3,
-        "y": -977.5,
-        "z": -83
-      },
-      {
-        "label": "Brew Barrel",
-        "x": -788.9,
-        "y": -953.4,
-        "z": -84
-      },
-      {
-        "label": "Sewing Kit",
-        "x": -698.3,
-        "y": -970.3,
-        "z": -70
-      },
-      {
-        "label": "Forge",
-        "x": -416.1,
-        "y": -929.6,
-        "z": -123.9
-      },
-      {
-        "label": "Erud Forge",
-        "x": -426.2,
-        "y": -922.9,
-        "z": -123.9
-      },
-      {
-        "label": "Darkglom Palace",
-        "x": -685.5,
-        "y": -1273.6,
-        "z": -39.2
-      },
-      {
-        "label": "Athenaeum Necromantia",
-        "x": -866,
-        "y": -1146,
-        "z": -16.3
-      },
-      {
-        "label": "Dannis (Jewelry)",
-        "x": -722,
-        "y": -1092,
-        "z": -37.2
-      },
-      {
-        "label": "Spell Vendors",
-        "x": -433.2,
-        "y": -1124.9,
-        "z": -38.2
-      },
-      {
-        "label": "Jenkin (Weapons)",
-        "x": -439,
-        "y": -1097,
-        "z": -38.2
-      },
-      {
-        "label": "Kervis (Armor)",
-        "x": -428,
-        "y": -1097,
-        "z": -38.2
-      },
-      {
-        "label": "Sern (GM Cleric)",
-        "x": -522,
-        "y": -1130,
-        "z": -35.2
-      },
-      {
-        "label": "Ishen (Armor)",
-        "x": -523,
-        "y": -1212,
-        "z": -38.2
-      },
-      {
-        "label": "Tenralus (Weapons)",
-        "x": -523,
-        "y": -1225,
-        "z": -38.2
-      },
-      {
-        "label": "Spell Vendors",
-        "x": -553.3,
-        "y": -1220.5,
-        "z": -38.2
-      },
-      {
-        "label": "Spell Vendors",
-        "x": -805.5,
-        "y": -671.4,
-        "z": -54.2
-      },
-      {
-        "label": "Spell Vendors",
-        "x": -884.3,
-        "y": -691.6,
-        "z": -54.2
-      },
-      {
-        "label": "Linnleu (Merchant)",
-        "x": -820,
-        "y": -734,
-        "z": -22.2
-      },
-      {
-        "label": "Keletha (Merchant)",
-        "x": -861,
-        "y": -734,
-        "z": -22.2
-      },
-      {
-        "label": "Coriante (GM Necromancer)",
-        "x": -839,
-        "y": -797,
-        "z": -23.2
-      },
-      {
-        "label": "Shwara (GM Necromancer)",
-        "x": -840,
-        "y": -762,
-        "z": -80.2
-      },
-      {
-        "label": "Taralani (Bar)",
-        "x": -805,
-        "y": -934,
-        "z": -80.2
-      },
-      {
-        "label": "Rallia (Merchant)",
-        "x": -770,
-        "y": -941,
-        "z": -79.2
-      },
-      {
-        "label": "Geomar (Merchant)",
-        "x": -757,
-        "y": -953,
-        "z": -79.2
-      },
-      {
-        "label": "Yvonne (Alchemy)",
-        "x": -753,
-        "y": -944,
-        "z": -50.2
-      },
-      {
-        "label": "Henly (Merchant)",
-        "x": -703,
-        "y": -987,
-        "z": -80.2
-      },
-      {
-        "label": "Pottery Vendors",
-        "x": -812.5,
-        "y": -987.1,
-        "z": -79.2
-      },
-      {
-        "label": "Marsa (Bank)",
-        "x": -716,
-        "y": -1035,
-        "z": -79.2
-      },
-      {
-        "label": "Nadara (Bank)",
-        "x": -740,
-        "y": -1035,
-        "z": -79.2
-      },
-      {
-        "label": "Gorng (Baking)",
-        "x": -636,
-        "y": -984,
-        "z": -66.2
-      },
-      {
-        "label": "Iva (Baking)",
-        "x": -649,
-        "y": -970,
-        "z": -66.2
-      },
-      {
-        "label": "Pardas (Tailor)",
-        "x": -678,
-        "y": -944,
-        "z": -66.2
-      },
-      {
-        "label": "Winnia (Armor)",
-        "x": -689,
-        "y": -944,
-        "z": -66.2
-      },
-      {
-        "label": "Faratain (Armor)",
-        "x": -421,
-        "y": -938,
-        "z": -120.2
-      },
-      {
-        "label": "Spell Vendors",
-        "x": -455.7,
-        "y": -891.4,
-        "z": -120.2
-      },
-      {
-        "label": "Mandaril (GM Shadow Knight)",
-        "x": -456,
-        "y": -849,
-        "z": -117.2
-      },
-      {
-        "label": "to The Hole",
-        "x": 942,
-        "y": -605.7,
-        "z": -97.3
+        "label": "to The Ruins of Old Paineel (Hole)",
+        "x": 942.9,
+        "y": -604.8,
+        "z": -98.8
       },
       {
         "label": "to The Warrens",
-        "x": 880.7,
-        "y": -726.4,
-        "z": -36.4
+        "x": 881.2,
+        "y": -729.7,
+        "z": -37.8
       },
       {
         "label": "to Toxullia Forest",
-        "x": -121.3,
-        "y": -863.8,
-        "z": 0.6
+        "x": -107.1,
+        "y": -877.3,
+        "z": -0.8
       },
       {
-        "label": "Tomas (Soulbinder)",
-        "x": -563,
-        "y": -665,
-        "z": -98
+        "label": "to The Ruins of Old Paineel (Hole - jump)",
+        "x": -227.6,
+        "y": -778.4,
+        "z": -1.8
+      },
+      {
+        "label": "portal A",
+        "x": -525.2,
+        "y": -914.3,
+        "z": -122.7
+      },
+      {
+        "label": "portal A",
+        "x": -541.2,
+        "y": -958.7,
+        "z": -80.8
+      },
+      {
+        "label": "portal B",
+        "x": -755.7,
+        "y": -876,
+        "z": -81.8
+      },
+      {
+        "label": "portal B",
+        "x": -657.7,
+        "y": -1072.6,
+        "z": -39.8
+      },
+      {
+        "label": "portal C",
+        "x": -657.7,
+        "y": -1082.2,
+        "z": -39.8
+      },
+      {
+        "label": "portal C",
+        "x": -217,
+        "y": -482.3,
+        "z": 41.2
       }
     ]
   },
@@ -10351,6 +6254,34 @@
         "x": -1073,
         "y": 2120,
         "z": -320
+      }
+    ]
+  },
+  {
+    "zone": "paw",
+    "layers": 2,
+    "poiCount": 1,
+    "classicExpansionHint": null,
+    "pois": [
+      {
+        "label": "to The Southern Plains of Karana",
+        "x": -66.8,
+        "y": 122.4,
+        "z": -0.8
+      }
+    ]
+  },
+  {
+    "zone": "permafrost",
+    "layers": 2,
+    "poiCount": 1,
+    "classicExpansionHint": null,
+    "pois": [
+      {
+        "label": "to Everfrost Peaks",
+        "x": -79.9,
+        "y": 61.7,
+        "z": -0.8
       }
     ]
   },
@@ -11020,197 +6951,71 @@
   },
   {
     "zone": "qcat",
-    "layers": 1,
-    "poiCount": 14,
+    "layers": 2,
+    "poiCount": 7,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "to South Qeynos",
-        "x": 63.4,
-        "y": -229.5,
-        "z": -56.8
+        "label": "to South Qeynos (near Bank)",
+        "x": 63.5,
+        "y": -228.9,
+        "z": -79.6
       },
       {
-        "label": "Zaen (GM Shadowknight)",
-        "x": 370.9,
-        "y": -429.4,
-        "z": -39.5
+        "label": "to South Qeynos (near Arena)",
+        "x": 302.7,
+        "y": -216.7,
+        "z": -39.8
       },
       {
-        "label": "Felia (Weapons)",
-        "x": 423.6,
-        "y": -416.6,
-        "z": -38.2
+        "label": "to North Qeynos (near hidden pool)",
+        "x": 49.7,
+        "y": -1024.2,
+        "z": -48.7
       },
       {
-        "label": "Gehnon (Spells)",
-        "x": 419.2,
-        "y": -417.2,
-        "z": -38.2
+        "label": "to North Qeynos (near Crow's)",
+        "x": -163.9,
+        "y": -861.2,
+        "z": -48.6
       },
       {
-        "label": "Jexun (Spells)",
-        "x": 414.7,
-        "y": -404.2,
-        "z": -38.2
+        "label": "to North Qeynos (near Rogue Guild)",
+        "x": -90.8,
+        "y": -635.6,
+        "z": -42.8
       },
       {
-        "label": "Tessia (Spells)",
-        "x": 436.7,
-        "y": -340,
-        "z": -38.2
+        "label": "to South Qeynos (near Docks)",
+        "x": -132.1,
+        "y": 156.9,
+        "z": -47.6
       },
       {
-        "label": "Naes (Spells)",
-        "x": 426.5,
-        "y": -347.9,
-        "z": -38.2
-      },
-      {
-        "label": "Senst (Spells)",
-        "x": 412.9,
-        "y": -345.7,
-        "z": -38.2
-      },
-      {
-        "label": "to North Qeynos",
-        "x": 304.2,
-        "y": -215,
-        "z": -38.2
-      },
-      {
-        "label": "to North Qeynos",
-        "x": 48.4,
-        "y": -997.8,
-        "z": -38.2
-      },
-      {
-        "label": "to North Qeynos",
-        "x": -160,
-        "y": -859.7,
-        "z": -52.2
-      },
-      {
-        "label": "to North Qeynos",
-        "x": -96.8,
-        "y": -638,
-        "z": -38.2
-      },
-      {
-        "label": "to South Qeynos",
-        "x": -130.9,
-        "y": 144.5,
-        "z": -52.2
-      },
-      {
-        "label": "Kurne (GM Necromancer)",
-        "x": 298,
-        "y": -296,
-        "z": -39.5
+        "label": "to North Qeynos (East)",
+        "x": 174.1,
+        "y": -341.2,
+        "z": -65.8
       }
     ]
   },
   {
     "zone": "qey2hh1",
-    "layers": 1,
-    "poiCount": 16,
+    "layers": 2,
+    "poiCount": 2,
     "classicExpansionHint": null,
     "pois": [
       {
-        "label": "Cleet (Brewer)",
-        "x": 5542,
-        "y": 2261,
-        "z": -2.7
-      },
-      {
-        "label": "Analya (Spells)",
-        "x": 2485,
-        "y": 4035,
-        "z": -65.9
-      },
-      {
-        "label": "Sera (Smith)",
-        "x": 2223,
-        "y": 4012,
-        "z": -52.1
-      },
-      {
-        "label": "Misla (Merchant)",
-        "x": 2341,
-        "y": 4024,
-        "z": -52.1
-      },
-      {
-        "label": "Brenzl (Fletcher)",
-        "x": 2001,
-        "y": 3682,
-        "z": 20.4
-      },
-      {
-        "label": "Henina (Baker)",
-        "x": 5838,
-        "y": 2850,
-        "z": -3
-      },
-      {
-        "label": "Rislarn (Merchant)",
-        "x": 4419,
-        "y": -318,
-        "z": -2.2
-      },
-      {
-        "label": "Alysa (Tailor)",
-        "x": 4364,
-        "y": -420,
-        "z": 5.3
-      },
-      {
-        "label": "Ollysa (Weapons)",
-        "x": 4224,
-        "y": -478,
-        "z": 5.3
-      },
-      {
-        "label": "Tarnar (Pottery)",
-        "x": 2085,
-        "y": -996,
-        "z": -0.7
-      },
-      {
-        "label": "Chrislin (Baker)",
-        "x": 1990,
-        "y": -1038,
-        "z": -3
-      },
-      {
-        "label": "Maldin (Weapons)",
-        "x": 1869,
-        "y": -962,
-        "z": -9.4
-      },
-      {
         "label": "to Qeynos Hills",
-        "x": -52,
-        "y": -31,
-        "z": -7
+        "x": 74.1,
+        "y": 61.1,
+        "z": -7.8
       },
       {
-        "label": "to North Karana",
-        "x": 15962,
-        "y": -615,
-        "z": -3.9
-      },
-      {
-        "label": "Spinner (Smith)",
-        "x": 12837,
-        "y": 1454,
-        "z": 8.2
-      },
-      {
-        "label": "Dunin (Merchant)",
-        "x": 13002,
-        "y": 1515,
-        "z": 13.4
+        "label": "to The Northern Plains of Karana",
+        "x": 15882.9,
+        "y": 1392,
+        "z": 10.5
       }
     ]
   },

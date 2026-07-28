@@ -2,7 +2,7 @@
   "source": "EverQuest Legends client (local install)",
   "sourceNote": "Reference text extracted directly from the EverQuest Legends client install (via scripts/extract-eql-reference.mjs). No third-party intermediary; the client is the source.",
   "extractorVersion": 2,
-  "extractedAt": "2026-07-17T04:30:25.045Z",
+  "extractedAt": "2026-07-28T16:40:29.533Z",
   "gameDirName": "EverQuest Legends",
   "sources": [
     {
@@ -19,21 +19,21 @@
     },
     {
       "name": "racedata.txt",
-      "bytes": 158062,
-      "modifiedAt": "2026-07-14T02:39:04.000Z",
-      "sha256": "1aec91492813afcec32503ca3cbe40bb3ffa728aa626f6dc4d86d48cc175dbeb"
+      "bytes": 158066,
+      "modifiedAt": "2026-07-24T14:48:34.000Z",
+      "sha256": "f706db731c2dba59b78aeb7395c24b6b01a39c8ce4f53f40d9ea72e95c767064"
     },
     {
       "name": "dbstr_us.txt",
-      "bytes": 9831990,
-      "modifiedAt": "2026-07-14T02:39:04.000Z",
-      "sha256": "870e976d7cfbe629471a15b2008d5462571c648b66aa025ae1ac02a9d20a1541"
+      "bytes": 9833836,
+      "modifiedAt": "2026-07-27T22:24:46.000Z",
+      "sha256": "33cafdc1b5518d418112ed084cee416ec17f8974ca2503742326d17381fed106"
     },
     {
-      "name": "maps/ (123 files)",
-      "bytes": 33604264,
-      "modifiedAt": "2026-07-03T21:53:47.854Z",
-      "sha256": "84aa99736da52b8940304c0daf904d536fe015a4ebbcc77de0091082e85378fd"
+      "name": "maps/ (192 files)",
+      "bytes": 65028266,
+      "modifiedAt": "2026-07-28T16:36:21.389Z",
+      "sha256": "3170ab26e9b1cb2291d880b7181e3471c3f42732feeeccb866ae4f8e998acd52"
     },
     {
       "name": "Storyline/ (50 files)",
@@ -46,8 +46,8 @@
     "commands": 122,
     "races": 982,
     "manualSections": 91,
-    "zones": 118,
-    "pois": 2436,
+    "zones": 133,
+    "pois": 1717,
     "storylines": 50
   }
 }

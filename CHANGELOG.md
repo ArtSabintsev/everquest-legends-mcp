@@ -6,6 +6,27 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Fixed
+
+- Detect Daybreak maintenance interstitials in the shared HTTP layer. During the
+  launch-day window everquestlegends.com redirects to
+  maintenance.daybreakgames.com and answers HTTP 200, so `eql_source_fetch`
+  returned publisher boilerplate as official EQL source text and
+  `eql_official_news` reported a page-structure change that had not happened.
+  Affected fetches now fail with `UpstreamMaintenanceError`.
+
+### Changed
+
+- Refresh the local-client reference snapshot for the launch client (racedata
+  2026-07-24, dbstr 2026-07-27, maps 2026-07-28). The patch ships 69 more map
+  files: 133 mapped zones, up from 118, adding Plane of Sky, Plane of Fear,
+  Befallen, Crushbone, Upper/Lower Guk, Mistmoore, Najena, Permafrost, Kedge
+  Keep, Paw, Cazic-Thule, Butcherblock, East Karana, and the New Sebilis
+  Expedition. POI totals drop 2436 -> 1717 because Daybreak stripped the
+  inherited classic-EverQuest vendor and GM labels from city maps, which this
+  snapshot had been serving as EQL locations. Kerran model size corrected to
+  5.5.
+
 ## [1.3.5] - 2026-07-22
 
 ### Fixed
