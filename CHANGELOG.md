@@ -6,6 +6,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.3.7] - 2026-07-28
+
+### Changed
+
+- pin Dependabot to Tuesday and Thursday evenings ET (9d22328)
+
 ## [1.3.6] - 2026-07-28
 
 ### Fixed
