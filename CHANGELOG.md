@@ -6,6 +6,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.3.9] - 2026-07-28
+
+### Fixed
+
+- retry the release push instead of failing on a racing merge (696f270)
+
 ## [1.3.8] - 2026-07-28
 
 ### Changed
