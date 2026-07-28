@@ -12,6 +12,20 @@ const RETRY_DELAY_MS = 300;
 // retried either — a host that ate the whole budget rarely answers a retry.
 const RETRYABLE_STATUSES = new Set([408, 500, 502, 503, 504]);
 
+// Daybreak parks its game sites on a shared maintenance page during downtime —
+// everquestlegends.com 302s to maintenance.daybreakgames.com and answers HTTP
+// 200 with generic publisher boilerplate. Left undetected that body flows to
+// callers as if it were the requested page, so a source fetch of the official
+// shop returns "Email Sign Up / Daybreak Account" as EQL source text. Detect it
+// and fail loudly instead.
+const MAINTENANCE_HOSTNAMES = new Set(["maintenance.daybreakgames.com"]);
+// Two phrases, not one: a real article may say "we are currently undergoing
+// maintenance", but only the interstitial pairs it with the apology line.
+const MAINTENANCE_BODY_MARKERS = [
+  /we are currently undergoing maintenance/i,
+  /hope to be getting there very soon/i
+];
+
 const packageJson = JSON.parse(
   readFileSync(new URL("../package.json", import.meta.url), "utf8")
 ) as { version: string };
@@ -24,6 +38,37 @@ export const PACKAGE_VERSION = packageJson.version;
 // Duplicated in scripts/extract-eqlbuilds.mjs, which must run pre-build and
 // so can't import this module — keep the two in sync.
 export const USER_AGENT = `everquest-legends-mcp/${PACKAGE_VERSION} (+https://github.com/ArtSabintsev/everquest-legends-mcp)`;
+
+/**
+ * Thrown when an upstream host answers with a maintenance interstitial instead
+ * of the requested page. Distinct from a parse failure: nothing about this
+ * server needs updating, the source is simply down.
+ */
+export class UpstreamMaintenanceError extends Error {
+  readonly url: string;
+
+  constructor(url: string, detail: string) {
+    super(`${url} is unavailable: ${detail}. The upstream site is in maintenance — retry later.`);
+    this.name = "UpstreamMaintenanceError";
+    this.url = url;
+  }
+}
+
+function maintenanceDetail(requestedUrl: string, finalUrl: string, body: string): string | null {
+  if (finalUrl && finalUrl !== requestedUrl) {
+    try {
+      if (MAINTENANCE_HOSTNAMES.has(new URL(finalUrl).hostname)) {
+        return `redirected to ${finalUrl}`;
+      }
+    } catch {
+      // A non-absolute response URL tells us nothing; fall through to the body.
+    }
+  }
+  if (MAINTENANCE_BODY_MARKERS.every((marker) => marker.test(body))) {
+    return "served a maintenance interstitial";
+  }
+  return null;
+}
 
 type CacheEntry = {
   fetchedAt: number;
@@ -90,7 +135,12 @@ async function requestOnce(spec: RequestSpec, timeoutMs: number): Promise<string
       (error as Error & { status?: number }).status = response.status;
       throw error;
     }
-    return await response.text();
+    const body = await response.text();
+    const detail = maintenanceDetail(spec.url, response.url, body);
+    if (detail !== null) {
+      throw new UpstreamMaintenanceError(spec.url, detail);
+    }
+    return body;
   } finally {
     clearTimeout(timeout);
   }

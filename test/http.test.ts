@@ -1,9 +1,17 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { clearFetchCache, fetchText, postJson, primeTextCache, USER_AGENT } from "../src/http.js";
 
-function okResponse(body: string): Response {
-  return new Response(body, { status: 200 });
+function okResponse(body: string, finalUrl?: string): Response {
+  const response = new Response(body, { status: 200 });
+  if (finalUrl !== undefined) {
+    Object.defineProperty(response, "url", { value: finalUrl });
+  }
+  return response;
 }
+
+const MAINTENANCE_PAGE =
+  "<html><body><h1>We Are Currently Undergoing Maintenance</h1>" +
+  "<p>Yes, you're in the right place! Unfortunately we are not, but hope to be getting there very soon.</p></body></html>";
 
 describe("shared HTTP layer", () => {
   const fetchMock = vi.fn();
@@ -101,6 +109,29 @@ describe("shared HTTP layer", () => {
     expect(init.headers["authorization"]).toBe("Basic abc");
     expect(init.headers["user-agent"]).toBe(USER_AGENT);
     expect(USER_AGENT).toMatch(/^everquest-legends-mcp\/\d+\.\d+\.\d+ \(\+https:/);
+  });
+
+  it("rejects a redirect to the Daybreak maintenance host instead of returning its body", async () => {
+    fetchMock.mockResolvedValue(okResponse(MAINTENANCE_PAGE, "http://maintenance.daybreakgames.com/"));
+
+    await expect(fetchText("https://www.everquestlegends.com/shop")).rejects.toThrow(/in maintenance/);
+  });
+
+  it("rejects a maintenance interstitial served without a redirect, and does not cache it", async () => {
+    fetchMock.mockResolvedValueOnce(okResponse(MAINTENANCE_PAGE)).mockResolvedValueOnce(okResponse("back up"));
+
+    await expect(fetchText("https://www.everquestlegends.com/news")).rejects.toThrow(/maintenance interstitial/);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+
+    expect(await fetchText("https://www.everquestlegends.com/news")).toBe("back up");
+  });
+
+  it("does not mistake an article that merely mentions maintenance for the interstitial", async () => {
+    fetchMock.mockResolvedValue(
+      okResponse("<p>Servers are currently undergoing maintenance for tonight's launch patch.</p>")
+    );
+
+    await expect(fetchText("https://www.everquestlegends.com/news")).resolves.toContain("launch patch");
   });
 
   it("primeTextCache makes out-of-band responses visible to fetchText", async () => {
