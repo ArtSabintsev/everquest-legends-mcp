@@ -6,6 +6,15 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.3.8] - 2026-07-28
+
+### Changed
+
+- Bump tsx from 4.23.0 to 4.23.1 (#14) (dd6f6f3)
+- Bump @types/node from 26.1.1 to 26.1.2 (#15) (60de03b)
+- Bump @modelcontextprotocol/sdk from 1.29.0 to 1.30.0 (#16) (18b472e)
+- Bump actions/setup-node from 6 to 7 (#13) (43d19b9)
+
 ## [1.3.7] - 2026-07-28
 
 ### Changed
