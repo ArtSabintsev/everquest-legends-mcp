@@ -67,29 +67,85 @@ jobs:
           npm run typecheck
           npm test
 
+      # Racing merges are routine — a burst of Dependabot merges lands commits
+      # on main while this run is mid-flight — so a rejected push is retried
+      # rather than reported as a failure. Each retry starts over from the new
+      # main: the version and the notes are both derived from the commit range,
+      # so neither survives a resync.
       - name: Commit, tag, and push
+        id: push
         if: steps.prep.outputs.version != 'none'
+        env:
+          MAX_ATTEMPTS: "3"
         run: |
+          set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add package.json package-lock.json CHANGELOG.md
-          git commit -m "chore(release): ${{ steps.prep.outputs.version }}"
-          # Annotated tag pushed explicitly: --follow-tags ignores lightweight
-          # tags, which would let GitHub mint the tag at a racing HEAD instead.
-          git tag -a "v${{ steps.prep.outputs.version }}" -m "v${{ steps.prep.outputs.version }}"
-          # --atomic: main and the tag land together or not at all. Without it,
-          # a rejected non-fast-forward branch push (a non-release push landing
-          # on main mid-run) still lets the tag push succeed, orphaning a tag
-          # that then blocks every future release with "tag already exists".
-          git push --atomic origin main "refs/tags/v${{ steps.prep.outputs.version }}"
+
+          # Defaulted in-script so `set -u` cannot kill the step if the env
+          # knob above is ever dropped.
+          max_attempts="${MAX_ATTEMPTS:-3}"
+          version="${{ steps.prep.outputs.version }}"
+          attempt=1
+          while :; do
+            git add package.json package-lock.json CHANGELOG.md
+            git commit -m "chore(release): ${version}"
+            # Annotated tag pushed explicitly: --follow-tags ignores lightweight
+            # tags, which would let GitHub mint the tag at a racing HEAD instead.
+            git tag -a "v${version}" -m "v${version}"
+            # --atomic: main and the tag land together or not at all. Without it,
+            # a rejected non-fast-forward branch push (a non-release push landing
+            # on main mid-run) still lets the tag push succeed, orphaning a tag
+            # that then blocks every future release with "tag already exists".
+            if git push --atomic origin main "refs/tags/v${version}"; then
+              echo "version=${version}" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+
+            if [ "${attempt}" -ge "${max_attempts}" ]; then
+              echo "::error::release push rejected after ${attempt} attempts"
+              exit 1
+            fi
+            attempt=$((attempt + 1))
+
+            # Atomicity means the rejection wrote nothing upstream, so discard
+            # this attempt whole — release commit, tag, and the script's edits —
+            # and rebuild it against the main that beat us.
+            echo "push rejected; resyncing with main (attempt ${attempt}/${max_attempts})"
+            git tag -d "v${version}"
+            # --tags is load-bearing: the racer was very likely another release
+            # run, and prepare-release.mjs derives both the bump and the commit
+            # range from `git describe`. Resyncing the branch without its tags
+            # would recompute against a stale last tag and cut a second version
+            # for commits the winner already shipped.
+            git fetch --tags --force origin main
+            git reset --hard origin/main
+            rm -f .release-notes.md
+
+            version=$(node scripts/prepare-release.mjs)
+            if [ "${version}" = "none" ]; then
+              # The run that beat us already released these commits.
+              echo "nothing left to release after resync"
+              echo "version=none" >> "$GITHUB_OUTPUT"
+              exit 0
+            fi
+            # The validated tree is stale now: dependency bumps are the most
+            # common racer, and they are exactly what changes the lockfile.
+            npm ci
+            npm run typecheck
+            npm test
+          done
 
       # Runs even when there is nothing new to release, so a previous run that
       # pushed a tag but failed at this step self-heals on the next trigger.
       - name: Ensure GitHub Release exists
         env:
           GH_TOKEN: ${{ github.token }}
+          # A retry can land a different version than the one prepared, so the
+          # push step's output wins; it is empty only when that step was skipped.
+          RELEASE_VERSION: ${{ steps.push.outputs.version || steps.prep.outputs.version }}
         run: |
-          version="${{ steps.prep.outputs.version }}"
+          version="${RELEASE_VERSION}"
           if [ "$version" != "none" ]; then
             tag="v${version}"
           else
