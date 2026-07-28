@@ -1,12 +1,24 @@
+# All scheduled refresh activity in this repo lands on Tuesday and Thursday
+# evenings ET, alongside .github/workflows/refresh-eqlbuilds.yml. Dependabot
+# allows one day per ecosystem entry and rejects duplicate
+# ecosystem+directory pairs, so the two ecosystems split the two evenings
+# rather than both running twice. Unlike GitHub Actions cron (UTC-only),
+# Dependabot honors an IANA timezone, so 20:00 stays 8pm ET across DST.
 version: 2
 updates:
   - package-ecosystem: npm
     directory: /
     schedule:
       interval: weekly
+      day: tuesday
+      time: "20:00"
+      timezone: America/New_York
     open-pull-requests-limit: 5
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: weekly
+      day: thursday
+      time: "20:00"
+      timezone: America/New_York
     open-pull-requests-limit: 5
