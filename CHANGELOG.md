@@ -6,6 +6,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.3.10] - 2026-07-30
+
+### Changed
+
+- add eql-client-update skill for CrossOver client checks (e42b289)
+
 ## [1.3.9] - 2026-07-28
 
 ### Fixed
