@@ -16,8 +16,8 @@ on:
   push:
     branches: [main]
   workflow_run:
-    # Must match the `name:` of the data-refresh workflow exactly.
-    workflows: ["Refresh eqlbuilds data"]
+    # Must match the `name:` of each data-refresh workflow exactly.
+    workflows: ["Refresh eqlbuilds data", "Refresh EQL Wiki commands data"]
     types: [completed]
   workflow_dispatch:
 
