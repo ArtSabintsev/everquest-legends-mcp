@@ -15,9 +15,13 @@ import { scoreText, snippetAround, truncateText } from "./text.js";
 // races), and the client's manual supplement.
 
 const DATA_DIR = new URL("./data/eql-client/", import.meta.url);
+const WIKI_DATA_DIR = new URL("./data/eql-wiki/", import.meta.url);
 
 export const EQL_CLIENT_DISCLAIMER =
   "Reference text extracted directly from a local EverQuest Legends client install (slash commands, race/model table, manual supplement, zone maps, storylines). This is game client data, not curated Daybreak documentation; the manual supplement in particular carries legacy EverQuest text that predates Legends. For playable-race and class build detail, prefer the eql_builds_* tools.";
+
+export const EQL_COMMANDS_DISCLAIMER =
+  "Slash-command reference blended from two sources: the community-maintained EQL Wiki (https://eqlwiki.com/Commands, source: \"wiki\") and text bundled with a local EverQuest Legends client install (everquest_manual.txt, source: \"client-manual\"). The client manual ships legacy classic-EverQuest copy that is not maintained for EQL and can be stale or missing commands entirely (e.g. /bandolier); the wiki is community-kept-current. Where both document a command, both entries are returned, tagged by source, rather than one overwriting the other — check the source field and prefer wiki entries when they disagree.";
 
 export const EQL_ZONES_NOTE =
   "Raw client-shipped map inventory, NOT EverQuest Legends' confirmed zone list: the client inherits map files from classic EverQuest — including expansion zones that do not exist in EQL — alongside EQL's own custom zones. Zones with a classicExpansionHint match well-known classic expansion zone codes and are almost certainly not part of EQL; unhinted zones are likelier EQL content but still need confirmation from EQL-specific sources (wiki, official pages).";
@@ -30,6 +34,21 @@ export type EqlClientCommand = {
   aliases: string[];
   syntax: string;
   description: string;
+};
+
+export type EqlCommandSource = "wiki" | "client-manual";
+
+export type EqlCommand = EqlClientCommand & { source: EqlCommandSource };
+
+export type EqlWikiCommandsManifest = {
+  source: string;
+  sourceUrl: string;
+  sourceNote: string;
+  extractorVersion: number;
+  extractedAt: string;
+  wikiPageId: number;
+  wikiRevisionId: number | null;
+  counts: Record<string, number>;
 };
 
 export type EqlClientRaceModel = {
@@ -92,13 +111,14 @@ export type EqlClientManifest = {
 
 const cache = new Map<string, unknown>();
 
-function load<T>(name: string): T {
-  const cached = cache.get(name);
+function load<T>(name: string, baseDir: URL = DATA_DIR): T {
+  const cacheKey = `${baseDir.href}${name}`;
+  const cached = cache.get(cacheKey);
   if (cached !== undefined) {
     return cached as T;
   }
-  const value = JSON.parse(readFileSync(new URL(name, DATA_DIR), "utf8")) as T;
-  cache.set(name, value);
+  const value = JSON.parse(readFileSync(new URL(name, baseDir), "utf8")) as T;
+  cache.set(cacheKey, value);
   return value;
 }
 
@@ -108,12 +128,28 @@ const manualSections = () => load<EqlClientManualSection[]>("manual-sections.jso
 const zones = () => load<EqlClientZone[]>("zones.json");
 const storylines = () => load<EqlClientStoryline[]>("storylines.json");
 const manifest = () => load<EqlClientManifest>("manifest.json");
+const wikiCommands = () => load<EqlClientCommand[]>("commands.json", WIKI_DATA_DIR);
+const wikiCommandsManifest = () => load<EqlWikiCommandsManifest>("manifest.json", WIKI_DATA_DIR);
+
+// Both the client manual and the EQL Wiki document slash commands, and they
+// drift: the manual is legacy classic-EQ copy bundled with the client and
+// unmaintained for EQL specifically, while the wiki is community-kept-current
+// (see EQL_COMMANDS_DISCLAIMER). Rather than picking one as authoritative and
+// discarding the other, every lookup searches the union, tagged by source, so
+// a caller can see both and judge for themselves when they disagree.
+function allCommands(): EqlCommand[] {
+  return [
+    ...wikiCommands().map((command) => ({ ...command, source: "wiki" as const })),
+    ...commands().map((command) => ({ ...command, source: "client-manual" as const }))
+  ];
+}
 
 export function getEqlClientProvenance(): {
   disclaimer: string;
   manifest: EqlClientManifest;
+  commandsWiki: EqlWikiCommandsManifest;
 } {
-  return { disclaimer: EQL_CLIENT_DISCLAIMER, manifest: manifest() };
+  return { disclaimer: EQL_CLIENT_DISCLAIMER, manifest: manifest(), commandsWiki: wikiCommandsManifest() };
 }
 
 // --- Slash commands -------------------------------------------------------
@@ -127,9 +163,9 @@ function normalizeCommand(value: string): string {
 export function searchEqlClientCommands(
   query: string,
   options: { limit?: number } = {}
-): { query: string; results: EqlClientCommand[]; disclaimer: string } {
+): { query: string; results: EqlCommand[]; disclaimer: string } {
   const limit = options.limit ?? 15;
-  const results = commands()
+  const results = allCommands()
     .map((command) => ({
       command,
       // Weight the command token and syntax over the prose description.
@@ -139,28 +175,37 @@ export function searchEqlClientCommands(
       )
     }))
     .filter((entry) => entry.score > 0)
-    .sort((a, b) => b.score - a.score || a.command.command.localeCompare(b.command.command))
+    .sort(
+      (a, b) =>
+        b.score - a.score ||
+        a.command.command.localeCompare(b.command.command) ||
+        // Same command, same score, different source (manual vs wiki):
+        // surface the wiki's current entry first.
+        Number(b.command.source === "wiki") - Number(a.command.source === "wiki")
+    )
     .slice(0, limit)
     .map((entry) => entry.command);
-  return { query, results, disclaimer: EQL_CLIENT_DISCLAIMER };
+  return { query, results, disclaimer: EQL_COMMANDS_DISCLAIMER };
 }
 
-// Look up every documented form of a slash command by name or alias. The manual
-// lists many commands in several forms (e.g. /who, /who all, /who <mask>), so
-// this returns all matching entries rather than a single row.
+// Look up every documented form of a slash command by name or alias. The
+// manual lists many commands in several forms (e.g. /who, /who all, /who
+// <mask>), and the wiki independently documents its own current form, so this
+// returns all matching entries (from both sources, tagged) rather than a
+// single row.
 export function getEqlClientCommand(name: string): {
   command: string;
-  entries: EqlClientCommand[];
+  entries: EqlCommand[];
   disclaimer: string;
 } | undefined {
   const key = normalizeCommand(name);
-  const entries = commands().filter(
+  const entries = allCommands().filter(
     (command) => command.command === key || command.aliases.includes(key)
   );
   if (entries.length === 0) {
     return undefined;
   }
-  return { command: key, entries, disclaimer: EQL_CLIENT_DISCLAIMER };
+  return { command: key, entries, disclaimer: EQL_COMMANDS_DISCLAIMER };
 }
 
 // --- Race / model table ---------------------------------------------------
