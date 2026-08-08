@@ -6,6 +6,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.4.0] - 2026-08-08
+
 ### Added
 
 - Post-launch community companion tools in the source registry (eqltools primers, EQ Legends Tools, Gnoll Guard, Loadout Legends, EQL Compendium) and `eql_companion_tools` catalog tool. Documents origin-locked APIs (eqlegendstools) without scraping them.
