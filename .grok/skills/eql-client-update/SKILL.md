@@ -33,7 +33,7 @@ CrossOver — not the MCP server npm package / `dist/index.js`.
 
 Product id in LaunchPad: `eqns` (EverQuest New Sebilis). Plugin version appears in `.DownloadInfo.txt` (e.g. `1.0.3.204`).
 
-**There is no EverQuest 1 install on this machine.** Sibling `everquest1-mcp` is live-source only.
+**This skill is EverQuest Legends only.** Classic EverQuest 1 installs and tooling are out of scope.
 
 ## Default workflow (run this end-to-end unless told otherwise)
 
@@ -146,7 +146,7 @@ Give a short status table:
 
 - Daybreak patches commonly land **Tuesday mornings ET**; launch weeks can be irregular.
 - After Arthur runs the patcher, assume extractors may need a pass — don't wait to be asked twice.
-- Sibling memory: client path + Tuesday cadence; post-launch source sweep is separate (`src/sources.ts`).
+- Remember: client path + Tuesday cadence; post-launch source sweep is separate (`src/sources.ts`).
 
 ## What not to do
 
