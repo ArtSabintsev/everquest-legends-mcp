@@ -12,6 +12,8 @@ This package is **semantically versioned** and released automatically from `main
    - `chore(release):` commits are ignored so the bot does not re-release itself
 3. **Humans do not hand-edit `package.json` version** for a normal ship. The release job runs `npm version <bump> --no-git-tag-version`, rewrites `CHANGELOG.md`, commits `chore(release): X.Y.Z`, creates an **annotated** tag `vX.Y.Z`, pushes, and publishes a GitHub Release.
 4. **Dates live in `CHANGELOG.md`** as `## [X.Y.Z] - YYYY-MM-DD` (UTC date of the release job). Keep hand notes under `## [Unreleased]` until the next release consumes them.
+   - If `[Unreleased]` has any body text, **that body becomes the release notes verbatim** (commit subjects are not auto-merged in). Keep it complete before you push, or leave it empty and let the bot generate notes from conventional commits.
+   - When multiple `feat:` commits land in one release window, either leave `[Unreleased]` empty or list every feature under it.
 5. **Tags are the source of truth for “what shipped.”** GitHub Releases must match tags; the release workflow also has a heal step that ensures a Release exists for the latest tag if a previous run failed mid-way.
 6. **Data-only refreshes** (`chore: refresh eqlbuilds…`) still go through the release path when they land on `main` via `workflow_run`, so snapshot commits are versioned rather than floating untagged on `main`.
 

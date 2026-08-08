@@ -12,18 +12,18 @@ This MCP is for **EverQuest Legends**. It intentionally excludes general EQ1/EQ2
 
 Classic EverQuest lore and archive sources are included as historical context for Norrath, not as EverQuest Legends authority. EverQuest Legends is a custom reimagining of classic EverQuest: the classic expansions (Kunark, Velious, Luclin) do not exist in the game, and even in-scope zones, mobs, and items can differ from their classic counterparts. When a source describes expansion content — or any classic-EQ specifics — treat it as background unless an EQL-specific source (wiki, official pages, eqlbuilds/client snapshots) confirms it for Legends.
 
-This server is built around public, unauthenticated sources:
+This server is built around public, unauthenticated sources (alphabetical):
 
-- EQL Wiki: `https://eqlwiki.com/Main_Page` via MediaWiki API
-- Official EQL site and news: `https://www.everquestlegends.com`
+- Companion tools (post-launch): eqltools primers, EQ Legends Tools, Gnoll Guard, Loadout Legends, EQL Compendium — via the source registry and `eql_companion_tools` / `eql_eqlegendstools_item*`
 - Daybreak help and press pages
+- EQArchives search portal and corpus provenance
+- EQL Wiki: `https://eqlwiki.com/Main_Page` via MediaWiki API
+- EQL-specific guide/interview/preview pages from EQProgression, EverQuest Guides, and selected press outlets
+- Firiona Vie Project lore category via MediaWiki API
+- Official EQL site and news: `https://www.everquestlegends.com`
+- Official EQL YouTube and Twitch channels
 - Official EverQuest community note about the Game Jawn collaboration
 - Original official 1999 Sony EverQuest history/lore page via Wayback
-- The Firiona Vie Project lore category via MediaWiki API
-- EQArchives search portal and corpus provenance
-- Official EQL YouTube and Twitch channels
-- EQL-specific guide/interview/preview pages from EQProgression, EverQuest Guides, and selected press outlets
-- Post-launch community companion tools (eqltools primers, EQ Legends Tools, Gnoll Guard, Loadout Legends, EQL Compendium) via the source registry and `eql_companion_tools`
 - Pointer-only EQL community sources such as Reddit
 
 It does not log into Daybreak, manipulate an account, automate a game client, or send requests to private APIs. It does not bypass origin-locked companion APIs (for example `eqlegendstools.com/api/*`, which robots.txt disallows).
