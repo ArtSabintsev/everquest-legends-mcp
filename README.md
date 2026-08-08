@@ -53,8 +53,8 @@ It does not log into Daybreak, manipulate an account, automate a game client, or
 - `eql_builds_skills`: list a class's skill lines with caps and trained-at levels
 - `eql_builds_modes`: list combat stances and invocations
 - `eql_builds_provenance`: report the eqlbuilds.com snapshot manifest, source wiki revision, and extraction notes
-- `eql_client_command_search`: search the in-game slash-command reference (name, aliases, syntax, description) from the client manual
-- `eql_client_command`: read one slash command by name or alias, returning every documented form (e.g. `/who`, `/who all`, `/who <mask>`)
+- `eql_client_command_search`: search the in-game slash-command reference (name, aliases, syntax, description), blended from the community-maintained EQL Wiki and the client manual; each result is tagged with its `source`
+- `eql_client_command`: read one slash command by name or alias, returning every documented form from both sources (e.g. `/who`, `/who all`, `/who <mask>`)
 - `eql_client_races`: list or search the authoritative RaceID/model table (playable plus hundreds of NPC-model races) with per-gender model tags and sizes
 - `eql_client_race`: read a race by RaceID or name; a name returns every RaceID that shares it (playable plus NPC-model variants)
 - `eql_client_manual_search`: search the client manual supplement and return matching section titles with a snippet
@@ -63,7 +63,7 @@ It does not log into Daybreak, manipulate an account, automate a game client, or
 - `eql_client_zone`: read one zone's labeled points of interest with map coordinates
 - `eql_client_storyline_search`: search the storyline narratives shipped in the client (largely inherited classic-EQ storyline text; results carry an `eraAdvisory` when they reference classic expansion content)
 - `eql_client_storyline`: read one full storyline by id or title
-- `eql_client_provenance`: report the local-client reference snapshot manifest (source files with sizes/hashes/mtimes, counts)
+- `eql_client_provenance`: report the local-client reference snapshot manifest (source files with sizes/hashes/mtimes, counts) and the EQL Wiki commands snapshot's page/revision id
 - `eql_official_news`: parse official EQL news index
 - `eql_official_article`: fetch and extract an official news article
 - `eql_press_assets`: list official Daybreak press asset URLs by kind
@@ -205,6 +205,33 @@ npm run extract:eqlbuilds:check  # verify the snapshot is up to date (non-zero i
 schedule (and on demand), validates it with typecheck + tests, and commits the
 refreshed snapshot only when the upstream data actually changes. The build copies
 `src/data` to `dist/data` so the snapshot ships with the package.
+
+### Refreshing the EQL Wiki commands dataset
+
+`eql_client_command_search` and `eql_client_command` also read a committed
+snapshot of the community-maintained slash-command reference at
+[eqlwiki.com/Commands](https://eqlwiki.com/Commands), under
+`src/data/eql-wiki/`. This exists alongside the local-client snapshot below
+because the two disagree and drift independently: the client manual is legacy
+classic-EverQuest text bundled with the game install and not maintained for
+EQL, while the wiki is community-kept-current and documents commands (e.g.
+`/bandolier`) the manual omits entirely. Both are queried and merged at
+request time rather than one replacing the other — see `EQL_COMMANDS_DISCLAIMER`
+in `src/eqlClient.ts`.
+
+Unlike the local-client snapshot, this only needs network access, so it runs
+in CI:
+
+```bash
+npm run extract:wiki-commands        # refresh the snapshot from eqlwiki.com
+npm run extract:wiki-commands:check  # verify the snapshot is up to date (non-zero if stale)
+npm run extract:wiki-commands:dry    # parse + summarize, write nothing
+```
+
+`.github/workflows/refresh-eql-wiki-commands.yml` runs the extractor on the
+same twice-weekly cadence as the eqlbuilds refresh, validates it with
+typecheck + tests, and commits the refreshed snapshot only when the upstream
+page actually changed.
 
 ### Refreshing the local-client reference dataset
 

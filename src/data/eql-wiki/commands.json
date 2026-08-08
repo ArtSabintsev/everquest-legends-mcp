@@ -1,0 +1,1620 @@
+[
+  {
+    "command": "/achievements",
+    "aliases": [],
+    "syntax": "/achievements",
+    "description": "Toggle the Achievements window."
+  },
+  {
+    "command": "/aclearcompare",
+    "aliases": [],
+    "syntax": "/aclearcompare",
+    "description": "Clears the PC (Player Character) you are currently comparing achievements with."
+  },
+  {
+    "command": "/acompare",
+    "aliases": [],
+    "syntax": "/acompare",
+    "description": "Compares your achievements with the targeted Player Character (PC). Note: range dependent."
+  },
+  {
+    "command": "/addraidlooter",
+    "aliases": [],
+    "syntax": "/addraidlooter <name>",
+    "description": "Add your current target, or specified character name, to the list of valid looters in the raid."
+  },
+  {
+    "command": "/advloot",
+    "aliases": [],
+    "syntax": "/advloot {personal | shared} setallto <loot option>",
+    "description": "The /advloot command toggles the Advanced Loot System window. It can also set loot options for all items in the personal or shared loot lists."
+  },
+  {
+    "command": "/afk",
+    "aliases": [],
+    "syntax": "/afk [on | off | <message>]",
+    "description": "This is a toggle that sets your A.F.K (Away From Keyboard) status to either on or off. By default, /tell messages sent to your character will reply 'Player is temporarily Away From Keyboard.' You may customize the auto-reply message."
+  },
+  {
+    "command": "/aggrolock",
+    "aliases": [],
+    "syntax": "/aggrolock",
+    "description": "Related to Aggro Meter (/aggrometer) The /aggrolock functions as 'Set Aggro Target' on the Aggro Meter. Must be level 20+"
+  },
+  {
+    "command": "/aggrometer",
+    "aliases": [],
+    "syntax": "/aggrometer",
+    "description": "Toggles the Aggro Meter window. The window displays your current percentage of hate compared to the entity that is most hated by the NPC that is the focus of the meter. By default, this shows your current target, but the current aggro target can also be locked with /aggrolock so that it won't change when you change your current target."
+  },
+  {
+    "command": "/airlute",
+    "aliases": [],
+    "syntax": "/airlute",
+    "description": "Plays the air lute emote."
+  },
+  {
+    "command": "/alarm",
+    "aliases": [],
+    "syntax": "/alarm",
+    "description": "Toggles Alarm Window. Use to setup an in-game timer (hours+mins)."
+  },
+  {
+    "command": "/alternateadv",
+    "aliases": [
+      "/alt",
+      "/alt act - on <#> - sets the level of experience gained going towards aa at 100%"
+    ],
+    "syntax": "/alternateadv {on <#> | off | list | activate <id | name> | buy | buyall}",
+    "description": "Use, list, or purchase Alternate Advancements (AA). This can also be carried out in the Alternate Advancement window (found in the Inventory window.) Commonly abbreviated: /alt, /alt act - On <#> - Sets the level of experience gained going towards AA at 100%, unless you specify a different percentage. - Off - All experience gained will be set to go towards your normal experience bar. Experience to AA will be 0%. - List - Provides a list of all Alternate Advancement (AA) abilities available to this character; their respective number, title, description, and AA (point) cost per level. - Activate <id_or_name> - Can be used to activate an AA ability using its corresponding AA number or name. Note: For toggle AAs, this command will toggle the state (enable or disable) but cannot specify the desired state. Be cautious when using partial name matching as it may not activate the intended AA. Abbreviated: act - Buy <#> - This option is used to buy AA points in a specified AA ability group (the same ID used for alt activate, the one found with \"list\") - Buyall <#> - This option is used to buy out the entire AA ability group specified, assuming you have enough points."
+  },
+  {
+    "command": "/announce",
+    "aliases": [],
+    "syntax": "/announce",
+    "description": "Toggles the current status of the announce join/leavefeature for chat channels."
+  },
+  {
+    "command": "/anonymous",
+    "aliases": [
+      "/anon"
+    ],
+    "syntax": "/anonymous [on|off]",
+    "description": "Toggle. When on, prevents others from seeing your class, level, race, guild, and current zone through /who and /who all queries. Common abbreviation: /anon"
+  },
+  {
+    "command": "/assist",
+    "aliases": [],
+    "syntax": "/assist [<name> | group | raid | main | on/off]",
+    "description": "Assists a player or NPC, changing your current target to their target. All variants of the /assist command function at the same distance. Also toggles auto-attack on assist. If no option specified, it will assist your current target. - <name> - The name of who you'd like to assist. - group - Will assist whoever is assigned \"main assist\" in your group. - raid - Will assist whoever is assigned \"main assist\" in your raid. - main - Will assist the nearest player who is assigned \"main assist\", whether group or raid. - [on|off] - Toggles auto-attack on assist."
+  },
+  {
+    "command": "/attack",
+    "aliases": [],
+    "syntax": "/attack",
+    "description": "Toggle attack mode, or specify on/off."
+  },
+  {
+    "command": "/auction",
+    "aliases": [],
+    "syntax": "/auction <message>",
+    "description": "Message the auction channel in the current zone. Note: On the detail window of an item, you can click on the item's icon to make a clickable-link in your messages."
+  },
+  {
+    "command": "/autobank",
+    "aliases": [],
+    "syntax": "/autobank",
+    "description": "With the Bank window open and with an item on your cursor, will attempt to place the item into a spare bank slot."
+  },
+  {
+    "command": "/autoconsent",
+    "aliases": [],
+    "syntax": "/autoconsent [ group | guild | raid | fellowship ]",
+    "description": "Gives permission to drag your current and future corpses."
+  },
+  {
+    "command": "/autofire",
+    "aliases": [],
+    "syntax": "/autofire [on|off]",
+    "description": "Toggle automatic firing of your ranged weapon. Note: Turning on /attack will turn off autofire and switch to melee."
+  },
+  {
+    "command": "/autoinventory",
+    "aliases": [],
+    "syntax": "/autoinventory",
+    "description": "Places the item on your cursor into the first available slot in your inventory."
+  },
+  {
+    "command": "/autojoin",
+    "aliases": [],
+    "syntax": "/autojoin [add | remove] <channel1>[:<password>] [,<channel2>] ... [,<channel10>]",
+    "description": "Always join a channel or up to 10 channels every session, information is saved to eqclient.ini as ChannelAutoJoin="
+  },
+  {
+    "command": "/autoskill",
+    "aliases": [],
+    "syntax": "/autoskill [<skill name> [on|off]]",
+    "description": "Toggle combat skills to automatically activate while using /attack. If no name is supplied, it will list available skills for your character. You can also activate these by right-clicking in the combat skills menu."
+  },
+  {
+    "command": "/autosplit",
+    "aliases": [],
+    "syntax": "/autosplit [on|off]",
+    "description": "Toggle. Automatically 'splits' money looted between party members."
+  },
+  {
+    "command": "/bandolier",
+    "aliases": [],
+    "syntax": "/bandolier [add | delete | activate] <SetName>",
+    "description": "Add, delete, and activate sets of weapons."
+  },
+  {
+    "command": "/barter",
+    "aliases": [],
+    "syntax": "/barter",
+    "description": "Opens the Barter window, allowing you to see who is buying items."
+  },
+  {
+    "command": "/bazaar",
+    "aliases": [],
+    "syntax": "/bazaar",
+    "description": "Toggles the Bazaar window to search for items that are for sale in the Bazaar zone. Note: If purchased outside of the Bazaar zone, buyers must use tokens (deliver to inventory) or plat (deliver to parcel)."
+  },
+  {
+    "command": "/beta",
+    "aliases": [],
+    "syntax": "/beta",
+    "description": "Will flag the current character on the live servers to be copied to the Beta server."
+  },
+  {
+    "command": "/betabuff",
+    "aliases": [],
+    "syntax": "/betabuff <level>",
+    "description": "Buff the level of your character on the Beta server. Level must be in increments of 5, e.g. 10, 15, 20, 25, 30, etc."
+  },
+  {
+    "command": "/blockspell",
+    "aliases": [],
+    "syntax": "/blockspell [display | add | remove | clear] [me | pet] <spellnumber>...",
+    "description": "Toggle blocking beneficial spells from being cast on you or your pet. The blocklist is written to the [BlockedSpells] section of your <character>_<server>.ini"
+  },
+  {
+    "command": "/bodytint",
+    "aliases": [],
+    "syntax": "/bodytint",
+    "description": "Toggles the Armor Dye window. Note: Does not affect Type 12 ornaments."
+  },
+  {
+    "command": "/book",
+    "aliases": [],
+    "syntax": "/book <1-140>",
+    "description": "Opens your spell book to the specified page."
+  },
+  {
+    "command": "/bugreport",
+    "aliases": [],
+    "syntax": "/bugreport",
+    "description": "Toggles the \"Report a bug\" window, capable of sending EQ devs detailed information about the issue automatically."
+  },
+  {
+    "command": "/buyer",
+    "aliases": [],
+    "syntax": "/buyer",
+    "description": "Toggles the Barter Buyer window. Create \"want to buy\" bids for items."
+  },
+  {
+    "command": "/calendar",
+    "aliases": [],
+    "syntax": "/calendar",
+    "description": "Opens the in-game Calendar window. The calendar displays all event alerts for the year. For progression servers, it also indicates when future expansions will unlock."
+  },
+  {
+    "command": "/camp",
+    "aliases": [],
+    "syntax": "/camp [desktop | server] [fast]",
+    "description": "Used to camp your character out of the game, either to the character selection screen (default), server selection screen, or your desktop. It takes 30 seconds to camp if you're in a normal zone. In certain safe zones you'll be given the option to camp immediately (e.g Guild Hall, Plane of Knowledge, etc.)"
+  },
+  {
+    "command": "/cast",
+    "aliases": [],
+    "syntax": "/cast <slot# | spellname>",
+    "description": "Casts the spell in the specified gem slot or by the name of a memorized spell. Partial spell names are accepted."
+  },
+  {
+    "command": "/changefamiliar",
+    "aliases": [],
+    "syntax": "/changefamiliar",
+    "description": "Opens the \"Change Familiar Name\" window. Only works if you are eligible for a familiar name change."
+  },
+  {
+    "command": "/changemercname",
+    "aliases": [],
+    "syntax": "/changemercname",
+    "description": "Opens the \"Change Mercenary Name\" window. Only works if you are eligible for a familiar name change. Note: Changing your mercenary's name will change the name of the mercenary in the active slot. When that mercenary is dismissed, the name will be moved to the next empty slot."
+  },
+  {
+    "command": "/changename",
+    "aliases": [],
+    "syntax": "/changename",
+    "description": "Will open the \"Change Name\" window. Only works if you are eligible for a name change."
+  },
+  {
+    "command": "/changepetname",
+    "aliases": [],
+    "syntax": "/changepetname",
+    "description": "Opens the \"Change Pet Name\" window. Only works if you are eligible for a pet name change."
+  },
+  {
+    "command": "/channel",
+    "aliases": [],
+    "syntax": "/channel [say | gsay | guildsay | tell | auction | ooc | chat] [<name>]",
+    "description": "Sets the default chat channel from \"Say\" to the option specified. In the case of \"tell\" or \"chat\", specify the name of the player or chatroom."
+  },
+  {
+    "command": "/charinfo",
+    "aliases": [],
+    "syntax": "/charinfo",
+    "description": "Outputs your bind point(s) and current origin city. The origin city reflects any changes made with the /setstartcity command."
+  },
+  {
+    "command": "/chat",
+    "aliases": [],
+    "syntax": "/chat [ [1-10] <message> ] | [ join | leave | leaveall | list | set | announce | invisible | afk | buddy | namespace | invite | grant | password | kick | moderate | voice | local | oplist | opadd | opremove | setowner ] <options>",
+    "description": "Controls chat channels. All options in this syntax can instead be used as standalone commands with a \";\" e.g. ;join, ;set, ;kick, etc. For cross-server chat, use <server short name>.<name> for channels and players."
+  },
+  {
+    "command": "/chatfontsize",
+    "aliases": [],
+    "syntax": "/chatfontsize <0-10>",
+    "description": "Adjust the size of the font in the chat window, from size 0 to size 10, with 0 being the smallest. 3 is default."
+  },
+  {
+    "command": "/claim",
+    "aliases": [],
+    "syntax": "/claim",
+    "description": "Opens the Claim Window where you can claim in-game prizes. (Prizes are often from special game editions, events, and promotions.)"
+  },
+  {
+    "command": "/clearallchat",
+    "aliases": [],
+    "syntax": "/clearallchat",
+    "description": "Clears all chat from all chat windows."
+  },
+  {
+    "command": "/clearchat",
+    "aliases": [
+      "/clear"
+    ],
+    "syntax": "/clearchat",
+    "description": "Clears current chat window. Common abbreviation: /clear"
+  },
+  {
+    "command": "/clearmarks",
+    "aliases": [],
+    "syntax": "/clearmarks",
+    "description": "Clears all current NPC markers, whether set with the UI or /gmarknpc"
+  },
+  {
+    "command": "/clickthrough",
+    "aliases": [],
+    "syntax": "/clickthrough",
+    "description": "Unknown"
+  },
+  {
+    "command": "/combatmusic",
+    "aliases": [],
+    "syntax": "/combatmusic [on | off]",
+    "description": "Play combat music during combat. Default is ON."
+  },
+  {
+    "command": "/consent",
+    "aliases": [],
+    "syntax": "/consent [ <player> | group | guild | raid | fellowship ]",
+    "description": "Gives permission to drag your current corpse. For current and future corpses, see /autoconsent"
+  },
+  {
+    "command": "/consider",
+    "aliases": [
+      "/con"
+    ],
+    "syntax": "/consider [<name>]",
+    "description": "Considers your current target, which displays an indication of your faction standing as well as an indication of the target's relative level and strength. The target can be specified by name, including pet names, and can use chat variables. Common abbreviation: /con"
+  },
+  {
+    "command": "/copylayout",
+    "aliases": [],
+    "syntax": "/copylayout [<layout> <inifile>] [restore]",
+    "description": "With no parameters, opens \"Copy Layout\" window. Otherwise, it will copy the specified layout and INI file. Restore will copy the layout from your current INI and desktop resolution."
+  },
+  {
+    "command": "/corpse",
+    "aliases": [],
+    "syntax": "/corpse [<name>]",
+    "description": "Summons your own, or another's corpse that you specify. Must be within a certain radius and have permission to drag. Will also use the current target if it's a permitted corpse. If you need to drag a long distance, use /corpsedrag."
+  },
+  {
+    "command": "/corpsedrag",
+    "aliases": [],
+    "syntax": "/corpsedrag",
+    "description": "Will auto-drag your current targeted corpse, if permitted. You can drag up to two corpses."
+  },
+  {
+    "command": "/corpsedrop",
+    "aliases": [],
+    "syntax": "/corpsedrop",
+    "description": "Used to stop dragging a corpse that you're holding with /corpsedrag. Will use currently targeted corpse if selected."
+  },
+  {
+    "command": "/decaycorpse",
+    "aliases": [],
+    "syntax": "/decaycorpse",
+    "description": "Remove one of your own, targeted corpses. Will become ineligible for resurrection as well."
+  },
+  {
+    "command": "/decline",
+    "aliases": [],
+    "syntax": "/decline",
+    "description": "Decline a duel after you've been challenged by another player."
+  },
+  {
+    "command": "/delegategmarknpc",
+    "aliases": [],
+    "syntax": "/delegategmarknpc",
+    "description": "Delegate the marking of NPCs to a targeted group member. Must be leader to use this ability."
+  },
+  {
+    "command": "/delegategmasterlooter",
+    "aliases": [],
+    "syntax": "/delegategmasterlooter",
+    "description": "Delegate looting to a targeted group member. Must be leader to use this ability."
+  },
+  {
+    "command": "/delegatermarknpc",
+    "aliases": [],
+    "syntax": "/delegatermarknpc",
+    "description": "Delegate the marking of NPCs to a targeted raid member. Must be raid leader to use this ability."
+  },
+  {
+    "command": "/delegatermasterlooter",
+    "aliases": [],
+    "syntax": "/delegatermasterlooter",
+    "description": "Delegate looting to a targeted raid member. Must be raid leader to use this ability."
+  },
+  {
+    "command": "/deny",
+    "aliases": [],
+    "syntax": "/deny [ <player> | group | raid | guild | fellowship ]",
+    "description": "Revokes permission to drag your corpse."
+  },
+  {
+    "command": "/destroyitem",
+    "aliases": [],
+    "syntax": "/destroyitem",
+    "description": "Will attempt to destroy the item on your cursor."
+  },
+  {
+    "command": "/disband",
+    "aliases": [],
+    "syntax": "/disband [<name>]",
+    "description": "Will disband from your group, or if no group, will decline a group invitation. The group leader can remove a targeted player from the group, or remove the specified <name> from the group."
+  },
+  {
+    "command": "/discipline",
+    "aliases": [
+      "/disc"
+    ],
+    "syntax": "/discipline <discipline name>",
+    "description": "Performs the given <discipline>. To see a list of abilities, disciplines, spells, and macros available, bring up the \"Actions\" window. (L by default). Common abbreviation: /disc"
+  },
+  {
+    "command": "/discord",
+    "aliases": [],
+    "syntax": "/discord",
+    "description": "Does a thing."
+  },
+  {
+    "command": "/dismount",
+    "aliases": [],
+    "syntax": "/dismount",
+    "description": "Removes your character from their mount."
+  },
+  {
+    "command": "/doability",
+    "aliases": [],
+    "syntax": "/doability [1-10]",
+    "description": "Activates a key from the \"Actions\" window."
+  },
+  {
+    "command": "/duck",
+    "aliases": [],
+    "syntax": "/duck",
+    "description": "Emotes that you 'duck'. (Does not actually make your character duck or crouch.)"
+  },
+  {
+    "command": "/duel",
+    "aliases": [],
+    "syntax": "/duel",
+    "description": "Initiates a duel between you and the currently targeted player. Duel is in effect until one \"dies\" (is knocked unconscious) or flees the zone."
+  },
+  {
+    "command": "/dynamiclights",
+    "aliases": [],
+    "syntax": "/dynamiclights [on|off]",
+    "description": "Toggles dynamic lights ON/OFF the next time you zone. Note: Dynamic Lights refers to specially rendered lighting, like when your character holds a lantern or another item that emits a glow."
+  },
+  {
+    "command": "/dzaddplayer",
+    "aliases": [],
+    "syntax": "/dzaddplayer [<name>]",
+    "description": "Invites your current target or <name> to the expedition. Must be leader."
+  },
+  {
+    "command": "/dzhelp",
+    "aliases": [],
+    "syntax": "/dzhelp",
+    "description": "Outputs a list of all Expedition commands with a brief description of each."
+  },
+  {
+    "command": "/dzlisttimers",
+    "aliases": [],
+    "syntax": "/dzlisttimers",
+    "description": "List any outstanding replay timers you have for all expeditions. This is the amount of time you must wait before being allowed to enter another instance of that zone."
+  },
+  {
+    "command": "/dzmakeleader",
+    "aliases": [],
+    "syntax": "/dzmakeleader <name>",
+    "description": "Transfer expedition leadership to a new player. Must be leader."
+  },
+  {
+    "command": "/dzplayerlist",
+    "aliases": [],
+    "syntax": "/dzplayerlist",
+    "description": "List all the members of the expedition."
+  },
+  {
+    "command": "/dzquit",
+    "aliases": [],
+    "syntax": "/dzquit",
+    "description": "Removes you from your currently assigned expedition."
+  },
+  {
+    "command": "/dzremoveplayer",
+    "aliases": [],
+    "syntax": "/dzremoveplayer <name>",
+    "description": "Remove a player from their expedition instance. Must be leader to use."
+  },
+  {
+    "command": "/dzswapplayer",
+    "aliases": [],
+    "syntax": "/dzswapplayer <character to remove> <character to add>",
+    "description": "Swap out one player for another. Must be leader. The player to be added has to approve, or the command fails."
+  },
+  {
+    "command": "/emote",
+    "aliases": [],
+    "syntax": "/emote <text>",
+    "description": "Emotes the <text>. Alternate commands: /me, :"
+  },
+  {
+    "command": "/exit",
+    "aliases": [],
+    "syntax": "/exit",
+    "description": "Immediately exit you from the game. The /quit command provides identical functionality. The command must be typed in its entirety; partial commands are not accepted."
+  },
+  {
+    "command": "/extralife",
+    "aliases": [],
+    "syntax": "/extralife",
+    "description": "Opens your browser to the Darkpaw Games team page for Extra Life."
+  },
+  {
+    "command": "/facepalm",
+    "aliases": [],
+    "syntax": "/facepalm",
+    "description": "Performs the facepalm emote."
+  },
+  {
+    "command": "/faction",
+    "aliases": [],
+    "syntax": "/faction",
+    "description": "Toggles the \"Factions\" window. Here you can view your character's standing with various factions."
+  },
+  {
+    "command": "/faint",
+    "aliases": [],
+    "syntax": "/faint",
+    "description": "Causes your character to perform a fainting animation."
+  },
+  {
+    "command": "/familiar",
+    "aliases": [],
+    "syntax": "/familiar leave",
+    "description": "Tell your familiar to go away."
+  },
+  {
+    "command": "/fastdrop",
+    "aliases": [],
+    "syntax": "/fastdrop { on | off | never }",
+    "description": "Controls the ability to drop items with or without confirmation, or at all. The default and recommended setting is off, which will ask for confirmation before dropping an item."
+  },
+  {
+    "command": "/feedback",
+    "aliases": [],
+    "syntax": "/feedback",
+    "description": "Opens the official EverQuest forums in an external browser for submitting feedback."
+  },
+  {
+    "command": "/fight",
+    "aliases": [],
+    "syntax": "/fight",
+    "description": "Triggers the fight emote animation."
+  },
+  {
+    "command": "/filter",
+    "aliases": [],
+    "syntax": "/filter",
+    "description": "Opens the \"Options\" window? Alt+O does the same thing."
+  },
+  {
+    "command": "/finditem",
+    "aliases": [],
+    "syntax": "/finditem",
+    "description": "Opens the \"Find Item Window\", allowing searches through your: bank, equipped items, inventory, real estate, item overflow and parcel. Note: This will not search your Dragon's Hoard."
+  },
+  {
+    "command": "/findpc",
+    "aliases": [],
+    "syntax": "/findpc <name>",
+    "description": "Used to show a yellow path toward a player character. The player must be visible in the find window, such as when they're in your group or raid."
+  },
+  {
+    "command": "/fistbump",
+    "aliases": [],
+    "syntax": "/fistbump",
+    "description": "Performs a fist bump emote."
+  },
+  {
+    "command": "/fontface",
+    "aliases": [],
+    "syntax": "/fontface <fontname>",
+    "description": "Changes the font of the chat window to <fontname>"
+  },
+  {
+    "command": "/freakout",
+    "aliases": [],
+    "syntax": "/freakout",
+    "description": "Performs the freakout emote."
+  },
+  {
+    "command": "/friends",
+    "aliases": [],
+    "syntax": "/friends [<name>]",
+    "description": "Will list your entire friends list. If <name> is supplied it's a toggle; it will add that character to your friends list, or remove them from the list if they're already a friend. Alternate command: ;buddy"
+  },
+  {
+    "command": "/fsay",
+    "aliases": [],
+    "syntax": "/fsay <message>",
+    "description": "Send a message to your fellowship."
+  },
+  {
+    "command": "/fullscreen",
+    "aliases": [],
+    "syntax": "/fullscreen {on|off}",
+    "description": "Toggles between Fullscreen mode and Windowed mode."
+  },
+  {
+    "command": "/gems",
+    "aliases": [],
+    "syntax": "/gems",
+    "description": "Opens the 'EQ Gems' game window."
+  },
+  {
+    "command": "/getguildmotd",
+    "aliases": [],
+    "syntax": "/getguildmotd",
+    "description": "Displays the Guild Message of the Day (MOTD)."
+  },
+  {
+    "command": "/gmarknpc",
+    "aliases": [],
+    "syntax": "/gmarknpc <1-3>",
+    "description": "Mark an NPC for your group with a number from 1 to 3. Alternate: /marknpc"
+  },
+  {
+    "command": "/groupleader",
+    "aliases": [],
+    "syntax": "/groupleader",
+    "description": "Will output the name of the current Group leader. You must be in a group to perform this action."
+  },
+  {
+    "command": "/grouproles",
+    "aliases": [],
+    "syntax": "/grouproles [ list | set | unset | roleset ] <options>",
+    "description": "Manage group roles, and create sets of roles you can load or unload for specific groups of characters."
+  },
+  {
+    "command": "/growl",
+    "aliases": [],
+    "syntax": "/growl",
+    "description": "Causes your character to perform a growl emote."
+  },
+  {
+    "command": "/gsay",
+    "aliases": [
+      "/g"
+    ],
+    "syntax": "/gsay <text>",
+    "description": "Sends <text> to group chat. Seen by all in your group. Common abbreviation: /g"
+  },
+  {
+    "command": "/guidehelp",
+    "aliases": [],
+    "syntax": "/guidehelp <text>",
+    "description": "For quest/event feedback, wedding requests, and questions regarding quests/events. Please be aware that all Customer Service issues must go through /petition for resolution."
+  },
+  {
+    "command": "/guildcreate",
+    "aliases": [],
+    "syntax": "/guildcreate <GuildName>",
+    "description": "Will create a new guild if requirements are met."
+  },
+  {
+    "command": "/guilddelete",
+    "aliases": [],
+    "syntax": "/guilddelete",
+    "description": "Disbands the entire guild. You must be the guild leader."
+  },
+  {
+    "command": "/guilddemote",
+    "aliases": [],
+    "syntax": "/guilddemote <playername>",
+    "description": "Demotes the targeted or named player's ranking in the guild."
+  },
+  {
+    "command": "/guildinvite",
+    "aliases": [],
+    "syntax": "/guildinvite <playername>",
+    "description": "Invites a player to your guild."
+  },
+  {
+    "command": "/guildleader",
+    "aliases": [],
+    "syntax": "/guildleader <playername>",
+    "description": "Make another member of the guild the new guild leader."
+  },
+  {
+    "command": "/guildmotd",
+    "aliases": [],
+    "syntax": "/guildmotd <text>",
+    "description": "Set the Guild Message of the Day (MOTD) to <text>"
+  },
+  {
+    "command": "/guildpromote",
+    "aliases": [],
+    "syntax": "/guildpromote <playername>",
+    "description": "Promotes the targeted or named player's guild rank."
+  },
+  {
+    "command": "/guildremove",
+    "aliases": [],
+    "syntax": "/guildremove <playername>",
+    "description": "Remove a player from the guild."
+  },
+  {
+    "command": "/guildsay",
+    "aliases": [
+      "/gu"
+    ],
+    "syntax": "/guildsay <text>",
+    "description": "Sends <text> to guild chat. Seen by all in your guild. Common abbreviation: /gu"
+  },
+  {
+    "command": "/guildstatus",
+    "aliases": [],
+    "syntax": "/guildstatus <playername>",
+    "description": "Will display the player's current guild and rank. Must be in the same zone."
+  },
+  {
+    "command": "/hail",
+    "aliases": [],
+    "syntax": "/hail",
+    "description": "Hails your current target."
+  },
+  {
+    "command": "/help",
+    "aliases": [],
+    "syntax": "/help [ normal | emote | guild | voice | chat ]",
+    "description": "Will list help and commands for the specified option."
+  },
+  {
+    "command": "/hidecorpse",
+    "aliases": [],
+    "syntax": "/hidecorpse [none | all | always | alwaysnpc | allbutgroup | npc | looted | listed | listedunlocked]",
+    "description": "Controls the hiding of corpses in the game world. Your own corpse(s) will never be hidden, except when using always."
+  },
+  {
+    "command": "/hidemodels",
+    "aliases": [],
+    "syntax": "/hidemodels { none | players | pets | mercenaries | familiars | all } [ none | afk | afk noncombat | noncombat ]",
+    "description": "Hide or un-hide the specified models based on conditions. - none - Un-hide all players, pets, mercenaries, and familiars. - players [none | afk | afk noncombat | noncombat] - Hide player models - pets [none | afk | afk noncombat | noncombat] - Hide pets models - mercenaries [none | afk | afk noncombat | noncombat] - Hide mercenary models - familiars [none | afk | afk noncombat | noncombat] - Hide familiar models - all [none | afk | afk noncombat | noncombat] - Hide all models, including players, pets, mercenaries, and familiars."
+  },
+  {
+    "command": "/hotbutton",
+    "aliases": [],
+    "syntax": "/hotbutton <name> [<color>] [<text>]",
+    "description": "Create or edit a hotbutton named <name>, optionally change the color <0-19> and/or the body <text>."
+  },
+  {
+    "command": "/ignore",
+    "aliases": [],
+    "syntax": "/ignore [<name>]",
+    "description": "Lists the names currently being ignored. If a player <name> is supplied, it will toggle their inclusion on the list; a new name will be added, an existing name removed."
+  },
+  {
+    "command": "/indicator",
+    "aliases": [],
+    "syntax": "/indicator {on | off}",
+    "description": "Turns on/off the target reticle; the ring around the feet of your target."
+  },
+  {
+    "command": "/inspect",
+    "aliases": [],
+    "syntax": "/inspect",
+    "description": "Inspect a targeted player's equipped items."
+  },
+  {
+    "command": "/inspectbuffs",
+    "aliases": [],
+    "syntax": "/inspectbuffs [mine]",
+    "description": "Shows your target's buffs and debuffs, including caster name and remaining duration. Optionally, filter to show only those cast by you."
+  },
+  {
+    "command": "/invite",
+    "aliases": [],
+    "syntax": "/invite [<name>]",
+    "description": "Invites your current target or supplied player name to the group. Can also be used to accept an invitation."
+  },
+  {
+    "command": "/itemoverflow",
+    "aliases": [],
+    "syntax": "/itemoverflow",
+    "description": "Opens the Item Overflow window."
+  },
+  {
+    "command": "/keyrings",
+    "aliases": [],
+    "syntax": "/keyrings [<tab>]",
+    "description": "Opens the Key Rings window. If a tab name is specified, that tab is displayed."
+  },
+  {
+    "command": "/keys",
+    "aliases": [],
+    "syntax": "/keys",
+    "description": "Toggles the display of the General > Keys achievements category in the achievement window."
+  },
+  {
+    "command": "/kickplayers",
+    "aliases": [
+      "/kickplayer",
+      "/kickp"
+    ],
+    "syntax": "/kickplayers [ exp | task | raid ]",
+    "description": "Removes all players from a shared task, expedition or raid. Commonly abbreviated: /kickplayer, /kickp"
+  },
+  {
+    "command": "/language",
+    "aliases": [],
+    "syntax": "/language [<#> | help]",
+    "description": "Displays the current language for the chat window. If a number <#> is supplied, it will change your language, and help will show a list of languages."
+  },
+  {
+    "command": "/leaverealestate",
+    "aliases": [],
+    "syntax": "/leaverealestate",
+    "description": "Used to exit a real estate zone."
+  },
+  {
+    "command": "/lfgroup",
+    "aliases": [],
+    "syntax": "/lfgroup [on|off]",
+    "description": "Opens the \"Group Search\" window. Adding on or off will toggle your 'looking for group' status."
+  },
+  {
+    "command": "/lfguild",
+    "aliases": [],
+    "syntax": "/lfguild",
+    "description": "Opens the Guild Search window."
+  },
+  {
+    "command": "/list",
+    "aliases": [],
+    "syntax": "/list",
+    "description": "List the current channels you are in."
+  },
+  {
+    "command": "/loadskin",
+    "aliases": [],
+    "syntax": "/loadskin <foldername> <0|1>",
+    "description": "Opens the \"Load a skin\" window when used without arguments, or loads a specified skin from your EverQuest's uifiles folder."
+  },
+  {
+    "command": "/location",
+    "aliases": [],
+    "syntax": "/location",
+    "description": "Returns your Y, X, Z coordinates. Typically abbreviated as /loc"
+  },
+  {
+    "command": "/lockconfirm",
+    "aliases": [],
+    "syntax": "/lockconfirm",
+    "description": "Allows you to confirm your selection."
+  },
+  {
+    "command": "/log",
+    "aliases": [],
+    "syntax": "/log [on|off]",
+    "description": "Toggles output to Logs\\eqlog_<name>_<server>.txt. The logging state persists across logins."
+  },
+  {
+    "command": "/loginterval",
+    "aliases": [],
+    "syntax": "/loginterval [seconds]",
+    "description": "Throttles log file writes by setting the interval between file operations to reduce frequent writes. A value of 0 disables throttling and writes immediately. The default interval is 1 second."
+  },
+  {
+    "command": "/loot",
+    "aliases": [],
+    "syntax": "/loot",
+    "description": "Loot a corpse from a short distance. The corpse must be targeted."
+  },
+  {
+    "command": "/lootnodrop",
+    "aliases": [],
+    "syntax": "/lootnodrop [ always | usable | never ]",
+    "description": "When looting a \"No Drop\" item you can always display a loot confirmation, only display a loot confirmation if they're not usable, or never display loot confirmation. Default is always. If no option is supplied, it will output your current setting."
+  },
+  {
+    "command": "/makeleader",
+    "aliases": [],
+    "syntax": "/makeleader [<name>]",
+    "description": "Make target or <name> the leader of your group. Must be in the group, and you must be leader."
+  },
+  {
+    "command": "/map",
+    "aliases": [],
+    "syntax": "/map [ startline | endline | addpoint | automap | color ]",
+    "description": "For editing and marking up maps within EverQuest. Only available when Map window is open."
+  },
+  {
+    "command": "/marketplace",
+    "aliases": [],
+    "syntax": "/marketplace",
+    "description": "Opens the in-game marketplace for special services and items. Not to be confused with the player-driven /bazaar"
+  },
+  {
+    "command": "/maybe",
+    "aliases": [],
+    "syntax": "/maybe",
+    "description": "Performs the \"maybe\" emote."
+  },
+  {
+    "command": "/mcicontrol",
+    "aliases": [],
+    "syntax": "/mcicontrol <option> <device>",
+    "description": "Allows a player to control sound devices such as cdaudio or mp3s to play when in-game, supposedly."
+  },
+  {
+    "command": "/melody",
+    "aliases": [],
+    "syntax": "/melody [#] [#]...",
+    "description": "Bard will play the song gem #'s in the order specified and will repeat the songs from the beginning."
+  },
+  {
+    "command": "/memspellset",
+    "aliases": [],
+    "syntax": "/memspellset {index|<name>}",
+    "description": "Loads the specified spellset index or name. Spell sets are created with the spell gems window."
+  },
+  {
+    "command": "/memspellslot",
+    "aliases": [],
+    "syntax": "/memspellslot <gem slot> {<spell name>|<spell #>}",
+    "description": "In the specified gem slot, memorize a spell. Can use spell name or ID number. To forget a gem slot, provide a \"0\" for spell."
+  },
+  {
+    "command": "/mercassist",
+    "aliases": [],
+    "syntax": "/mercassist [on|off]",
+    "description": "Calls for your mercenary to assist when auto-assist is not activated. To automatically assist, provide the on option."
+  },
+  {
+    "command": "/merclog",
+    "aliases": [],
+    "syntax": "/merclog",
+    "description": "Generates a server-side mercenary log for debugging. Send in a /bug report after logging the issue."
+  },
+  {
+    "command": "/mercswitch",
+    "aliases": [],
+    "syntax": "/mercswitch <index>",
+    "description": "Change your mercenary by index number. A list of your mercenaries, their types and indices can be found in the \"Switch\" tab of your /merc window."
+  },
+  {
+    "command": "/mercwindows",
+    "aliases": [
+      "/merc"
+    ],
+    "syntax": "/mercwindows",
+    "description": "Toggle the Manage Mercenaries window. Common abbreviation: /merc"
+  },
+  {
+    "command": "/mixahead",
+    "aliases": [],
+    "syntax": "/mixahead <1-100>",
+    "description": "The amount of sound to pre-mix, default = 8, lower = better."
+  },
+  {
+    "command": "/motd",
+    "aliases": [],
+    "syntax": "/motd",
+    "description": "Displays the Message of the Day for your server."
+  },
+  {
+    "command": "/mousespeed",
+    "aliases": [],
+    "syntax": "/mousespeed <multiplier>",
+    "description": "Increase the speed of the mouse cursor in multiples of the amount specified. Default multiplier is 0, use 0 or 1 for default, 2 = double the speed, 3 = triple, etc."
+  },
+  {
+    "command": "/netstats",
+    "aliases": [
+      "/netstat"
+    ],
+    "syntax": "/netstats",
+    "description": "Display network ping times and packet loss. Output is directed to a single chat filter. Common abbreviation: /netstat"
+  },
+  {
+    "command": "/no",
+    "aliases": [],
+    "syntax": "/no",
+    "description": "Emotes your character's disagree."
+  },
+  {
+    "command": "/node",
+    "aliases": [],
+    "syntax": "/node",
+    "description": "Emotes your character nodding in agreement or acknowledgment."
+  },
+  {
+    "command": "/note",
+    "aliases": [],
+    "syntax": "/note [<text>]",
+    "description": "Opens the \"Notes Window\" unless optional <text> is provided. Any <text> provided will be date/time stamped. The information is saved in the file notes.txt and is available across all characters on an account."
+  },
+  {
+    "command": "/offlinemode",
+    "aliases": [],
+    "syntax": "/offlinemode",
+    "description": "When in Trader or Buyer mode, this command will log you off but leave your character in-game trading."
+  },
+  {
+    "command": "/ooc",
+    "aliases": [],
+    "syntax": "/ooc <text>",
+    "description": "A zone-wide communication channel for speaking out of character."
+  },
+  {
+    "command": "/open",
+    "aliases": [],
+    "syntax": "/open",
+    "description": "Attempts to open the targeted object."
+  },
+  {
+    "command": "/outputfile",
+    "aliases": [],
+    "syntax": "/outputfile [ achievements [<filter>] | faction | guild | guildbank | guildhall | guildlobby | inventory | missingspells | raid | realestate | recipes <argument> | spellbook ] [<filename>]",
+    "description": "Export data to the default or specified file. The file is saved as <player>_<server>-<parameter>.txt in the root folder. If a filename is specified and does not end with '.txt', the extension is automatically appended. - achievements [<filter>] - Outputs a filtered list of achievements. The filter specifies which states to include: Complete, Open, and/or Locked. If no filter is provided, all states are included. - faction - Faction data - guild - Name, level, class, rank, date, zone, note - guildbank - Guild bank contents - guildhall - You may only dump the real estate guild hall while you are on the guild plot or in the real estate guild hall. - guildlobby - Exports data for the Guild Lobby. - inventory - Inventory items, items from all keyrings, Dragon's Hoard items if the Dragon's Hoard window is open, and Personal Tradeskill Depot items if the depot is loaded. - missingspells - Outputs a list of all spells and combat abilities usable by your class up to your current level that you haven't yet scribed in your spellbook. Entries are sorted by level and then alphabetically by name. Does not include spells that cannot be scribed. - raid - Raid data - realestate - Real estate data - recipes [all | alchemy | baking | blacksmithing | brewing | fishing | fletching | jewelcrafting | poisonmaking | pottery | research | tailoring | tinkering] <[filename]> - Outputs the names of tradeskill recipes you know if they qualify you for additional skill points past the cap. If 'all' is specified, a separate file is created for each tradeskill, forcing the default file names. - spellbook - Outputs all spells and combat abilities in your spell book. Entries are sorted by level and then alphabetically by name."
+  },
+  {
+    "command": "/overseer",
+    "aliases": [],
+    "syntax": "/overseer",
+    "description": "Toggles the Overseer window, enabling you to manage Agents and send them on quests to combat Discord across Norrath's history and earn rewards. Requires level 85+ and the Seeds of Destruction expansion on your server."
+  },
+  {
+    "command": "/overseermassconvert",
+    "aliases": [],
+    "syntax": "/overseermassconvert <rarity> <keep_count>",
+    "description": "Converts duplicate agents of a specified rarity, leaving a specified number of duplicates unconverted with a minimum of 1 remaining."
+  },
+  {
+    "command": "/particledensity",
+    "aliases": [],
+    "syntax": "/particledensity [off | low | med | high]",
+    "description": "Set visual particle density. Can be further refined on the Options window -> Display tab -> 'Particles.'"
+  },
+  {
+    "command": "/pause",
+    "aliases": [],
+    "syntax": "/pause <1-600>[,]",
+    "description": "Pause a social macro from 1 to 600 deciseconds (600 is equal to 60 seconds). Can add other commands with a comma but will always be executed last. Can only be used within social buttons."
+  },
+  {
+    "command": "/pet",
+    "aliases": [],
+    "syntax": "/pet <action> [<target>]",
+    "description": "Control actions for your combat pet. - attack [<name>] - Pet will attack the targeted or specified creature. - qattack [<name>] - Pet will queue an attack on the targeted or specified creature. - back - Pet will clear its hatelist. - focus - Tells pet to focus on current target. - feign - A necromancer's pet will attempt to play dead, if they have the relevant AA. - follow - Pet will start to follow you. - get lost | leave - Pet will leave. - guard here - Will stand here, and return here after fights. - guard me - Pet will attack anything you attack and anything that attacks you. - health report | report health - Orders your pet to say its health in percent and any spells currently affecting it. - ghold - Greater holding. Will only attack something new if ordered and will not build a hate list of other mobs. If told to attack, will do so in reverse order. - hold - Holding. Will not start attacks until ordered. Once it attacks, the pet will build a hate list and attack other mobs as usual. - inventory check - Returns a list of your pet's currently equipped items. - inventory destroy <slot> - Destroys the item your pet has in the chosen slot. - leader - Pet will report who summoned it. - regroup - Toggle. Pet returns to you whether its target is alive or not. Does not clear hatelist. - resume - stop - Will stop attacking. Seems to trigger its resting regeneration. - spellhold - Toggle. Prevents pet from casting. - sit - Toggle sit. - swarm - Swarm attack. - qswarm - Queue swarm attack. - swarmleave | swleave - Causes the swarm to leave. - target - Targets your pet. Can also use F1 key (toggles between you and your pet). - taunt | no taunt - Toggles whether your pet will taunt in battle."
+  },
+  {
+    "command": "/petition",
+    "aliases": [],
+    "syntax": "/petition",
+    "description": "Opens a dialog box: 'Would you like to open a browser to the help and petition webpage?'"
+  },
+  {
+    "command": "/pickzone",
+    "aliases": [
+      "/pic"
+    ],
+    "syntax": "/pickzone [fewestplayers]",
+    "description": "Opens the Pick Zone window if available at the moment in the current zone. Common abbreviation: /pic"
+  },
+  {
+    "command": "/pickzonefewestplayers",
+    "aliases": [],
+    "syntax": "/pickzonefewestplayers",
+    "description": "Will attempt to join the pick with fewest players."
+  },
+  {
+    "command": "/pie",
+    "aliases": [],
+    "syntax": "/pie",
+    "description": "Triggers the pie emote."
+  },
+  {
+    "command": "/pizza",
+    "aliases": [],
+    "syntax": "/pizza",
+    "description": "Performs the pizza emote. (This emote returned in a March 13, 2019 update, but no longer opens a web order page, it's a standard emote now)"
+  },
+  {
+    "command": "/played",
+    "aliases": [],
+    "syntax": "/played",
+    "description": "Shows character's birthdate, age (Earth time and game time), total time played, and time this session."
+  },
+  {
+    "command": "/queuemelody",
+    "aliases": [],
+    "syntax": "/queuemelody <song> [song]...",
+    "description": "Arranges a series of songs to be executed based on priority. This command is similar to /melody except it plays songs in priority order depending on the song's recast time, your current buffs, and your target's current debuffs. The earlier a song is in the list, the higher priority it is."
+  },
+  {
+    "command": "/quit",
+    "aliases": [],
+    "syntax": "/quit",
+    "description": "Immediately closes the game. The full command name must be used. This command is functionally identical to /exit."
+  },
+  {
+    "command": "/racechange",
+    "aliases": [],
+    "syntax": "/racechange",
+    "description": "Change your character's race if you've purchased a Transmogrification Scroll from the marketplace."
+  },
+  {
+    "command": "/random",
+    "aliases": [],
+    "syntax": "/random <#> [<#>]",
+    "description": "Rolls a magic die from 0 to <#>. Optionally add another <#> to specify the complete range."
+  },
+  {
+    "command": "/realestate",
+    "aliases": [],
+    "syntax": "/realestate [items | manage | trophies | plot]",
+    "description": "Opens windows to manage your house(s) and plot(s)."
+  },
+  {
+    "command": "/renameguild",
+    "aliases": [],
+    "syntax": "/renameguild <name>",
+    "description": "Renames guild to <name>, if a rename is allowed."
+  },
+  {
+    "command": "/reply",
+    "aliases": [],
+    "syntax": "/reply <text>",
+    "description": "Reply to the latest received /tell. Can also bind replies to a key, \"R\" by default, and then cycle through names with \"Tab\"."
+  },
+  {
+    "command": "/report",
+    "aliases": [],
+    "syntax": "/report <playername>",
+    "description": "The first 20 lines of visible text in each chat window will be attached to a player report. Scroll to display the text you wish to report. This name can be referenced in a petition to allow a GM to view the report. Note that reporting by itself does nothing."
+  },
+  {
+    "command": "/reservename",
+    "aliases": [],
+    "syntax": "/reservename",
+    "description": "pulls up the name reservation window, allowing you to reserve a name on an upcoming server if you qualify and if any servers are available."
+  },
+  {
+    "command": "/reveal",
+    "aliases": [],
+    "syntax": "/reveal",
+    "description": "used to cancel stealth-style hiding states, making your character visible again."
+  },
+  {
+    "command": "/rewards",
+    "aliases": [],
+    "syntax": "/rewards",
+    "description": "Toggles \"Select a Reward\" window, for instance, to get the class selection window to reopen after using a class unlock token."
+  },
+  {
+    "command": "/rewind",
+    "aliases": [],
+    "syntax": "/rewind",
+    "description": "Will move your character to a previous nearby position, helpful if you've become stuck. Must stand still for a period before using again."
+  },
+  {
+    "command": "/rmarknpc",
+    "aliases": [],
+    "syntax": "/rmarknpc <1-3>",
+    "description": "Raid Mark an NPC for your raid with a number from 1 to 3."
+  },
+  {
+    "command": "/ro",
+    "aliases": [],
+    "syntax": "/ro",
+    "description": "Performs the roll on the floor laughing emote."
+  },
+  {
+    "command": "/roleplay",
+    "aliases": [],
+    "syntax": "/roleplay [on|off]",
+    "description": "Anonymizes information from /who, but unlike /anon, your guild tag is still displayed."
+  },
+  {
+    "command": "/rps",
+    "aliases": [],
+    "syntax": "/rps",
+    "description": "Performs the rock-paper-scissors emote."
+  },
+  {
+    "command": "/rsay",
+    "aliases": [],
+    "syntax": "/rsay <text>",
+    "description": "Communicate <text> to your raid."
+  },
+  {
+    "command": "/rtarget",
+    "aliases": [],
+    "syntax": "/rtarget",
+    "description": "Target the player who sent you the most recent /tell, provided they're in range."
+  },
+  {
+    "command": "/run",
+    "aliases": [],
+    "syntax": "/run",
+    "description": "Enables \"always run\", not a toggle."
+  },
+  {
+    "command": "/safelock",
+    "aliases": [],
+    "syntax": "/safelock <password>",
+    "description": "Toggle. Locks the interface with <password>. To unlock the interface, repeat the command with the same password. The full command must be typed to function. Not case-sensitive. (Good uses for this are to prevent children and pets from playing your game if you need to AFK)"
+  },
+  {
+    "command": "/say",
+    "aliases": [],
+    "syntax": "/say <text>",
+    "description": "Communicate <text> with everyone within a small radius."
+  },
+  {
+    "command": "/servertransfer",
+    "aliases": [],
+    "syntax": "/servertransfer",
+    "description": "Toggles the Server Transfer List window. Some transfers are free, others will require a token from the marketplace."
+  },
+  {
+    "command": "/setloottype",
+    "aliases": [],
+    "syntax": "/setloottype <1-3>",
+    "description": "Sets who can loot npc corpses during a raid: 1=Raid Leader, 2=Raid Leader and Group Leaders, 3=Raid Leader and Selected Raid Looters (used in conjunction with /addraidlooter)"
+  },
+  {
+    "command": "/setstartcity",
+    "aliases": [],
+    "syntax": "/setstartcity [<ID>]",
+    "description": "Set your starting city. Can be used once by some characters with multiple starting cities or those whose starting city was reset accidentally."
+  },
+  {
+    "command": "/shadows",
+    "aliases": [],
+    "syntax": "/shadows [on|off [<distance>] ]",
+    "description": "Control the display of shadows on characters, and their respective 'clip distance.'"
+  },
+  {
+    "command": "/shield",
+    "aliases": [],
+    "syntax": "/shield <playername>",
+    "description": "Allows Warriors to intercept part of the damage intended for another. If no <name> supplied, will use target."
+  },
+  {
+    "command": "/shieldgroup",
+    "aliases": [],
+    "syntax": "/shieldgroup",
+    "description": "Allows a Warrior to shield his group from damage, provided they have the group shielding spell affect."
+  },
+  {
+    "command": "/shout",
+    "aliases": [],
+    "syntax": "/shout <text>",
+    "description": "Communicate <text> throughout the entire zone."
+  },
+  {
+    "command": "/showgrass",
+    "aliases": [],
+    "syntax": "/showgrass [on | off]",
+    "description": "Using this command will turn \"radial flora\" on or off."
+  },
+  {
+    "command": "/shownames",
+    "aliases": [
+      "/show - off - don't show player names over their heads - 1 - show only first names of players - 2 - show first and last names - 3 - show first"
+    ],
+    "syntax": "/shownames [ off | 1 | 2 | 3 | 4 | 5 | 6 | 7 ]",
+    "description": "Toggle visible player names, or shorten them. \"4\" is default. Common abbreviation: /show - off - Don't show player names over their heads - 1 - Show only First Names of players - 2 - Show First and Last Names - 3 - Show First, Last, and Guild names - 4 - Show everything (default) - 5 - Show Title (if any) and First names - 6 - Show Title (if any), First, Last names - 7 - Show First name and Guild (if any) names"
+  },
+  {
+    "command": "/shownpcnames",
+    "aliases": [],
+    "syntax": "/shownpcnames [ on | off ]",
+    "description": "Turn NPC names 'on' or 'off'."
+  },
+  {
+    "command": "/showspelleffects",
+    "aliases": [],
+    "syntax": "/showspelleffects [on|off]",
+    "description": "Toggle spell particle effects."
+  },
+  {
+    "command": "/sit",
+    "aliases": [],
+    "syntax": "/sit [on|off]",
+    "description": "Toggle sitting when no option provided. On will always sit, Off will always stand."
+  },
+  {
+    "command": "/split",
+    "aliases": [],
+    "syntax": "/split <#> [<#> <#> <#>]",
+    "description": "Split the defined amount of your Plat#, Gold#, Silver#, Copper# (in that order) with the group. Use 0 for coins you don't wish to split. (Specifying just 1 number will split just plat)"
+  },
+  {
+    "command": "/stance",
+    "aliases": [],
+    "syntax": "/stance [ Aggressive | Balanced | Burn | Burn AE | Efficient | Passive | Reactive ]",
+    "description": "Change your mercenary's stance. Must be a valid stance for mercenary type."
+  },
+  {
+    "command": "/stand",
+    "aliases": [],
+    "syntax": "/stand",
+    "description": "Makes your character stand up from a crouch or sit position. Unlike /sit, it's not a toggle."
+  },
+  {
+    "command": "/stopcast",
+    "aliases": [],
+    "syntax": "/stopcast",
+    "description": "Interrupt the current spell during its casting period."
+  },
+  {
+    "command": "/stopdisc",
+    "aliases": [],
+    "syntax": "/stopdisc",
+    "description": "Cancel any currently running discipline."
+  },
+  {
+    "command": "/stopsocial",
+    "aliases": [],
+    "syntax": "/stopsocial",
+    "description": "Using the command /stopsocial will immediately stop any 'social' animations or can be used to cancel a hot-key sequence, that may for instance have a long pause in it. Typing /stopsocial will stop processing the hotkey command sequence."
+  },
+  {
+    "command": "/stopsong",
+    "aliases": [],
+    "syntax": "/stopsong",
+    "description": "Stop singing the current song or certain Alternate Advancement abilities that behave like songs. Mostly a concern for Bards."
+  },
+  {
+    "command": "/stoptracking",
+    "aliases": [],
+    "syntax": "/stoptracking",
+    "description": "Stop tracking current target."
+  },
+  {
+    "command": "/surname",
+    "aliases": [],
+    "syntax": "/surname [<name>]",
+    "description": "Adds a last name, <name>, to your character. If no <name> is provided, your last name will be cleared."
+  },
+  {
+    "command": "/swapdisc",
+    "aliases": [],
+    "syntax": "/swapdisc <name|id>",
+    "description": "Removes the currently active combat ability and activates the specified ability."
+  },
+  {
+    "command": "/swarm",
+    "aliases": [],
+    "syntax": "/swarm [ attack | qattack | leave ]",
+    "description": "Allows control over your swarm. Identical to /pet swarm arguments."
+  },
+  {
+    "command": "/system",
+    "aliases": [],
+    "syntax": "/system <cmd> [arguments]",
+    "description": "Run commands on your computer, as if from the Windows command prompt. To use, EnableSystemCommand=1 must be set in the [default] section of eqclient.ini"
+  },
+  {
+    "command": "/target",
+    "aliases": [],
+    "syntax": "/target [<name> | group <1-6>]",
+    "description": "Targets <name> or group member <#>."
+  },
+  {
+    "command": "/targetoftarget",
+    "aliases": [],
+    "syntax": "/targetoftarget",
+    "description": "Toggles the \"Target's Target\" window."
+  },
+  {
+    "command": "/taskaddplayer",
+    "aliases": [],
+    "syntax": "/taskaddplayer <name>",
+    "description": "Send an invitation to the named player to join the shared task. The player may then accept or decline the invitation."
+  },
+  {
+    "command": "/taskhelp",
+    "aliases": [],
+    "syntax": "/taskhelp",
+    "description": "Outputs help for shared task commands."
+  },
+  {
+    "command": "/taskmakeleader",
+    "aliases": [],
+    "syntax": "/taskmakeleader <player name>",
+    "description": "The shared task leader can use this command to assign leadership to another player."
+  },
+  {
+    "command": "/taskoverlay",
+    "aliases": [],
+    "syntax": "/taskoverlay",
+    "description": "Toggles the \"Task Overlay\" window, which gives a summary of quests and your progress."
+  },
+  {
+    "command": "/taskplayerlist",
+    "aliases": [],
+    "syntax": "/taskplayerlist",
+    "description": "A list of the players in your shared task."
+  },
+  {
+    "command": "/taskquit",
+    "aliases": [],
+    "syntax": "/taskquit",
+    "description": "Leave your shared task."
+  },
+  {
+    "command": "/taskremoveplayer",
+    "aliases": [],
+    "syntax": "/taskremoveplayer <name>",
+    "description": "Remove a player from the shared task. Must be task/mission leader."
+  },
+  {
+    "command": "/tasktimers",
+    "aliases": [],
+    "syntax": "/tasktimers",
+    "description": "Time left before you're able to repeat certain missions or tasks."
+  },
+  {
+    "command": "/tell",
+    "aliases": [],
+    "syntax": "/tell <playername> <message>",
+    "description": "Send a direct, private message to another player. Alternate commands: /msg, /send - cross server /tells use ;tell <server>.<character> <message>"
+  },
+  {
+    "command": "/testbuffme",
+    "aliases": [],
+    "syntax": "/testbuffme",
+    "description": "Used only on the Test Server, boost your character to level 25 and gives you a set of items."
+  },
+  {
+    "command": "/testcopy",
+    "aliases": [],
+    "syntax": "/testcopy",
+    "description": "Copies character to the Test Server."
+  },
+  {
+    "command": "/time",
+    "aliases": [],
+    "syntax": "/time",
+    "description": "Displays game time: Weekday, Month DD, YYYY - H and Earth Time: Weekday, Month DD, YYYY HH:MM:SS"
+  },
+  {
+    "command": "/toggleinspect",
+    "aliases": [],
+    "syntax": "/toggleinspect [on|off]",
+    "description": "Inspect other player's equipment by right-clicking."
+  },
+  {
+    "command": "/trackfilter",
+    "aliases": [],
+    "syntax": "/trackfilter [ red | yellow | white | blue | green ]",
+    "description": "Toggle the NPCs to display in your tracking window, categorized by /consider colors."
+  },
+  {
+    "command": "/trackmercs",
+    "aliases": [],
+    "syntax": "/trackmercs [on|off]",
+    "description": "Toggle the display of mercenaries in your tracking list."
+  },
+  {
+    "command": "/trackpets",
+    "aliases": [],
+    "syntax": "/trackpets [on|off]",
+    "description": "Toggles the display of pets in your tracking list."
+  },
+  {
+    "command": "/trackplayers",
+    "aliases": [],
+    "syntax": "/trackplayers [on | off | group]",
+    "description": "Toggles the display of players in your tracking list, including those in group."
+  },
+  {
+    "command": "/tracksort",
+    "aliases": [],
+    "syntax": "/tracksort [ normal | distance | consider | alpha | rdistance | rconsider | ralpha ]",
+    "description": "Control sorting on your tracking list. - normal - How long they've been in the zone (oldest NPCs first) - distance - Closest NPC is at the top of the tracking list - consider - Highest level NPCs on top - rdistance - Furthest NPC first and closest NPC listed last - rconsider - Low level at top, with high level at bottom - alpha - Alphabetic order, A to Z - ralpha - Reverse alphabetic order, Z to A"
+  },
+  {
+    "command": "/trader",
+    "aliases": [],
+    "syntax": "/trader",
+    "description": "Toggles the Bazaar Vendor window, used if you're in the bazaar and have something to sell."
+  },
+  {
+    "command": "/tribute",
+    "aliases": [],
+    "syntax": "/tribute {personal | guild} {on | off | favor}",
+    "description": "Turn personal and guild tribute on or off, or list how much favor is available in each."
+  },
+  {
+    "command": "/trophy",
+    "aliases": [],
+    "syntax": "/trophy {personal | guild} {on | off}",
+    "description": "Toggle personal or guild trophy tribute."
+  },
+  {
+    "command": "/ttell",
+    "aliases": [],
+    "syntax": "/ttell <message>",
+    "description": "Send <message> to the targeted player or player corpse."
+  },
+  {
+    "command": "/ttth",
+    "aliases": [],
+    "syntax": "/ttth",
+    "description": "Triggers the ttth emote."
+  },
+  {
+    "command": "/ui",
+    "aliases": [],
+    "syntax": "/ui [ scale <#> | reloadhtml ]",
+    "description": "If no option provided, displays your current UI scale (1.00 default.) Can also adjust your UI scale or reload the HTML to apply changes made to UI configuration files, including the CSS. You can only adjust the UI using the new UI engine."
+  },
+  {
+    "command": "/url",
+    "aliases": [],
+    "syntax": "/url [<url> | <file>]",
+    "description": "Open a URL or file. - <url> - The URL to open. Must prefix the domain with https:// or http:// or www"
+  },
+  {
+    "command": "/useadvlooting",
+    "aliases": [],
+    "syntax": "/useadvlooting [on|off]",
+    "description": "Toggles the Advanced Looting System. The Legends loot system is a modern take on the advanced system used on Live and TLP servers."
+  },
+  {
+    "command": "/useitem",
+    "aliases": [],
+    "syntax": "/useitem <slot> [subindex] or /useitem \"<item name>\"",
+    "description": "Activates the use effect on items. You can specify an inventory slot number or the \"exact name\" of the item. When using the item name, it activates the item regardless of its inventory slot, including items in your key ring. - <slot> [subindex] - The slot number. If a bag, the subindex as well. - \"<item name>\" - The full name of the item to activate. Works for items in any inventory slot or key ring."
+  },
+  {
+    "command": "/usercolor",
+    "aliases": [],
+    "syntax": "/usercolor <channel#> <R G B>",
+    "description": "Change the text color of chat channels. For a GUI alternative, use Options window -> Chat. See usercolor for channel details."
+  },
+  {
+    "command": "/usetarget",
+    "aliases": [],
+    "syntax": "/usetarget",
+    "description": "Simulates a 'right-click' on a targeted NPC, or left click on targeted player. Useful when merchants are covered in other players, making them hard to click."
+  },
+  {
+    "command": "/usurp",
+    "aliases": [],
+    "syntax": "/usurp",
+    "description": "A guild officer can become leader if more senior leadership has been offline for at least a year."
+  },
+  {
+    "command": "/vgroup",
+    "aliases": [],
+    "syntax": "/vgroup <1-12>",
+    "description": "Play a voice macro for your group, with accompanying text."
+  },
+  {
+    "command": "/viewport",
+    "aliases": [],
+    "syntax": "/viewport <x> <y> <w> <h> [<scale>] | [reset]",
+    "description": "Change the size of the area within your game window."
+  },
+  {
+    "command": "/vplay",
+    "aliases": [],
+    "syntax": "/vplay <1-12>",
+    "description": "Play a voice macro for your computer only."
+  },
+  {
+    "command": "/vraid",
+    "aliases": [],
+    "syntax": "/vraid <1-12>",
+    "description": "Play a voice macro for your raid, with accompanying text."
+  },
+  {
+    "command": "/vtell",
+    "aliases": [],
+    "syntax": "/vtell <player> <1-12>",
+    "description": "Play a voice macro for a player, with accompanying text."
+  },
+  {
+    "command": "/waypoint",
+    "aliases": [],
+    "syntax": "/waypoint <y>, <x>, [<z>]",
+    "description": "Draw a find path to the location specified by <y>, <x>, and optionally <z> coordinates. Must use commas. The location is also marked on your map."
+  },
+  {
+    "command": "/who",
+    "aliases": [],
+    "syntax": "/who [<name | class | race>] [all] [afk] [lfg] [corpse] [count] [guild] [raid] [<\"guild name\">] [<level> [<level>]]",
+    "description": "Search for characters in the current zone or across all zones. The command can also be invoked on a player by clicking their name in a chat window."
+  },
+  {
+    "command": "/whotarget",
+    "aliases": [],
+    "syntax": "/whotarget",
+    "description": "Displays a /who lookup for the targeted player."
+  },
+  {
+    "command": "/xtarget",
+    "aliases": [
+      "/xtar"
+    ],
+    "syntax": "/xtarget show | set <slot> <role/name> | target <slot> | auto [on|off] | add | remove | save <name> | load <name>",
+    "description": "Add spawns to the Extended Target window by name, role, automatically, or from saved target sets. Common abbreviation: /xtar"
+  },
+  {
+    "command": "/yell",
+    "aliases": [],
+    "syntax": "/yell",
+    "description": "Unlock all Encounter Locked NPCs that you're able to. One second timer. Also displays, 'You yell for help.' People around you see \"XXX yells for help from <direction>\"."
+  },
+  {
+    "command": "/yes",
+    "aliases": [],
+    "syntax": "/yes",
+    "description": "Performs the yes emote."
+  }
+]

@@ -58,6 +58,37 @@ describe("eql client command reference", () => {
   it("returns undefined for an unknown command", () => {
     expect(getEqlClientCommand("/definitelynotacommand")).toBeUndefined();
   });
+
+  it("tags every result with where it came from", () => {
+    const { results } = searchEqlClientCommands("cast");
+    expect(results.length).toBeGreaterThan(0);
+    for (const result of results) {
+      expect(["wiki", "client-manual"]).toContain(result.source);
+    }
+    // /cast is documented by both sources and they disagree (gem-slot-only
+    // vs. slot-or-spell-name) — both must surface, not just one.
+    const cast = results.filter((r) => r.command === "/cast");
+    expect(cast.some((r) => r.source === "wiki")).toBe(true);
+    expect(cast.some((r) => r.source === "client-manual")).toBe(true);
+  });
+
+  it("includes wiki-only commands the client manual does not document", () => {
+    // /bandolier (save/activate weapon sets) is absent from the legacy
+    // client-manual snapshot entirely.
+    const data = getEqlClientCommand("/bandolier");
+    expect(data).toBeDefined();
+    expect(data?.entries.every((e) => e.source === "wiki")).toBe(true);
+  });
+
+  it("resolves an alias the wiki documents even when the manual's primary form differs", () => {
+    // The manual's primary command is "/anon" (alias "/a"); the wiki's primary
+    // form is "/anonymous" with "/anon" called out as an abbreviation. Looking
+    // up "/anon" must resolve both.
+    const data = getEqlClientCommand("/anon");
+    expect(data).toBeDefined();
+    expect(data?.entries.some((e) => e.command === "/anon" && e.source === "client-manual")).toBe(true);
+    expect(data?.entries.some((e) => e.command === "/anonymous" && e.source === "wiki")).toBe(true);
+  });
 });
 
 describe("eql client race/model table", () => {
@@ -116,7 +147,7 @@ describe("eql client manual supplement", () => {
 
 describe("eql client provenance", () => {
   it("reports the source client files and counts", () => {
-    const { manifest, disclaimer } = getEqlClientProvenance();
+    const { manifest, disclaimer, commandsWiki } = getEqlClientProvenance();
     expect(disclaimer.length).toBeGreaterThan(0);
     expect(manifest.sources.length).toBe(6);
     expect(manifest.sources.every((s) => s.sha256.length === 64)).toBe(true);
@@ -125,6 +156,11 @@ describe("eql client provenance", () => {
     expect(manifest.counts.manualSections).toBeGreaterThan(0);
     expect(manifest.counts.zones).toBeGreaterThan(100);
     expect(manifest.counts.storylines).toBeGreaterThan(40);
+
+    // The EQL Wiki commands snapshot blended into eql_client_command(_search).
+    expect(commandsWiki.sourceUrl).toBe("https://eqlwiki.com/Commands");
+    expect(commandsWiki.wikiRevisionId).toBeGreaterThan(0);
+    expect(commandsWiki.counts.commands).toBeGreaterThan(200);
   });
 
   it("lists and searches zones with POI labels", () => {

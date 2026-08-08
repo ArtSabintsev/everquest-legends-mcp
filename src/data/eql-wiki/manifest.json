@@ -1,0 +1,12 @@
+{
+  "source": "EQL Wiki (community-maintained)",
+  "sourceUrl": "https://eqlwiki.com/Commands",
+  "sourceNote": "Slash-command reference parsed from https://eqlwiki.com/Commands via the MediaWiki action=parse API. Community-maintained and kept current with EQL patches, unlike the client-bundled manual text in ../eql-client (see eqlClient.ts), which ships legacy classic-EQ manual copy. The two datasets are merged at query time, preferring this one.",
+  "extractorVersion": 1,
+  "extractedAt": "2026-08-04T22:42:01.165Z",
+  "wikiPageId": 53046,
+  "wikiRevisionId": 158931,
+  "counts": {
+    "commands": 265
+  }
+}

@@ -632,7 +632,7 @@ export function createServer(): McpServer {
     {
       title: "Search EQL client slash commands",
       description:
-        "Search the in-game slash-command reference extracted from the EverQuest Legends client manual (everquest_manual.txt). Matches command name, aliases, syntax, and description. Returns the command, its aliases, its syntax, and what it does.",
+        "Search the in-game slash-command reference, blended from the community-maintained EQL Wiki (eqlwiki.com/Commands) and the EverQuest Legends client's bundled manual text (everquest_manual.txt). Matches command name, aliases, syntax, and description. Each result is tagged with its source ('wiki' or 'client-manual'); when both document a command, both entries are returned rather than one silently overwriting the other — the wiki is generally more current.",
       inputSchema: {
         query: z.string().min(2).max(120).describe("Search terms matched against slash-command name, aliases, syntax, and description (e.g. 'anonymous', 'pet attack', 'chat channel')."),
         limit: z.number().int().min(1).max(50).default(15)
@@ -649,7 +649,7 @@ export function createServer(): McpServer {
     {
       title: "Read EQL client slash command",
       description:
-        "Look up a single in-game slash command by name or alias (e.g. /who, /anon, /a). The manual documents many commands in several forms, so this returns every documented form of the command.",
+        "Look up a single in-game slash command by name or alias (e.g. /who, /anon, /a). Blends the community-maintained EQL Wiki and the client's bundled manual text, both of which may document a command in several forms, so this returns every matching entry from both sources, each tagged 'wiki' or 'client-manual'.",
       inputSchema: {
         name: z.string().min(1).describe("Slash command name or alias, with or without the leading slash (e.g. 'who', '/anon', 'a').")
       }
@@ -748,12 +748,15 @@ export function createServer(): McpServer {
     "eql_client_provenance",
     {
       title: "EQL client reference data provenance",
-      description: "Report how the local-client reference dataset (slash commands, race/model table, manual supplement, zones, storylines) was extracted: source client files with sizes/hashes/modification times, extraction time, and counts.",
+      description: "Report how the local-client reference dataset (slash commands, race/model table, manual supplement, zones, storylines) was extracted: source client files with sizes/hashes/modification times, extraction time, and counts. Also reports the provenance of the EQL Wiki slash-command snapshot (commandsWiki) that eql_client_command / eql_client_command_search blend in: wiki page/revision id and extraction time.",
       inputSchema: {}
     },
     async () => {
       const data = getEqlClientProvenance();
-      return toolResult(`EQL client reference extracted ${data.manifest.extractedAt} from ${data.manifest.sources.length} client file(s).`, data);
+      return toolResult(
+        `EQL client reference extracted ${data.manifest.extractedAt} from ${data.manifest.sources.length} client file(s); wiki commands snapshot from revision ${data.commandsWiki.wikiRevisionId}.`,
+        data
+      );
     }
   );
 
