@@ -42,6 +42,13 @@ import {
   searchEqlClientRaces,
   searchEqlClientStorylines
 } from "./eqlClient.js";
+import {
+  COMPANION_ACCESS_MODES,
+  COMPANION_CAPABILITIES,
+  getCompanionTool,
+  listCompanionTools
+} from "./companionTools.js";
+import { getEqLegendsToolsItem, searchEqLegendsToolsItems } from "./eqlegendstools.js";
 
 // EQL-authoritative sources first; classic-EQ context material last, with the
 // default authority tier materialized so consumers never see it missing.
@@ -176,6 +183,83 @@ export function createServer(): McpServer {
         scope: SOURCE_SCOPE,
         sources
       });
+    }
+  );
+
+  server.registerTool(
+    "eql_companion_tools",
+    {
+      title: "List EQL companion tools",
+      description:
+        "Catalog post-launch community companion tools (gear/exaltation planners, item/drop DBs, primers, Mac runner). Reports access mode (html-searchable vs interactive SPA vs origin-locked API) and linked source ids. Does not scrape locked APIs.",
+      inputSchema: {
+        capability: z
+          .enum(COMPANION_CAPABILITIES)
+          .optional()
+          .describe("Filter by capability, e.g. gear, drops, plane-of-sky, trio-builder."),
+        access: z
+          .enum(COMPANION_ACCESS_MODES)
+          .optional()
+          .describe("Filter by how agents can use the site (html-searchable, pointer-only, interactive-spa, api-origin-locked)."),
+        query: z.string().min(2).max(80).optional().describe("Optional free-text filter over name, summary, and notes."),
+        id: z.string().optional().describe("Optional companion id for a single tool (e.g. eqltools, eqlegendstools, gnollguard).")
+      }
+    },
+    async ({ capability, access, query, id }) => {
+      if (id) {
+        const tool = getCompanionTool(id);
+        if (!tool) {
+          return toolResult(`No companion tool matched id "${id}".`, {
+            id,
+            found: false,
+            knownIds: listCompanionTools().tools.map((t) => t.id)
+          });
+        }
+        return toolResult(`Companion tool ${tool.name} (${tool.access}).`, {
+          disclaimer: listCompanionTools().disclaimer,
+          found: true,
+          tool
+        });
+      }
+      const data = listCompanionTools({ capability, access, query });
+      return toolResult(`Listed ${data.count} EQL companion tool(s).`, data);
+    }
+  );
+
+  server.registerTool(
+    "eql_eqlegendstools_item_search",
+    {
+      title: "Search EQ Legends Tools items",
+      description:
+        "Search the public eqlegendstools.com item index by name (server-rendered HTML). Returns slug, URL, and score. Does not call the site's origin-locked /api/*.",
+      inputSchema: {
+        query: z.string().min(2).max(120).describe("Item name fragment, e.g. Windhowl or necropotence."),
+        limit: z.number().int().min(1).max(50).default(15)
+      }
+    },
+    async ({ query, limit }) => {
+      const data = await searchEqLegendsToolsItems(query, { limit });
+      return toolResult(`Found ${data.count} EQ Legends Tools item(s) for "${query}".`, data);
+    }
+  );
+
+  server.registerTool(
+    "eql_eqlegendstools_item",
+    {
+      title: "Read EQ Legends Tools item",
+      description:
+        "Fetch one item page from eqlegendstools.com by slug or exact/near name. Returns tooltip lines (stats, effects, classes) and related items from public HTML.",
+      inputSchema: {
+        idOrName: z.string().min(1).max(160).describe("Item slug (windhowl) or name (Windhowl / Amulet of Necropotence).")
+      }
+    },
+    async ({ idOrName }) => {
+      const data = await getEqLegendsToolsItem(idOrName);
+      if (!data.found) {
+        const hint = data.suggestions.length > 0 ? ` Suggestions: ${data.suggestions.join(", ")}.` : "";
+        return toolResult(`No EQ Legends Tools item matched "${idOrName}".${hint}`, data);
+      }
+      return toolResult(`Item ${data.item.name} (${data.item.lines.length} tooltip line(s)).`, data);
     }
   );
 

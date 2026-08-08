@@ -6,6 +6,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- Post-launch community companion tools in the source registry (eqltools primers, EQ Legends Tools, Gnoll Guard, Loadout Legends, EQL Compendium) and `eql_companion_tools` catalog tool. Documents origin-locked APIs (eqlegendstools) without scraping them.
+- `eql_eqlegendstools_item_search` / `eql_eqlegendstools_item` read public server-rendered item HTML on eqlegendstools.com (not the origin-locked `/api/*`).
+- `VERSIONING.md` documents conventional-commit → semver → tag → GitHub Release automation.
+
 ## [1.3.10] - 2026-07-30
 
 ### Changed

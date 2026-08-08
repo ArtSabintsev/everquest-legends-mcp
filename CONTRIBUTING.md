@@ -40,3 +40,7 @@ npm run build
 ```
 
 Keep changes small and include tests for new parsers or source clients.
+
+## Versioning
+
+Releases are automated from conventional commits on `main`. See **[VERSIONING.md](./VERSIONING.md)** for bump rules, tags, CHANGELOG dates, and what not to hand-edit.

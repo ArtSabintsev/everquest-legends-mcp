@@ -23,15 +23,19 @@ This server is built around public, unauthenticated sources:
 - EQArchives search portal and corpus provenance
 - Official EQL YouTube and Twitch channels
 - EQL-specific guide/interview/preview pages from EQProgression, EverQuest Guides, and selected press outlets
+- Post-launch community companion tools (eqltools primers, EQ Legends Tools, Gnoll Guard, Loadout Legends, EQL Compendium) via the source registry and `eql_companion_tools`
 - Pointer-only EQL community sources such as Reddit
 
-It does not log into Daybreak, manipulate an account, automate a game client, or send requests to private APIs.
+It does not log into Daybreak, manipulate an account, automate a game client, or send requests to private APIs. It does not bypass origin-locked companion APIs (for example `eqlegendstools.com/api/*`, which robots.txt disallows).
 
 ## Tools
 
 - `eql_sources`: list configured public sources
 - `eql_source_fetch`: fetch and extract a curated source page
 - `eql_source_search`: search official/support/guide source pages
+- `eql_companion_tools`: catalog post-launch community companion tools (gear/item DBs, primers) with access modes and linked source ids
+- `eql_eqlegendstools_item_search`: search public eqlegendstools.com item pages by name (HTML index; not the locked /api)
+- `eql_eqlegendstools_item`: read one eqlegendstools.com item page (tooltip stats, effects, related gear)
 - `eql_wiki_search`: full-text search EQL Wiki
 - `eql_wiki_page`: fetch an EQL Wiki page with extracted text, links, categories, and revision metadata
 - `eql_wiki_recent_changes`: read recent wiki edits

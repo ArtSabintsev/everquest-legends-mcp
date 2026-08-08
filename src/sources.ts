@@ -1,4 +1,14 @@
-export type SourceKind = "mediawiki" | "official" | "support" | "guide" | "community" | "press" | "archive" | "lore" | "builds";
+export type SourceKind =
+  | "mediawiki"
+  | "official"
+  | "support"
+  | "guide"
+  | "community"
+  | "press"
+  | "archive"
+  | "lore"
+  | "builds"
+  | "tools";
 
 export type SourcePage = {
   id: string;
@@ -723,6 +733,324 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
     url: "https://eqlbuilds.com/",
     description:
       "Unofficial EQL Legends build planner covering race/class combinations, class synergies, progression, spells, skills, alternate advancement, stances, and invocations. Client-rendered SPA with no readable HTML: query its extracted dataset via the eql_builds_* tools instead of fetching the page.",
+    searchable: false
+  },
+  // --- Post-launch community companion tools (see also eql_companion_tools) ---
+  {
+    id: "eqlegendstools-home",
+    kind: "tools",
+    title: "EQ Legends Tools",
+    url: "https://eqlegendstools.com/",
+    description:
+      "Community BiS/exaltation planner (FlammHammer): weapons, gear, procs, focus, clickies, worn effects, character sheet, Plane of Sky quests. Dataset is interactive and /api/* is origin-locked — pointer for discovery, open in a browser for full search.",
+    searchable: false
+  },
+  {
+    id: "eqlegendstools-weapons",
+    kind: "tools",
+    title: "EQ Legends Tools: Weapon Search",
+    url: "https://eqlegendstools.com/weapon-search/",
+    description: "Interactive tri-class weapon search and comparison. Pointer-only (SPA + locked API).",
+    searchable: false
+  },
+  {
+    id: "eqlegendstools-bis-gear",
+    kind: "tools",
+    title: "EQ Legends Tools: BiS Gear",
+    url: "https://eqlegendstools.com/bis-gear/",
+    description: "Interactive best-in-slot gear browser for tri-class loadouts. Pointer-only (SPA + locked API).",
+    searchable: false
+  },
+  {
+    id: "eqlegendstools-procs",
+    kind: "tools",
+    title: "EQ Legends Tools: Weapon Procs",
+    url: "https://eqlegendstools.com/weapon-procs/",
+    description: "Interactive weapon proc / exaltation lookup. Pointer-only (SPA + locked API).",
+    searchable: false
+  },
+  {
+    id: "eqlegendstools-focus",
+    kind: "tools",
+    title: "EQ Legends Tools: Focus Effects",
+    url: "https://eqlegendstools.com/focus-effects/",
+    description: "Interactive focus-effect exaltation lookup. Pointer-only (SPA + locked API).",
+    searchable: false
+  },
+  {
+    id: "eqlegendstools-clickies",
+    kind: "tools",
+    title: "EQ Legends Tools: Clickies",
+    url: "https://eqlegendstools.com/clickies/",
+    description: "Interactive clicky exaltation lookup. Pointer-only (SPA + locked API).",
+    searchable: false
+  },
+  {
+    id: "eqlegendstools-worn",
+    kind: "tools",
+    title: "EQ Legends Tools: Worn Effects",
+    url: "https://eqlegendstools.com/worn-effects/",
+    description: "Interactive worn-effect exaltation lookup. Pointer-only (SPA + locked API).",
+    searchable: false
+  },
+  {
+    id: "eqlegendstools-posky",
+    kind: "tools",
+    title: "EQ Legends Tools: Plane of Sky Quests",
+    url: "https://eqlegendstools.com/plane-of-sky-quests/",
+    description: "Interactive Plane of Sky quest / class-unlock reward tracker (inventory.txt import). Pointer-only (SPA + locked API).",
+    searchable: false
+  },
+  {
+    id: "eqlegendstools-char-sheet",
+    kind: "tools",
+    title: "EQ Legends Tools: Character Sheet",
+    url: "https://eqlegendstools.com/char-sheet/",
+    description: "Interactive character sheet / loadout builder. Pointer-only (SPA + locked API).",
+    searchable: false
+  },
+  {
+    id: "eqlegendstools-items",
+    kind: "tools",
+    title: "EQ Legends Tools: Item Pages",
+    url: "https://eqlegendstools.com/items/",
+    description:
+      "Public server-rendered item index and per-item pages (stats, effects, related gear). Prefer eql_eqlegendstools_item_search / eql_eqlegendstools_item over raw fetch. The site's JSON /api/* remains origin-locked.",
+    searchable: true
+  },
+  {
+    id: "eqltools-home",
+    kind: "tools",
+    title: "EQL Tools",
+    url: "https://eqltools.com/",
+    description: "Player tools and primers for EverQuest Legends (trio builder, spellmaster, atlas, AA planner, combat primers, osxEQL). Hub page is searchable.",
+    searchable: true
+  },
+  {
+    id: "eqltools-sources",
+    kind: "guide",
+    title: "EQL Tools: Data Sources",
+    url: "https://eqltools.com/sources",
+    description: "Provenance notes for eqltools.com numbers (client-mined vs player-collected).",
+    searchable: true
+  },
+  {
+    id: "eqltools-learn",
+    kind: "guide",
+    title: "EQL Tools: Learn Hub",
+    url: "https://eqltools.com/learn",
+    description: "Index of EQL systems primers (difficulty, experience, trio, combat, pets, upgrades, AA).",
+    searchable: true
+  },
+  {
+    id: "eqltools-learn-trio",
+    kind: "guide",
+    title: "EQL Tools: The Trio System",
+    url: "https://eqltools.com/learn/trio",
+    description: "Primer on multiclass loadouts / the trio system.",
+    searchable: true
+  },
+  {
+    id: "eqltools-learn-difficulty",
+    kind: "guide",
+    title: "EQL Tools: Difficulty D0–D4",
+    url: "https://eqltools.com/learn/difficulty",
+    description: "Primer on difficulty tiers D0–D4.",
+    searchable: true
+  },
+  {
+    id: "eqltools-learn-experience",
+    kind: "guide",
+    title: "EQL Tools: Experience",
+    url: "https://eqltools.com/learn/experience",
+    description: "Primer on experience gain and leveling mechanics.",
+    searchable: true
+  },
+  {
+    id: "eqltools-combat",
+    kind: "guide",
+    title: "EQL Tools: Combat & Stats",
+    url: "https://eqltools.com/combat",
+    description: "Primer on combat math and stats.",
+    searchable: true
+  },
+  {
+    id: "eqltools-learn-control",
+    kind: "guide",
+    title: "EQL Tools: Slow, Haste & CC",
+    url: "https://eqltools.com/learn/control",
+    description: "Primer on slow, haste, and crowd control.",
+    searchable: true
+  },
+  {
+    id: "eqltools-learn-pets",
+    kind: "guide",
+    title: "EQL Tools: Pets",
+    url: "https://eqltools.com/learn/pets",
+    description: "Primer on pet classes and pet mechanics.",
+    searchable: true
+  },
+  {
+    id: "eqltools-learn-upgrades",
+    kind: "guide",
+    title: "EQL Tools: Upgrades & Motes",
+    url: "https://eqltools.com/learn/upgrades",
+    description: "Primer on gear upgrades and mote systems.",
+    searchable: true
+  },
+  {
+    id: "eqltools-learn-motes",
+    kind: "guide",
+    title: "EQL Tools: Mote Drops",
+    url: "https://eqltools.com/learn/motes",
+    description: "Primer on mote drop sources.",
+    searchable: true
+  },
+  {
+    id: "eqltools-learn-spell-upgrades",
+    kind: "guide",
+    title: "EQL Tools: Spell Upgrade Scaling",
+    url: "https://eqltools.com/learn/spell-upgrades",
+    description: "Primer on spell upgrade scaling.",
+    searchable: true
+  },
+  {
+    id: "eqltools-learn-planar-gear",
+    kind: "guide",
+    title: "EQL Tools: Planar Gear",
+    url: "https://eqltools.com/learn/planar-gear",
+    description: "Primer on planar gear progression.",
+    searchable: true
+  },
+  {
+    id: "eqltools-learn-aa",
+    kind: "guide",
+    title: "EQL Tools: Alternate Advancement",
+    url: "https://eqltools.com/learn/aa",
+    description: "Primer on Alternate Advancement in EQL.",
+    searchable: true
+  },
+  {
+    id: "eqltools-picker",
+    kind: "tools",
+    title: "EQL Tools: Trio Builder",
+    url: "https://eqltools.com/picker",
+    description: "Interactive class-trio builder. Pointer-only (client-side tool).",
+    searchable: false
+  },
+  {
+    id: "eqltools-spellmaster",
+    kind: "tools",
+    title: "EQL Tools: Spellmaster",
+    url: "https://eqltools.com/spellmaster",
+    description: "Interactive spell browser. Pointer-only (client-side tool); prefer eql_builds_spell_search for offline spell data.",
+    searchable: false
+  },
+  {
+    id: "eqltools-atlas",
+    kind: "tools",
+    title: "EQL Tools: Zone Atlas",
+    url: "https://eqltools.com/atlas",
+    description: "Interactive zone atlas. Pointer-only (client-side tool).",
+    searchable: false
+  },
+  {
+    id: "eqltools-osxeql",
+    kind: "tools",
+    title: "EQL Tools: osxEQL",
+    url: "https://eqltools.com/osxeql",
+    description: "Free Mac runner docs for EverQuest Legends (Wine + DXMT). Searchable setup guide.",
+    searchable: true
+  },
+  {
+    id: "gnollguard-home",
+    kind: "tools",
+    title: "Gnoll Guard",
+    url: "https://www.gnollguard.com/",
+    description:
+      "Community item database and log-assisted quest journal for EverQuest Legends. Interactive SPA — pointer for discovery; crowd data is unverified.",
+    searchable: false
+  },
+  {
+    id: "gnollguard-items",
+    kind: "tools",
+    title: "Gnoll Guard: Items",
+    url: "https://www.gnollguard.com/items",
+    description: "Crowd-sourced EQL item browser (drops, stats, vendors). Pointer-only SPA.",
+    searchable: false
+  },
+  {
+    id: "gnollguard-quests",
+    kind: "tools",
+    title: "Gnoll Guard: Quests",
+    url: "https://www.gnollguard.com/quests",
+    description: "Crowd-sourced EQL quest walkthroughs. Pointer-only SPA.",
+    searchable: false
+  },
+  {
+    id: "gnollguard-spells",
+    kind: "tools",
+    title: "Gnoll Guard: Spells",
+    url: "https://www.gnollguard.com/spells",
+    description: "Crowd-sourced EQL spell browser. Pointer-only SPA; prefer eql_builds_* for structured spells.",
+    searchable: false
+  },
+  {
+    id: "gnollguard-effects",
+    kind: "tools",
+    title: "Gnoll Guard: Effects",
+    url: "https://www.gnollguard.com/effects",
+    description: "Crowd-sourced procs, clickies, worn effects, potions. Pointer-only SPA.",
+    searchable: false
+  },
+  {
+    id: "loadoutlegends-home",
+    kind: "tools",
+    title: "Loadout Legends",
+    url: "https://www.loadoutlegends.com/",
+    description:
+      "Open-beta EQL companion: gear sync, DPS parser, leaderboards, speedruns, player-built drop database. Interactive SPA / desktop app — pointer for discovery.",
+    searchable: false
+  },
+  {
+    id: "loadoutlegends-database",
+    kind: "tools",
+    title: "Loadout Legends: Zone/Mob/Drop Database",
+    url: "https://www.loadoutlegends.com/database",
+    description: "Player-observed mobs, kills, items, resists, and drops. Pointer-only SPA; no public JSON API found.",
+    searchable: false
+  },
+  {
+    id: "loadoutlegends-leaderboards",
+    kind: "tools",
+    title: "Loadout Legends: Leaderboards",
+    url: "https://www.loadoutlegends.com/leaderboards",
+    description: "Community kill-time / DPS / speedrun leaderboards. Pointer-only; rankings may change during open beta.",
+    searchable: false
+  },
+  {
+    id: "loadoutlegends-parsing",
+    kind: "tools",
+    title: "Loadout Legends: Parsing Tools",
+    url: "https://www.loadoutlegends.com/parsing-tools",
+    description: "DPS overlay, spell timers, proc rates, resist tracker (local/log tools). Pointer-only.",
+    searchable: false
+  },
+  {
+    id: "loadoutlegends-posky",
+    kind: "tools",
+    title: "Loadout Legends: Plane of Sky Quest Tracker",
+    url: "https://www.loadoutlegends.com/plane-of-sky-quest-tracker",
+    description: "Log-driven Plane of Sky class-unlock and Wind Rune tracker. Pointer-only.",
+    searchable: false
+  },
+  {
+    id: "eql-compendium",
+    kind: "community",
+    title: "EQL Compendium (Google Sheet)",
+    url: "https://docs.google.com/spreadsheets/d/e/2PACX-1vRi6Kj604QLMm7kkkjdZSqtogtMtNgq3n9qqc2kaUS_s4LJcMoHbdTl3ph5T93_qs6awfZD0E2I5KeO/pubhtml",
+    description:
+      "Community all-in-one spreadsheet (leveling, raiding, gear, exaltations). Pointer-only — not machine-readable authority.",
     searchable: false
   },
   {
