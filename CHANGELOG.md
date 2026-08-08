@@ -6,6 +6,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.4.3] - 2026-08-08
+
+### Changed
+
+- drop cross-package references from eql-client-update skill (6ef0cd6)
+
 ## [1.4.2] - 2026-08-08
 
 ### Changed
