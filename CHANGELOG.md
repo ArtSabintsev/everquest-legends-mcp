@@ -6,6 +6,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.4.1] - 2026-08-08
+
+### Changed
+
+- include wiki-commands work in 1.4.0 changelog notes (fe2e8ca)
+
 ## [1.4.0] - 2026-08-08
 
 ### Added
