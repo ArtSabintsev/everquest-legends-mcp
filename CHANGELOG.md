@@ -10,6 +10,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ### Added
 
+- Blend EQL Wiki Commands into `eql_client_command` / `eql_client_command_search` (union of client-manual + wiki snapshots, tagged by source), with scheduled `refresh-eql-wiki-commands` workflow (#17).
 - Post-launch community companion tools in the source registry (eqltools primers, EQ Legends Tools, Gnoll Guard, Loadout Legends, EQL Compendium) and `eql_companion_tools` catalog tool. Documents origin-locked APIs (eqlegendstools) without scraping them.
 - `eql_eqlegendstools_item_search` / `eql_eqlegendstools_item` read public server-rendered item HTML on eqlegendstools.com (not the origin-locked `/api/*`).
 - `VERSIONING.md` documents conventional-commit → semver → tag → GitHub Release automation.
