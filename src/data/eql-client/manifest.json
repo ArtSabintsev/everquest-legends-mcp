@@ -2,7 +2,7 @@
   "source": "EverQuest Legends client (local install)",
   "sourceNote": "Reference text extracted directly from the EverQuest Legends client install (via scripts/extract-eql-reference.mjs). No third-party intermediary; the client is the source.",
   "extractorVersion": 2,
-  "extractedAt": "2026-07-28T16:40:29.533Z",
+  "extractedAt": "2026-08-22T03:43:31.037Z",
   "gameDirName": "EverQuest Legends",
   "sources": [
     {
@@ -25,15 +25,15 @@
     },
     {
       "name": "dbstr_us.txt",
-      "bytes": 9833836,
-      "modifiedAt": "2026-07-27T22:24:46.000Z",
-      "sha256": "33cafdc1b5518d418112ed084cee416ec17f8974ca2503742326d17381fed106"
+      "bytes": 9834294,
+      "modifiedAt": "2026-08-17T21:18:45.000Z",
+      "sha256": "3d5d47b8797a6e5228e6eabf62b327ede9185b209cd206e42da2632d29d390b8"
     },
     {
-      "name": "maps/ (192 files)",
-      "bytes": 65028266,
-      "modifiedAt": "2026-07-28T16:36:21.389Z",
-      "sha256": "3170ab26e9b1cb2291d880b7181e3471c3f42732feeeccb866ae4f8e998acd52"
+      "name": "maps/ (213 files)",
+      "bytes": 71235505,
+      "modifiedAt": "2026-08-22T03:41:47.741Z",
+      "sha256": "f1820cd9980c5534a6643d6fe98eba3b6385a7de3c19a2b0e7c39e348b5f9c32"
     },
     {
       "name": "Storyline/ (50 files)",
@@ -46,8 +46,8 @@
     "commands": 122,
     "races": 982,
     "manualSections": 91,
-    "zones": 133,
-    "pois": 1717,
+    "zones": 138,
+    "pois": 1495,
     "storylines": 50
   }
 }

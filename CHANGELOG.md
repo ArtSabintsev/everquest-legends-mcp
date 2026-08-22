@@ -6,6 +6,18 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Changed
+
+- Refresh the local-client reference snapshot from the 2026-08-21 CrossOver
+  patch (plugin 1.0.3.204, 59 files). Maps go 192 → 213 files and mapped zones
+  133 → 138, adding Blackburrow, Solusek's Eye (soldunga), Nagafen's Lair
+  (soldungb), Unrest, and The Warrens. POI totals drop 1717 → 1495: Daybreak
+  rewrote the patched zone maps so geometry lives in the base file and
+  labels (mostly zone connections) live in `_1.txt`, stripping inherited
+  classic-EQ vendor/NPC pins from Qeynos, Rivervale, Steamfont, Toxxulia, and
+  nearby zones. Verified against the raw map files. `dbstr_us.txt` also
+  changed; race and command counts are unchanged.
+
 ## [1.4.5] - 2026-08-22
 
 ### Changed
