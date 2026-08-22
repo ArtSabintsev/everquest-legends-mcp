@@ -6,6 +6,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.4.4] - 2026-08-22
+
+### Changed
+
+- Bump tsx from 4.23.1 to 4.23.12 (#20) (756b764)
+
 ## [1.4.3] - 2026-08-08
 
 ### Changed
