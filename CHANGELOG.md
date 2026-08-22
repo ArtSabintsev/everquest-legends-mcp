@@ -6,6 +6,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.4.6] - 2026-08-22
+
 ### Changed
 
 - Refresh the local-client reference snapshot from the 2026-08-21 CrossOver
