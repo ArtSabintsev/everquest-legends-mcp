@@ -6,6 +6,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.4.7] - 2026-08-26
+
+### Changed
+
+- refresh EQL Wiki commands data snapshot (wiki rev 172602) (34f942a)
+
 ## [1.4.6] - 2026-08-22
 
 ### Changed
