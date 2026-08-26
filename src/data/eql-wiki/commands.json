@@ -1337,7 +1337,7 @@
     "command": "/surname",
     "aliases": [],
     "syntax": "/surname [<name>]",
-    "description": "Adds a last name, <name>, to your character. If no <name> is provided, your last name will be cleared."
+    "description": "Adds a last name, <name>, to your character. If no <name> is provided, your last name will be cleared. Adding, changing, or clearing a surname has a 7-day (168 hour) cooldown."
   },
   {
     "command": "/swapdisc",
