@@ -6,6 +6,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.8.0] - 2026-09-07
+
 ### Added
 
 - `eqlSpecificOnly` on `eql_youtube_sources` / `eql_youtube_videos` so weekday digests can skip mixed/variety channels before RSS fetch. Default remains `false` (all registered sources).
