@@ -6,6 +6,14 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.4.9] - 2026-09-07
+
+### Changed
+
+- Bump vitest from 4.1.10 to 4.1.11 (#21) (4718c18)
+- Bump zod from 4.4.3 to 4.5.4 (#23) (022e209)
+- Bump @types/node from 26.2.0 to 26.4.0 (#22) (b22eb3e)
+
 ## [1.4.8] - 2026-09-07
 
 ### Changed
