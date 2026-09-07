@@ -6,6 +6,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.4.8] - 2026-09-07
+
+### Changed
+
+- refresh eql-client from CrossOver patch (518392d)
+
 ## [1.4.7] - 2026-08-26
 
 ### Changed
