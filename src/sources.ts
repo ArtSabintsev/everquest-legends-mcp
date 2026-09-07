@@ -164,6 +164,71 @@ export const EQL_YOUTUBE_SOURCES: readonly YouTubeSource[] = [
     lastVerifiedAt: "2026-09-07"
   },
   {
+    id: "krause-youtube",
+    authority: "creator",
+    title: "Krause",
+    channelId: "UC247nAyxeaKxHfEaINJIYBQ",
+    handle: "@supitskrause",
+    url: "https://www.youtube.com/@supitskrause",
+    feedUrl: youtubeChannelFeedUrl("UC247nAyxeaKxHfEaINJIYBQ"),
+    description:
+      "Community creator channel with weekly EQL patch recaps, D4 Hate mote-farm guides, dungeon-revamp notes, and livestream VODs. Twitch: krausenator.",
+    eqlSpecific: true,
+    lastVerifiedAt: "2026-09-07"
+  },
+  {
+    id: "skeletane-youtube",
+    authority: "creator",
+    title: "SkeleTANE",
+    channelId: "UCx3Lxi94RHw__TLxVo8tnzA",
+    handle: "@SkeleTANE",
+    url: "https://www.youtube.com/@SkeleTANE",
+    feedUrl: youtubeChannelFeedUrl("UCx3Lxi94RHw__TLxVo8tnzA"),
+    description:
+      "Community creator channel with EQL single-class SSF challenge VODs, Unrest/quest item guides, and post-launch camp-check commentary.",
+    eqlSpecific: true,
+    lastVerifiedAt: "2026-09-07"
+  },
+  {
+    id: "classicxp-youtube",
+    authority: "creator",
+    title: "Classic XP",
+    channelId: "UCB2ImoPOm1ErXL0ojGqsBSw",
+    handle: "@ClassicEverQuest",
+    url: "https://www.youtube.com/@ClassicEverQuest",
+    feedUrl: youtubeChannelFeedUrl("UCB2ImoPOm1ErXL0ojGqsBSw"),
+    description:
+      "Community creator channel with EQL farm routes (Hate russet, DDD motes, Kedge, Sky), bard-meta commentary, and beta-through-live VODs.",
+    eqlSpecific: true,
+    lastVerifiedAt: "2026-09-07"
+  },
+  {
+    id: "thegameis-youtube",
+    authority: "creator",
+    title: "THE GAME IS",
+    channelId: "UCHPJmJZ5w89UwMLFlcqR-AA",
+    handle: "@THEGAMEIS",
+    url: "https://www.youtube.com/@THEGAMEIS",
+    feedUrl: youtubeChannelFeedUrl("UCHPJmJZ5w89UwMLFlcqR-AA"),
+    description:
+      "Community MMO channel with a recurring EQL guide series (Sky, motes, charm pets, 46+ XP farms) mixed with other-MMO news.",
+    eqlSpecific: false,
+    lastVerifiedAt: "2026-09-07"
+  },
+  {
+    id: "doclegendary-youtube",
+    authority: "creator",
+    title: "Doc Legendary",
+    channelId: "UCzaEkuWA74QZ6cRqT6jDJcQ",
+    handle: "@DocLegendary",
+    url: "https://www.youtube.com/@DocLegendary",
+    feedUrl: youtubeChannelFeedUrl("UCzaEkuWA74QZ6cRqT6jDJcQ"),
+    description:
+      "Community creator channel with a long-form EQL beginner guide, Nagafen solo VOD, monetization commentary, and EQL-themed music. RSS last posted 2026-08-10.",
+    eqlSpecific: false,
+    lastVerifiedAt: "2026-09-07"
+  },
+  {
     id: "eqprogression-youtube",
     authority: "creator",
     title: "EQProgression",
@@ -386,6 +451,46 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
     title: "Creator YouTube: KestonTV",
     url: "https://www.youtube.com/@KestonTV",
     description: "Unofficial EQL creator channel with daily class-leveling, race-unlock, and Plane of Sky VODs. Use eql_youtube_videos for RSS metadata.",
+    searchable: false
+  },
+  {
+    id: "creator-youtube-krause",
+    kind: "community",
+    title: "Creator YouTube: Krause",
+    url: "https://www.youtube.com/@supitskrause",
+    description: "Unofficial EQL creator channel with weekly patch recaps, D4 Hate mote-farm guides, and livestream VODs. Use eql_youtube_videos for RSS metadata.",
+    searchable: false
+  },
+  {
+    id: "creator-youtube-skeletane",
+    kind: "community",
+    title: "Creator YouTube: SkeleTANE",
+    url: "https://www.youtube.com/@SkeleTANE",
+    description: "Unofficial EQL creator channel with single-class SSF VODs and quest-item guides. Use eql_youtube_videos for RSS metadata.",
+    searchable: false
+  },
+  {
+    id: "creator-youtube-classicxp",
+    kind: "community",
+    title: "Creator YouTube: Classic XP",
+    url: "https://www.youtube.com/@ClassicEverQuest",
+    description: "Unofficial EQL creator channel with Hate/Sky/Kedge farm routes and bard-meta VODs. Use eql_youtube_videos for RSS metadata.",
+    searchable: false
+  },
+  {
+    id: "creator-youtube-thegameis",
+    kind: "community",
+    title: "Creator YouTube: THE GAME IS",
+    url: "https://www.youtube.com/@THEGAMEIS",
+    description: "Unofficial MMO channel with a recurring EQL guide series mixed with other-MMO news. Use eql_youtube_videos for RSS metadata.",
+    searchable: false
+  },
+  {
+    id: "creator-youtube-doclegendary",
+    kind: "community",
+    title: "Creator YouTube: Doc Legendary",
+    url: "https://www.youtube.com/@DocLegendary",
+    description: "Unofficial EQL beginner-guide and commentary channel (Richie Truxillo). Use eql_youtube_videos for RSS metadata.",
     searchable: false
   },
   {

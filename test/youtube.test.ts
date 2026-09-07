@@ -52,6 +52,11 @@ describe("YouTube feed parsing", () => {
       "higherthoughtgaming-youtube",
       "grimthule-youtube",
       "kestontv-youtube",
+      "krause-youtube",
+      "skeletane-youtube",
+      "classicxp-youtube",
+      "thegameis-youtube",
+      "doclegendary-youtube",
       "eqprogression-youtube"
     ]);
   });
