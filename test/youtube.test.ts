@@ -46,8 +46,12 @@ describe("YouTube feed parsing", () => {
   it("lists official and creator YouTube source metadata", () => {
     expect(listYouTubeSources("official").map((source) => source.id)).toEqual(["official-youtube"]);
     expect(listYouTubeSources("creators").map((source) => source.id)).toEqual([
-      "grimthule-youtube",
+      "brutallstatic-youtube",
+      "varietyvoid-youtube",
+      "gigglemage-youtube",
       "higherthoughtgaming-youtube",
+      "grimthule-youtube",
+      "kestontv-youtube",
       "eqprogression-youtube"
     ]);
   });

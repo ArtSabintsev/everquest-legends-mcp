@@ -84,19 +84,46 @@ export const EQL_YOUTUBE_SOURCES: readonly YouTubeSource[] = [
     feedUrl: OFFICIAL_YOUTUBE_FEED_URL,
     description: "Official EverQuest Legends videos, livestream VODs, insight-series posts, trailers, and preorder videos.",
     eqlSpecific: true,
-    lastVerifiedAt: "2026-06-28"
+    lastVerifiedAt: "2026-09-07"
   },
   {
-    id: "grimthule-youtube",
+    id: "brutallstatic-youtube",
     authority: "creator",
-    title: "Grimthule",
-    channelId: "UCf85KLDMspTHcgF_idsdj-Q",
-    handle: "@Grimthule",
-    url: "https://www.youtube.com/@Grimthule",
-    feedUrl: youtubeChannelFeedUrl("UCf85KLDMspTHcgF_idsdj-Q"),
-    description: "Community creator channel publishing EQL beta streams, beginner tips, UI setup, guides, and short-form updates.",
+    title: "BrutallStatic",
+    channelId: "UCmH85HGHmBw2FEvEAiPa4uQ",
+    handle: "@BrutallStatic",
+    url: "https://www.youtube.com/@BrutallStatic",
+    feedUrl: youtubeChannelFeedUrl("UCmH85HGHmBw2FEvEAiPa4uQ"),
+    description:
+      "Official EQL Creator Legend. Recurring tutorials, leveling guides, dungeon recaps, and livestream VODs. Named on the official Creator Legend profile (2026-09-03).",
+    eqlSpecific: true,
+    lastVerifiedAt: "2026-09-07"
+  },
+  {
+    id: "varietyvoid-youtube",
+    authority: "creator",
+    title: "VarietyVoid",
+    channelId: "UCIcxHLKUpwCy5E_3DyzlImg",
+    handle: "@varietyvoid",
+    url: "https://www.youtube.com/@varietyvoid",
+    feedUrl: youtubeChannelFeedUrl("UCIcxHLKUpwCy5E_3DyzlImg"),
+    description:
+      "First-wave EQL creator-program channel. Official Insights livestream host and official beginner/intermediate guide series. Videos remain unofficial unless published on the official EQL channel.",
+    eqlSpecific: true,
+    lastVerifiedAt: "2026-09-07"
+  },
+  {
+    id: "gigglemage-youtube",
+    authority: "creator",
+    title: "Gigglemage",
+    channelId: "UCW_ro-I2_kFy20OUncOe8hQ",
+    handle: "@gigglemage",
+    url: "https://www.youtube.com/@gigglemage",
+    feedUrl: youtubeChannelFeedUrl("UCW_ro-I2_kFy20OUncOe8hQ"),
+    description:
+      "Official EQL Creator Legend. Recurring EQL livestream VODs and class-combo tests; mixed with non-EQL uploads. Official launch-week collab with Moth on the EQL channel.",
     eqlSpecific: false,
-    lastVerifiedAt: "2026-06-28"
+    lastVerifiedAt: "2026-09-07"
   },
   {
     id: "higherthoughtgaming-youtube",
@@ -106,9 +133,35 @@ export const EQL_YOUTUBE_SOURCES: readonly YouTubeSource[] = [
     handle: "@MoProduktions",
     url: "https://www.youtube.com/@MoProduktions",
     feedUrl: youtubeChannelFeedUrl("UCST38DWZEL5YS8qjOl_tzsA"),
-    description: "Community creator channel with EQL class impressions, farm routes, beta commentary, livestream-answer recaps, and systems discussion.",
+    description:
+      "Community creator channel with EQL class impressions, race-unlock routes, patch recaps, and a recurring 'The Devs Answer' series. Creator-program member as of 2026-08.",
+    eqlSpecific: true,
+    lastVerifiedAt: "2026-09-07"
+  },
+  {
+    id: "grimthule-youtube",
+    authority: "creator",
+    title: "Grimthule",
+    channelId: "UCf85KLDMspTHcgF_idsdj-Q",
+    handle: "@Grimthule",
+    url: "https://www.youtube.com/@Grimthule",
+    feedUrl: youtubeChannelFeedUrl("UCf85KLDMspTHcgF_idsdj-Q"),
+    description: "Community creator channel publishing EQL livestreams, beginner tips, UI setup, guides, and short-form updates. Mixed with non-EQL tabletop clips.",
     eqlSpecific: false,
-    lastVerifiedAt: "2026-06-28"
+    lastVerifiedAt: "2026-09-07"
+  },
+  {
+    id: "kestontv-youtube",
+    authority: "creator",
+    title: "KestonTV",
+    channelId: "UCrldGjBdeIbWRoxRmV2H9hg",
+    handle: "@KestonTV",
+    url: "https://www.youtube.com/@KestonTV",
+    feedUrl: youtubeChannelFeedUrl("UCrldGjBdeIbWRoxRmV2H9hg"),
+    description:
+      "Community creator channel with daily EQL class-leveling, race-unlock, and Plane of Sky VODs. Guest on BrutallStatic's EQL creator discussion.",
+    eqlSpecific: true,
+    lastVerifiedAt: "2026-09-07"
   },
   {
     id: "eqprogression-youtube",
@@ -118,9 +171,10 @@ export const EQL_YOUTUBE_SOURCES: readonly YouTubeSource[] = [
     handle: "@eqprogression3040",
     url: "https://www.youtube.com/@eqprogression3040",
     feedUrl: youtubeChannelFeedUrl("UCe9ME7DDqiFxTj2EyWaN8-w"),
-    description: "EverQuest-focused community creator channel with EQL beta recaps, leveling impressions, development updates, and preview commentary.",
+    description:
+      "EverQuest-focused community creator channel with EQL beta recaps, leveling impressions, development updates, and preview commentary. RSS last posted 2026-05; kept for historical beta coverage.",
     eqlSpecific: false,
-    lastVerifiedAt: "2026-06-28"
+    lastVerifiedAt: "2026-09-07"
   }
 ];
 
@@ -130,7 +184,7 @@ export const EQL_CREATOR_PROGRAM: CreatorProgramMetadata = {
   applicationUrl: "https://sdqk.me/partnership/69b326fd69674c002f86bf01",
   discordUrl: "https://discord.gg/everquestlegends",
   announcedAt: "2026-05-29",
-  lastVerifiedAt: "2026-06-28",
+  lastVerifiedAt: "2026-09-07",
   requirements: [
     "Applicants must be 18 or older.",
     "Applicants must be in good standing with the EverQuest Legends and Daybreak communities.",
@@ -259,6 +313,15 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
     searchable: false
   },
   {
+    id: "official-creator-brutallstatic",
+    kind: "official",
+    title: "Official Creator Legend: BrutallStatic",
+    url: "https://www.everquestlegends.com/news/creator-brutallstatic",
+    description:
+      "Official EQL Creator Legend profile for BrutallStatic (published 2026-09-03). Use eql_youtube_videos with source id brutallstatic-youtube for channel RSS.",
+    searchable: true
+  },
+  {
     id: "official-youtube",
     kind: "official",
     title: "Official EverQuest Legends YouTube Channel",
@@ -275,11 +338,38 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
     searchable: false
   },
   {
+    id: "creator-youtube-brutallstatic",
+    kind: "community",
+    title: "Creator YouTube: BrutallStatic",
+    url: "https://www.youtube.com/@BrutallStatic",
+    description:
+      "Unofficial EQL Creator Legend channel with tutorials, leveling guides, and livestream VODs. Use eql_youtube_videos for RSS metadata. Official profile: official-creator-brutallstatic.",
+    searchable: false
+  },
+  {
+    id: "creator-youtube-varietyvoid",
+    kind: "community",
+    title: "Creator YouTube: VarietyVoid",
+    url: "https://www.youtube.com/@varietyvoid",
+    description:
+      "Unofficial first-wave creator-program channel; official Insights guest and official beginner/intermediate guide series. Use eql_youtube_videos for RSS metadata.",
+    searchable: false
+  },
+  {
+    id: "creator-youtube-gigglemage",
+    kind: "community",
+    title: "Creator YouTube: Gigglemage",
+    url: "https://www.youtube.com/@gigglemage",
+    description:
+      "Unofficial EQL Creator Legend channel with livestream VODs and class-combo tests. Official launch-week collab with Moth. Use eql_youtube_videos for RSS metadata.",
+    searchable: false
+  },
+  {
     id: "creator-youtube-grimthule",
     kind: "community",
     title: "Creator YouTube: Grimthule",
     url: "https://www.youtube.com/@Grimthule",
-    description: "Unofficial EQL creator channel with beta streams, beginner tips, UI setup, guides, and short-form updates. Use eql_youtube_videos for RSS metadata.",
+    description: "Unofficial EQL creator channel with livestreams, beginner tips, UI setup, guides, and short-form updates. Use eql_youtube_videos for RSS metadata.",
     searchable: false
   },
   {
@@ -287,7 +377,15 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
     kind: "community",
     title: "Creator YouTube: HigherThoughtGaming",
     url: "https://www.youtube.com/@MoProduktions",
-    description: "Unofficial EQL creator channel with class impressions, farm routes, beta commentary, livestream-answer recaps, and systems discussion. Use eql_youtube_videos for RSS metadata.",
+    description: "Unofficial EQL creator channel with class impressions, race-unlock routes, patch recaps, and 'The Devs Answer' series. Use eql_youtube_videos for RSS metadata.",
+    searchable: false
+  },
+  {
+    id: "creator-youtube-kestontv",
+    kind: "community",
+    title: "Creator YouTube: KestonTV",
+    url: "https://www.youtube.com/@KestonTV",
+    description: "Unofficial EQL creator channel with daily class-leveling, race-unlock, and Plane of Sky VODs. Use eql_youtube_videos for RSS metadata.",
     searchable: false
   },
   {
