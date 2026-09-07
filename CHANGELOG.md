@@ -6,6 +6,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.5.0] - 2026-09-07
+
+### Added
+
+- add post-launch EQL creator YouTube sources (38ef6ea)
+
 ## [1.4.9] - 2026-09-07
 
 ### Changed
