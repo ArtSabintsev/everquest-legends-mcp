@@ -138,7 +138,8 @@ export function createServer(): McpServer {
     "eql://youtube-sources",
     {
       title: "EverQuest Legends YouTube source registry",
-      description: "Official and selected creator YouTube channel feeds used by this MCP server.",
+      description:
+        "Official and selected creator YouTube channel feeds used by this MCP server. Includes eqlSpecific flags and optional pointer-only xHandle/xUrl fields (not fetched).",
       mimeType: "application/json"
     },
     (uri) => ({
@@ -944,17 +945,24 @@ export function createServer(): McpServer {
     {
       title: "List EQL YouTube sources",
       description:
-        "List official and selected creator/community YouTube channel feeds. Creator channels are unofficial and should not be treated as Daybreak/Game Jawn source-of-truth statements.",
+        "List official and selected creator/community YouTube channel feeds. Creator channels are unofficial and should not be treated as Daybreak/Game Jawn source-of-truth statements. Optional eqlSpecificOnly omits mixed/variety channels. Optional xHandle/xUrl fields are pointer-only (not fetched).",
       inputSchema: {
-        scope: z.enum(["official", "creators", "all"]).default("all")
+        scope: z.enum(["official", "creators", "all"]).default("all"),
+        eqlSpecificOnly: z
+          .boolean()
+          .default(false)
+          .describe(
+            "When true, only return sources marked eqlSpecific (official plus EQL-focused creator channels). Mixed/variety channels are omitted. Default false for backward compatibility."
+          )
       }
     },
-    async ({ scope }) => {
-      const sources = listYouTubeSources(scope);
+    async ({ scope, eqlSpecificOnly }) => {
+      const sources = listYouTubeSources(scope, { eqlSpecificOnly });
       return toolResult(`Found ${sources.length} YouTube source(s).`, {
         scope,
+        eqlSpecificOnly,
         sources,
-        note: "Creator-channel videos are useful for coverage, guides, and commentary, but official facts should be verified against official EQL sources."
+        note: "Creator-channel videos are useful for coverage, guides, and commentary, but official facts should be verified against official EQL sources. xHandle/xUrl are pointer-only discovery metadata and are not fetched by this MCP."
       });
     }
   );
@@ -964,19 +972,26 @@ export function createServer(): McpServer {
     {
       title: "List EQL YouTube videos",
       description:
-        "Read official and selected creator YouTube RSS feeds and return recent video metadata with source attribution. This does not download video or transcripts.",
+        "Read official and selected creator YouTube RSS feeds and return recent video metadata with source attribution. This does not download video or transcripts. Set eqlSpecificOnly to restrict to EQL-focused sources before any feed fetch (recommended for weekday digests).",
       inputSchema: {
         scope: z.enum(["official", "creators", "all"]).default("all"),
         sourceIds: z.array(z.string()).default([]).describe("Optional source ids from eql_youtube_sources. Empty uses scope."),
+        eqlSpecificOnly: z
+          .boolean()
+          .default(false)
+          .describe(
+            "When true, only fetch sources marked eqlSpecific (official plus EQL-focused creator channels). Mixed/variety channels are skipped before RSS fetch so they cannot pollute digests. Default false for backward compatibility."
+          ),
         query: z.string().min(2).max(120).optional().describe("Optional title/author filter, for example beta, creator, class, or EverQuest Legends."),
         limitPerSource: z.number().int().min(1).max(50).default(10),
         maxTotal: z.number().int().min(1).max(200).default(50)
       }
     },
-    async ({ scope, sourceIds, query, limitPerSource, maxTotal }) => {
+    async ({ scope, sourceIds, eqlSpecificOnly, query, limitPerSource, maxTotal }) => {
       const search = await getYouTubeVideos({
         scope,
         sourceIds: sourceIds.length > 0 ? sourceIds : undefined,
+        eqlSpecificOnly,
         query,
         limitPerSource,
         maxTotal

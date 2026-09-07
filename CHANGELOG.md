@@ -6,6 +6,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- `eqlSpecificOnly` on `eql_youtube_sources` / `eql_youtube_videos` so weekday digests can skip mixed/variety channels before RSS fetch. Default remains `false` (all registered sources).
+- Soft GitHub Actions job for `npm run check:youtube-sources` (weekly + PRs that touch YouTube sources). STALE stays informational; feed FAIL may fail the soft job but does not block release. `--json` summary for agents.
+- Optional pointer-only `xHandle` / `xUrl` on YouTube sources. Official channel is `@EQ_Legends` (`https://x.com/EQ_Legends`). Creator handles are omitted unless verified from official/public pages.
+
 ## [1.7.0] - 2026-09-07
 
 ### Added

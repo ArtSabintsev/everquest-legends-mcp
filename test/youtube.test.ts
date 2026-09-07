@@ -1,6 +1,7 @@
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { fetchText } from "../src/http.js";
-import { getYouTubeVideos, listYouTubeSources, parseYouTubeFeed } from "../src/youtube.js";
+import { EQL_YOUTUBE_SOURCES } from "../src/sources.js";
+import { getYouTubeVideos, listYouTubeSources, parseYouTubeFeed, selectYouTubeSources } from "../src/youtube.js";
 
 vi.mock("../src/http.js", () => ({
   fetchText: vi.fn()
@@ -110,5 +111,59 @@ describe("YouTube feed parsing", () => {
       }
     ]);
     expect(mockedFetchText).not.toHaveBeenCalled();
+  });
+
+  it("lists eqlSpecific sources including official when eqlSpecificOnly is set", () => {
+    const expected = EQL_YOUTUBE_SOURCES.filter((source) => source.eqlSpecific).map((source) => source.id);
+    expect(listYouTubeSources("all", { eqlSpecificOnly: true }).map((source) => source.id)).toEqual(expected);
+    expect(expected).toContain("official-youtube");
+    expect(expected).not.toContain("gigglemage-youtube");
+    expect(expected).not.toContain("thegameis-youtube");
+  });
+
+  it("selects sources before feed fetch when eqlSpecificOnly is true", async () => {
+    mockedFetchText.mockResolvedValue(`
+      <feed xmlns:yt="http://www.youtube.com/xml/schemas/2015" xmlns:media="http://search.yahoo.com/mrss/">
+        <entry>
+          <yt:videoId>official-vid</yt:videoId>
+          <title>EverQuest Legends Official</title>
+          <link rel="alternate" href="https://www.youtube.com/watch?v=official-vid" />
+          <published>2026-09-01T00:00:00+00:00</published>
+        </entry>
+      </feed>
+    `);
+
+    const mixedAndOfficial = ["gigglemage-youtube", "official-youtube", "thegameis-youtube"];
+    const selected = selectYouTubeSources({ sourceIds: mixedAndOfficial, eqlSpecificOnly: true });
+    expect(selected.sources.map((source) => source.id)).toEqual(["official-youtube"]);
+
+    const search = await getYouTubeVideos({
+      sourceIds: mixedAndOfficial,
+      eqlSpecificOnly: true,
+      limitPerSource: 1
+    });
+
+    expect(search.sources.map((source) => source.id)).toEqual(["official-youtube"]);
+    expect(mockedFetchText).toHaveBeenCalledTimes(1);
+    expect(mockedFetchText).toHaveBeenCalledWith(
+      EQL_YOUTUBE_SOURCES.find((source) => source.id === "official-youtube")?.feedUrl,
+      expect.any(Object)
+    );
+  });
+
+  it("keeps mixed channels when eqlSpecificOnly is omitted", () => {
+    const selected = selectYouTubeSources({ sourceIds: ["gigglemage-youtube", "official-youtube"] });
+    expect(selected.sources.map((source) => source.id)).toEqual(["official-youtube", "gigglemage-youtube"]);
+  });
+
+  it("exposes official X as pointer-only metadata and does not invent creator handles", () => {
+    const official = EQL_YOUTUBE_SOURCES.find((source) => source.id === "official-youtube");
+    expect(official?.xHandle).toBe("@EQ_Legends");
+    expect(official?.xUrl).toBe("https://x.com/EQ_Legends");
+
+    const invented = EQL_YOUTUBE_SOURCES.filter(
+      (source) => source.authority === "creator" && (source.xHandle || source.xUrl)
+    );
+    expect(invented).toEqual([]);
   });
 });
