@@ -35,6 +35,7 @@
     "extract:wiki-commands": "node scripts/extract-eql-wiki-commands.mjs",
     "extract:wiki-commands:check": "node scripts/extract-eql-wiki-commands.mjs --check",
     "extract:wiki-commands:dry": "node scripts/extract-eql-wiki-commands.mjs --dry-run",
+    "check:youtube-sources": "tsx scripts/check-youtube-sources.ts",
     "dev": "tsx src/index.ts",
     "prepare": "npm run build",
     "start": "node dist/index.js",

@@ -57,6 +57,10 @@ describe("YouTube feed parsing", () => {
       "classicxp-youtube",
       "thegameis-youtube",
       "doclegendary-youtube",
+      "hammackj-youtube",
+      "brokenstoic-youtube",
+      "jeditheq-youtube",
+      "presmere-youtube",
       "eqprogression-youtube"
     ]);
   });

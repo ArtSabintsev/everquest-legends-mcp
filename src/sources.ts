@@ -229,6 +229,58 @@ export const EQL_YOUTUBE_SOURCES: readonly YouTubeSource[] = [
     lastVerifiedAt: "2026-09-07"
   },
   {
+    id: "hammackj-youtube",
+    authority: "creator",
+    title: "hammackj",
+    channelId: "UCnEUGO_mmsWt4AxL2beSRHw",
+    handle: "@hammackj",
+    url: "https://www.youtube.com/@hammackj",
+    feedUrl: youtubeChannelFeedUrl("UCnEUGO_mmsWt4AxL2beSRHw"),
+    description:
+      "Community creator channel with a long EQL beta-through-live VOD series, race-start plans, Natch Potes readings, and solo D4 kills. Mixed with occasional EverQuest 2 news.",
+    eqlSpecific: false,
+    lastVerifiedAt: "2026-09-07"
+  },
+  {
+    id: "brokenstoic-youtube",
+    authority: "creator",
+    title: "Broken Stoic",
+    channelId: "UCf4fNJTJt8F1MZAQ2iqIZ9A",
+    handle: "@broken_stoic",
+    url: "https://www.youtube.com/@broken_stoic",
+    feedUrl: youtubeChannelFeedUrl("UCf4fNJTJt8F1MZAQ2iqIZ9A"),
+    description:
+      "Community creator channel with recurring EQL livestream VODs and patch-day sessions. Mixed with non-EQL variety streams. Twitch: broken_stoic.",
+    eqlSpecific: false,
+    lastVerifiedAt: "2026-09-07"
+  },
+  {
+    id: "jeditheq-youtube",
+    authority: "creator",
+    title: "Jedith EQ",
+    channelId: "UCe678RBsfTaJatd4iTLwJYw",
+    handle: "@JedithEQ",
+    url: "https://www.youtube.com/@JedithEQ",
+    feedUrl: youtubeChannelFeedUrl("UCe678RBsfTaJatd4iTLwJYw"),
+    description:
+      "Dedicated EQL tips/shorts and class/race/stat explainers. RSS last posted 2026-07-30; kept because the channel is EQL-specific.",
+    eqlSpecific: true,
+    lastVerifiedAt: "2026-09-07"
+  },
+  {
+    id: "presmere-youtube",
+    authority: "creator",
+    title: "Presmere",
+    channelId: "UCFMYOkS8fVfm-gUFQ7EkVig",
+    handle: "@Presmere",
+    url: "https://www.youtube.com/@Presmere",
+    feedUrl: youtubeChannelFeedUrl("UCFMYOkS8fVfm-gUFQ7EkVig"),
+    description:
+      "Community creator channel with short EQL instance/raid guides (personal instances, voidlings, Phinigel, classic raid locations, charm tips).",
+    eqlSpecific: true,
+    lastVerifiedAt: "2026-09-07"
+  },
+  {
     id: "eqprogression-youtube",
     authority: "creator",
     title: "EQProgression",
@@ -387,6 +439,14 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
     searchable: true
   },
   {
+    id: "official-getting-started",
+    kind: "official",
+    title: "Official Getting Started In EverQuest Legends",
+    url: "https://www.everquestlegends.com/news/getting-started-in-eql",
+    description: "Official beginner overview linked from the news index. Prefer live wiki/client tools for current mechanics.",
+    searchable: true
+  },
+  {
     id: "official-youtube",
     kind: "official",
     title: "Official EverQuest Legends YouTube Channel",
@@ -491,6 +551,38 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
     title: "Creator YouTube: Doc Legendary",
     url: "https://www.youtube.com/@DocLegendary",
     description: "Unofficial EQL beginner-guide and commentary channel (Richie Truxillo). Use eql_youtube_videos for RSS metadata.",
+    searchable: false
+  },
+  {
+    id: "creator-youtube-hammackj",
+    kind: "community",
+    title: "Creator YouTube: hammackj",
+    url: "https://www.youtube.com/@hammackj",
+    description: "Unofficial EQL VOD series, race-start plans, and Natch Potes readings. Use eql_youtube_videos for RSS metadata.",
+    searchable: false
+  },
+  {
+    id: "creator-youtube-brokenstoic",
+    kind: "community",
+    title: "Creator YouTube: Broken Stoic",
+    url: "https://www.youtube.com/@broken_stoic",
+    description: "Unofficial EQL livestream VODs mixed with variety streams. Use eql_youtube_videos for RSS metadata.",
+    searchable: false
+  },
+  {
+    id: "creator-youtube-jeditheq",
+    kind: "community",
+    title: "Creator YouTube: Jedith EQ",
+    url: "https://www.youtube.com/@JedithEQ",
+    description: "Unofficial dedicated EQL tips and class/race/stat explainers. Use eql_youtube_videos for RSS metadata.",
+    searchable: false
+  },
+  {
+    id: "creator-youtube-presmere",
+    kind: "community",
+    title: "Creator YouTube: Presmere",
+    url: "https://www.youtube.com/@Presmere",
+    description: "Unofficial short EQL instance/raid guides. Use eql_youtube_videos for RSS metadata.",
     searchable: false
   },
   {

@@ -3,14 +3,16 @@ name: eql-client-update
 description: >
   Check and update the local EverQuest Legends (EQL) game client in CrossOver,
   then refresh MCP data snapshots when a patch changed extractor sources.
-  Use when the user says "check and update", "update the binary", "pull the
-  latest", "patch the game", "check CrossOver", "EQL client", "game binary",
-  "eqgame", "after the patch", "Tuesday patch", or asks whether the local EQL
-  install / LaunchPad is current. Also use for /eql-client-update.
+  When the user says "update everything", also sweep YouTube/creator sources
+  in src/sources.ts. Use when the user says "check and update", "update
+  everything", "update the binary", "pull the latest", "patch the game",
+  "check CrossOver", "EQL client", "game binary", "eqgame", "after the patch",
+  "Tuesday patch", or asks whether the local EQL install / LaunchPad is
+  current. Also use for /eql-client-update.
   Do NOT treat these phrases as the everquest-legends-mcp npm package binary
   unless the user explicitly says MCP, npm, dist, or package.
 metadata:
-  short-description: "Check/update EQL CrossOver client + snapshots"
+  short-description: "Check/update EQL CrossOver client + snapshots + sources"
 ---
 
 # EQL CrossOver Client — Check & Update
@@ -123,7 +125,26 @@ Then:
 2. Rebuild if needed: `npm run build`.
 3. Version / commit / push **only if Arthur asked** to ship. Conventional commits drive auto-release on `main` (`chore(release)` via CI). Prefer something like `chore(data): refresh eql-client from CrossOver patch`.
 
-### 5. Report back (always)
+### 5. YouTube / creator source sweep
+
+**Required** when Arthur said **"update everything"**. Skip on a client-only phrase (`update the binary`, `Tuesday patch`) unless `lastVerifiedAt` on YouTube sources is older than ~2 weeks.
+
+```bash
+cd ~/Developer/everquest-legends-mcp
+npm run check:youtube-sources
+```
+
+Then:
+
+1. Official news `creator-*` slugs printed as `NEW` → add a `SOURCE_PAGES` entry (`https://www.everquestlegends.com/news/<slug>`) and, if they have a stable YouTube RSS of EQL videos, an `EQL_YOUTUBE_SOURCES` row.
+2. `STALE` (>45 days) → keep unless the channel has switched games; note it. Do not delete without asking.
+3. Short web search for recurring **EQL-specific** YouTube (not one-off LPs / current non-EQL RSS). Add only channels with a working `feeds/videos.xml` whose recent titles are EQL.
+4. Bump `lastVerifiedAt` on YouTube sources you actually checked.
+5. Commit/push only if Arthur asked to ship. Prefer `feat: add EQL creator YouTube sources` / `chore(data): re-verify YouTube sources`.
+
+Do **not** add peak-Twitch variety streamers, mixed TLP/EQEmu channels, or feeds whose current RSS is a different game.
+
+### 6. Report back (always)
 
 Give a short status table:
 
@@ -132,6 +153,7 @@ Give a short status table:
 - Last LaunchPad line (up to date vs files patched)
 - Whether extractor sources changed (hash match Y/N)
 - Whether you re-extracted / committed / pushed
+- YouTube sweep: ran? stale/fail counts? new creator pages?
 - Explicit: MCP **npm** package was not the target unless they said so
 
 ## Phrase disambiguation
@@ -140,13 +162,14 @@ Give a short status table:
 | --- | --- |
 | binary, game, client, CrossOver, LaunchPad, patch, eqgame, EQL install | **This skill** (game under CrossOver) |
 | MCP, package, npm, dist, release, version the server | `everquest-legends-mcp` git/npm release workflow |
+| update everything | **This skill**, all steps including the YouTube/source sweep |
 | Ambiguous "update it" while cwd or conversation is this game/MCP repo | Prefer **game client** first; mention MCP package only if relevant |
 
 ## Cadence notes
 
 - Daybreak patches commonly land **Tuesday mornings ET**; launch weeks can be irregular.
 - After Arthur runs the patcher, assume extractors may need a pass — don't wait to be asked twice.
-- Remember: client path + Tuesday cadence; post-launch source sweep is separate (`src/sources.ts`).
+- **"Update everything"** = client + snapshots + `npm run check:youtube-sources` + official `creator-*` news. Do not skip the source sweep.
 
 ## What not to do
 
