@@ -2,7 +2,7 @@
   "source": "EverQuest Legends client (local install)",
   "sourceNote": "Reference text extracted directly from the EverQuest Legends client install (via scripts/extract-eql-reference.mjs). No third-party intermediary; the client is the source.",
   "extractorVersion": 2,
-  "extractedAt": "2026-08-22T03:43:31.037Z",
+  "extractedAt": "2026-09-07T00:33:26.416Z",
   "gameDirName": "EverQuest Legends",
   "sources": [
     {
@@ -25,9 +25,9 @@
     },
     {
       "name": "dbstr_us.txt",
-      "bytes": 9834294,
-      "modifiedAt": "2026-08-17T21:18:45.000Z",
-      "sha256": "3d5d47b8797a6e5228e6eabf62b327ede9185b209cd206e42da2632d29d390b8"
+      "bytes": 9834940,
+      "modifiedAt": "2026-08-31T22:18:37.000Z",
+      "sha256": "00e1d0c061aa438718ba5106daf52a19b28a0e89931e6dc46850972398e94591"
     },
     {
       "name": "maps/ (213 files)",
