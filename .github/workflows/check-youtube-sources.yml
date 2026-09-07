@@ -1,0 +1,89 @@
+name: Check YouTube sources
+
+# Soft freshness report. STALE (>45d) and missing official creator-* slugs
+# are informational. Feed errors (FAIL) fail this job, but the job is
+# continue-on-error so it never blocks merge or release.
+
+on:
+  schedule:
+    # Mondays 16:00 UTC — weekly sweep after typical Tuesday-patch weekends.
+    - cron: "0 16 * * 1"
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - src/sources.ts
+      - src/youtube.ts
+      - src/youtubeSourceCheck.ts
+      - scripts/check-youtube-sources.ts
+      - .github/workflows/check-youtube-sources.yml
+
+permissions:
+  contents: read
+
+jobs:
+  check-youtube-sources:
+    name: YouTube source freshness (soft)
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install
+        run: npm ci
+
+      - name: Check YouTube sources
+        id: check
+        run: |
+          set +e
+          npm run --silent check:youtube-sources -- --json > youtube-source-check.json
+          code=$?
+          set -e
+          echo "exit_code=${code}" >> "$GITHUB_OUTPUT"
+          if [ ! -s youtube-source-check.json ]; then
+            echo "::warning::YouTube source check produced no JSON summary"
+            exit "$code"
+          fi
+          node -e '
+            const fs = require("node:fs");
+            const report = JSON.parse(fs.readFileSync("youtube-source-check.json", "utf8"));
+            const lines = [
+              "## YouTube source check",
+              "",
+              `- ok: ${report.ok}`,
+              `- stale (>${report.staleDays}d): ${report.stale} (informational; does not fail release)`,
+              `- fail (feed errors): ${report.fail}`,
+              `- missing official creator-* slugs: ${report.missingCreatorPages.length === 0 ? "none" : report.missingCreatorPages.join(", ")}`,
+              ""
+            ];
+            if (report.stale > 0) {
+              lines.push("### STALE");
+              for (const row of report.sources.filter((item) => item.status === "STALE")) {
+                lines.push(`- \`${row.id}\` last=${row.lastPublishedAt ?? "none"}`);
+              }
+              lines.push("");
+            }
+            if (report.fail > 0) {
+              lines.push("### FAIL");
+              for (const row of report.sources.filter((item) => item.status === "FAIL")) {
+                lines.push(`- \`${row.id}\`: ${row.reason ?? "unknown error"}`);
+              }
+              lines.push("");
+            }
+            fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY, lines.join("\n"));
+          '
+          exit "$code"
+
+      - name: Upload JSON summary
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: youtube-source-check
+          path: youtube-source-check.json
+          if-no-files-found: ignore

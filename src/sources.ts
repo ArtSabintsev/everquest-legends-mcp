@@ -39,6 +39,15 @@ export type YouTubeSource = {
   description: string;
   eqlSpecific: boolean;
   lastVerifiedAt: string;
+  /**
+   * Pointer-only X/Twitter profile handle (e.g. "@EQ_Legends").
+   * Not fetched or scraped by this MCP — discovery metadata for desk agents.
+   */
+  xHandle?: string;
+  /**
+   * Pointer-only X/Twitter profile URL. Not fetched or scraped by this MCP.
+   */
+  xUrl?: string;
 };
 
 export type CreatorProgramMetadata = {
@@ -84,7 +93,9 @@ export const EQL_YOUTUBE_SOURCES: readonly YouTubeSource[] = [
     feedUrl: OFFICIAL_YOUTUBE_FEED_URL,
     description: "Official EverQuest Legends videos, livestream VODs, insight-series posts, trailers, and preorder videos.",
     eqlSpecific: true,
-    lastVerifiedAt: "2026-09-07"
+    lastVerifiedAt: "2026-09-07",
+    xHandle: "@EQ_Legends",
+    xUrl: "https://x.com/EQ_Legends"
   },
   {
     id: "brutallstatic-youtube",
@@ -451,7 +462,8 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
     kind: "official",
     title: "Official EverQuest Legends YouTube Channel",
     url: "https://www.youtube.com/@EverQuestLegends",
-    description: "Official EverQuest Legends video and livestream channel. Use eql_official_youtube_videos or eql_youtube_videos for RSS metadata.",
+    description:
+      "Official EverQuest Legends video and livestream channel. Use eql_official_youtube_videos or eql_youtube_videos for RSS metadata. Official X profile is pointer-only at official-x (https://x.com/EQ_Legends).",
     searchable: false
   },
   {
@@ -614,7 +626,8 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
     kind: "official",
     title: "Official EverQuest Legends X",
     url: "https://x.com/EQ_Legends",
-    description: "Official EverQuest Legends X profile.",
+    description:
+      "Official EverQuest Legends X profile (https://x.com/EQ_Legends). Pointer-only; this MCP does not fetch or scrape X. Also listed as xUrl/xHandle on the official-youtube YouTube source.",
     searchable: false
   },
   {

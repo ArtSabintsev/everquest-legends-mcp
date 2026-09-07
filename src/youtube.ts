@@ -20,7 +20,16 @@ export type EqlYouTubeVideo = YouTubeVideo & {
   sourceUrl: string;
 };
 
-export type YouTubeVideoSearchOptions = {
+export type YouTubeSourceListOptions = {
+  /**
+   * When true, restrict to sources with eqlSpecific:true (official plus
+   * EQL-focused creator channels). Mixed/variety channels are omitted
+   * before any feed fetch. Default false for backward compatibility.
+   */
+  eqlSpecificOnly?: boolean;
+};
+
+export type YouTubeVideoSearchOptions = YouTubeSourceListOptions & {
   sourceIds?: string[];
   scope?: "official" | "creators" | "all";
   query?: string;
@@ -69,27 +78,46 @@ export async function getOfficialYouTubeVideos(limit = 20): Promise<YouTubeVideo
   return parseYouTubeFeed(xml, limit);
 }
 
-export function listYouTubeSources(scope: "official" | "creators" | "all" = "all"): YouTubeSource[] {
+export function listYouTubeSources(
+  scope: "official" | "creators" | "all" = "all",
+  options: YouTubeSourceListOptions = {}
+): YouTubeSource[] {
   return EQL_YOUTUBE_SOURCES.filter((source) => {
-    if (scope === "official") {
-      return source.authority === "official";
+    if (scope === "official" && source.authority !== "official") {
+      return false;
     }
-    if (scope === "creators") {
-      return source.authority === "creator";
+    if (scope === "creators" && source.authority !== "creator") {
+      return false;
+    }
+    if (options.eqlSpecificOnly && !source.eqlSpecific) {
+      return false;
     }
     return true;
   });
 }
 
-export async function getYouTubeVideos(options: YouTubeVideoSearchOptions = {}): Promise<YouTubeVideoSearch> {
-  const limitPerSource = Math.max(1, Math.min(options.limitPerSource ?? 10, 50));
-  const maxTotal = Math.max(1, Math.min(options.maxTotal ?? 50, 200));
+/**
+ * Resolve which YouTube sources to query. eqlSpecificOnly is applied here,
+ * before any RSS fetch, so mixed channels never pollute weekday digests.
+ */
+export function selectYouTubeSources(options: YouTubeVideoSearchOptions = {}): {
+  sources: YouTubeSource[];
+  missingSourceIds: string[];
+} {
   const sourceIds = new Set(options.sourceIds ?? []);
-  const sources =
+  const scoped =
     sourceIds.size > 0
       ? EQL_YOUTUBE_SOURCES.filter((source) => sourceIds.has(source.id))
       : listYouTubeSources(options.scope ?? "all");
+  const sources = options.eqlSpecificOnly ? scoped.filter((source) => source.eqlSpecific) : scoped;
   const missingSourceIds = [...sourceIds].filter((id) => !EQL_YOUTUBE_SOURCES.some((source) => source.id === id));
+  return { sources, missingSourceIds };
+}
+
+export async function getYouTubeVideos(options: YouTubeVideoSearchOptions = {}): Promise<YouTubeVideoSearch> {
+  const limitPerSource = Math.max(1, Math.min(options.limitPerSource ?? 10, 50));
+  const maxTotal = Math.max(1, Math.min(options.maxTotal ?? 50, 200));
+  const { sources, missingSourceIds } = selectYouTubeSources(options);
   const failedSources: YouTubeSourceFailure[] = missingSourceIds.map((id) => ({
     id,
     title: id,
