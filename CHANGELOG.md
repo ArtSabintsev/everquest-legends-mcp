@@ -6,6 +6,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.8.1] - 2026-09-09
+
+### Changed
+
+- Bump @types/node from 26.4.0 to 26.4.1 (#25) (0bc5ae5)
+
 ## [1.8.0] - 2026-09-07
 
 ### Added
