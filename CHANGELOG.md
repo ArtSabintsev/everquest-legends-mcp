@@ -6,6 +6,13 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.8.2] - 2026-09-09
+
+### Changed
+
+- Bump vitest from 4.1.11 to 5.0.0 (#26) (67017c4)
+- Bump tsx from 4.23.12 to 4.23.13 (#27) (2a89429)
+
 ## [1.8.1] - 2026-09-09
 
 ### Changed
