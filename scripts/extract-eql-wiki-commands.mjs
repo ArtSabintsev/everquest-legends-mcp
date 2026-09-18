@@ -248,12 +248,81 @@ function extractAliases(description) {
 
 // ---------------------------------------------------------------------------
 
+const FETCH_ATTEMPTS = 3;
+const FETCH_TIMEOUT_MS = 30_000;
+// Same retryable statuses as src/http.ts, plus 429: this job is a scheduled
+// single-caller extract, so backing off on a rate limit is safe.
+const RETRYABLE_STATUSES = new Set([408, 429, 500, 502, 503, 504]);
+
+// eqlwiki.com has answered this MediaWiki API with an HTML document (often
+// HTTP 200, text/html) instead of JSON — challenge / error / maintenance
+// pages. response.json() then throws a raw SyntaxError
+// (`Unexpected token '<'`) and the scheduled --check job fails the whole
+// refresh. Read the body as text, require parseable JSON, and retry a few
+// times with backoff on HTML, 5xx, and network blips. --check exit codes
+// stay 0 (current), 10 (changed), anything else (hard failure).
 async function fetchJson(url) {
-  const response = await fetch(url, { headers: { "User-Agent": USER_AGENT } });
-  if (!response.ok) {
-    fail(`HTTP ${response.status} fetching ${url}`);
+  let lastError;
+  for (let attempt = 1; attempt <= FETCH_ATTEMPTS; attempt += 1) {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+    try {
+      const response = await fetch(url, {
+        signal: controller.signal,
+        headers: { "User-Agent": USER_AGENT, Accept: "application/json" }
+      });
+      const contentType = response.headers.get("content-type") ?? "";
+      const body = await response.text();
+      const detail = describeFetchResponse(url, response.status, contentType, body);
+
+      if (!response.ok) {
+        throw Object.assign(new Error(detail), {
+          retryable: RETRYABLE_STATUSES.has(response.status) || looksLikeHtml(body)
+        });
+      }
+
+      try {
+        return JSON.parse(body);
+      } catch (parseError) {
+        throw Object.assign(
+          new Error(`Expected JSON from ${url} but parse failed (${parseError.message}). ${detail}`),
+          { retryable: true }
+        );
+      }
+    } catch (error) {
+      lastError = error?.name === "AbortError"
+        ? Object.assign(new Error(`Timed out after ${FETCH_TIMEOUT_MS}ms fetching ${url}`), { retryable: true })
+        : error;
+      if (isRetryableFetchError(lastError) && attempt < FETCH_ATTEMPTS) {
+        log(`GET ${url} attempt ${attempt} failed: ${lastError.message}; retrying`);
+        await new Promise((resolve) => setTimeout(resolve, 1000 * attempt));
+        continue;
+      }
+      fail(lastError?.message ?? String(lastError));
+    } finally {
+      clearTimeout(timeout);
+    }
   }
-  return response.json();
+  fail(`GET ${url} failed after ${FETCH_ATTEMPTS} attempts: ${lastError?.message ?? lastError}`);
+}
+
+function describeFetchResponse(url, status, contentType, body) {
+  const snippet = body.replace(/\s+/g, " ").trim().slice(0, 180);
+  return (
+    `HTTP ${status} from ${url} ` +
+    `(content-type: ${contentType || "unknown"}; body: ${snippet || "(empty)"})`
+  );
+}
+
+function looksLikeHtml(body) {
+  const trimmed = body.trimStart();
+  return /^<!DOCTYPE\b/i.test(trimmed) || /^<html\b/i.test(trimmed);
+}
+
+function isRetryableFetchError(error) {
+  if (error?.retryable === true) return true;
+  // Undici surfaces network-level failures (DNS, reset, refused) as TypeError.
+  return error instanceof TypeError;
 }
 
 async function readFileIfExists(url) {
@@ -274,4 +343,7 @@ function log(message) {
   console.error(`[extract-eql-wiki-commands] ${message}`);
 }
 
-await main();
+main().catch((error) => {
+  console.error(`[extract-eql-wiki-commands] unexpected error: ${error?.stack ?? error}`);
+  process.exit(1);
+});
