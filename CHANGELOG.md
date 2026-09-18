@@ -6,6 +6,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.8.3] - 2026-09-18
+
+### Fixed
+
+- retry EQL Wiki commands fetch on transient HTML responses (#31) (4ca5256)
+
 ## [1.8.2] - 2026-09-09
 
 ### Changed
