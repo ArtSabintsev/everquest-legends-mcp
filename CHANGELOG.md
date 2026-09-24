@@ -6,6 +6,11 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- Official Creator Legend pages for GVG (`official-creator-gvg`) and Hammackj (`official-creator-hammackj`).
+- GeeksVsGeeks YouTube feed (`gvg-youtube`), confirmed from geeksvsgeeks.com rather than the news page.
+
 ## [1.8.3] - 2026-09-18
 
 ### Fixed
