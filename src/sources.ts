@@ -248,7 +248,7 @@ export const EQL_YOUTUBE_SOURCES: readonly YouTubeSource[] = [
     url: "https://www.youtube.com/@hammackj",
     feedUrl: youtubeChannelFeedUrl("UCnEUGO_mmsWt4AxL2beSRHw"),
     description:
-      "Community creator channel with a long EQL beta-through-live VOD series, race-start plans, Natch Potes readings, and solo D4 kills. Mixed with occasional EverQuest 2 news.",
+      "Community creator channel with a long EQL beta-through-live VOD series, race-start plans, Natch Potes readings, and solo D4 kills. Mixed with occasional EverQuest 2 news. Named on the official Creator Legend profile (2026-09-18).",
     eqlSpecific: false,
     lastVerifiedAt: "2026-09-07"
   },
@@ -313,7 +313,7 @@ export const EQL_YOUTUBE_SOURCES: readonly YouTubeSource[] = [
     url: "https://www.youtube.com/@GeeksvsGeeks",
     feedUrl: youtubeChannelFeedUrl("UCyv1Wm0eBvozJAquOie0D1g"),
     description:
-      "Official EQL Creator Legend (GeeksVsGeeks). EQL dev-stream recaps, launch coverage, and class-combo looks, mixed with non-EQL family and convention videos. Named on the official Creator Legend profile (2026-09-10). Twitch: geeksvsgeeks.",
+      "GeeksVsGeeks (GVG), an official EQL Creator Legend. Channel confirmed from geeksvsgeeks.com, which the 2026-09-10 official profile links; the news page itself does not list a personal YouTube. EQL dev-stream recaps and launch coverage, mixed with non-EQL family and convention videos. Twitch: geeksvsgeeks.",
     eqlSpecific: false,
     lastVerifiedAt: "2026-09-24"
   }
@@ -468,7 +468,16 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
     title: "Official Creator Legend: GVG",
     url: "https://www.everquestlegends.com/news/creator-gvg",
     description:
-      "Official EQL Creator Legend profile for GVG / GeeksVsGeeks (published 2026-09-10). Use eql_youtube_videos with source id gvg-youtube for channel RSS.",
+      "Official EQL Creator Legend profile for GVG / GeeksVsGeeks (published 2026-09-10). The article lists geeksvsgeeks.com and Twitch geeksvsgeeks; it does not link a personal YouTube. @GeeksvsGeeks was confirmed from that site. Use eql_youtube_videos with source id gvg-youtube for channel RSS.",
+    searchable: true
+  },
+  {
+    id: "official-creator-hammackj",
+    kind: "official",
+    title: "Official Creator Legend: Hammackj",
+    url: "https://www.everquestlegends.com/news/creator-hammackj",
+    description:
+      "Official EQL Creator Legend profile for Hammackj (published 2026-09-18). YouTube https://www.youtube.com/c/hammackj matches source id hammackj-youtube. Twitch: hammackj.",
     searchable: true
   },
   {
@@ -592,7 +601,8 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
     kind: "community",
     title: "Creator YouTube: hammackj",
     url: "https://www.youtube.com/@hammackj",
-    description: "Unofficial EQL VOD series, race-start plans, and Natch Potes readings. Use eql_youtube_videos for RSS metadata.",
+    description:
+      "Unofficial EQL VOD series, race-start plans, and Natch Potes readings. Use eql_youtube_videos for RSS metadata. Official profile: official-creator-hammackj.",
     searchable: false
   },
   {
@@ -633,7 +643,7 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
     title: "Creator YouTube: GVG",
     url: "https://www.youtube.com/@GeeksvsGeeks",
     description:
-      "Unofficial EQL Creator Legend channel (GeeksVsGeeks) with dev-stream recaps and launch coverage, mixed with other geek videos. Use eql_youtube_videos for RSS metadata. Official profile: official-creator-gvg.",
+      "Unofficial EQL Creator Legend channel (GeeksVsGeeks). Handle confirmed from geeksvsgeeks.com, not from the official news page. Mixed with other geek videos. Use eql_youtube_videos for RSS metadata. Official profile: official-creator-gvg.",
     searchable: false
   },
   {

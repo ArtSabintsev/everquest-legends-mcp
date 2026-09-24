@@ -47,7 +47,7 @@ describe("YouTube source check helpers", () => {
   });
 
   it("finds official creator-* slugs missing from SOURCE_PAGES", () => {
-    expect(findMissingCreatorPages(["creator-brutallstatic", "creator-gvg", "getting-started-in-eql"])).toEqual([]);
+    expect(findMissingCreatorPages(["creator-brutallstatic", "creator-gvg", "creator-hammackj", "getting-started-in-eql"])).toEqual([]);
     expect(findMissingCreatorPages(["creator-newperson"], SOURCE_PAGES)).toEqual(["creator-newperson"]);
     expect(findMissingCreatorPages(["labor-day-murderbee"])).toEqual([]);
   });
