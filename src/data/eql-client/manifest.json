@@ -2,7 +2,7 @@
   "source": "EverQuest Legends client (local install)",
   "sourceNote": "Reference text extracted directly from the EverQuest Legends client install (via scripts/extract-eql-reference.mjs). No third-party intermediary; the client is the source.",
   "extractorVersion": 2,
-  "extractedAt": "2026-09-07T00:33:26.416Z",
+  "extractedAt": "2026-09-24T16:31:41.609Z",
   "gameDirName": "EverQuest Legends",
   "sources": [
     {
@@ -19,35 +19,35 @@
     },
     {
       "name": "racedata.txt",
-      "bytes": 158066,
-      "modifiedAt": "2026-07-24T14:48:34.000Z",
-      "sha256": "f706db731c2dba59b78aeb7395c24b6b01a39c8ce4f53f40d9ea72e95c767064"
+      "bytes": 158168,
+      "modifiedAt": "2026-09-22T02:26:29.000Z",
+      "sha256": "00000c8ca9a9e8829aaca85d820e13d94f9725dddd1570794c609198d180cc1c"
     },
     {
       "name": "dbstr_us.txt",
-      "bytes": 9834940,
-      "modifiedAt": "2026-08-31T22:18:37.000Z",
-      "sha256": "00e1d0c061aa438718ba5106daf52a19b28a0e89931e6dc46850972398e94591"
+      "bytes": 9832114,
+      "modifiedAt": "2026-09-22T02:26:29.000Z",
+      "sha256": "793855833207428a34b309e8807d90d065b6e5ea99e7f4e473c64f1cc9e5c51f"
     },
     {
-      "name": "maps/ (213 files)",
-      "bytes": 71235505,
-      "modifiedAt": "2026-08-22T03:41:47.741Z",
-      "sha256": "f1820cd9980c5534a6643d6fe98eba3b6385a7de3c19a2b0e7c39e348b5f9c32"
+      "name": "maps/ (218 files)",
+      "bytes": 75930157,
+      "modifiedAt": "2026-09-23T12:28:50.922Z",
+      "sha256": "a361ffd0b43b74e1f7926496ca1e8b83f07f9efd7ed2f0b4fa37a92ad409ca9f"
     },
     {
       "name": "Storyline/ (50 files)",
       "bytes": 254899,
-      "modifiedAt": "2026-07-03T21:53:58.103Z",
+      "modifiedAt": "2026-09-23T12:29:00.269Z",
       "sha256": "3a57265c5d7d1cd4e74e2de7cd81180c19c3bb74f39578c9847e454da726f964"
     }
   ],
   "counts": {
     "commands": 122,
-    "races": 982,
+    "races": 980,
     "manualSections": 91,
-    "zones": 138,
-    "pois": 1495,
+    "zones": 141,
+    "pois": 1439,
     "storylines": 50
   }
 }

@@ -13196,58 +13196,6 @@
     ]
   },
   {
-    "id": 989,
-    "name": "Future Placeholder",
-    "plural": "Future Placeholders",
-    "size": 6,
-    "models": [
-      {
-        "gender": "male",
-        "tag": "FP7",
-        "size": 6
-      }
-    ]
-  },
-  {
-    "id": 990,
-    "name": "Future Placeholder",
-    "plural": "Future Placeholders",
-    "size": 6,
-    "models": [
-      {
-        "gender": "male",
-        "tag": "FP8",
-        "size": 6
-      }
-    ]
-  },
-  {
-    "id": 991,
-    "name": "Future Placeholder",
-    "plural": "Future Placeholders",
-    "size": 6,
-    "models": [
-      {
-        "gender": "male",
-        "tag": "FP9",
-        "size": 6
-      }
-    ]
-  },
-  {
-    "id": 992,
-    "name": "Future Placeholder",
-    "plural": "Future Placeholders",
-    "size": 6,
-    "models": [
-      {
-        "gender": "male",
-        "tag": "FP0",
-        "size": 6
-      }
-    ]
-  },
-  {
     "id": 993,
     "name": "Boar",
     "plural": "Boars",
@@ -13257,6 +13205,42 @@
         "gender": "neutral",
         "tag": "WBM",
         "size": 12
+      }
+    ]
+  },
+  {
+    "id": 994,
+    "name": "Half Dark Elf",
+    "plural": "Half Dark Elves",
+    "size": 5.5,
+    "models": [
+      {
+        "gender": "female",
+        "tag": "HDF",
+        "size": 5.5
+      },
+      {
+        "gender": "male",
+        "tag": "HDM",
+        "size": 5.5
+      }
+    ]
+  },
+  {
+    "id": 995,
+    "name": "Metric",
+    "plural": "Imperial",
+    "size": 9,
+    "models": [
+      {
+        "gender": "female",
+        "tag": "RUL",
+        "size": 9
+      },
+      {
+        "gender": "male",
+        "tag": "DTM",
+        "size": 9
       }
     ]
   }
