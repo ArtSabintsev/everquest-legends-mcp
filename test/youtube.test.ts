@@ -62,7 +62,8 @@ describe("YouTube feed parsing", () => {
       "brokenstoic-youtube",
       "jeditheq-youtube",
       "presmere-youtube",
-      "eqprogression-youtube"
+      "eqprogression-youtube",
+      "gvg-youtube"
     ]);
   });
 
@@ -119,6 +120,7 @@ describe("YouTube feed parsing", () => {
     expect(expected).toContain("official-youtube");
     expect(expected).not.toContain("gigglemage-youtube");
     expect(expected).not.toContain("thegameis-youtube");
+    expect(expected).not.toContain("gvg-youtube");
   });
 
   it("selects sources before feed fetch when eqlSpecificOnly is true", async () => {
