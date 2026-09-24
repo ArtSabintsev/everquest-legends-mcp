@@ -430,6 +430,15 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
     searchable: true
   },
   {
+    id: "official-producer-letter-sept-2026",
+    kind: "official",
+    title: "Official Producer Letter: September 2026",
+    url: "https://www.everquestlegends.com/news/eqlegends-producers-letter-sept-17-2026",
+    description:
+      "Official producer letter (2026-09-17) about post-launch plans, including Nektropos Castle, Lake Nerius, and the Rulers of Kunark expansion.",
+    searchable: true
+  },
+  {
     id: "official-40k-celebration",
     kind: "official",
     title: "Official 40,000 Beta Signup Celebration",
@@ -486,6 +495,41 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
     title: "Official Getting Started In EverQuest Legends",
     url: "https://www.everquestlegends.com/news/getting-started-in-eql",
     description: "Official beginner overview linked from the news index. Prefer live wiki/client tools for current mechanics.",
+    searchable: true
+  },
+  {
+    id: "official-guides",
+    kind: "official",
+    title: "Official Getting Started Guides",
+    url: "https://www.everquestlegends.com/news/eql-guides",
+    description: "Official hub linking the beginner, intermediate, and advanced EverQuest Legends video guides.",
+    searchable: true
+  },
+  {
+    id: "official-intermediate-guide",
+    kind: "official",
+    title: "Official Intermediate Guide",
+    url: "https://www.everquestlegends.com/news/eql-int-guide",
+    description:
+      "Official intermediate guide covering a third class, loadouts, motes, exaltations, zone difficulty, and instancing.",
+    searchable: true
+  },
+  {
+    id: "official-advanced-guide",
+    kind: "official",
+    title: "Official Advanced Guide",
+    url: "https://www.everquestlegends.com/news/eql-adv-guide",
+    description:
+      "Official advanced guide covering spell sets, macros, pets, alternate advancement, and the raid interface.",
+    searchable: true
+  },
+  {
+    id: "official-dungeon-crawl-guide",
+    kind: "official",
+    title: "Official Dungeon Crawl Guide",
+    url: "https://www.everquestlegends.com/news/eql-dungeon-crawl",
+    description:
+      "Official guide to instanced Dungeon Crawls, including difficulty selection, the task overlay, completion loot, and returning to an open instance.",
     searchable: true
   },
   {
