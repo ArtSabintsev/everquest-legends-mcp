@@ -533,6 +533,35 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
     searchable: true
   },
   {
+    id: "official-patch-notes",
+    authority: "eql",
+    kind: "official",
+    title: "Official EverQuest Legends Patch Notes",
+    url: "https://www.everquestlegends.com/patch-notes",
+    description: "Official Natch Potes index of dated EverQuest Legends update and hotfix notes.",
+    searchable: true
+  },
+  {
+    id: "official-update-notes-2026-09-22",
+    authority: "eql",
+    kind: "official",
+    title: "Official Update Notes: September 22, 2026",
+    url: "https://www.everquestlegends.com/patch-notes/eql-update-notes-9-22-2026",
+    description:
+      "Official September 22, 2026 update (Natch Potes). Covers falling and knockback damage, melee endurance and accuracy, the new Widened Perception and Point Blank Fire alternate abilities, the Ranged Stance revamp, and spell changes.",
+    searchable: true
+  },
+  {
+    id: "official-hotfix-notes-2026-09-24",
+    authority: "eql",
+    kind: "official",
+    title: "Official Hotfix Notes: September 24, 2026",
+    url: "https://www.everquestlegends.com/patch-notes/eql-update-notes-9-24-2026",
+    description:
+      "Official September 24, 2026 hotfix (Natch Potes). Fixes Plane of Sky flying-creature aggro and Point Blank Fire affecting melee after a loadout swap, and makes Thornstinger secondary-equippable.",
+    searchable: true
+  },
+  {
     id: "official-youtube",
     kind: "official",
     title: "Official EverQuest Legends YouTube Channel",
