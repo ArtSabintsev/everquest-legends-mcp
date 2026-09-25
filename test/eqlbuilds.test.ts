@@ -119,9 +119,20 @@ describe("eqlbuilds dataset accessors", () => {
 
   it("lists and reads alternate advancement without a search query", () => {
     const all = listEqlBuildsAbilities();
-    expect(all.count).toBe(130);
+    // The catalog grows when the live wiki adds AAs the eqlbuilds.com bundle
+    // has not vendored yet. Do not pin the exact count: the scheduled refresh
+    // runs these tests after re-extracting.
+    expect(all.count).toBeGreaterThan(130);
     expect(all.categories).toContain("general");
     expect(all.categories).toContain("class");
+
+    const widened = getEqlBuildsAbility("Widened Perception");
+    expect(widened?.category).toBe("general");
+    expect(widened?.classes).toHaveLength(16);
+
+    const pointBlank = getEqlBuildsAbility("Point Blank Fire");
+    expect(pointBlank?.category).toBe("archetype");
+    expect(pointBlank?.classes).toEqual(["ranger", "monk", "rogue", "berserker"]);
 
     const general = listEqlBuildsAbilities({ category: "general" });
     expect(general.count).toBeGreaterThan(0);

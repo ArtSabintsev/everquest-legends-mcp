@@ -1,13 +1,13 @@
 {
-  "apiUrl": "https://eqlwiki.com/api.php?action=parse&oldid=151303&prop=wikitext&format=json",
-  "comment": "/* Wizard Class AAs */ Added Improved Familiar",
+  "apiUrl": "https://eqlwiki.com/api.php?action=parse&oldid=179318&prop=wikitext&format=json&formatversion=2",
+  "comment": "/* General AAs */ AA costs are given per tier, but effects should be shown as running totals. Innate Regen -> 1/2/3/4/5/6/7",
   "pageId": 56762,
-  "parentId": 151019,
-  "revisionId": 151303,
-  "timestamp": "2026-06-27T14:06:46Z",
+  "parentId": 179197,
+  "revisionId": 179318,
+  "timestamp": "2026-09-25T14:30:36Z",
   "title": "Alternate Advancement",
-  "url": "https://eqlwiki.com/Alternate_Advancement?oldid=151303",
-  "user": "Mewmix",
-  "rowCount": 131,
-  "uniqueAbilityCount": 130
+  "url": "https://eqlwiki.com/Alternate_Advancement?oldid=179318",
+  "user": "Saifah",
+  "rowCount": 146,
+  "uniqueAbilityCount": 143
 }
