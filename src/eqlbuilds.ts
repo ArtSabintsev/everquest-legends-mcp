@@ -11,7 +11,7 @@ import { scoreText, truncateText } from "./text.js";
 const DATA_DIR = new URL("./data/eqlbuilds/", import.meta.url);
 
 export const EQLBUILDS_DISCLAIMER =
-  "Data extracted from the eqlbuilds.com build planner (an unofficial community tool). Alternate advancement availability and costs are refreshed from the live EQL Wiki Alternate Advancement page when that page is newer than the planner's vendored snapshot; rank-spell metadata for abilities the planner already published stays client-enriched. Treat as community reference, not official Daybreak documentation.";
+  "Data extracted from the eqlbuilds.com build planner (an unofficial community tool). Values are derived from EQL Legends client files and a vendored EQL Wiki Alternate Advancement snapshot; treat as community reference, not official Daybreak documentation.";
 
 export type EqlBuildsManifest = {
   source: string;

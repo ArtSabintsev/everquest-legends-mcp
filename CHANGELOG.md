@@ -6,10 +6,6 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-### Fixed
-
-- Refresh eqlbuilds alternate advancement from the live EQL Wiki page when it is newer than the vendored bundle revision. The September 2026 wiki edits (including Point Blank Fire and Widened Perception) were invisible to `extract:eqlbuilds:check` while the eqlbuilds.com bundle stayed on wiki rev 151303.
-
 ### Added
 
 - Official Creator Legend pages for GVG (`official-creator-gvg`) and Hammackj (`official-creator-hammackj`).
