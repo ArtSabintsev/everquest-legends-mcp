@@ -10,6 +10,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 - Official Creator Legend pages for GVG (`official-creator-gvg`) and Hammackj (`official-creator-hammackj`).
 - GeeksVsGeeks YouTube feed (`gvg-youtube`), confirmed from geeksvsgeeks.com rather than the news page.
+- Official September 2026 producer letter (`official-producer-letter-sept-2026`).
+- Official guide pages for the getting-started hub (`official-guides`), intermediate guide (`official-intermediate-guide`), advanced guide (`official-advanced-guide`), and dungeon crawls (`official-dungeon-crawl-guide`).
 
 ## [1.8.3] - 2026-09-18
 
