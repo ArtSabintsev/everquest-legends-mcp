@@ -12,6 +12,7 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - GeeksVsGeeks YouTube feed (`gvg-youtube`), confirmed from geeksvsgeeks.com rather than the news page.
 - Official September 2026 producer letter (`official-producer-letter-sept-2026`).
 - Official guide pages for the getting-started hub (`official-guides`), intermediate guide (`official-intermediate-guide`), advanced guide (`official-advanced-guide`), and dungeon crawls (`official-dungeon-crawl-guide`).
+- Official patch-notes index (`official-patch-notes`), the September 22, 2026 update (`official-update-notes-2026-09-22`), and the September 24, 2026 hotfix (`official-hotfix-notes-2026-09-24`).
 
 ## [1.8.3] - 2026-09-18
 
