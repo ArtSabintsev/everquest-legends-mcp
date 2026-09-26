@@ -6,6 +6,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.9.0] - 2026-09-26
+
 ### Added
 
 - Official Creator Legend pages for GVG (`official-creator-gvg`) and Hammackj (`official-creator-hammackj`).
