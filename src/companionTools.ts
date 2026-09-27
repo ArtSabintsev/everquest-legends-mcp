@@ -126,7 +126,8 @@ export const COMPANION_TOOLS: CompanionTool[] = [
       "eqltools-picker",
       "eqltools-spellmaster",
       "eqltools-atlas",
-      "eqltools-osxeql"
+      "eqltools-osxeql",
+      "osxeql-github"
     ],
     summary:
       "Player tools + primers built from client-mined and player-collected data: trio builder, spellmaster, AA planner, zone atlas, combat primers, osxEQL.",
@@ -201,6 +202,173 @@ export const COMPANION_TOOLS: CompanionTool[] = [
     notes: [
       "Pointer-only — spreadsheet HTML is a poor machine-readable source.",
       "Author-curated community notes, not official balance data."
+    ]
+  },
+  {
+    id: "eqlforge",
+    name: "EQLForge",
+    url: "https://eqlforge.com/",
+    homeUrl: "https://eqlforge.com/",
+    access: "interactive-spa",
+    capabilities: [
+      "trio-builder",
+      "aa",
+      "gear",
+      "classes",
+      "items",
+      "spells",
+      "zones",
+      "leveling",
+      "exaltations",
+      "plane-of-sky"
+    ],
+    sourceIds: ["eqlforge-home"],
+    summary:
+      "Unofficial trio, AA, and gear planner covering all 560 class combos, plus community builds.",
+    notes: [
+      "Homepage HTML introduces the trio system, but the build forge, AA planner, and gear tools are interactive.",
+      "Community builds and scores are unofficial; prefer eqlwiki, eqlbuilds, and client data when they disagree."
+    ]
+  },
+  {
+    id: "everquest-companion",
+    name: "EverQuest Companion",
+    url: "https://github.com/jmoyers/everquest-companion",
+    homeUrl: "https://github.com/jmoyers/everquest-companion",
+    access: "pointer-only",
+    capabilities: ["log-tools", "dps-parser", "plane-of-sky", "quests"],
+    sourceIds: ["everquest-companion"],
+    summary:
+      "Free Windows log companion: real-time DPS meter, overlays, quest and boss tracking, and a Plane of Sky tracker.",
+    notes: [
+      "Pointer-only GitHub project. This MCP does not fetch releases, installers, or player logs.",
+      "Reads the local game log on the player's machine."
+    ]
+  },
+  {
+    id: "basabots",
+    name: "BasaBots",
+    url: "https://basabots.com/",
+    homeUrl: "https://basabots.com/",
+    access: "pointer-only",
+    capabilities: ["log-tools", "dps-parser", "zones", "items", "exaltations", "plane-of-sky"],
+    sourceIds: ["basabots-home"],
+    summary:
+      "Paid desktop all-in-one (live maps, DPS meter, quest tracking, spoken alerts). About $3/month after a 7-day trial.",
+    notes: [
+      "Commercial product: 7-day free trial, then about $3/month via Stripe.",
+      "Pointer-only marketing site. Do not scrape app backends, billing, or account APIs.",
+      "Desktop features run locally from the player's game log."
+    ]
+  },
+  {
+    id: "eqbuddy",
+    name: "EQBuddy",
+    url: "https://github.com/DranakCorps-bot/EQBuddy",
+    homeUrl: "https://github.com/DranakCorps-bot/EQBuddy",
+    access: "pointer-only",
+    capabilities: ["log-tools", "dps-parser"],
+    sourceIds: ["eqbuddy"],
+    summary:
+      "Always-on-top session tracker: live kills, DPS, loot, money, and XP parsed from the EverQuest Legends log.",
+    notes: [
+      "Pointer-only GitHub project. This MCP does not install the widget or read player logs."
+    ]
+  },
+  {
+    id: "seqo",
+    name: "seqo (Simple EQ Overlay)",
+    url: "https://github.com/RealMaeel/seqo",
+    homeUrl: "https://github.com/RealMaeel/seqo",
+    access: "pointer-only",
+    capabilities: ["log-tools", "dps-parser", "zones"],
+    sourceIds: ["seqo"],
+    summary: "Log-powered overlay companion for EverQuest Legends (Simple EQ Overlay), including zone context.",
+    notes: [
+      "Pointer-only GitHub project. Local log reader; not fetched or installed by this MCP."
+    ]
+  },
+  {
+    id: "eql-meter",
+    name: "eql-meter",
+    url: "https://github.com/kpxcoolx/eql-meter",
+    homeUrl: "https://github.com/kpxcoolx/eql-meter",
+    access: "pointer-only",
+    capabilities: ["dps-parser", "log-tools"],
+    sourceIds: ["eql-meter"],
+    summary: "Live combat meter for EverQuest Legends: DPS overlay and real-time fight tracking from the game log.",
+    notes: [
+      "Pointer-only GitHub project. This MCP does not install the meter or read player logs."
+    ]
+  },
+  {
+    id: "eql-alerts",
+    name: "eql-alerts",
+    url: "https://github.com/kpxcoolx/eql-alerts",
+    homeUrl: "https://github.com/kpxcoolx/eql-alerts",
+    access: "pointer-only",
+    capabilities: ["log-tools"],
+    sourceIds: ["eql-alerts"],
+    summary: "Log triggers for EverQuest Legends: overlays, timers, sounds, and voice callouts.",
+    notes: [
+      "Pointer-only GitHub project. Trigger rules run locally; this MCP does not fetch or execute them."
+    ]
+  },
+  {
+    id: "eql-maps",
+    name: "eql-maps",
+    url: "https://github.com/crande25/eql-maps",
+    homeUrl: "https://github.com/crande25/eql-maps",
+    access: "pointer-only",
+    capabilities: ["zones"],
+    sourceIds: ["eql-maps"],
+    summary: "Community in-game maps for new or altered EverQuest Legends zones.",
+    notes: [
+      "Pointer-only GitHub map pack for EQL zones.",
+      "Not the classic EverQuest Brewall / eqmaps.info map set."
+    ]
+  },
+  {
+    id: "eql-class-choice-sheet",
+    name: "EQL Role Matrix (spreadsheet)",
+    url: "https://docs.google.com/spreadsheets/d/1mK-uCNN9Vpd3bxaBUXurGN_pnuxYjALet2KbezJgEpc/htmlview",
+    homeUrl: "https://docs.google.com/spreadsheets/d/1mK-uCNN9Vpd3bxaBUXurGN_pnuxYjALet2KbezJgEpc/htmlview",
+    access: "pointer-only",
+    capabilities: ["classes", "spreadsheet"],
+    sourceIds: ["eql-class-choice-sheet"],
+    summary: "Community Google Sheet (EQL Role Matrix) for comparing class roles when choosing a trio.",
+    notes: [
+      "Pointer-only — spreadsheet HTML is a poor machine-readable source.",
+      "Author-curated community notes, not official balance data."
+    ]
+  },
+  {
+    id: "eql-class-perks-sheet",
+    name: "EQL Class Perks (spreadsheet)",
+    url: "https://docs.google.com/spreadsheets/d/1NTWuwYZrGVkLy2uldQbJlv_9piOhqWAUf7v7Qe-GO7c/edit",
+    homeUrl: "https://docs.google.com/spreadsheets/d/1NTWuwYZrGVkLy2uldQbJlv_9piOhqWAUf7v7Qe-GO7c/edit",
+    access: "pointer-only",
+    capabilities: ["classes", "spreadsheet"],
+    sourceIds: ["eql-class-perks-sheet"],
+    summary: "Community Google Sheet of EverQuest Legends class perks (iamisandisnt).",
+    notes: [
+      "Pointer-only — the editor view needs a browser and is not a machine-readable source.",
+      "Author-curated community notes, not official balance data."
+    ]
+  },
+  {
+    id: "eql-top-items",
+    name: "EQ Legends Top Items",
+    url: "https://github.com/lab1702/eq-legends-top-items",
+    homeUrl: "https://github.com/lab1702/eq-legends-top-items",
+    access: "pointer-only",
+    capabilities: ["gear", "items"],
+    sourceIds: ["eql-top-items"],
+    summary:
+      "Early community-sourced reference of recommended EverQuest Legends items: what each does and how to get it.",
+    notes: [
+      "Early and community-sourced — not a complete or authoritative item database.",
+      "Pointer-only GitHub project. Prefer eqlwiki and client data when they disagree."
     ]
   }
 ];

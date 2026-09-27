@@ -6,6 +6,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- September 2026 community companion pointers: EQLForge, EverQuest Companion, BasaBots, EQBuddy, seqo, eql-meter, eql-alerts, eql-maps, class-choice and class-perks spreadsheets, and EQ Legends Top Items.
+- `osxeql-github` source linked from the existing eqltools companion (keeps the searchable `eqltools-osxeql` page).
+- Searchable Paladin/Monk/Shaman 1–50 route guide (`guide-pal-monk-sha`).
+
 ## [1.9.0] - 2026-09-26
 
 ### Added

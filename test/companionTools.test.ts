@@ -44,4 +44,56 @@ describe("companion tools catalog", () => {
     expect(tool?.access).toBe("api-origin-locked");
     expect(tool?.notes.join(" ")).toMatch(/403|robots|do not scrape/i);
   });
+
+  it("registers the September 2026 community survey additions", () => {
+    const surveyIds = [
+      "eqlforge",
+      "everquest-companion",
+      "basabots",
+      "eqbuddy",
+      "seqo",
+      "eql-meter",
+      "eql-alerts",
+      "eql-maps",
+      "eql-class-choice-sheet",
+      "eql-class-perks-sheet",
+      "eql-top-items"
+    ] as const;
+
+    for (const id of surveyIds) {
+      const tool = getCompanionTool(id);
+      expect(tool, id).toBeDefined();
+      expect(tool?.sourceIds.length).toBeGreaterThan(0);
+      for (const sourceId of tool?.sourceIds ?? []) {
+        expect(sourceById(sourceId)?.searchable, sourceId).toBe(false);
+      }
+    }
+
+    const forge = getCompanionTool("eqlforge");
+    expect(forge?.access).toBe("interactive-spa");
+    expect(forge?.capabilities).toEqual(
+      expect.arrayContaining(["trio-builder", "aa", "gear", "classes", "items"])
+    );
+    expect(forge?.summary).toMatch(/560/);
+
+    const basabots = getCompanionTool("basabots");
+    expect(basabots?.access).toBe("pointer-only");
+    expect(basabots?.notes.join(" ")).toMatch(/commercial|\$3/i);
+
+    const eqltools = getCompanionTool("eqltools");
+    expect(eqltools?.sourceIds).toEqual(expect.arrayContaining(["eqltools-osxeql", "osxeql-github"]));
+    expect(sourceById("osxeql-github")?.url).toBe("https://github.com/sowoky/osxEQL");
+    expect(sourceById("osxeql-github")?.searchable).toBe(false);
+
+    const guide = sourceById("guide-pal-monk-sha");
+    expect(guide?.kind).toBe("guide");
+    expect(guide?.searchable).toBe(true);
+    expect(guide?.url).toBe("https://xm2514-svg.github.io/sites/");
+    expect(guide?.description).toMatch(/Paladin\/Monk\/Shaman/);
+    expect(getCompanionTool("guide-pal-monk-sha")).toBeUndefined();
+
+    expect(listCompanionTools({ access: "api-origin-locked" }).tools.map((tool) => tool.id)).toEqual([
+      "eqlegendstools"
+    ]);
+  });
 });
