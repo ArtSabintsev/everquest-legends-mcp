@@ -14,7 +14,7 @@ Classic EverQuest lore and archive sources are included as historical context fo
 
 This server is built around public, unauthenticated sources (alphabetical):
 
-- Companion tools (post-launch): eqltools primers, EQ Legends Tools, Gnoll Guard, Loadout Legends, EQL Compendium — via the source registry and `eql_companion_tools` / `eql_eqlegendstools_item*`
+- Companion tools (post-launch): eqltools primers, EQ Legends Tools, EQLForge, Gnoll Guard, Loadout Legends, log companions (EverQuest Companion, BasaBots, EQBuddy, seqo, eql-meter, eql-alerts), eql-maps, class spreadsheets, EQ Legends Top Items, and the EQL Compendium — via the source registry and `eql_companion_tools` / `eql_eqlegendstools_item*`. The Paladin/Monk/Shaman 1–50 route guide is a searchable source page, not a companion tool.
 - Daybreak help and press pages
 - EQArchives search portal and corpus provenance
 - EQL Wiki: `https://eqlwiki.com/Main_Page` via MediaWiki API
@@ -33,7 +33,7 @@ It does not log into Daybreak, manipulate an account, automate a game client, or
 - `eql_sources`: list configured public sources
 - `eql_source_fetch`: fetch and extract a curated source page
 - `eql_source_search`: search official/support/guide source pages
-- `eql_companion_tools`: catalog post-launch community companion tools (gear/item DBs, primers) with access modes and linked source ids
+- `eql_companion_tools`: catalog post-launch community companion tools (planners, item databases, log/DPS companions, primers, spreadsheets) with access modes and linked source ids
 - `eql_eqlegendstools_item_search`: search public eqlegendstools.com item pages by name (HTML index; not the locked /api)
 - `eql_eqlegendstools_item`: read one eqlegendstools.com item page (tooltip stats, effects, related gear)
 - `eql_wiki_search`: full-text search EQL Wiki

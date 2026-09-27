@@ -1385,6 +1385,15 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
     searchable: true
   },
   {
+    id: "osxeql-github",
+    kind: "tools",
+    title: "osxEQL (GitHub)",
+    url: "https://github.com/sowoky/osxEQL",
+    description:
+      "Source repository for osxEQL, the free Apple Silicon Mac runner (open-source Wine + DXMT). Pointer-only; setup prose lives on the searchable eqltools osxEQL page.",
+    searchable: false
+  },
+  {
     id: "gnollguard-home",
     kind: "tools",
     title: "Gnoll Guard",
@@ -1474,6 +1483,110 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
     description:
       "Community all-in-one spreadsheet (leveling, raiding, gear, exaltations). Pointer-only — not machine-readable authority.",
     searchable: false
+  },
+  // --- September 2026 community survey (pointers unless the page is static HTML) ---
+  {
+    id: "eqlforge-home",
+    kind: "tools",
+    title: "EQLForge",
+    url: "https://eqlforge.com/",
+    description:
+      "Unofficial trio, AA, and gear planner covering all 560 class combos and community builds. Interactive build forge — pointer for discovery; open in a browser.",
+    searchable: false
+  },
+  {
+    id: "everquest-companion",
+    kind: "tools",
+    title: "EverQuest Companion",
+    url: "https://github.com/jmoyers/everquest-companion",
+    description:
+      "Free Windows log companion: DPS meter, overlays, quest/boss tracking, and a Plane of Sky tracker. Pointer-only GitHub project.",
+    searchable: false
+  },
+  {
+    id: "basabots-home",
+    kind: "tools",
+    title: "BasaBots",
+    url: "https://basabots.com/",
+    description:
+      "Commercial desktop all-in-one for EverQuest Legends (live maps, DPS, quests, alerts). About $3/month after a 7-day trial. Pointer-only marketing site.",
+    searchable: false
+  },
+  {
+    id: "eqbuddy",
+    kind: "tools",
+    title: "EQBuddy",
+    url: "https://github.com/DranakCorps-bot/EQBuddy",
+    description:
+      "Always-on-top session tracker for kills, DPS, loot, money, and XP from the EverQuest Legends log. Pointer-only GitHub project.",
+    searchable: false
+  },
+  {
+    id: "seqo",
+    kind: "tools",
+    title: "seqo (Simple EQ Overlay)",
+    url: "https://github.com/RealMaeel/seqo",
+    description: "Log-powered overlay companion for EverQuest Legends. Pointer-only GitHub project.",
+    searchable: false
+  },
+  {
+    id: "eql-meter",
+    kind: "tools",
+    title: "eql-meter",
+    url: "https://github.com/kpxcoolx/eql-meter",
+    description: "Live DPS overlay and fight tracking for EverQuest Legends. Pointer-only GitHub project.",
+    searchable: false
+  },
+  {
+    id: "eql-alerts",
+    kind: "tools",
+    title: "eql-alerts",
+    url: "https://github.com/kpxcoolx/eql-alerts",
+    description: "Log triggers, timers, sounds, and voice callouts for EverQuest Legends. Pointer-only GitHub project.",
+    searchable: false
+  },
+  {
+    id: "eql-maps",
+    kind: "tools",
+    title: "eql-maps",
+    url: "https://github.com/crande25/eql-maps",
+    description:
+      "Community in-game maps for new or altered EverQuest Legends zones. Pointer-only. Not classic EverQuest Brewall / eqmaps.info maps.",
+    searchable: false
+  },
+  {
+    id: "eql-class-choice-sheet",
+    kind: "community",
+    title: "EQL Role Matrix (Google Sheet)",
+    url: "https://docs.google.com/spreadsheets/d/1mK-uCNN9Vpd3bxaBUXurGN_pnuxYjALet2KbezJgEpc/htmlview",
+    description: "Community class-role matrix for trio choice. Pointer-only — not machine-readable authority.",
+    searchable: false
+  },
+  {
+    id: "eql-class-perks-sheet",
+    kind: "community",
+    title: "EQL Class Perks (Google Sheet)",
+    url: "https://docs.google.com/spreadsheets/d/1NTWuwYZrGVkLy2uldQbJlv_9piOhqWAUf7v7Qe-GO7c/edit",
+    description: "Community class-perks spreadsheet (iamisandisnt). Pointer-only — not machine-readable authority.",
+    searchable: false
+  },
+  {
+    id: "eql-top-items",
+    kind: "tools",
+    title: "EQ Legends Top Items",
+    url: "https://github.com/lab1702/eq-legends-top-items",
+    description:
+      "Early community-sourced list of recommended EverQuest Legends items (what they do and how to get them). Pointer-only; not a complete item database.",
+    searchable: false
+  },
+  {
+    id: "guide-pal-monk-sha",
+    kind: "guide",
+    title: "Paladin / Monk / Shaman 1–50 Guide",
+    url: "https://xm2514-svg.github.io/sites/",
+    description:
+      "Deep community Paladin/Monk/Shaman route guide for levels 1–50: /locs, BiS ladders, motes, and exaltations. Cites eqlwiki and notes the mid-September 2026 patch (page dated Sep 15, 2026). Static GitHub Pages HTML.",
+    searchable: true
   },
   {
     id: "reddit-eqlegends",

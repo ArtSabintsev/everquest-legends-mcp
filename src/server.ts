@@ -192,7 +192,7 @@ export function createServer(): McpServer {
     {
       title: "List EQL companion tools",
       description:
-        "Catalog post-launch community companion tools (gear/exaltation planners, item/drop DBs, primers, Mac runner). Reports access mode (html-searchable vs interactive SPA vs origin-locked API) and linked source ids. Does not scrape locked APIs.",
+        "Catalog post-launch community companion tools (planners, item databases, log/DPS companions, primers, spreadsheets, Mac runner). Reports access mode (html-searchable vs interactive SPA vs origin-locked API) and linked source ids. Does not scrape locked APIs.",
       inputSchema: {
         capability: z
           .enum(COMPANION_CAPABILITIES)
