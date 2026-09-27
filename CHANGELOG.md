@@ -6,6 +6,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.10.0] - 2026-09-27
+
 ### Added
 
 - September 2026 community companion pointers: EQLForge, EverQuest Companion, BasaBots, EQBuddy, seqo, eql-meter, eql-alerts, eql-maps, class-choice and class-perks spreadsheets, and EQ Legends Top Items.
