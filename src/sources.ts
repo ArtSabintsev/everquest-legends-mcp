@@ -562,6 +562,16 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
     searchable: true
   },
   {
+    id: "official-hotfix-notes-2026-09-29",
+    authority: "eql",
+    kind: "official",
+    title: "Official Hotfix Notes: September 29, 2026",
+    url: "https://www.everquestlegends.com/patch-notes/eql-update-notes-9-29-2026",
+    description:
+      "Official September 29, 2026 hotfix (Natch Potes). Fixes Half Elf language assignment at character creation, and sets Common Tongue to 100 by default for Iksars, Ogres, and Trolls (existing characters updated).",
+    searchable: true
+  },
+  {
     id: "official-youtube",
     kind: "official",
     title: "Official EverQuest Legends YouTube Channel",

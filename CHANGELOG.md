@@ -6,6 +6,10 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- Official September 29, 2026 hotfix (`official-hotfix-notes-2026-09-29`).
+
 ## [1.10.0] - 2026-09-27
 
 ### Added
