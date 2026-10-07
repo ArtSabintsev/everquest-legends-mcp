@@ -6,6 +6,14 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.11.2] - 2026-10-07
+
+### Changed
+
+- Bump @types/node from 26.6.3 to 26.6.4 (#46) (0b2b905)
+- Bump vitest from 5.0.2 to 5.0.3 (#45) (b6686fb)
+- Bump @modelcontextprotocol/sdk from 1.30.1 to 1.32.0 (#44) (b9f9518)
+
 ## [1.11.1] - 2026-09-30
 
 ### Changed
