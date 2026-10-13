@@ -6,6 +6,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.12.0] - 2026-10-13
+
 ### Added
 
 - Official October 13, 2026 update (`official-update-notes-2026-10-13`).
