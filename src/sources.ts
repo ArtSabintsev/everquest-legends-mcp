@@ -572,6 +572,16 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
     searchable: true
   },
   {
+    id: "official-update-notes-2026-10-13",
+    authority: "eql",
+    kind: "official",
+    title: "Official Update Notes: October 13, 2026",
+    url: "https://www.everquestlegends.com/patch-notes/eql-update-notes-10-13-2026",
+    description:
+      "Official October 13, 2026 update. Covers the Barbarian face save fix, raid resume checkpoints and joining a group member's raid without a replay timer (no loot from bosses already killed today), Widened Perceptions and Unbound Cascade AA fixes, pet weapon ratio and damage plus a raised pet level cap, the Odus kobold achievement, and Magical Monologue removed from the Bard song list.",
+    searchable: true
+  },
+  {
     id: "official-youtube",
     kind: "official",
     title: "Official EverQuest Legends YouTube Channel",
