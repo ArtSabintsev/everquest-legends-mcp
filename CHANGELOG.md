@@ -6,6 +6,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.13.0] - 2026-10-18
+
 ### Added
 
 - `eql_official_patch_notes` reads the live Natch Potes index. `eql_official_article` accepts `/patch-notes/` URLs, and source search queries that index when `official-patch-notes` is in scope.
