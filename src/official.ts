@@ -30,12 +30,14 @@ type RawOfficialNewsArticle = {
   subtypeArray?: string[];
 };
 
-const OFFICIAL_NEWS_PATH_PREFIX = "/news/";
 const OFFICIAL_HOSTNAME = new URL(OFFICIAL_BASE_URL).hostname;
 const OFFICIAL_ARTICLE_PAGE_NAME_PATTERN = /^[a-z0-9][a-z0-9-]*$/i;
 
+/** Official indexes that embed the same `window.EQL.News.articles` payload. */
+export type OfficialArticleSection = "news" | "patch-notes";
+
 /** Returns null when the inline articles payload is missing entirely (page structure changed). */
-export function parseOfficialNewsArticles(html: string): OfficialNewsArticle[] | null {
+export function parseOfficialNewsArticles(html: string, section: OfficialArticleSection = "news"): OfficialNewsArticle[] | null {
   const match = html.match(/window\.EQL\.News\.articles\s*=\s*(\[[^\n]*\])/);
   if (!match) {
     return null;
@@ -45,7 +47,7 @@ export function parseOfficialNewsArticles(html: string): OfficialNewsArticle[] |
   return rawArticles.map((article) => ({
     title: cleanText(article.title),
     pageName: article.pageName,
-    url: `${OFFICIAL_BASE_URL}/news/${article.pageName}`,
+    url: officialArticleUrl(section, article.pageName),
     publishedAt: new Date(Number(article.start_date_epoch) * 1000).toISOString(),
     summary: stripHtml(article.summary),
     poster: article.poster,
@@ -53,15 +55,29 @@ export function parseOfficialNewsArticles(html: string): OfficialNewsArticle[] |
   }));
 }
 
-export async function getOfficialNews(limit = 10): Promise<OfficialNewsArticle[]> {
-  const html = await fetchText(`${OFFICIAL_BASE_URL}/news`, { cacheTtlMs: 60_000 });
-  const articles = parseOfficialNewsArticles(html);
+async function getOfficialIndex(section: OfficialArticleSection, limit = 10): Promise<OfficialNewsArticle[]> {
+  const indexPath = section === "news" ? "/news" : "/patch-notes";
+  const html = await fetchText(`${OFFICIAL_BASE_URL}${indexPath}`, { cacheTtlMs: 60_000 });
+  const articles = parseOfficialNewsArticles(html, section);
   if (articles === null) {
     // A silent empty list would read as "no news"; a missing payload means the
     // scrape target moved and this parser needs updating.
-    throw new Error("Official news page structure changed: window.EQL.News.articles payload not found.");
+    throw new Error(`Official ${section} page structure changed: window.EQL.News.articles payload not found.`);
   }
   return articles.slice(0, Math.max(1, Math.min(limit, 50)));
+}
+
+export async function getOfficialNews(limit = 10): Promise<OfficialNewsArticle[]> {
+  return getOfficialIndex("news", limit);
+}
+
+/** Live Natch Potes index. Patch notes are not on /news. */
+export async function getOfficialPatchNotes(limit = 10): Promise<OfficialNewsArticle[]> {
+  return getOfficialIndex("patch-notes", limit);
+}
+
+function officialArticleUrl(section: OfficialArticleSection, pageName: string): string {
+  return `${OFFICIAL_BASE_URL}/${section}/${pageName}`;
 }
 
 export function resolveOfficialArticleUrl(pageNameOrUrl: string): string {
@@ -70,26 +86,35 @@ export function resolveOfficialArticleUrl(pageNameOrUrl: string): string {
     throw new Error("Official article page name is required.");
   }
 
+  let section: OfficialArticleSection = "news";
   let pageName: string;
   if (/^https?:\/\//i.test(input)) {
     const parsed = new URL(input);
     if (parsed.protocol !== "https:" || parsed.hostname !== OFFICIAL_HOSTNAME) {
       throw new Error(`Official article URL must be an https URL on ${OFFICIAL_HOSTNAME}.`);
     }
-    if (!parsed.pathname.startsWith(OFFICIAL_NEWS_PATH_PREFIX)) {
-      throw new Error("Official article URL must be under /news/.");
+    const match = parsed.pathname.match(/^\/(news|patch-notes)\/([^/]+)\/?$/);
+    if (!match?.[1] || !match[2] || !OFFICIAL_ARTICLE_PAGE_NAME_PATTERN.test(match[2])) {
+      throw new Error("Official article URL must be under /news/ or /patch-notes/.");
     }
-    pageName = parsed.pathname.slice(OFFICIAL_NEWS_PATH_PREFIX.length);
+    section = match[1] as OfficialArticleSection;
+    pageName = match[2];
   } else {
-    pageName = input.replace(/^\/+/, "").replace(/^news\/+/i, "");
+    const stripped = input.replace(/^\/+/, "").replace(/\/+$/, "");
+    const prefixed = stripped.match(/^(news|patch-notes)\/([^/]+)$/);
+    if (prefixed?.[1] && prefixed[2]) {
+      section = prefixed[1] as OfficialArticleSection;
+      pageName = prefixed[2];
+    } else {
+      pageName = stripped.replace(/^news\/+/i, "");
+    }
   }
 
-  pageName = pageName.replace(/\/+$/, "");
   if (!OFFICIAL_ARTICLE_PAGE_NAME_PATTERN.test(pageName)) {
     throw new Error("Official article page name must be a single news slug.");
   }
 
-  return `${OFFICIAL_BASE_URL}/news/${pageName}`;
+  return officialArticleUrl(section, pageName);
 }
 
 export async function getOfficialArticle(pageNameOrUrl: string, maxCharacters = 12_000): Promise<OfficialArticle> {

@@ -69,7 +69,8 @@ It does not log into Daybreak, manipulate an account, automate a game client, or
 - `eql_client_storyline`: read one full storyline by id or title
 - `eql_client_provenance`: report the local-client reference snapshot manifest (source files with sizes/hashes/mtimes, counts) and the EQL Wiki commands snapshot's page/revision id
 - `eql_official_news`: parse official EQL news index
-- `eql_official_article`: fetch and extract an official news article
+- `eql_official_patch_notes`: parse the live official patch-notes index (Natch Potes). Not included in `eql_official_news`
+- `eql_official_article`: fetch and extract an official news article or a `/patch-notes/` note
 - `eql_press_assets`: list official Daybreak press asset URLs by kind
 - `eql_official_youtube_videos`: list official EQL YouTube video metadata from the channel RSS feed
 - `eql_youtube_sources`: list official and selected creator YouTube channel feeds (`eqlSpecificOnly` omits mixed/variety channels; optional `xHandle`/`xUrl` are pointer-only)
@@ -247,10 +248,14 @@ cannot run in CI. On a machine with the game installed:
 
 ```bash
 # --game-dir points at the install root (the folder with eqgame.exe and *_us.txt).
-npm run extract:reference -- --game-dir "/path/to/EverQuest Legends"
-npm run extract:reference:dry -- --game-dir "/path/to/EverQuest Legends"  # parse + summarize, write nothing
+# On a Mac with EQLMac it is discovered automatically:
+#   ~/Library/Application Support/osxEQL/prefix/drive_c/users/Public/Daybreak Game Company/Installed Games/EverQuest Legends
+# Fallback order: that prefix, osxEQL/prefix-cx, then the old CrossOver EQL bottle.
+npm run extract:reference
+npm run extract:reference:dry   # parse + summarize, write nothing
 
-# Or set EQL_GAME_DIR once:
+# Or point at an install explicitly:
+npm run extract:reference -- --game-dir "/path/to/EverQuest Legends"
 EQL_GAME_DIR="/path/to/EverQuest Legends" npm run extract:reference
 ```
 
@@ -280,8 +285,9 @@ then commit. See `docs/local-client-extraction.md` for the client file formats.
 | `eql_builds_spell_search` | `query` | Search spells across classes (optionally scope to one `classId`). |
 | `eql_builds_ability_search` | `query` | Search alternate advancement with rank costs (filter by `classId` or `category`). |
 | `eql_builds_provenance` | none | See when the eqlbuilds.com snapshot was extracted and which EQL Wiki AA revision it uses. |
-| `eql_official_news` | none | List official EverQuest Legends news articles. |
-| `eql_official_article` | `pageNameOrUrl` | Read an official EQL news article by slug or `https://www.everquestlegends.com/news/...` URL. |
+| `eql_official_news` | none | List official EverQuest Legends news articles. Patch notes are not in this list. |
+| `eql_official_patch_notes` | none | List the live official patch-notes index. Read one note with `eql_official_article`. |
+| `eql_official_article` | `pageNameOrUrl` | Read an official news article or patch note by slug, `/news/...`, or `/patch-notes/...`. |
 | `eql_press_assets` | `kind` | List official Daybreak press asset metadata for `logos`, `artwork`, `screenshots`, `video`, or `fact-sheets`. |
 | `eql_official_youtube_videos` | none | List official EverQuest Legends YouTube video metadata from the channel RSS feed. |
 | `eql_youtube_sources` | `scope`, `eqlSpecificOnly` | List official and selected creator YouTube source feeds. `eqlSpecificOnly: true` returns official plus EQL-focused creators only. Optional `xHandle`/`xUrl` are pointer-only X profiles (not fetched). |

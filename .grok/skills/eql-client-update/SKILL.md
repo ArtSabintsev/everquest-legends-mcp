@@ -1,37 +1,51 @@
 ---
 name: eql-client-update
 description: >
-  Check and update the local EverQuest Legends (EQL) game client in CrossOver,
-  then refresh MCP data snapshots when a patch changed extractor sources.
+  Check and update the local EverQuest Legends (EQL) game client launched by
+  EQLMac.app, then refresh MCP data snapshots when a patch changed extractor
+  sources.
   When the user says "update everything", also sweep YouTube/creator sources
   in src/sources.ts. Use when the user says "check and update", "update
   everything", "update the binary", "pull the latest", "patch the game",
-  "check CrossOver", "EQL client", "game binary", "eqgame", "after the patch",
-  "Tuesday patch", or asks whether the local EQL install / LaunchPad is
-  current. Also use for /eql-client-update.
+  "check CrossOver", "EQLMac", "osxEQL", "EQL client", "game binary", "eqgame",
+  "after the patch", "Tuesday patch", or asks whether the local EQL install /
+  LaunchPad is current. Also use for /eql-client-update.
   Do NOT treat these phrases as the everquest-legends-mcp npm package binary
   unless the user explicitly says MCP, npm, dist, or package.
 metadata:
-  short-description: "Check/update EQL CrossOver client + snapshots + sources"
+  short-description: "Check/update EQLMac client + snapshots + sources"
 ---
 
-# EQL CrossOver Client — Check & Update
+# EQLMac Client — Check & Update
 
 When Arthur says things like **"check and update it"**, **"update the binary"**,
-or **"pull the latest"** in an EQL context, he means the **game client** under
-CrossOver — not the MCP server npm package / `dist/index.js`.
+or **"pull the latest"** in an EQL context, he means the **game client**
+launched by **EQLMac** — not the MCP server npm package / `dist/index.js`.
+
+CrossOver is no longer how this machine launches the game. The Mac app is
+`~/Applications/EQLMac.app`. Its source repo is `~/Developer/EQLMac`. The Wine
+prefix and the client live under `~/Library/Application Support/osxEQL`.
 
 ## Canonical paths (this machine)
 
 | What | Path |
 | --- | --- |
-| Bottle | `~/Library/Application Support/CrossOver/Bottles/EQL` |
-| Game dir (`EQL_GAME_DIR`) | `…/Bottles/EQL/drive_c/users/Public/Daybreak Game Company/Installed Games/EverQuest Legends` |
+| Mac app | `~/Applications/EQLMac.app` |
+| App repo | `~/Developer/EQLMac` |
+| Prefix | `~/Library/Application Support/osxEQL/prefix` |
+| Game dir (`EQL_GAME_DIR`) | `…/osxEQL/prefix/drive_c/users/Public/Daybreak Game Company/Installed Games/EverQuest Legends` |
 | Binary | `$EQL_GAME_DIR/eqgame.exe` |
 | Patch log | `$EQL_GAME_DIR/.DownloadInfo.txt` |
-| Digest / pver | `…/Bottles/EQL/drive_c/users/crossover/AppData/LocalLow/Daybreak Game Company/Digests/EverQuest New Sebilis/` |
+| Digest / pver | `…/osxEQL/prefix/drive_c/users/crossover/AppData/LocalLow/Daybreak Game Company/Digests/EverQuest New Sebilis/` |
 | MCP repo | `~/Developer/everquest-legends-mcp` |
-| Mac app wrapper | `~/Applications/CrossOver/EverQuest Legends.app` |
+
+The Windows user folder inside the prefix is still named `crossover` because
+the prefix was migrated. That is not the CrossOver app.
+
+If `eqgame.exe` is missing from `prefix`, check `osxEQL/prefix-cx` and then
+the old bottle `~/Library/Application Support/CrossOver/Bottles/EQL` before
+declaring the install gone. Extractors in the MCP repo use that same order
+when `--game-dir` and `EQL_GAME_DIR` are unset.
 
 Product id in LaunchPad: `eqns` (EverQuest New Sebilis). Plugin version appears in `.DownloadInfo.txt` (e.g. `1.0.3.204`).
 
@@ -42,7 +56,7 @@ Product id in LaunchPad: `eqns` (EverQuest New Sebilis). Plugin version appears 
 ### 1. Inspect install + last patch
 
 ```bash
-GAME="$HOME/Library/Application Support/CrossOver/Bottles/EQL/drive_c/users/Public/Daybreak Game Company/Installed Games/EverQuest Legends"
+GAME="$HOME/Library/Application Support/osxEQL/prefix/drive_c/users/Public/Daybreak Game Company/Installed Games/EverQuest Legends"
 
 # Binary + key data files
 stat -f '%Sm  %z  %N' -t '%Y-%m-%d %H:%M:%S' \
@@ -58,9 +72,9 @@ stat -f '%Sm  %z  %N' -t '%Y-%m-%d %H:%M:%S' \
 tail -40 "$GAME/.DownloadInfo.txt"
 
 # Patch version markers
-cat "$HOME/Library/Application Support/CrossOver/Bottles/EQL/drive_c/users/crossover/AppData/LocalLow/Daybreak Game Company/Digests/EverQuest New Sebilis/EverQuest New Sebilis.pver" 2>/dev/null
+cat "$HOME/Library/Application Support/osxEQL/prefix/drive_c/users/crossover/AppData/LocalLow/Daybreak Game Company/Digests/EverQuest New Sebilis/EverQuest New Sebilis.pver" 2>/dev/null
 stat -f '%Sm %N' -t '%Y-%m-%d %H:%M:%S' \
-  "$HOME/Library/Application Support/CrossOver/Bottles/EQL/drive_c/users/crossover/AppData/LocalLow/Daybreak Game Company/Digests/EverQuest New Sebilis/"* 2>/dev/null
+  "$HOME/Library/Application Support/osxEQL/prefix/drive_c/users/crossover/AppData/LocalLow/Daybreak Game Company/Digests/EverQuest New Sebilis/"* 2>/dev/null
 ```
 
 Interpret `.DownloadInfo.txt`:
@@ -73,9 +87,10 @@ Interpret `.DownloadInfo.txt`:
 
 You **cannot** silently force Daybreak's CDN from the shell reliably. To pull:
 
-1. Prefer opening CrossOver / the bottle's LaunchPad so it runs its own check:
-   - Open `EverQuest Legends.app` under `~/Applications/CrossOver/`, **or**
-   - Open CrossOver → bottle `EQL` → LaunchPad / Play (let it check before play).
+1. Open the Mac app so Daybreak's launcher runs its own check:
+   - `open "$HOME/Applications/EQLMac.app"`, **or**
+   - from `~/Developer/EQLMac`: `./eql-mac.sh launch`
+   Quit the game before opening it again. Two copies on the same prefix fight.
 2. Re-read `.DownloadInfo.txt` after the check completes.
 3. Do **not** invent a manual file copy from another machine unless Arthur asks.
 
@@ -107,7 +122,7 @@ shasum -a 256 \
 
 ```bash
 cd ~/Developer/everquest-legends-mcp
-export EQL_GAME_DIR="$HOME/Library/Application Support/CrossOver/Bottles/EQL/drive_c/users/Public/Daybreak Game Company/Installed Games/EverQuest Legends"
+export EQL_GAME_DIR="$HOME/Library/Application Support/osxEQL/prefix/drive_c/users/Public/Daybreak Game Company/Installed Games/EverQuest Legends"
 
 # Authoritative reference snapshot (writes src/data/eql-client/)
 npm run extract:reference -- --game-dir "$EQL_GAME_DIR"
@@ -123,7 +138,7 @@ Then:
 
 1. Review `git diff --stat` on `src/data/eql-client/`.
 2. Rebuild if needed: `npm run build`.
-3. Version / commit / push **only if Arthur asked** to ship. Conventional commits drive auto-release on `main` (`chore(release)` via CI). Prefer something like `chore(data): refresh eql-client from CrossOver patch`.
+3. Version / commit / push **only if Arthur asked** to ship. Conventional commits drive auto-release on `main` (`chore(release)` via CI). Prefer something like `chore(data): refresh eql-client from EQLMac patch`.
 
 ### 5. YouTube / creator source sweep
 
@@ -148,7 +163,7 @@ Do **not** add peak-Twitch variety streamers, mixed TLP/EQEmu channels, or feeds
 
 Give a short status table:
 
-- Bottle / game dir present?
+- EQLMac.app and game dir present?
 - `eqgame.exe` mtime + size
 - Last LaunchPad line (up to date vs files patched)
 - Whether extractor sources changed (hash match Y/N)
@@ -160,10 +175,17 @@ Give a short status table:
 
 | User says | Target |
 | --- | --- |
-| binary, game, client, CrossOver, LaunchPad, patch, eqgame, EQL install | **This skill** (game under CrossOver) |
+| binary, game, client, EQLMac, osxEQL, LaunchPad, patch, eqgame, EQL install | **This skill** (game under the EQLMac prefix) |
 | MCP, package, npm, dist, release, version the server | `everquest-legends-mcp` git/npm release workflow |
 | update everything | **This skill**, all steps including the YouTube/source sweep |
 | Ambiguous "update it" while cwd or conversation is this game/MCP repo | Prefer **game client** first; mention MCP package only if relevant |
+
+## If a patch exposes new data
+
+Read `docs/enhancement-watch.md` before adding a tool. New official posts and
+`creator-*` pages are already covered by the live news/patch indexes and the
+YouTube sweep. NPC, quest, drop, recipe, price, spell-effect, and player-state
+tools wait until a public source for them exists.
 
 ## Cadence notes
 
@@ -175,5 +197,5 @@ Give a short status table:
 
 - Do not confuse with `npx github:ArtSabintsev/everquest-legends-mcp` or repo `dist/`.
 - Do not write extractor output into `src/data/eqlbuilds/` (client script forbids it by design).
-- Do not force-push, delete the bottle, or reinstall CrossOver unless explicitly requested.
+- Do not force-push, delete the osxEQL prefix, or replace EQLMac.app unless explicitly requested.
 - Do not claim the game is updated without reading `.DownloadInfo.txt` or file mtimes.

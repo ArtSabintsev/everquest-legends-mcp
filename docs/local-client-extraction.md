@@ -30,8 +30,15 @@ install**. It cannot run in CI or in the Claude Code cloud sandbox because:
 After installing EverQuest Legends, the install root contains `eqgame.exe` and a
 set of caret (`^`) delimited `*_us.txt` data files. Typical locations:
 
+- Mac via [EQLMac](https://github.com/sowoky/osxEQL) (`~/Applications/EQLMac.app`):
+  `~/Library/Application Support/osxEQL/prefix/drive_c/users/Public/Daybreak Game Company/Installed Games/EverQuest Legends`
 - Windows: `C:\Program Files\Daybreak Game Company\EverQuest Legends\`
   (or wherever the launcher installed it)
+
+The extractors pick the Mac path when `eqgame.exe` is there and `--game-dir` /
+`EQL_GAME_DIR` were not set. They then try a migrated `osxEQL/prefix-cx`, then
+the old CrossOver bottle at
+`~/Library/Application Support/CrossOver/Bottles/EQL/.../EverQuest Legends`.
 
 The extractor reads:
 
@@ -46,6 +53,8 @@ The extractor reads:
 
 ```bash
 # Report only — parse, print counts + samples, cross-check the snapshot, write nothing.
+# Omit --game-dir on a Mac where EQLMac has already installed the client.
+npm run extract:client -- --report-only
 npm run extract:client -- --game-dir "/path/to/EverQuest Legends" --report-only
 
 # Extract to a scratch directory (git-ignored) for review.

@@ -1,5 +1,5 @@
 import { fetchText } from "./http.js";
-import { getOfficialNews, type OfficialNewsArticle } from "./official.js";
+import { getOfficialNews, getOfficialPatchNotes, type OfficialArticleSection, type OfficialNewsArticle } from "./official.js";
 import { SOURCE_PAGES, sourceById, type SourcePage } from "./sources.js";
 import { htmlToText, scoreText, snippetAround, truncateText } from "./text.js";
 import { detectNonLaunchEra, type EraAdvisory } from "./era.js";
@@ -120,19 +120,26 @@ export async function searchCuratedSources(query: string, options: { limit?: num
     }
   );
 
-  const officialNews = allowed.has("official-news") ? await searchOfficialNews(normalizedQuery) : { results: [], failedSource: undefined };
+  const officialNews = allowed.has("official-news")
+    ? await searchOfficialIndex(normalizedQuery, "news")
+    : { results: [], failedSource: undefined };
+  const officialPatches = allowed.has("official-patch-notes")
+    ? await searchOfficialIndex(normalizedQuery, "patch-notes")
+    : { results: [], failedSource: undefined };
   const curatedResults = sourceResults
     .map((entry) => entry.result)
     .filter((result): result is SourceSearchResult => result !== undefined);
   const failedSources = sourceResults
     .map((entry) => entry.failure)
     .filter((failure): failure is SourceSearchFailure => failure !== undefined);
-  if (officialNews.failedSource) {
-    failedSources.push(officialNews.failedSource);
+  for (const index of [officialNews, officialPatches]) {
+    if (index.failedSource) {
+      failedSources.push(index.failedSource);
+    }
   }
   failedSources.push(...unknownSourceFailures);
 
-  const results = [...curatedResults, ...officialNews.results]
+  const results = [...curatedResults, ...officialNews.results, ...officialPatches.results]
     .sort((left, right) => right.score - left.score || left.title.localeCompare(right.title))
     .slice(0, limit);
 
@@ -161,22 +168,45 @@ async function mapWithConcurrency<T, R>(items: T[], concurrency: number, mapper:
   return results;
 }
 
-async function searchOfficialNews(query: string): Promise<{ results: SourceSearchResult[]; failedSource?: SourceSearchFailure }> {
+const OFFICIAL_INDEX_META: Record<
+  OfficialArticleSection,
+  { id: string; title: string; url: string; load: (limit: number) => Promise<OfficialNewsArticle[]> }
+> = {
+  news: {
+    id: "official-news:parsed-index",
+    title: "Official EverQuest Legends News",
+    url: "https://www.everquestlegends.com/news",
+    load: getOfficialNews
+  },
+  "patch-notes": {
+    id: "official-patch-notes:parsed-index",
+    title: "Official EverQuest Legends Patch Notes",
+    url: "https://www.everquestlegends.com/patch-notes",
+    load: getOfficialPatchNotes
+  }
+};
+
+async function searchOfficialIndex(
+  query: string,
+  section: OfficialArticleSection
+): Promise<{ results: SourceSearchResult[]; failedSource?: SourceSearchFailure }> {
+  const meta = OFFICIAL_INDEX_META[section];
   let articles: OfficialNewsArticle[] = [];
   try {
-    articles = await getOfficialNews(50);
+    articles = await meta.load(50);
   } catch (error) {
     return {
       results: [],
       failedSource: {
-        id: "official-news:parsed-index",
-        title: "Official EverQuest Legends News",
-        url: "https://www.everquestlegends.com/news",
+        id: meta.id,
+        title: meta.title,
+        url: meta.url,
         reason: error instanceof Error ? error.message : String(error)
       }
     };
   }
 
+  const idPrefix = section === "news" ? "official-news" : "official-patch-notes";
   const results = articles
     .map((article) => {
       const haystack = `${article.title}\n${article.summary}\n${article.publishedAt}`;
@@ -185,7 +215,7 @@ async function searchOfficialNews(query: string): Promise<{ results: SourceSearc
         return undefined;
       }
       const result: SourceSearchResult = {
-        id: `official-news:${article.pageName}`,
+        id: `${idPrefix}:${article.pageName}`,
         title: article.title,
         kind: "official",
         url: article.url,

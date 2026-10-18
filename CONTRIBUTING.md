@@ -11,6 +11,7 @@ This project is scoped to EverQuest Legends public sources only.
 - Prefer official pages, original interviews, hands-on previews, and EQL-specific guide pages for searchable sources.
 - Label unofficial community sources clearly.
 - YouTube rows live in `EQL_YOUTUBE_SOURCES`. Set `eqlSpecific: true` only when the channel's recent RSS is primarily EverQuest Legends. Optional `xHandle`/`xUrl` are pointer-only: add them only when the handle is verified from an official page, creator-program profile, or an existing source description — do not invent handles. The MCP must not fetch X.
+- Before adding a tool for quests, drops, recipes, items, prices, or player state, read `docs/enhancement-watch.md`. Those wait until EQL or a companion site actually exposes the data.
 
 ## Adding Or Changing Sources
 

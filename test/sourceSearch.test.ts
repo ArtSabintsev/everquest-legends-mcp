@@ -41,4 +41,17 @@ describe("curated source search", () => {
     await expect(searchCuratedSources("x".repeat(121), { sourceIds: ["official-home"] })).rejects.toThrow(/120 characters/);
     expect(mockedFetchText).not.toHaveBeenCalled();
   });
+
+  it("searches the live patch-notes index when that source is in scope", async () => {
+    mockedFetchText.mockImplementation(async (url) => {
+      if (url === "https://www.everquestlegends.com/patch-notes") {
+        return `<script>window.EQL ??= {}; window.EQL.News ??= {}; window.EQL.News.articles = [{"subtypeArray":["eqlegends"],"start_date_epoch":"1791900000","pageName":"eql-update-notes-10-13-2026","title":"Patch Notes - October 13, 2026","summary":"<p>raid resume checkpoints</p>"}]</script>`;
+      }
+      throw new Error(`unexpected ${url}`);
+    });
+
+    const search = await searchCuratedSources("raid resume", { sourceIds: ["official-patch-notes"], limit: 5 });
+    expect(search.failedSources).toEqual([]);
+    expect(search.results.some((result) => result.url.endsWith("/patch-notes/eql-update-notes-10-13-2026"))).toBe(true);
+  });
 });

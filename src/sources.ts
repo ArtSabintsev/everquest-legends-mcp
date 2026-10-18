@@ -439,6 +439,62 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
     searchable: true
   },
   {
+    id: "official-launch",
+    kind: "official",
+    title: "Official Launch Announcement",
+    url: "https://www.everquestlegends.com/news/eql-now-available",
+    description: "Official July 28, 2026 launch announcement. EverQuest Legends is available to play solo or with friends.",
+    searchable: true
+  },
+  {
+    id: "official-producer-letter-june-2026",
+    kind: "official",
+    title: "Official Producer Letter: June 2026",
+    url: "https://www.everquestlegends.com/news/eqlegends-producers-letter-june-2026",
+    description: "Official producer letter (2026-06-30) on the pre-order beta launch time.",
+    searchable: true
+  },
+  {
+    id: "official-producer-letter-july-2026",
+    kind: "official",
+    title: "Official Producer Letter: July 8, 2026",
+    url: "https://www.everquestlegends.com/news/eqlegends-producers-letter-july-2026",
+    description: "Official producer letter (2026-07-08) covering the marketplace update.",
+    searchable: true
+  },
+  {
+    id: "official-producer-letter-july-27-2026",
+    kind: "official",
+    title: "Official Producer Letter: July 27, 2026",
+    url: "https://www.everquestlegends.com/news/eqlegends-producers-letter-july-27-2026",
+    description: "Official producer letter (2026-07-27), the eve of the July 28 launch.",
+    searchable: true
+  },
+  {
+    id: "official-sdcc-2026",
+    kind: "official",
+    title: "Official San Diego Comic-Con 2026 Panel",
+    url: "https://www.everquestlegends.com/news/eqlegends-sdcc-panel-2026",
+    description: "Official announcement of the EverQuest Legends panel at San Diego Comic-Con 2026.",
+    searchable: true
+  },
+  {
+    id: "official-bristly-boar",
+    kind: "official",
+    title: "Official Bristly Boar Mount Announcement",
+    url: "https://www.everquestlegends.com/news/bristly-boar-mount",
+    description: "Official August 14, 2026 announcement of the Bristly Boar mount.",
+    searchable: true
+  },
+  {
+    id: "official-labor-day-2026",
+    kind: "official",
+    title: "Official Labor Day 2026 Event",
+    url: "https://www.everquestlegends.com/news/labor-day-murderbee",
+    description: "Official Labor Day 2026 event: a free Murderbee petamorph wand and 25% bonus XP, September 4-7.",
+    searchable: true
+  },
+  {
     id: "official-40k-celebration",
     kind: "official",
     title: "Official 40,000 Beta Signup Celebration",
@@ -538,7 +594,8 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
     kind: "official",
     title: "Official EverQuest Legends Patch Notes",
     url: "https://www.everquestlegends.com/patch-notes",
-    description: "Official Natch Potes index of dated EverQuest Legends update and hotfix notes.",
+    description:
+      "Official Natch Potes index of dated EverQuest Legends update and hotfix notes. Also parsed live by eql_official_patch_notes. Individual notes are not all pinned here; the live index is the current list.",
     searchable: true
   },
   {

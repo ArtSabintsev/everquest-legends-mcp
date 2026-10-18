@@ -28,6 +28,22 @@ describe("official news parsing", () => {
     expect(resolveOfficialArticleUrl("https://www.everquestlegends.com/news/everquest-legends-preorder")).toBe(
       "https://www.everquestlegends.com/news/everquest-legends-preorder"
     );
+    expect(resolveOfficialArticleUrl("patch-notes/eql-update-notes-10-13-2026")).toBe(
+      "https://www.everquestlegends.com/patch-notes/eql-update-notes-10-13-2026"
+    );
+    expect(resolveOfficialArticleUrl("https://www.everquestlegends.com/patch-notes/eql-update-notes-10-13-2026")).toBe(
+      "https://www.everquestlegends.com/patch-notes/eql-update-notes-10-13-2026"
+    );
+  });
+
+  it("builds patch-note URLs from the patch-notes index payload", () => {
+    const html = `
+      <script>
+        window.EQL.News.articles = [{"subtypeArray":["eqlegends"],"start_date_epoch":"1791900000","pageName":"eql-update-notes-10-13-2026","title":"Patch Notes - October 13, 2026","summary":"<p>EQL Patch Notes</p>"}]
+      </script>
+    `;
+    const articles = parseOfficialNewsArticles(html, "patch-notes");
+    expect(articles?.[0]?.url).toBe("https://www.everquestlegends.com/patch-notes/eql-update-notes-10-13-2026");
   });
 
   it("rejects article inputs outside official https news pages", () => {

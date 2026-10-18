@@ -6,6 +6,16 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+### Added
+
+- `eql_official_patch_notes` reads the live Natch Potes index. `eql_official_article` accepts `/patch-notes/` URLs, and source search queries that index when `official-patch-notes` is in scope.
+- Official news pages that were on the live index but not pinned: launch, the June 30, July 8, and July 27 producer letters, the San Diego Comic-Con 2026 panel, the Bristly Boar mount, and the Labor Day 2026 Murderbee event.
+- `docs/enhancement-watch.md` records which tools to add when EQL or a companion site exposes quests, drops, recipes, prices, spell effects, or player state.
+
+### Changed
+
+- Local client extractors find the game under the EQLMac / osxEQL prefix when `--game-dir` and `EQL_GAME_DIR` are unset, then a migrated `prefix-cx`, then the old CrossOver bottle.
+
 ## [1.12.1] - 2026-10-15
 
 ### Changed

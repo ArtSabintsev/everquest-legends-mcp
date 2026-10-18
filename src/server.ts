@@ -2,7 +2,7 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import type { CallToolResult } from "@modelcontextprotocol/sdk/types.js";
 import * as z from "zod/v4";
 import { EQL_CLASSES, EQL_CLASS_SOURCE, EQL_RACES, EQL_RACE_SOURCE, generateClassCombinations } from "./domain.js";
-import { getOfficialArticle, getOfficialNews } from "./official.js";
+import { getOfficialArticle, getOfficialNews, getOfficialPatchNotes } from "./official.js";
 import { listPressAssets, PRESS_ASSET_KINDS } from "./press.js";
 import { fetchSource, searchCuratedSources } from "./sourceSearch.js";
 import { EQL_CREATOR_PROGRAM, EQL_YOUTUBE_SOURCES, SOURCE_PAGES, SOURCE_SCOPE } from "./sources.js";
@@ -457,7 +457,8 @@ export function createServer(): McpServer {
     "eql_official_news",
     {
       title: "List official EQL news",
-      description: "Parse the official EverQuest Legends news index.",
+      description:
+        "Parse the official EverQuest Legends news index (https://www.everquestlegends.com/news). Patch notes are a separate index; use eql_official_patch_notes for those.",
       inputSchema: {
         limit: z.number().int().min(1).max(50).default(10)
       }
@@ -469,12 +470,34 @@ export function createServer(): McpServer {
   );
 
   server.registerTool(
+    "eql_official_patch_notes",
+    {
+      title: "List official EQL patch notes",
+      description:
+        "Parse the live official Natch Potes index (https://www.everquestlegends.com/patch-notes). This is not the news index. Use eql_official_article with the returned /patch-notes/ URL to read one note.",
+      inputSchema: {
+        limit: z.number().int().min(1).max(50).default(15)
+      }
+    },
+    async ({ limit }) => {
+      const articles = await getOfficialPatchNotes(limit);
+      return toolResult(`Fetched ${articles.length} official patch notes.`, { articles });
+    }
+  );
+
+  server.registerTool(
     "eql_official_article",
     {
       title: "Read official EQL article",
-      description: "Fetch an official EverQuest Legends news article by page name or official /news/ URL.",
+      description:
+        "Fetch an official EverQuest Legends article by page name or URL. Bare slugs and /news/ URLs read the news site. /patch-notes/ URLs read Natch Potes.",
       inputSchema: {
-        pageNameOrUrl: z.string().min(1).describe("Article page name such as everquest-legends-preorder, /news/..., or https://www.everquestlegends.com/news/... URL."),
+        pageNameOrUrl: z
+          .string()
+          .min(1)
+          .describe(
+            "News slug such as everquest-legends-preorder, a /news/ or /patch-notes/ path, or a full https://www.everquestlegends.com URL for either section."
+          ),
         maxCharacters: z.number().int().min(500).max(40_000).default(12_000)
       }
     },

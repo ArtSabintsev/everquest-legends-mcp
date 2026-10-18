@@ -25,7 +25,8 @@
 //
 // Flags:
 //   --game-dir <dir>  Root of the EQL install (contains eqgame.exe, *_us.txt).
-//                     Falls back to the EQL_GAME_DIR environment variable.
+//                     Falls back to EQL_GAME_DIR, then an EQLMac/osxEQL prefix
+//                     (see scripts/game-dir.mjs).
 //   --out <dir>       Where to write extracted JSON. Default: ./eql-client-dump
 //                     (git-ignored scratch). Never src/data/eqlbuilds.
 //   --report-only     Parse and print a summary + samples, write nothing.
@@ -51,6 +52,7 @@ import { readFile, mkdir, writeFile } from "node:fs/promises";
 import { createInterface } from "node:readline";
 import { access } from "node:fs/promises";
 import { join } from "node:path";
+import { missingGameDirMessage, resolveGameDir } from "./game-dir.mjs";
 
 // The 16 EQL classes, in the client's canonical column order. This order is what
 // maps spells_us.txt level columns to classes, so it must not be reordered.
@@ -88,9 +90,9 @@ function parseArgs(argv) {
     else if (a === "--limit-samples") args.limitSamples = Number(argv[++i]) || 5;
     else fail(`Unknown argument: ${a}`);
   }
-  args.gameDir ??= process.env.EQL_GAME_DIR;
+  args.gameDir = resolveGameDir(args.gameDir);
   if (!args.gameDir) {
-    fail("No game dir. Pass --game-dir \"/path/to/EverQuest Legends\" or set EQL_GAME_DIR.");
+    fail(missingGameDirMessage());
   }
   return args;
 }
