@@ -6,6 +6,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.13.1] - 2026-10-21
+
+### Changed
+
+- Bump zod from 4.6.6 to 4.6.7 (#51) (787d045)
+
 ## [1.13.0] - 2026-10-18
 
 ### Added
