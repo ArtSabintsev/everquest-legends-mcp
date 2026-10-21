@@ -6,6 +6,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.13.2] - 2026-10-21
+
+### Changed
+
+- Bump vitest from 5.0.3 to 5.0.5 (#52) (bd95de3)
+
 ## [1.13.1] - 2026-10-21
 
 ### Changed
