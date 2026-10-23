@@ -589,6 +589,15 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
     searchable: true
   },
   {
+    id: "official-nektropos-castle",
+    kind: "official",
+    title: "Official News: Nektropos Castle",
+    url: "https://www.everquestlegends.com/news/eql-nektropos-castle",
+    description:
+      "Official October 22, 2026 Nektropos Castle launch post. Covers the Lake Nerius outdoor zone, the Nektropos Castle endgame dungeon (20+ named), the hidden Nektropos Undercroft starting area, and the new Ayr'Haeth (Half Dark Elf) race with race levels starting at 1 (Cursed Heritage taps/runes bonus, Life Tracking, Hide, Sneak, Infravision). Access starts with Retainer Ozval in Lake Nerius and runs through the Plane of Hate. Halloween event runs through November 3 with a free Werewolf pet illusion.",
+    searchable: true
+  },
+  {
     id: "official-patch-notes",
     authority: "eql",
     kind: "official",
@@ -636,6 +645,26 @@ export const SOURCE_PAGES: readonly SourcePage[] = [
     url: "https://www.everquestlegends.com/patch-notes/eql-update-notes-10-13-2026",
     description:
       "Official October 13, 2026 update. Covers the Barbarian face save fix, raid resume checkpoints and joining a group member's raid without a replay timer (no loot from bosses already killed today), Widened Perceptions and Unbound Cascade AA fixes, pet weapon ratio and damage plus a raised pet level cap, the Odus kobold achievement, and Magical Monologue removed from the Bard song list.",
+    searchable: true
+  },
+  {
+    id: "official-update-notes-2026-10-22",
+    authority: "eql",
+    kind: "official",
+    title: "Official Update Notes: October 22, 2026",
+    url: "https://www.everquestlegends.com/patch-notes/eql-update-notes-10-22-2026",
+    description:
+      "Official October 22, 2026 update (Nektropos Castle patch day). Covers Rampage rank 2 at level 40 for Warriors and Berserkers, higher Frenzy base damage, backstabbing NPCs gaining kick and bash, pet command holds and pet taunt threat changes (taunt toggle on charmed pets), pet weapon and stat fixes (Monster Summoning pets become Warrior/Berserker, summoned pets gain mana from WIS/INT and HP from STA), a Berserker Stance rework, spell-damage-reduction stances now covering DoTs, and more detailed spell tooltips.",
+    searchable: true
+  },
+  {
+    id: "official-hotfix-notes-2026-10-23",
+    authority: "eql",
+    kind: "official",
+    title: "Official Hotfix Notes: October 23, 2026",
+    url: "https://www.everquestlegends.com/patch-notes/eql-update-notes-10-23-2026",
+    description:
+      "Official October 23, 2026 hotfix. Nektropos Castle fixes: key NPCs more willing to talk, Handmaiden's Handwrap usable as a weapon, Schemer's Guise illusion works from inventory, Torturer's Signature displays when wielded, castle undead properly flagged undead, C'Rate ability, door fixes, plus Halloween event text and Zombie Petamorph wand display fixes.",
     searchable: true
   },
   {
