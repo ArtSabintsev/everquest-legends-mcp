@@ -6,6 +6,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.13.3] - 2026-10-23
+
+### Changed
+
+- pin Oct 22 Nektropos Castle news, Oct 22 patch notes, and Oct 23 hotfix (#53) (ebcfaf8)
+
 ## [1.13.2] - 2026-10-21
 
 ### Changed
