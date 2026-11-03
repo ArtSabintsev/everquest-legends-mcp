@@ -64,7 +64,7 @@
     "node": ">=22"
   },
   "dependencies": {
-    "@modelcontextprotocol/sdk": "^1.32.1",
+    "@modelcontextprotocol/sdk": "^1.32.2",
     "cheerio": "^1.2.0",
     "zod": "^4.6.7"
   },
