@@ -6,6 +6,12 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.13.4] - 2026-11-03
+
+### Changed
+
+- Bump @modelcontextprotocol/sdk from 1.32.1 to 1.32.2 (#54) (976830b)
+
 ## [1.13.3] - 2026-10-23
 
 ### Changed
