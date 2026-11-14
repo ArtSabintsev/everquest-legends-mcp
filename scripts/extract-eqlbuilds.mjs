@@ -18,8 +18,8 @@
 //   node scripts/extract-eqlbuilds.mjs --check   # verify only; non-zero if stale
 //
 // The snapshot is what the MCP server reads at runtime (see src/eqlbuilds.ts).
-// A scheduled GitHub Action (.github/workflows/refresh-eqlbuilds.yml) runs this
-// on a cadence and opens a PR when the upstream data changes.
+// A GitHub Action (.github/workflows/refresh-eqlbuilds.yml) runs this on
+// demand and commits when the upstream data changes.
 
 import { createHash } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";
@@ -144,7 +144,7 @@ async function main() {
 
 // Compare a previously written manifest against the new one, ignoring the fields
 // that change on every run (extractedAt) or with the deploy (bundle hash/urls),
-// so a scheduled run only reports a change when the actual data moved.
+// so a run only reports a change when the actual data moved.
 function manifestDataChanged(prevRaw, next) {
   if (!prevRaw) return true;
   let prev;

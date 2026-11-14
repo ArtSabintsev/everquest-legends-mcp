@@ -5,9 +5,6 @@ name: Check YouTube sources
 # continue-on-error so it never blocks merge or release.
 
 on:
-  schedule:
-    # Mondays 16:00 UTC — weekly sweep after typical Tuesday-patch weekends.
-    - cron: "0 16 * * 1"
   workflow_dispatch:
   pull_request:
     paths:

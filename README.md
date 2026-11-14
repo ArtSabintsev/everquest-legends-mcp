@@ -206,8 +206,8 @@ npm run extract:eqlbuilds        # refresh the snapshot from eqlbuilds.com
 npm run extract:eqlbuilds:check  # verify the snapshot is up to date (non-zero if stale)
 ```
 
-`.github/workflows/refresh-eqlbuilds.yml` runs the extractor on a weekly
-schedule (and on demand), validates it with typecheck + tests, and commits the
+`.github/workflows/refresh-eqlbuilds.yml` runs the extractor on demand,
+validates it with typecheck + tests, and commits the
 refreshed snapshot only when the upstream data actually changes. The build copies
 `src/data` to `dist/data` so the snapshot ships with the package.
 
@@ -233,10 +233,9 @@ npm run extract:wiki-commands:check  # verify the snapshot is up to date (non-ze
 npm run extract:wiki-commands:dry    # parse + summarize, write nothing
 ```
 
-`.github/workflows/refresh-eql-wiki-commands.yml` runs the extractor on the
-same twice-weekly cadence as the eqlbuilds refresh, validates it with
-typecheck + tests, and commits the refreshed snapshot only when the upstream
-page actually changed.
+`.github/workflows/refresh-eql-wiki-commands.yml` runs the extractor on
+demand, validates it with typecheck + tests, and commits the refreshed
+snapshot only when the upstream page actually changed.
 
 ### Refreshing the local-client reference dataset
 

@@ -6,14 +6,9 @@ name: Refresh EQL Wiki commands data
 # src/data/eql-client (which needs a local game install and is maintainer-run
 # only, see refresh docs in README.md), this source is a public wiki page
 # reachable over plain HTTP, so scripts/extract-eql-wiki-commands.mjs can run
-# unattended here on a schedule.
+# from workflow_dispatch. It is not on a schedule.
 
 on:
-  schedule:
-    # Twice weekly, same cadence as refresh-eqlbuilds.yml, offset by an hour
-    # so the two extractors don't race for the same commit.
-    - cron: "0 1 * * 3"
-    - cron: "0 1 * * 5"
   workflow_dispatch:
     inputs:
       commit:

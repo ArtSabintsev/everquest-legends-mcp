@@ -7,7 +7,7 @@ data reaches the committed snapshot under `src/data/eqlbuilds/`:
 
 | Path | Source | Runs where | Script |
 | --- | --- | --- | --- |
-| Automated | `eqlbuilds.com` (re-published client data) | CI, weekly | `scripts/extract-eqlbuilds.mjs` |
+| Automated | `eqlbuilds.com` (re-published client data) | CI, on demand | `scripts/extract-eqlbuilds.mjs` |
 | Manual / authoritative | Your local game install | Your machine only | `scripts/extract-eql-client.mjs` |
 
 The automated path is the default and needs no game install. The manual path

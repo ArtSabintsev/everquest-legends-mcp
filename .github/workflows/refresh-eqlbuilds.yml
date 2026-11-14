@@ -4,18 +4,10 @@ name: Refresh eqlbuilds data
 # Continuous extraction of the eqlbuilds.com build-planner dataset.
 # eqlbuilds.com ships its data inside a content-hashed JS bundle with no API,
 # so scripts/extract-eqlbuilds.mjs re-discovers the bundle and rewrites the
-# committed snapshot under src/data/eqlbuilds/. This workflow runs that on a
-# schedule, validates the result, and commits it when the upstream data changes.
+# committed snapshot under src/data/eqlbuilds/. Run this workflow manually.
+# It validates the result and commits when the upstream data changes.
 
 on:
-  schedule:
-    # Twice weekly, Tuesdays and Thursdays 8pm ET: game patches land Tuesday
-    # mornings, so the Tuesday run catches same-day data and the Thursday run
-    # picks up anything eqlbuilds.com published late. GitHub cron is UTC-only,
-    # so these are Wednesday/Friday 00:00 UTC — exactly 8pm EDT; during
-    # standard time they fire at 7pm ET.
-    - cron: "0 0 * * 3"
-    - cron: "0 0 * * 5"
   workflow_dispatch:
     inputs:
       commit:

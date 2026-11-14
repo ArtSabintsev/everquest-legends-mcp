@@ -16,7 +16,7 @@
 // snapshots eqlbuilds.com: a committed JSON file plus a manifest recording
 // the wiki revision it came from. Unlike extract-eql-reference.mjs, this
 // needs no local game install and only needs network access, so it can run
-// in CI on a schedule.
+// in CI on demand.
 //
 // Usage:
 //   node scripts/extract-eql-wiki-commands.mjs           # write snapshot
@@ -250,14 +250,14 @@ function extractAliases(description) {
 
 const FETCH_ATTEMPTS = 3;
 const FETCH_TIMEOUT_MS = 30_000;
-// Same retryable statuses as src/http.ts, plus 429: this job is a scheduled
+// Same retryable statuses as src/http.ts, plus 429: this job is a
 // single-caller extract, so backing off on a rate limit is safe.
 const RETRYABLE_STATUSES = new Set([408, 429, 500, 502, 503, 504]);
 
 // eqlwiki.com has answered this MediaWiki API with an HTML document (often
 // HTTP 200, text/html) instead of JSON — challenge / error / maintenance
 // pages. response.json() then throws a raw SyntaxError
-// (`Unexpected token '<'`) and the scheduled --check job fails the whole
+// (`Unexpected token '<'`) and a --check run fails the whole
 // refresh. Read the body as text, require parseable JSON, and retry a few
 // times with backoff on HTML, 5xx, and network blips. --check exit codes
 // stay 0 (current), 10 (changed), anything else (hard failure).
