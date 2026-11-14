@@ -6,6 +6,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.13.5] - 2026-11-14
+
 ### Changed
 
 - Stop the scheduled eqlbuilds, EQL Wiki commands, and YouTube source workflows. Each still runs on demand. The YouTube check still runs on pull requests that touch those files.
