@@ -6,6 +6,8 @@ to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [1.13.6] - 2026-11-14
+
 ### Changed
 
 - Remove the eqlbuilds and EQL Wiki commands GitHub Actions workflows, including manual runs. Refresh those snapshots locally. The YouTube source check no longer has a manual run. It still runs on pull requests that touch those files.
