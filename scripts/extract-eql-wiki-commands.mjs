@@ -15,8 +15,7 @@
 // src/mediawiki.ts, and snapshots it the same way extract-eqlbuilds.mjs
 // snapshots eqlbuilds.com: a committed JSON file plus a manifest recording
 // the wiki revision it came from. Unlike extract-eql-reference.mjs, this
-// needs no local game install and only needs network access, so it can run
-// in CI on demand.
+// needs no local game install and only needs network access, so run it locally.
 //
 // Usage:
 //   node scripts/extract-eql-wiki-commands.mjs           # write snapshot

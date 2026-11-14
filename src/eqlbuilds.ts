@@ -3,8 +3,8 @@ import { fileURLToPath } from "node:url";
 import { scoreText, truncateText } from "./text.js";
 
 // Structured EQL Legends build data extracted from eqlbuilds.com. The snapshot
-// under ./data/eqlbuilds is refreshed out-of-band by scripts/extract-eqlbuilds.mjs
-// (see that file and .github/workflows/refresh-eqlbuilds.yml). This module only
+// under ./data/eqlbuilds is refreshed out-of-band by scripts/extract-eqlbuilds.mjs.
+// This module only
 // reads the committed snapshot; it performs no network access, matching the
 // read-only, offline-friendly design of the rest of the server.
 

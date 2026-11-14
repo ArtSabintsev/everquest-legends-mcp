@@ -8,17 +8,11 @@ name: Release
 # GitHub Release.
 #
 # Loop safety: pushes made here use GITHUB_TOKEN, which never retriggers push
-# workflows, and the script ignores chore(release) commits. Data-refresh
-# workflows also push with GITHUB_TOKEN, so they can't trigger `push` either —
-# the workflow_run trigger below picks those up instead.
+# workflows, and the script ignores chore(release) commits.
 
 on:
   push:
     branches: [main]
-  workflow_run:
-    # Must match the `name:` of each data-refresh workflow exactly.
-    workflows: ["Refresh eqlbuilds data", "Refresh EQL Wiki commands data"]
-    types: [completed]
   workflow_dispatch:
 
 permissions:
@@ -31,11 +25,6 @@ concurrency:
 jobs:
   release:
     runs-on: ubuntu-latest
-    # Only release for refresh runs that succeeded on main; a manual refresh
-    # run from a feature branch must not publish whatever is pending on main.
-    if: >-
-      github.event_name != 'workflow_run' ||
-      (github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.head_branch == 'main')
     steps:
       - name: Checkout
         uses: actions/checkout@v7

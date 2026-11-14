@@ -14,9 +14,8 @@
 // it emits, then fold anything correct into the snapshot deliberately.
 //
 // Why this can't run in CI or the cloud sandbox: it needs a local game install.
-// eqlbuilds.com is the automated path (scripts/extract-eqlbuilds.mjs +
-// .github/workflows/refresh-eqlbuilds.yml); this is the manual, authoritative
-// path for a maintainer who has the client.
+// eqlbuilds.com is refreshed locally with scripts/extract-eqlbuilds.mjs. This
+// script is the authoritative path for a maintainer who has the client.
 //
 // Usage:
 //   node scripts/extract-eql-client.mjs --game-dir "/path/to/EverQuest Legends"

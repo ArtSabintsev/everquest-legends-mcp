@@ -18,8 +18,7 @@
 //   node scripts/extract-eqlbuilds.mjs --check   # verify only; non-zero if stale
 //
 // The snapshot is what the MCP server reads at runtime (see src/eqlbuilds.ts).
-// A GitHub Action (.github/workflows/refresh-eqlbuilds.yml) runs this on
-// demand and commits when the upstream data changes.
+// Run it locally.
 
 import { createHash } from "node:crypto";
 import { mkdir, readFile, writeFile } from "node:fs/promises";

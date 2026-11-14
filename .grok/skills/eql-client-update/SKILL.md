@@ -116,7 +116,7 @@ shasum -a 256 \
 | `spells_us.txt`, `eqstr_us.txt`, `dbstr_us.txt`, `Resources/skillcaps.txt`, manual/storyline/maps/racedata, ZoneNames if extractor cares | Re-extract (step 4). |
 | Unclear | Run extractors in dry/report mode; only commit if counts/hashes change. |
 
-`eqlbuilds.com` snapshot (`src/data/eqlbuilds/`) is not on a schedule. Run `.github/workflows/refresh-eqlbuilds.yml` with workflow_dispatch when it needs an update. **Do not** hand-edit that path from the game dir unless Arthur asks; use `extract:client --report-only` for cross-checks only.
+`eqlbuilds.com` snapshot (`src/data/eqlbuilds/`) is refreshed locally with `npm run extract:eqlbuilds` when Arthur asks. **Do not** hand-edit that path from the game dir unless Arthur asks; use `extract:client --report-only` for cross-checks only.
 
 ### 4. Re-extract client reference data (when step 3 says so)
 

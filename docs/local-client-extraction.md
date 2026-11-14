@@ -7,10 +7,10 @@ data reaches the committed snapshot under `src/data/eqlbuilds/`:
 
 | Path | Source | Runs where | Script |
 | --- | --- | --- | --- |
-| Automated | `eqlbuilds.com` (re-published client data) | CI, on demand | `scripts/extract-eqlbuilds.mjs` |
+| Community site | `eqlbuilds.com` (re-published client data) | Your machine | `scripts/extract-eqlbuilds.mjs` |
 | Manual / authoritative | Your local game install | Your machine only | `scripts/extract-eql-client.mjs` |
 
-The automated path is the default and needs no game install. The manual path
+The eqlbuilds.com path is the default and needs no game install. The manual path
 below is for a maintainer who has EQL installed and wants to extract or
 cross-check data straight from the authoritative client files.
 
@@ -20,10 +20,9 @@ cross-check data straight from the authoritative client files.
 install**. It cannot run in CI or in the Claude Code cloud sandbox because:
 
 - There is no game client there to read.
-- `eqlbuilds.com` (the automated fallback source) is blocked by the sandbox's
-  outbound egress policy — a request returns HTTP 403 at the proxy tunnel. That
-  is expected; the automated refresh is designed to run in GitHub Actions
-  (`.github/workflows/refresh-eqlbuilds.yml`), where egress is unrestricted.
+- `eqlbuilds.com` is blocked by the sandbox's outbound egress policy — a
+  request returns HTTP 403 at the proxy tunnel. Refresh that snapshot locally
+  with `npm run extract:eqlbuilds`.
 
 ## Where the client files live
 

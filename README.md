@@ -206,9 +206,7 @@ npm run extract:eqlbuilds        # refresh the snapshot from eqlbuilds.com
 npm run extract:eqlbuilds:check  # verify the snapshot is up to date (non-zero if stale)
 ```
 
-`.github/workflows/refresh-eqlbuilds.yml` runs the extractor on demand,
-validates it with typecheck + tests, and commits the
-refreshed snapshot only when the upstream data actually changes. The build copies
+Run those locally, then commit the snapshot if it changed. The build copies
 `src/data` to `dist/data` so the snapshot ships with the package.
 
 ### Refreshing the EQL Wiki commands dataset
@@ -224,8 +222,7 @@ EQL, while the wiki is community-kept-current and documents commands (e.g.
 request time rather than one replacing the other — see `EQL_COMMANDS_DISCLAIMER`
 in `src/eqlClient.ts`.
 
-Unlike the local-client snapshot, this only needs network access, so it runs
-in CI:
+Unlike the local-client snapshot, this only needs network access:
 
 ```bash
 npm run extract:wiki-commands        # refresh the snapshot from eqlwiki.com
@@ -233,9 +230,7 @@ npm run extract:wiki-commands:check  # verify the snapshot is up to date (non-ze
 npm run extract:wiki-commands:dry    # parse + summarize, write nothing
 ```
 
-`.github/workflows/refresh-eql-wiki-commands.yml` runs the extractor on
-demand, validates it with typecheck + tests, and commits the refreshed
-snapshot only when the upstream page actually changed.
+Run those locally, then commit the snapshot if it changed.
 
 ### Refreshing the local-client reference dataset
 
